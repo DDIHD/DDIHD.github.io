@@ -1,14 +1,14 @@
 const CACHE_NAME = 'face-emotion-detection-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/face-api.js',
-  '/manifest.json',
-  '/jquery-2.1.1.min.js',
-  '/models/ssd_mobilenetv1_model-weights_manifest.json',
-  '/models/ssd_mobilenetv1_model-shard1',
-  '/models/face_expression_model-weights_manifest.json',
-  '/models/face_expression_model-shard1'
+  '.',
+  'index.html',
+  'face-api.js',
+  'manifest.json',
+  'jquery-2.1.1.min.js',
+  'models/ssd_mobilenetv1_model-weights_manifest.json',
+  'models/ssd_mobilenetv1_model-shard1',
+  'models/face_expression_model-weights_manifest.json',
+  'models/face_expression_model-shard1'
 ];
 
 self.addEventListener('install', event => {
