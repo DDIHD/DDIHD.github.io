@@ -354,10 +354,10 @@ cameraSwitch.style = `
 liveView.appendChild(cameraSwitch);
 
 // Track current camera
-let currentCamera = 'environment'; // 'environment' is back camera, 'user' is front camera
+let currentCamera = 'user'; // 'environment' is back camera, 'user' is front camera
 
 // Modified enableCam function to accept camera parameter
-function enableCam(cameraMode = 'environment') {
+function enableCam(cameraMode = 'user') {
   if (!model) {
     return;
   }
