@@ -8,6 +8,7 @@ const urlsToCache = [
   'tf.min.js',
   'coco-ssd.min.js',
   'object.svg',
+  'camera.svg',
   'model/model.json',
   'model/group1-shard1of5',
   'model/group1-shard2of5',

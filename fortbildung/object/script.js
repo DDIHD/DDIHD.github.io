@@ -174,9 +174,28 @@ const enableWebcamButton = document.getElementById('webcamButton');
 const confidenceSlider = document.getElementById('confidenceSlider');
 const confidenceValue = document.getElementById('confidenceValue');
 
-// Hide slider container by default
-document.querySelector('.slider-container').style.display = 'none';
+// Update slider container styling with fixed height and add inner container
+document.querySelector('.slider-container').style = `
+  height: 40px;  // Fixed height to prevent content shifting
+  position: relative;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+`;
 
+// Create and style an inner container for the confidence slider
+const confidenceContainer = document.createElement('div');
+confidenceContainer.style = `
+  display: none;  // Hidden by default
+`;
+confidenceContainer.id = 'confidence-slider-container';
+
+// Move the existing slider elements into the new container
+const sliderElements = document.querySelector('.slider-container');
+const confidenceLabel = confidenceSlider.nextElementSibling;
+confidenceContainer.appendChild(confidenceSlider);
+confidenceContainer.appendChild(confidenceLabel);
+sliderElements.appendChild(confidenceContainer);
 
 // Add pink square button
 const pinkSquare = document.createElement('div');
@@ -275,11 +294,11 @@ classesButton.addEventListener('click', (e) => {
   classesModal.style.display = 'block';
 });
 
-// Handle form submission
+// Update the modal handler to show the specific slider
 modal.querySelector('button').addEventListener('click', () => {
   const input = modal.querySelector('input').value.toLowerCase();
   if (input === 'slider') {
-    document.querySelector('.slider-container').style.display = 'block';
+    document.getElementById('confidence-slider-container').style.display = 'block';
   } else if (input === 'klassen') {
     classesButton.style.display = 'block';
   }
@@ -316,40 +335,65 @@ function getUserMediaSupported() {
     navigator.mediaDevices.getUserMedia);
 }
 
+// Add camera switch button
+const cameraSwitch = document.createElement('div');
+cameraSwitch.style = `
+  position: fixed;
+  top: 10px;
+  left: 60px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 1000;
+  background-image: url('camera.svg');
+  background-size: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+`;
 
+liveView.appendChild(cameraSwitch);
 
+// Track current camera
+let currentCamera = 'environment'; // 'environment' is back camera, 'user' is front camera
 
-
-
-// Enable the live webcam view and start classification.
-function enableCam() {
-  // Only continue if the COCO-SSD has finished loading.
+// Modified enableCam function to accept camera parameter
+function enableCam(cameraMode = 'environment') {
   if (!model) {
     return;
   }
 
-  // getUsermedia parameters to force video but not audio.
+  // Stop any active streams
+  if (video.srcObject) {
+    video.srcObject.getTracks().forEach(track => track.stop());
+  }
+
   const constraints = {
-    video: true
+    video: {
+      facingMode: cameraMode
+    }
   };
 
-  // Activate the webcam stream.
-  navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
-    video.srcObject = stream;
-    video.addEventListener('loadeddata', predictWebcam);
-  });
+  navigator.mediaDevices.getUserMedia(constraints)
+    .then(function(stream) {
+      video.srcObject = stream;
+      video.addEventListener('loadeddata', predictWebcam);
+    })
+    .catch(function(err) {
+      console.error("Error accessing camera: ", err);
+    });
 }
 
-// Before we can use COCO-SSD class we must wait for it to finish
-// loading. Machine Learning models can be large and take a moment
-// to get everything needed to run.
-// Note: cocoSsd is an external object loaded from our index.html
-// script tag import so ignore any warning in Glitch.
+// Camera switch event listener
+cameraSwitch.addEventListener('click', () => {
+  currentCamera = currentCamera === 'environment' ? 'user' : 'environment';
+  enableCam(currentCamera);
+});
+
+// Update the initial camera setup
 cocoSsd.load({modelUrl:"model/model.json"}).then(function (loadedModel) {
   model = loadedModel;
-  // Show demo section now model is ready to use.
   demosSection.classList.remove('invisible');
-  enableCam();
+  enableCam(currentCamera);
 });
 
 confidenceSlider.addEventListener('input', function() {
