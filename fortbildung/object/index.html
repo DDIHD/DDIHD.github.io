@@ -19,7 +19,16 @@
           <input type="range" min="0" max="100" value="66" class="confidence-slider" id="confidenceSlider">
           <label for="confidenceSlider">Sicherheit Schwelle: <span id="confidenceValue">66%</span></label>
         </div>
-        <video id="webcam" autoplay width="640" height="480"></video>
+        <video id="webcam" 
+               autoplay 
+               width="640" 
+               height="480" 
+               playsinline 
+               muted 
+               disablepictureinpicture 
+               controlslist="noplaybackrate nofullscreen nodownload"
+               controls="false"
+        ></video>
       </div>
     </section>
 
