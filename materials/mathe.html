@@ -1,0 +1,326 @@
+---
+layout: page
+title: Mathe
+description: "In der Realschule wird Mathematik zunehmend spannender und zugänglicher durch den Einsatz interaktiver Apps, die komplexe Konzepte visualisieren und das Lernen durch spielerische Elemente unterstützen."
+category: material
+---
+
+<div class="math-container">
+  <h1>Mathematik entdecken</h1>
+  
+  <section class="intro">
+    <p>Willkommen auf unserer Mathematik-Seite! Hier findest du interaktive Visualisierungen und Animationen, die dir helfen, mathematische Konzepte besser zu verstehen und Spaß am Lernen zu haben.</p>
+  </section>
+
+  <section class="animation-section">
+    <h2>Pythagoras-Satz visualisiert</h2>
+    <div class="animation-container" id="pythagoras-animation">
+      <!-- Animation wird per JavaScript eingefügt -->
+      <canvas id="pythagoras-canvas" width="400" height="400"></canvas>
+    </div>
+    <p>Der Satz des Pythagoras (a² + b² = c²) wird hier anschaulich dargestellt. Bewege die Punkte, um verschiedene rechtwinklige Dreiecke zu erzeugen!</p>
+  </section>
+
+  <section class="animation-section">
+    <h2>Funktionen erforschen</h2>
+    <div class="animation-container" id="function-animation">
+      <canvas id="function-canvas" width="500" height="300"></canvas>
+    </div>
+    <div class="controls">
+      <button id="sin-btn">Sinus</button>
+      <button id="cos-btn">Cosinus</button>
+      <button id="parabola-btn">Parabel</button>
+    </div>
+    <p>Entdecke, wie verschiedene Funktionen aussehen und wie sie sich verhalten.</p>
+  </section>
+
+  <section class="animation-section">
+    <h2>Fraktale Muster</h2>
+    <div class="animation-container" id="fractal-animation">
+      <canvas id="fractal-canvas" width="400" height="400"></canvas>
+    </div>
+    <div class="controls">
+      <button id="sierpinski-btn">Sierpinski-Dreieck</button>
+      <button id="koch-btn">Koch-Schneeflocke</button>
+    </div>
+    <p>Fraktale zeigen, wie einfache mathematische Regeln zu komplexen und wunderschönen Mustern führen können.</p>
+  </section>
+
+  <section class="resources">
+    <h2>Lernmaterialien</h2>
+    <ul>
+      <li><a href="#">Interaktive Übungen zu Geometrie</a></li>
+      <li><a href="#">Algebra-Trainer</a></li>
+      <li><a href="#">Mathe-Spiele für die Mittelstufe</a></li>
+      <li><a href="#">Formelsammlung zum Download</a></li>
+    </ul>
+  </section>
+</div>
+
+<style>
+  .math-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .animation-container {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .controls {
+    margin: 10px 0;
+  }
+  
+  .controls button {
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    margin-right: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .controls button:hover {
+    background-color: #3367d6;
+  }
+  
+  canvas {
+    display: block;
+    margin: 0 auto;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Pythagoras Animation
+    const pythCanvas = document.getElementById('pythagoras-canvas');
+    const pythCtx = pythCanvas.getContext('2d');
+    let a = 100, b = 150;
+    
+    function drawPythagoras() {
+      pythCtx.clearRect(0, 0, pythCanvas.width, pythCanvas.height);
+      
+      // Draw right triangle
+      pythCtx.beginPath();
+      pythCtx.moveTo(50, 300);
+      pythCtx.lineTo(50 + a, 300);
+      pythCtx.lineTo(50, 300 - b);
+      pythCtx.closePath();
+      pythCtx.fillStyle = 'rgba(64, 196, 255, 0.5)';
+      pythCtx.fill();
+      pythCtx.stroke();
+      
+      // Draw squares
+      pythCtx.fillStyle = 'rgba(255, 100, 100, 0.5)';
+      pythCtx.fillRect(50, 300, a, -a);
+      
+      pythCtx.fillStyle = 'rgba(100, 255, 100, 0.5)';
+      pythCtx.fillRect(50, 300 - b, b, -b);
+      
+      // Calculate hypotenuse
+      const c = Math.sqrt(a*a + b*b);
+      
+      // Draw hypotenuse square (rotated)
+      pythCtx.save();
+      pythCtx.translate(50, 300 - b);
+      pythCtx.rotate(-Math.atan2(b, a));
+      pythCtx.fillStyle = 'rgba(255, 255, 100, 0.5)';
+      pythCtx.fillRect(0, 0, c, -c);
+      pythCtx.restore();
+      
+      // Add labels
+      pythCtx.font = '16px Arial';
+      pythCtx.fillStyle = 'black';
+      pythCtx.fillText(`a² = ${a*a}`, 50 + a/2 - 20, 300 + 20);
+      pythCtx.fillText(`b² = ${b*b}`, 30, 300 - b/2);
+      pythCtx.fillText(`c² = ${Math.round(c*c)}`, 100, 200);
+      pythCtx.fillText(`a² + b² = c²`, 250, 350);
+    }
+    
+    // Animation loop
+    function animatePythagoras() {
+      a = 80 + 40 * Math.sin(Date.now() / 1000);
+      b = 120 + 40 * Math.cos(Date.now() / 1500);
+      drawPythagoras();
+      requestAnimationFrame(animatePythagoras);
+    }
+    
+    // Function Animation
+    const funcCanvas = document.getElementById('function-canvas');
+    const funcCtx = funcCanvas.getContext('2d');
+    let currentFunction = 'sin';
+    
+    function drawFunction() {
+      funcCtx.clearRect(0, 0, funcCanvas.width, funcCanvas.height);
+      
+      // Draw axes
+      funcCtx.beginPath();
+      funcCtx.moveTo(0, funcCanvas.height/2);
+      funcCtx.lineTo(funcCanvas.width, funcCanvas.height/2);
+      funcCtx.moveTo(funcCanvas.width/2, 0);
+      funcCtx.lineTo(funcCanvas.width/2, funcCanvas.height);
+      funcCtx.strokeStyle = '#999';
+      funcCtx.stroke();
+      
+      // Draw function
+      funcCtx.beginPath();
+      funcCtx.strokeStyle = '#4285f4';
+      funcCtx.lineWidth = 2;
+      
+      for (let x = 0; x < funcCanvas.width; x++) {
+        const xVal = (x - funcCanvas.width/2) / 50;
+        let yVal;
+        
+        switch(currentFunction) {
+          case 'sin':
+            yVal = Math.sin(xVal + Date.now()/1000);
+            break;
+          case 'cos':
+            yVal = Math.cos(xVal + Date.now()/1000);
+            break;
+          case 'parabola':
+            yVal = 0.05 * Math.pow(xVal, 2) + 0.2 * Math.sin(Date.now()/500);
+            break;
+        }
+        
+        const y = funcCanvas.height/2 - yVal * 50;
+        
+        if (x === 0) {
+          funcCtx.moveTo(x, y);
+        } else {
+          funcCtx.lineTo(x, y);
+        }
+      }
+      
+      funcCtx.stroke();
+    }
+    
+    function animateFunction() {
+      drawFunction();
+      requestAnimationFrame(animateFunction);
+    }
+    
+    // Fractal Animation
+    const fractalCanvas = document.getElementById('fractal-canvas');
+    const fractalCtx = fractalCanvas.getContext('2d');
+    let fractalType = 'sierpinski';
+    let fractalDepth = 0;
+    let maxDepth = 6;
+    
+    function drawSierpinski(x1, y1, x2, y2, x3, y3, depth) {
+      if (depth === 0) {
+        fractalCtx.beginPath();
+        fractalCtx.moveTo(x1, y1);
+        fractalCtx.lineTo(x2, y2);
+        fractalCtx.lineTo(x3, y3);
+        fractalCtx.closePath();
+        fractalCtx.fillStyle = `hsl(${depth * 30 + Date.now()/50 % 360}, 70%, 50%)`;
+        fractalCtx.fill();
+        return;
+      }
+      
+      const x12 = (x1 + x2) / 2;
+      const y12 = (y1 + y2) / 2;
+      const x23 = (x2 + x3) / 2;
+      const y23 = (y2 + y3) / 2;
+      const x31 = (x3 + x1) / 2;
+      const y31 = (y3 + y1) / 2;
+      
+      drawSierpinski(x1, y1, x12, y12, x31, y31, depth - 1);
+      drawSierpinski(x12, y12, x2, y2, x23, y23, depth - 1);
+      drawSierpinski(x31, y31, x23, y23, x3, y3, depth - 1);
+    }
+    
+    function drawKoch(x1, y1, x2, y2, depth) {
+      if (depth === 0) {
+        fractalCtx.lineTo(x2, y2);
+        return;
+      }
+      
+      const dx = x2 - x1;
+      const dy = y2 - y1;
+      
+      const x3 = x1 + dx / 3;
+      const y3 = y1 + dy / 3;
+      
+      const x4 = x1 + dx / 2 - dy * Math.sqrt(3) / 6;
+      const y4 = y1 + dy / 2 + dx * Math.sqrt(3) / 6;
+      
+      const x5 = x1 + 2 * dx / 3;
+      const y5 = y1 + 2 * dy / 3;
+      
+      drawKoch(x1, y1, x3, y3, depth - 1);
+      drawKoch(x3, y3, x4, y4, depth - 1);
+      drawKoch(x4, y4, x5, y5, depth - 1);
+      drawKoch(x5, y5, x2, y2, depth - 1);
+    }
+    
+    function drawFractal() {
+      fractalCtx.clearRect(0, 0, fractalCanvas.width, fractalCanvas.height);
+      
+      if (fractalType === 'sierpinski') {
+        const size = 350;
+        const x1 = fractalCanvas.width/2;
+        const y1 = 50;
+        const x2 = x1 - size/2;
+        const y2 = y1 + size * Math.sqrt(3)/2;
+        const x3 = x1 + size/2;
+        const y3 = y2;
+        
+        drawSierpinski(x1, y1, x2, y2, x3, y3, fractalDepth);
+      } else if (fractalType === 'koch') {
+        fractalCtx.beginPath();
+        fractalCtx.moveTo(50, 250);
+        
+        drawKoch(50, 250, 350, 250, fractalDepth);
+        drawKoch(350, 250, 200, 50, fractalDepth);
+        drawKoch(200, 50, 50, 250, fractalDepth);
+        
+        fractalCtx.strokeStyle = `hsl(${Date.now()/50 % 360}, 70%, 50%)`;
+        fractalCtx.lineWidth = 2;
+        fractalCtx.stroke();
+      }
+    }
+    
+    function animateFractal() {
+      // Slowly increase depth over time
+      fractalDepth = Math.floor((Date.now() % 10000) / 10000 * maxDepth);
+      drawFractal();
+      requestAnimationFrame(animateFractal);
+    }
+    
+    // Start animations
+    animatePythagoras();
+    animateFunction();
+    animateFractal();
+    
+    // Button event listeners
+    document.getElementById('sin-btn').addEventListener('click', () => {
+      currentFunction = 'sin';
+    });
+    
+    document.getElementById('cos-btn').addEventListener('click', () => {
+      currentFunction = 'cos';
+    });
+    
+    document.getElementById('parabola-btn').addEventListener('click', () => {
+      currentFunction = 'parabola';
+    });
+    
+    document.getElementById('sierpinski-btn').addEventListener('click', () => {
+      fractalType = 'sierpinski';
+    });
+    
+    document.getElementById('koch-btn').addEventListener('click', () => {
+      fractalType = 'koch';
+    });
+  });
+</script>
+
