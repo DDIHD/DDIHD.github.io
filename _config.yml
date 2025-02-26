@@ -8,5 +8,7 @@ navigation:
     url: /projects
   - title: Materialien
     url: /materials
+  - title: Lern-Lehr-Labor
+    url: /lernlehr
   - title: Publikationen
     url: /publications
