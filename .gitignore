@@ -51,4 +51,7 @@ Thumbs.db
 /.yardoc/
 /_yardoc/
 /doc/
-/rdoc/ 
+/rdoc/
+/_site/
+/.jekyll-cache/
+
