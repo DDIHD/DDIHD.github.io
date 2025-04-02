@@ -49,6 +49,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.remove();
                 updateSeesaw();
                 updateButtonVisibility();
+                updateEquationDisplay();
+                
+                // Reset observations only when left side changes
+                if (side === 'left') {
+                    equilibriumPoints = [];
+                    updateObservationsPanel();
+                }
             });
             
             // Add the weight to the stack
@@ -59,6 +66,15 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Update button visibility based on restriction
             updateButtonVisibility();
+            
+            // Update equation display
+            updateEquationDisplay();
+            
+            // Reset observations only when left side changes
+            if (side === 'left') {
+                equilibriumPoints = [];
+                updateObservationsPanel();
+            }
         });
     });
     
@@ -196,6 +212,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.remove();
                 updateSeesaw();
                 updateButtonVisibility();
+                updateEquationDisplay();
+                // Reset observations when left side changes
+                equilibriumPoints = [];
+                updateObservationsPanel();
             });
             
             // Add the weight to the stack
@@ -461,8 +481,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Draw y-axis labels (positions)
-        for (let i = 1; i <= 10; i++) {
-            const y = canvas.height - padding - ((i - 1) / 9) * graphHeight;
+        for (let i = 0; i <= 10; i++) {
+            const y = canvas.height - padding - (i / 10) * graphHeight;
             
             // Draw tick
             ctx.beginPath();
@@ -486,13 +506,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     if (weight > 0) {
                         const x = padding + (weight / maxWeight) * graphWidth;
-                        const y = canvas.height - padding - ((position - 1) / 9) * graphHeight;
+                        const y = canvas.height - padding - (position / 10) * graphHeight;
                         
-                        // Draw point
+                        // Draw X instead of circle
+                        const size = 5;
                         ctx.beginPath();
-                        ctx.arc(x, y, 5, 0, Math.PI * 2);
-                        ctx.fillStyle = '#e91e63';
-                        ctx.fill();
+                        ctx.strokeStyle = '#e91e63';
+                        ctx.lineWidth = 2;
+                        // First line of X
+                        ctx.moveTo(x - size, y - size);
+                        ctx.lineTo(x + size, y + size);
+                        // Second line of X
+                        ctx.moveTo(x + size, y - size);
+                        ctx.lineTo(x - size, y + size);
+                        ctx.stroke();
                     }
                 }
             });
@@ -555,5 +582,13 @@ document.addEventListener('DOMContentLoaded', function() {
         section.appendChild(content);
         
         return section;
+    }
+    
+    function updateEquationDisplay() {
+        const equationDiv = document.querySelector('.left-side-equation');
+        if (equationDiv) {
+            const { leftTotal } = calculateTotals();
+            equationDiv.innerHTML = `<strong>A*G = ${leftTotal}</strong> `;
+        }
     }
 }); 
