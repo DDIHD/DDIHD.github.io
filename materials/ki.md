@@ -65,13 +65,16 @@ Viele Interaktionen mit und um Neuronale Netze herum geschehen durch Daten. Wäh
 
 ### Vorläufige Inhalte
 
-- [Web-App zur Bild-/Objekterkennung](/webapps/object/index.html) als Einstieg in den Unterricht oder die Fortbildung, zum Experimentieren, Verhalten und Grenzen austesten. (Hier gibt es ein Arbeitsblatt dazu](https://heibox.uni-heidelberg.de/f/f21b516542704ab9a412/?dl=1). Anleitung zur Installation der Webseite als App und zur Offline-Nutzung folgen.
+- [Web-App zur Bild-/Objekterkennung](/webapps/object/index.html) als Einstieg in den Unterricht oder die Fortbildung, zum Experimentieren, Verhalten und Grenzen austesten. [Hier gibt es ein Arbeitsblatt dazu](https://heibox.uni-heidelberg.de/f/f21b516542704ab9a412/?dl=1). Anleitung zur Installation der Webseite als App und zur Offline-Nutzung folgen.
 - [Präsentation](https://heibox.uni-heidelberg.de/f/b036b6b969754421b57e/?dl=1) und [Arbeitsblatt](https://heibox.uni-heidelberg.de/f/b0c152db98ff4cf5bc67/?dl=1) zum Thema Lernen, Daten-Repräsentationen und Features. Hier kann in Gruppenarbeit im Anschluss eine KI-gesteuerte Katzeklappe entworfen werden, welche nur Hauskatzen hineinlassen soll, jedoch keine anderen Tiere.
 - [Arbeitsblatt](https://heibox.uni-heidelberg.de/f/256b503272db402cbcdc/?dl=1) um mittels [Google Teachable Machine](https://teachablemachine.withgoogle.com/) Modelle zur Objekterkennung selbst zu trainieren. Schließt den Kreis zur erten Bilderkennungsaufgabe und soll zeigen, wie schnell gewisse Eigenschaften oder (Fehl-)Verhalten entstehen können.
 - [Web-Anwendung mit Beispiel zum Training Neuronaler Netze]("/webapps/suessigkeiten/index.html" )
 
 
+### Kontakt 
 
+[Jonas Braun](https://hse-heidelberg.de/ueber-die-hse/team-von-a-z/braun-jonas) 
 
+[M.Sc.² Matthias Matzner](https://hse-heidelberg.de/ueber-die-hse/team-von-a-z/matzner-matthias) 
 
-
+[Prof. Dr. Claudia Hildebrandt](https://www.hse-heidelberg.de/ueber-die-hse/team-von-a-z/hildebrandt-claudia) 
