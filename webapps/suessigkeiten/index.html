@@ -1,0 +1,331 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Süßigkeiten</title>
+    <style>
+        /* Basic styling for the modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        html, body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .container {
+            display: grid;
+            grid-template-areas:
+                "menu data graph"
+                "menu train train";
+            grid-template-columns: 1fr 3fr 2fr;
+            grid-template-rows: 2fr 4fr;
+            width: 100vw;
+            height: 80vw;
+            margin: auto;
+            font-size: 1vw;
+            
+        }
+
+
+        .menu, .data, .graph, .train {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid gray;
+            overflow: hidden;
+            /* padding:0.5vw; */
+        }
+
+        .train {
+            grid-area: train;
+            display: grid;
+            grid-template-areas:
+                "trainbatch trainfehler"
+                "modelicon trainfehler"
+                "lernenicon trainfehler";
+            grid-template-columns: 1fr 2fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            width: 100%;
+            height: 100%;
+        }
+
+        .trainbatch, .modelicon, .lernenicon, .trainfehler {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid gray;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            border-left:none;
+            border-top: none;
+        }
+        .train > div {
+            padding: 0;
+            margin: 0;
+        }
+        .trainbatch { grid-area: trainbatch; }
+        .modelicon { grid-area: modelicon; }
+        .lernenicon { grid-area: lernenicon; }
+
+        .trainfehler { 
+            width: 100%;
+            height: 100%;
+            grid-area: trainfehler; 
+            display: grid;
+            grid-template-areas:
+                "pred1"
+                "pred2"
+                "pred3"
+                "pred4";
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr;         
+        }
+
+        .pred1, .pred2, .pred3, .pred4 {
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pred1{
+            grid-area: pred1;
+        }
+        .pred2{
+            grid-area: pred2;
+        }
+        .pred3{
+            grid-area: pred3;
+        }
+        .pred4{
+            grid-area: pred4;
+        }
+
+        .pred1 svg {
+            width: 50%;
+            height: 100%;
+        }
+        .pred2 svg {
+            width: 50%;
+            height: 100%;
+        }
+        .pred3 svg {
+            width: 50%;
+            height: 100%;
+        }
+        .pred4 svg {
+            width: 50%;
+            height: 100%;
+        }
+
+
+        .lernenicon, .trainfehler{
+            border-bottom: none;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .menu {
+            grid-area: menu;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 1vw;
+            box-sizing: border-box;
+            border-right: none;
+        }
+
+        .data {
+            grid-area: data;
+            border-bottom: none;
+            padding: 1vw;
+        }
+
+        .graph {
+            grid-area: graph;
+            border: none;
+        }
+
+        .train {
+            grid-area: train;
+        }
+
+        .line {
+            fill: none;
+            stroke: steelblue;
+            stroke-width: 0.2vw;
+        }
+
+        .redline {
+            fill: none;
+            stroke: rgb(237, 66, 123);
+            stroke-width: 0.2vw;
+        }
+
+        /* Responsive text sizes */
+        h4 {
+            font-size: 1.2vw;
+            margin: 0.5vw 0;
+        }
+
+        p, button, input {
+            font-size: 1vw;
+            margin: 0.3vw 0;
+        }
+
+        button {
+            padding: 0.5vw 1vw;
+        }
+
+        #modelicon svg{
+            width: 95%;
+        }
+
+
+        .menu{
+            height: 100.15%;
+        }
+
+        .red-frame {
+            /* outline: 0.2vw solid red; */
+            background-color: rgb(209, 233, 243);
+        }
+
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="train_data.js"></script>
+    <script src="train_utils.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <h4>Start</h4>
+            <p id="datenladen">Daten laden</p>
+            <p id="trainsplit">Train-Test Split</p>
+            <p id="modellerstellen">Modell erstellen</p>
+            <h4>Epoche</h4>
+            <p id="mischen">Reihenfolge mischen</p>
+            <p id="batchentnehmen">> Batch entnehmen</p>
+            <p id="vorhersage">> Modell Vorhersage</p>
+            <p id="fehlerberechnen">> Fehler berechnen</p>
+            <p id="lernen">> Lernen</p>
+            <p id="evaluieren">Evaluieren</p>
+            <h4>Bedienung</h4>
+            <input type="checkbox" id="tooltip" checked> Tooltips anzeigen</input>
+            <button id="schritt">Weiter</button>
+            <button id="auto">Auto</button>
+            <button id="pause">Pause</button>
+            <button id="showpred">Vorhersage anzeigen</button>
+        </div>
+        <div id="data" class="data"></div>
+        <svg id="acc-graph" class="graph"></svg>
+        <div class="train">
+
+            <div class="trainbatch" id="train_batch">Train Batch</div>
+            <div class="modelicon" id="modelicon">
+                <!-- add model.png image here -->
+                 Modell
+                <img src="model.png" alt="model icon" style="width: 30%;">
+                
+            </div>
+            <div class="lernenicon" id="lernenicon">
+                 <!-- add lernen.webp image here -->
+                  Lernen
+                <img src="lernen.webp" alt="lernen icon" style="width: 30%;">
+            </div>
+            <div class="trainfehler" id="trainfehler">
+                <div class="pred1" id="pred1">
+                    <img id="predimg1" style="visibility: hidden;">
+                    <div style="width: 30%;">
+                        <P id="predstring1"></P>
+                        <P id="truestring1"></P>
+                    </div>
+                </div>
+                <div class="pred2" id="pred2">
+                    <img id="predimg2" style="visibility: hidden;">
+                    <div style="width: 30%;">
+                        <P id="predstring2"></P>
+                        <P id="truestring2"></P>
+                    </div>
+                </div>
+
+                <div class="pred3" id="pred3">
+                    <img id="predimg3" style="visibility: hidden;">
+                    <div style="width: 30%;">
+                        <P id="predstring3"></P>
+                        <P id="truestring3"></P>
+                    </div>
+                </div>
+                <div class="pred4" id="pred4">
+                    <img id="predimg4" style="visibility: hidden;">
+                    <div style="width: 30%;">
+                        <P id="predstring4"></P>
+                        <P id="truestring4"></P>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content" id="pred_modal">
+            <span class="close">&times;</span>
+            <div id="pred_modal_ct"></div>
+        </div>
+    </div>
+</body>
+</html>
