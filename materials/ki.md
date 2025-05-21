@@ -81,46 +81,49 @@ E-Mail: ki-fortbildung@schule-bw.de
 Tel.: 0711-XXXXXXX
 
 
-<div style="width: 100%; max-width: 100%; margin: 20px 0;">
-    <iframe src="/webapps/suessigkeiten/index.html" style="width: 100%; height: 600px; border: none;"></iframe>
-</div>
-
-
 <div id="iframe-container" style="text-align:center;">
-  <iframe 
-    id="my-iframe" 
-    src="/webapps/suessigkeiten/index.html"
-    width="600" 
-    height="400" 
-    style="border:1px solid #ccc;">
-  </iframe>
+  <div id="iframe-wrapper" style="display:inline-block;">
+    <iframe 
+      id="my-iframe" 
+      src="/webapps/suessigkeiten/index.html" 
+      width="600" 
+      height="400" 
+      style="border:1px solid #ccc;">
+    </iframe>
+  </div>
   <br />
-  <button onclick="openModal()">Enlarge</button>
+  <button onclick="expandIframe()">Enlarge</button>
 </div>
 
-<!-- Modal structure -->
-<div id="iframe-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center;">
+<!-- Modal container -->
+<div id="iframe-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgb(255,255,255,255); z-index:9999; align-items:center; justify-content:center;">
   <div style="position:relative; width:90%; height:90%;">
-    <iframe 
-      id="modal-iframe" 
-      src="/webapps/suessigkeiten/index.html"
-      style="width:100%; height:100%; border:none;">
-    </iframe>
-    <button onclick="closeModal()" style="position:absolute; top:10px; right:10px; z-index:10000;">Close</button>
+    <div id="modal-iframe-wrapper" style="width:100%; height:100%;"></div>
+    <button onclick="shrinkIframe()" style="position:absolute; top:10px; right:10px; z-index:10000;">Close</button>
   </div>
 </div>
 
 
 <script>
-  function openModal() {
-    document.getElementById('iframe-modal').style.display = 'flex';
+  const iframe = document.getElementById("my-iframe");
+  const iframeWrapper = document.getElementById("iframe-wrapper");
+  const modalWrapper = document.getElementById("modal-iframe-wrapper");
+  const modal = document.getElementById("iframe-modal");
+
+  function expandIframe() {
+    modalWrapper.appendChild(iframe);
+    iframe.style.width = "100%";
+    iframe.style.height = "100%";
+    modal.style.display = "flex";
   }
 
-  function closeModal() {
-    document.getElementById('iframe-modal').style.display = 'none';
+  function shrinkIframe() {
+    iframeWrapper.appendChild(iframe);
+    iframe.style.width = "600px";
+    iframe.style.height = "400px";
+    modal.style.display = "none";
   }
 </script>
-
 
 
 
