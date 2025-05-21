@@ -8,53 +8,55 @@ category: material
 # Grundlagen der Künstliche Intelligenz
 ## Einstieg, Lehrkräftefortbildung und Materialien für den Unterricht
 
-Mit dieser Fortbildung und Materialien-Sammlung möchten wir eine datenbasierte Perspektive auf die Grundlagen der Künstlichen Intelligenz schaffen, welche wir nicht nur für die Sekundarstufe 1 empfehlen möchten, sondern auch als allgemeinen , züganglichen Einstieg in das Thema. 
+Mit dieser Fortbildung und Materialien-Sammlung möchten wir eine datenbasierte Perspektive auf die Grundlagen der Künstlichen Intelligenz schaffen, welche wir nicht nur für die Sekundarstufe 1 empfehlen möchten, sondern auch als allgemeinen, zuganglichen Einstieg in das Thema. 
  
 **<u>Anmerkung: vorläufige Vorstellung des Entwicklungsstands der Fortbildung, erhebliche Änderungen bis Herbst.</u>**
 
 ## Trainiere dein erstes Neuronales Netz!
-![KI Bild[(ki.png)
+
+![KI Bild]({{ site.baseurl }}/materials/ki.png)
 
 <div id="iframe-container" style="text-align:center;">
-  <div id="iframe-wrapper" style="display:inline-block;">
-    <iframe 
-      id="my-iframe" 
-      src="/webapps/suessigkeiten/index.html" 
-      width="600" 
-      height="400" 
-      style="border:1px solid #ccc;">
-    </iframe>
-  </div>
-  <br />
-  <button onclick="openModal()" style="border-radius:50px; background-color:rgb(211, 131, 248); color:white; border:none; padding:10px 20px; cursor:pointer;">starten</button>
+  <button onclick="openModal()" style="border-radius:50px; background-color:rgb(211, 131, 248); color:white; border:none; padding:10px 20px; cursor:pointer;">
+    Training starten
+  </button>
 </div>
 
 <!-- Modal container -->
 <div id="iframe-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(255,255,255,0.9); z-index:9999; align-items:center; justify-content:center;">
   <div style="position:relative; width:90%; height:90%;">
     <div id="modal-iframe-wrapper" style="width:100%; height:100%;"></div>
-    <button onclick="closeModal()" style="position:absolute; top:10px; right:10px; z-index:10000; border-radius:50px; background-color:rgb(211, 131, 248); color:white; border:none; padding:10px 20px; cursor:pointer;">X</button>
+    <button onclick="closeModal()" style="position:absolute; top:10px; right:10px; z-index:10000; border-radius:50px; background-color:rgb(211, 131, 248); color:white; border:none; padding:10px 20px; cursor:pointer;">
+      X
+    </button>
   </div>
 </div>
 
 <script>
-  const iframe = document.getElementById("my-iframe");
   const modalWrapper = document.getElementById("modal-iframe-wrapper");
   const modal = document.getElementById("iframe-modal");
 
+  let iframe; // Declare iframe outside so we can reuse it
+
   function openModal() {
-    modalWrapper.appendChild(iframe);
+    // Create the iframe only when the modal is opened
+    iframe = document.createElement("iframe");
+    iframe.src = "/webapps/suessigkeiten/index.html";
     iframe.style.width = "100%";
     iframe.style.height = "100%";
+    iframe.style.border = "1px solid #ccc";
+
+    modalWrapper.appendChild(iframe);
     modal.style.display = "flex";
   }
 
   function closeModal() {
     modal.style.display = "none";
-    // Optionally, you can append the iframe back to its original position if needed
-    // document.getElementById("iframe-wrapper").appendChild(iframe);
+    // Remove iframe from DOM to stop it from running in the background
+    modalWrapper.innerHTML = "";
   }
 </script>
+
 
 
 ### Kurzbeschreibung
