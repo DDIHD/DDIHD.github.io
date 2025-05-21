@@ -13,10 +13,10 @@ title: About
  
 [M.Sc.² Matthias Matzner](https://hse-heidelberg.de/ueber-die-hse/team-von-a-z/matzner-matthias) 
  
-[Carl Bürkel](https://hse-heidelberg.de/ueber-die-hse/team-von-a-z/buerkel-carl) 
+[M.Sc. Carl Bürkel](https://hse-heidelberg.de/ueber-die-hse/team-von-a-z/buerkel-carl) 
  
-[Christina Hund](https://www.ph-heidelberg.de/informatik/team/hund/) 
+[StR Christina Hund](https://www.ph-heidelberg.de/informatik/team/hund/) 
  
-[Jonas Braun](https://hse-heidelberg.de/ueber-die-hse/team-von-a-z/braun-jonas) 
+[M.Sc. Jonas Braun](https://hse-heidelberg.de/ueber-die-hse/team-von-a-z/braun-jonas) 
  
-[Philipp Jung](https://hse-heidelberg.de/ueber-die-hse/team-von-a-z/jung-philipp)
+[B.Sc. Philipp Jung](https://hse-heidelberg.de/ueber-die-hse/team-von-a-z/jung-philipp)
