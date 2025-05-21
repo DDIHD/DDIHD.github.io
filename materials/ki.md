@@ -1,86 +1,17 @@
 ---
 layout: page
 title: KI
-description: "Künstliche Intelligenz im Realschulunterricht kann Schülern helfen, ein grundlegendes Verständnis für moderne Technologien zu entwickeln und sie auf zukünftige Herausforderungen in der digitalen Welt vorzubereiten."
+description: "Grundlagen der Künstlichen Intelligenz durch eine datenbasierte Perspektive am Beispiel der Bilderkennung erlernen und vermitteln."
 category: material
 ---
 
-# Künstliche Intelligenz im Unterricht
-## Fortbildung für Realschullehrkräfte
+# Grundlagen der Künstliche Intelligenz
+## Einstieg, Lehrkräftefortbildung und Materialien für den Unterricht
 
-Diese Fortbildung richtet sich an Lehrkräfte aller Fachrichtungen, die KI-Technologien sinnvoll in ihren Unterricht integrieren möchten.
+Mit dieser Fortbildung und Materialien-Sammlung möchten wir eine datenbasierte Perspektive auf die Grundlagen der Künstlichen Intelligenz schaffen, welche wir nicht nur für die Sekundarstufe 1 empfehlen möchten, sondern auch als allgemeinen , züganglichen Einstieg in das Thema.
+**<u>Anmerkung: vorläufige Vorstellung des Entwicklungsstands der Fortbildung, erhebliche Änderungen bis Herbst.</u>**
 
-### Kurzbeschreibung
-In dieser praxisorientierten Fortbildung lernen Sie die Grundlagen der Künstlichen Intelligenz kennen und erarbeiten konkrete Unterrichtskonzepte für Ihren Fachunterricht. Der Fokus liegt auf der verantwortungsvollen und didaktisch sinnvollen Integration von KI-Tools in den Realschulunterricht.
-
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/7xTGNNLPyMI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
-
-[HIER GEHTS ZUR OBJEKTERKENNUNG](/webapps/object/index.html)
-
-[download](https://heibox.uni-heidelberg.de/d/5df2f810f0234c5a9a20/)
-
-
-
-
-
-### Lernziele
-- Grundlegendes Verständnis von KI-Technologien und deren Funktionsweise
-- Kenntnis aktueller KI-Tools und deren Einsatzmöglichkeiten im Unterricht
-- Entwicklung von Unterrichtskonzepten unter Berücksichtigung des Bildungsplans
-- Reflexion über Chancen und Risiken von KI im Bildungskontext
-- Förderung der Medienkompetenz bei Schülerinnen und Schülern
-
-### Modulare Kursstruktur
-
-#### Modul 1: Grundlagen der KI
-- Was ist Künstliche Intelligenz?
-- Arten von KI-Systemen
-- Aktuelle Entwicklungen und Anwendungen
-- Ethische Aspekte und Datenschutz
-
-#### Modul 2: KI-Tools im Unterricht
-- Überblick über verfügbare Bildungs-KI-Tools
-- Praktische Übungen mit ausgewählten Anwendungen
-- Didaktische Integration in den Fachunterricht
-- Beispielhafte Unterrichtsszenarien
-
-#### Modul 3: Unterrichtsplanung und -gestaltung
-- Entwicklung eigener Unterrichtseinheiten
-- Differenzierungsmöglichkeiten
-- Leistungsbeurteilung und Evaluation
-- Rechtliche Rahmenbedingungen
-
-### Organisatorisches
-**Umfang:** 3 Präsenztage (je 6 Stunden) + Online-Selbstlernphase  
-**Zielgruppe:** Realschullehrkräfte aller Fachrichtungen  
-**Voraussetzungen:** Grundlegende PC-Kenntnisse  
-**Teilnehmerzahl:** max. 15 Personen
-
-### Methoden
-- Inputvorträge
-- Praktische Übungen
-- Gruppenarbeit
-- Erfahrungsaustausch
-- Online-Lernmaterialien
-- Individuelle Projektarbeit
-
-### Materialien
-Die Teilnehmenden erhalten:
-- Digitale Handreichungen
-- Zugang zur Online-Lernplattform
-- Beispiel-Unterrichtsentwürfe
-- Checklisten für den KI-Einsatz
-- Weiterführende Literaturempfehlungen
-
-### Anmeldung und Kontakt
-Weitere Informationen und Anmeldung unter:  
-E-Mail: ki-fortbildung@schule-bw.de  
-Tel.: 0711-XXXXXXX
-
-
+### Trainiere dein erstes Neuronales Netz!
 <div id="iframe-container" style="text-align:center;">
   <div id="iframe-wrapper" style="display:inline-block;">
     <iframe 
@@ -92,17 +23,16 @@ Tel.: 0711-XXXXXXX
     </iframe>
   </div>
   <br />
-  <button onclick="expandIframe()">Enlarge</button>
+  <button onclick="expandIframe()" style="border-radius:50px; background-color:rgb(211, 131, 248); color:white; border:none; padding:10px 20px; cursor:pointer;">vergrößern</button>
 </div>
 
 <!-- Modal container -->
 <div id="iframe-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgb(255,255,255,255); z-index:9999; align-items:center; justify-content:center;">
   <div style="position:relative; width:90%; height:90%;">
     <div id="modal-iframe-wrapper" style="width:100%; height:100%;"></div>
-    <button onclick="shrinkIframe()" style="position:absolute; top:10px; right:10px; z-index:10000;">Close</button>
+    <button onclick="shrinkIframe()" style="position:absolute; top:10px; right:10px; z-index:10000; border-radius:50px; background-color:rgb(211, 131, 248); color:white; border:none; padding:10px 20px; cursor:pointer;">X</button>
   </div>
 </div>
-
 
 <script>
   const iframe = document.getElementById("my-iframe");
@@ -124,6 +54,20 @@ Tel.: 0711-XXXXXXX
     modal.style.display = "none";
   }
 </script>
+
+### Kurzbeschreibung
+
+Viele Interaktionen mit und um Neuronale Netze herum geschehen durch Daten. Während die Algorithmen selbst, unabhängig von der Datengrundlage, auf bestimmte Eigenschaften ausgelegt sein können, wird deren Verhalten häuptsächlich durch die (Tranings-)Daten geprägt. Die batenbasierte Perspektive bietet durch konkrete und nahbare Alltagsbeispiele einen Zugang zu den Grundlagen der KI, welche häufig zu abstrakt oder komplex scheinen, jedoch für eine kritische Beurteilung oder eigene Anwendung unabdingbar sind. Am Beispiel der Bilderkennung und Data Literacy werden sie ersichtlich und sind transferierbar auf gewerbliche Anwendungen und große Sprachmodelle wie ChatGPT.
+
+### Vorläufige Inhalte
+
+- [Web-App zur Bild-/Objekterkennung](/webapps/object/index.html) als Einstieg in den Unterricht oder die Fortbildung, zum Experimentieren, Verhalten und Grenzen austesten. (Hier gibt es ein Arbeitsblatt dazu](https://heibox.uni-heidelberg.de/f/f21b516542704ab9a412/?dl=1). Anleitung zur Installation der Webseite als App und zur Offline-Nutzung folgen.
+- [Präsentation](https://heibox.uni-heidelberg.de/f/b036b6b969754421b57e/?dl=1) und [Arbeitsblatt](https://heibox.uni-heidelberg.de/f/b0c152db98ff4cf5bc67/?dl=1) zum Thema Lernen, Daten-Repräsentationen und Features. Hier kann in Gruppenarbeit im Anschluss eine KI-gesteuerte Katzeklappe entworfen werden, welche nur Hauskatzen hineinlassen soll, jedoch keine anderen Tiere.
+- [Arbeitsblatt] um mittels [Google Teachable Machine](https://teachablemachine.withgoogle.com/) Modelle zur Objekterkennung selbst zu trainieren. Schließt den Kreis zur erten Bilderkennungsaufgabe und soll zeigen, wie schnell gewisse Eigenschaften oder (Fehl-)Verhalten entstehen können.
+- [Web-Anwendung mit Beispiel zum Training Neuronaler Netze]("/webapps/suessigkeiten/index.html" )
+
+
+
 
 
 
