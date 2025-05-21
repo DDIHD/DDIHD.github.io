@@ -8,9 +8,9 @@ category: material
 # Grundlagen der Künstliche Intelligenz
 ## Einstieg, Lehrkräftefortbildung und Materialien für den Unterricht
 
-Mit dieser Fortbildung und Materialien-Sammlung möchten wir eine datenbasierte Perspektive auf die Grundlagen der Künstlichen Intelligenz schaffen, welche wir nicht nur für die Sekundarstufe 1 empfehlen möchten, sondern auch als allgemeinen, zuganglichen Einstieg in das Thema. 
+Mit dieser Fortbildung und Materialien-Sammlung möchten wir eine datenbasierte Perspektive auf die Grundlagen der Künstlichen Intelligenz schaffen, welche wir nicht nur für die Sekundarstufe 1 empfehlen möchten, sondern auch als allgemeinen, zugänglichen Einstieg in das Thema. 
  
-**<u>Anmerkung: vorläufige Vorstellung des Entwicklungsstands der Fortbildung, erhebliche Änderungen bis Herbst.</u>**
+**<u>Anmerkung: vorläufige Vorstellung des Entwicklungsstands der Fortbildung.</u>**
 
 ## Trainiere dein erstes Neuronales Netz!
 
@@ -23,7 +23,7 @@ Mit dieser Fortbildung und Materialien-Sammlung möchten wir eine datenbasierte 
 </div>
 
 <!-- Modal container -->
-<div id="iframe-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(255,255,255,0.9); z-index:9999; align-items:center; justify-content:center;">
+<div id="iframe-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgb(255,255,255); z-index:9999; align-items:center; justify-content:center;">
   <div style="position:relative; width:90%; height:90%;">
     <div id="modal-iframe-wrapper" style="width:100%; height:100%;"></div>
     <button onclick="closeModal()" style="position:absolute; top:10px; right:10px; z-index:10000; border-radius:50px; background-color:rgb(211, 131, 248); color:white; border:none; padding:10px 20px; cursor:pointer;">
