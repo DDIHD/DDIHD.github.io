@@ -8,10 +8,13 @@ category: material
 # Grundlagen der Künstliche Intelligenz
 ## Einstieg, Lehrkräftefortbildung und Materialien für den Unterricht
 
-Mit dieser Fortbildung und Materialien-Sammlung möchten wir eine datenbasierte Perspektive auf die Grundlagen der Künstlichen Intelligenz schaffen, welche wir nicht nur für die Sekundarstufe 1 empfehlen möchten, sondern auch als allgemeinen , züganglichen Einstieg in das Thema.
+Mit dieser Fortbildung und Materialien-Sammlung möchten wir eine datenbasierte Perspektive auf die Grundlagen der Künstlichen Intelligenz schaffen, welche wir nicht nur für die Sekundarstufe 1 empfehlen möchten, sondern auch als allgemeinen , züganglichen Einstieg in das Thema. 
+ 
 **<u>Anmerkung: vorläufige Vorstellung des Entwicklungsstands der Fortbildung, erhebliche Änderungen bis Herbst.</u>**
 
-### Trainiere dein erstes Neuronales Netz!
+## Trainiere dein erstes Neuronales Netz!
+![KI Bild[(ki.png)
+
 <div id="iframe-container" style="text-align:center;">
   <div id="iframe-wrapper" style="display:inline-block;">
     <iframe 
@@ -23,37 +26,36 @@ Mit dieser Fortbildung und Materialien-Sammlung möchten wir eine datenbasierte 
     </iframe>
   </div>
   <br />
-  <button onclick="expandIframe()" style="border-radius:50px; background-color:rgb(211, 131, 248); color:white; border:none; padding:10px 20px; cursor:pointer;">vergrößern</button>
+  <button onclick="openModal()" style="border-radius:50px; background-color:rgb(211, 131, 248); color:white; border:none; padding:10px 20px; cursor:pointer;">starten</button>
 </div>
 
 <!-- Modal container -->
-<div id="iframe-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgb(255,255,255,255); z-index:9999; align-items:center; justify-content:center;">
+<div id="iframe-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(255,255,255,0.9); z-index:9999; align-items:center; justify-content:center;">
   <div style="position:relative; width:90%; height:90%;">
     <div id="modal-iframe-wrapper" style="width:100%; height:100%;"></div>
-    <button onclick="shrinkIframe()" style="position:absolute; top:10px; right:10px; z-index:10000; border-radius:50px; background-color:rgb(211, 131, 248); color:white; border:none; padding:10px 20px; cursor:pointer;">X</button>
+    <button onclick="closeModal()" style="position:absolute; top:10px; right:10px; z-index:10000; border-radius:50px; background-color:rgb(211, 131, 248); color:white; border:none; padding:10px 20px; cursor:pointer;">X</button>
   </div>
 </div>
 
 <script>
   const iframe = document.getElementById("my-iframe");
-  const iframeWrapper = document.getElementById("iframe-wrapper");
   const modalWrapper = document.getElementById("modal-iframe-wrapper");
   const modal = document.getElementById("iframe-modal");
 
-  function expandIframe() {
+  function openModal() {
     modalWrapper.appendChild(iframe);
     iframe.style.width = "100%";
     iframe.style.height = "100%";
     modal.style.display = "flex";
   }
 
-  function shrinkIframe() {
-    iframeWrapper.appendChild(iframe);
-    iframe.style.width = "600px";
-    iframe.style.height = "400px";
+  function closeModal() {
     modal.style.display = "none";
+    // Optionally, you can append the iframe back to its original position if needed
+    // document.getElementById("iframe-wrapper").appendChild(iframe);
   }
 </script>
+
 
 ### Kurzbeschreibung
 
@@ -63,7 +65,7 @@ Viele Interaktionen mit und um Neuronale Netze herum geschehen durch Daten. Wäh
 
 - [Web-App zur Bild-/Objekterkennung](/webapps/object/index.html) als Einstieg in den Unterricht oder die Fortbildung, zum Experimentieren, Verhalten und Grenzen austesten. (Hier gibt es ein Arbeitsblatt dazu](https://heibox.uni-heidelberg.de/f/f21b516542704ab9a412/?dl=1). Anleitung zur Installation der Webseite als App und zur Offline-Nutzung folgen.
 - [Präsentation](https://heibox.uni-heidelberg.de/f/b036b6b969754421b57e/?dl=1) und [Arbeitsblatt](https://heibox.uni-heidelberg.de/f/b0c152db98ff4cf5bc67/?dl=1) zum Thema Lernen, Daten-Repräsentationen und Features. Hier kann in Gruppenarbeit im Anschluss eine KI-gesteuerte Katzeklappe entworfen werden, welche nur Hauskatzen hineinlassen soll, jedoch keine anderen Tiere.
-- [Arbeitsblatt] um mittels [Google Teachable Machine](https://teachablemachine.withgoogle.com/) Modelle zur Objekterkennung selbst zu trainieren. Schließt den Kreis zur erten Bilderkennungsaufgabe und soll zeigen, wie schnell gewisse Eigenschaften oder (Fehl-)Verhalten entstehen können.
+- [Arbeitsblatt](https://heibox.uni-heidelberg.de/f/256b503272db402cbcdc/?dl=1) um mittels [Google Teachable Machine](https://teachablemachine.withgoogle.com/) Modelle zur Objekterkennung selbst zu trainieren. Schließt den Kreis zur erten Bilderkennungsaufgabe und soll zeigen, wie schnell gewisse Eigenschaften oder (Fehl-)Verhalten entstehen können.
 - [Web-Anwendung mit Beispiel zum Training Neuronaler Netze]("/webapps/suessigkeiten/index.html" )
 
 
