@@ -15,113 +15,126 @@ Mit dieser Fortbildung und Materialien-Sammlung möchten wir eine datenbasierte 
 ## Trainiere dein erstes Neuronales Netz!
 
 ![KI Bild]({{ site.baseurl }}/materials/ki.png)
-
-<div id="iframe-container" style="text-align:center;">
-  <div class="animated-button-wrapper">
-    <div class="orb-effect"></div>
-    <button onclick="openModal()" class="animated-button">
+ <div id="iframe-container" style="text-align:center;">
+    <button onclick="openModal()" class="btn-glow">
       Training starten
     </button>
   </div>
-</div>
 
-
-<!-- Modal container -->
-<div id="iframe-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgb(255,255,255); z-index:9999; align-items:center; justify-content:center;">
-  <div style="position:relative; width:90%; height:90%;">
-    <div id="modal-iframe-wrapper" style="width:100%; height:100%;"></div>
-    <button onclick="closeModal()" style="position:absolute; top:10px; right:10px; z-index:10000; border-radius:50px; background-color:rgb(211, 131, 248); color:white; border:none; padding:10px 20px; cursor:pointer;">
-      X
-    </button>
+  <!-- Modal container -->
+  <div id="iframe-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgb(255,255,255); z-index:9999; align-items:center; justify-content:center;">
+    <div style="position:relative; width:90%; height:90%;">
+      <div id="modal-iframe-wrapper" style="width:100%; height:100%;"></div>
+      <button onclick="closeModal()" class="close-btn">
+        X
+      </button>
+    </div>
   </div>
-</div>
 
-<script>
-  const modalWrapper = document.getElementById("modal-iframe-wrapper");
-  const modal = document.getElementById("iframe-modal");
+  <script>
+    const modalWrapper = document.getElementById("modal-iframe-wrapper");
+    const modal = document.getElementById("iframe-modal");
 
-  let iframe; // Declare iframe outside so we can reuse it
+    let iframe; // Declare iframe outside so we can reuse it
 
-  function openModal() {
-    // Create the iframe only when the modal is opened
-    iframe = document.createElement("iframe");
-    iframe.src = "/webapps/suessigkeiten/index.html";
-    iframe.style.width = "100%";
-    iframe.style.height = "100%";
-    iframe.style.border = "1px solid #ccc";
+    function openModal() {
+      // Create the iframe only when the modal is opened
+      iframe = document.createElement("iframe");
+      iframe.src = "/webapps/suessigkeiten/index.html";
+      iframe.style.width = "100%";
+      iframe.style.height = "100%";
+      iframe.style.border = "1px solid #ccc";
 
-    modalWrapper.appendChild(iframe);
-    modal.style.display = "flex";
-  }
+      modalWrapper.appendChild(iframe);
+      modal.style.display = "flex";
+    }
 
-  function closeModal() {
-    modal.style.display = "none";
-    // Remove iframe from DOM to stop it from running in the background
-    modalWrapper.innerHTML = "";
-  }
-</script>
+    function closeModal() {
+      modal.style.display = "none";
+      // Remove iframe from DOM to stop it from running in the background
+      modalWrapper.innerHTML = "";
+    }
+  </script>
 
 <style>
-  .animated-button-wrapper {
-    position: relative;
-    display: inline-block;
-  }
+    .btn-glow {
+      position: relative;
+      border-radius: 50px;
+      background-color: rgb(211, 131, 248);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      animation: pulse 2s infinite;
+      transition: all 0.3s ease;
+    }
 
-  .animated-button {
-    position: relative;
-    z-index: 2;
-    border-radius: 50px;
-    background: linear-gradient(135deg, rgb(211, 131, 248), rgb(190, 120, 240));
-    background-size: 200% 200%;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    animation: gradientMove 3s ease infinite;
-    overflow: hidden;
-  }
+    .btn-glow:hover {
+      background: linear-gradient(45deg, rgb(211, 131, 248), rgb(64, 224, 208));
+      box-shadow: 0 0 15px rgba(64, 224, 208, 0.6);
+      transform: scale(1.05);
+    }
 
-  @keyframes gradientMove {
-    0% {
-      background-position: 0% 50%;
+    .btn-glow::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      border-radius: 50px;
+      background: linear-gradient(45deg, rgb(64, 224, 208), rgb(211, 131, 248), rgb(64, 224, 208));
+      z-index: -1;
+      opacity: 0;
+      animation: glowing-border 2s linear infinite;
     }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
 
-  .orb-effect {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 140%;
-    height: 140%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    border: 2px solid transparent;
-    pointer-events: none;
-    z-index: 1;
-    background: conic-gradient(
-      from 0deg,
-      transparent,
-      rgba(64, 224, 208, 0.5),
-      transparent
-    );
-    animation: spinOrb 3s linear infinite;
-  }
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(64, 224, 208, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(64, 224, 208, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(64, 224, 208, 0);
+      }
+    }
 
-  @keyframes spinOrb {
-    0% {
-      transform: translate(-50%, -50%) rotate(0deg);
+    @keyframes glowing-border {
+      0% {
+        opacity: 0;
+        transform: rotate(0deg);
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: rotate(360deg);
+      }
     }
-    100% {
-      transform: translate(-50%, -50%) rotate(360deg);
+
+    /* Close button styles */
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 10000;
+      border-radius: 50px;
+      background-color: rgb(211, 131, 248);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
-  }
-</style>
+
+    .close-btn:hover {
+      background: linear-gradient(45deg, rgb(211, 131, 248), rgb(64, 224, 208));
+      box-shadow: 0 0 10px rgba(64, 224, 208, 0.6);
+    }
+  </style>
 
 
 
