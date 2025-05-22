@@ -16,7 +16,6 @@ Mit dieser Fortbildung und Materialien-Sammlung möchten wir eine datenbasierte 
 
 ![KI Bild]({{ site.baseurl }}/materials/ki.png)
 
-
  <div id="iframe-container" style="text-align:center;">
     <button onclick="openModal()" class="btn-glow">
       Training starten
@@ -59,56 +58,47 @@ Mit dieser Fortbildung und Materialien-Sammlung möchten wir eine datenbasierte 
   </script>
 
 
-<style>
+ <style>
     .btn-glow {
       position: relative;
       border-radius: 50px;
-      background-color: rgb(211, 131, 248);
       color: white;
       border: none;
       padding: 10px 20px;
       cursor: pointer;
-      animation: pulse 2s infinite;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease;
+      background: linear-gradient(45deg, rgb(211, 131, 248), rgb(64, 224, 208));
+      background-size: 200% 200%;
+      animation: gradientShift 3s ease infinite, pulse 2s infinite;
+      box-shadow: 0 0 15px rgba(211, 131, 248, 0.4);
     }
 
     .btn-glow:hover {
-      background: linear-gradient(45deg, rgb(211, 131, 248), rgb(64, 224, 208));
-      box-shadow: 0 0 15px rgba(64, 224, 208, 0.6);
       transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(64, 224, 208, 0.6);
     }
 
-    .btn-glow::before {
-      content: '';
-      position: absolute;
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      background: rgb(64, 224, 208);
-      box-shadow: 0 0 10px 2px rgba(64, 224, 208, 0.8);
-      z-index: -1;
-      opacity: 0.8;
-      animation: orbit 3s linear infinite;
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     @keyframes pulse {
       0% {
-        box-shadow: 0 0 0 0 rgba(64, 224, 208, 0.4);
+        box-shadow: 0 0 0 0 rgba(211, 131, 248, 0.4);
       }
-      70% {
-        box-shadow: 0 0 0 10px rgba(64, 224, 208, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(64, 224, 208, 0);
-      }
-    }
-
-    @keyframes orbit {
-      0% {
-        transform: translateX(-50%) translateY(-50%) rotate(0deg) translateX(calc(100% + 20px)) rotate(0deg);
+      50% {
+        box-shadow: 0 0 15px 5px rgba(64, 224, 208, 0.6);
       }
       100% {
-        transform: translateX(-50%) translateY(-50%) rotate(360deg) translateX(calc(100% + 20px)) rotate(-360deg);
+        box-shadow: 0 0 0 0 rgba(211, 131, 248, 0.4);
       }
     }
 
@@ -119,20 +109,24 @@ Mit dieser Fortbildung und Materialien-Sammlung möchten wir eine datenbasierte 
       right: 10px;
       z-index: 10000;
       border-radius: 50px;
-      background-color: rgb(211, 131, 248);
+      background: linear-gradient(45deg, rgb(211, 131, 248), rgb(64, 224, 208));
+      background-size: 200% 200%;
+      animation: gradientShift 3s ease infinite;
       color: white;
       border: none;
       padding: 10px 20px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease;
     }
 
     .close-btn:hover {
-      background: linear-gradient(45deg, rgb(211, 131, 248), rgb(64, 224, 208));
+      transform: scale(1.05);
       box-shadow: 0 0 10px rgba(64, 224, 208, 0.6);
     }
   </style>
 
+
+  
 ### Kurzbeschreibung
 
 Viele Interaktionen mit und um Neuronale Netze herum geschehen durch Daten. Während die Algorithmen selbst, unabhängig von der Datengrundlage, auf bestimmte Eigenschaften ausgelegt sein können, wird deren Verhalten häuptsächlich durch die (Tranings-)Daten geprägt. Die datenbasierte Perspektive bietet durch konkrete und nahbare Alltagsbeispiele einen Zugang zu den Grundlagen der KI, welche häufig zu abstrakt oder komplex scheinen, jedoch für eine kritische Beurteilung oder eigene Anwendung unabdingbar sind. Am Beispiel der Bilderkennung und Data Literacy werden sie ersichtlich und sind transferierbar auf gewerbliche Anwendungen und große Sprachmodelle wie ChatGPT.
