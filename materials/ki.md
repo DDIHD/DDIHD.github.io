@@ -15,6 +15,8 @@ Mit dieser Fortbildung und Materialien-Sammlung möchten wir eine datenbasierte 
 ## Trainiere dein erstes Neuronales Netz!
 
 ![KI Bild]({{ site.baseurl }}/materials/ki.png)
+
+
  <div id="iframe-container" style="text-align:center;">
     <button onclick="openModal()" class="btn-glow">
       Training starten
@@ -56,6 +58,7 @@ Mit dieser Fortbildung und Materialien-Sammlung möchten wir eine datenbasierte 
     }
   </script>
 
+
 <style>
     .btn-glow {
       position: relative;
@@ -78,15 +81,14 @@ Mit dieser Fortbildung und Materialien-Sammlung möchten wir eine datenbasierte 
     .btn-glow::before {
       content: '';
       position: absolute;
-      top: -3px;
-      left: -3px;
-      right: -3px;
-      bottom: -3px;
-      border-radius: 50px;
-      background: linear-gradient(45deg, rgb(64, 224, 208), rgb(211, 131, 248), rgb(64, 224, 208));
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: rgb(64, 224, 208);
+      box-shadow: 0 0 10px 2px rgba(64, 224, 208, 0.8);
       z-index: -1;
-      opacity: 0;
-      animation: glowing-border 2s linear infinite;
+      opacity: 0.8;
+      animation: orbit 3s linear infinite;
     }
 
     @keyframes pulse {
@@ -101,17 +103,12 @@ Mit dieser Fortbildung und Materialien-Sammlung möchten wir eine datenbasierte 
       }
     }
 
-    @keyframes glowing-border {
+    @keyframes orbit {
       0% {
-        opacity: 0;
-        transform: rotate(0deg);
-      }
-      50% {
-        opacity: 1;
+        transform: translateX(-50%) translateY(-50%) rotate(0deg) translateX(calc(100% + 20px)) rotate(0deg);
       }
       100% {
-        opacity: 0;
-        transform: rotate(360deg);
+        transform: translateX(-50%) translateY(-50%) rotate(360deg) translateX(calc(100% + 20px)) rotate(-360deg);
       }
     }
 
@@ -135,9 +132,6 @@ Mit dieser Fortbildung und Materialien-Sammlung möchten wir eine datenbasierte 
       box-shadow: 0 0 10px rgba(64, 224, 208, 0.6);
     }
   </style>
-
-
-
 
 ### Kurzbeschreibung
 
