@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Scooter München - Entdecke die Stadt auf zwei Rädern</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .header-content h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            padding: 3rem 0;
+        }
+
+        .blog-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .blog-section h2 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .blog-section h3 {
+            color: #764ba2;
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .blog-section p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            font-size: 1.1rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea20, #764ba220);
+            border-left: 4px solid #667eea;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .rental-section, .map-section, .price-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .rental-section h3, .map-section h3, .price-section h3 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        #map {
+            height: 300px;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .price-table th, .price-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .price-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-weight: bold;
+        }
+
+        .price-table tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .rental-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .rental-form input, .rental-form select {
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .rental-form input:focus, .rental-form select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>🛴 E-Scooter München</h1>
+                <p>Entdecke München auf umweltfreundliche Art - Miete deinen E-Scooter noch heute!</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <article class="blog-section">
+                <h2>Mein E-Scooter Abenteuer durch München</h2>
+                
+                <p>Letzte Woche hatte ich die Gelegenheit, München auf eine völlig neue Art zu erkunden - mit einem E-Scooter! Was als spontane Idee begann, entwickelte sich zu einem der aufregendsten Stadtabenteuer, die ich je erlebt habe.</p>
+
+                <h3>Der perfekte Start am Marienplatz</h3>
+                <p>Meine Reise begann am berühmten Marienplatz, dem Herzen Münchens. Mit einem geliehenen E-Scooter ausgestattet, fühlte ich mich wie ein moderner Stadtentdecker. Die Bedienung war überraschend intuitiv - ein kurzer Kickstart und schon glitt ich lautlos über das Kopfsteinpflaster.</p>
+
+                <div class="highlight-box">
+                    <strong>Tipp:</strong> Beginne deine E-Scooter-Tour früh am Morgen, wenn die Straßen noch nicht so überfüllt sind. Du kannst die Architektur viel besser genießen und hast mehr Platz zum Fahren!
+                </div>
+
+                <h3>Durch den Englischen Garten</h3>
+                <p>Der Englische Garten war definitiv das Highlight meiner Tour. Die breiten Wege sind wie geschaffen für E-Scooter, und die Kombination aus frischer Luft, grüner Natur und der leisen Elektromobilität schafft ein unvergleichliches Fahrgefühl. Ich machte mehrere Stops - am Chinesischen Turm für einen Kaffee und am Eisbach, um den Surfern zuzuschauen.</p>
+
+                <h3>Entlang der Isar zum Deutschen Museum</h3>
+                <p>Die Fahrt entlang der Isar war spektakulär. Der Radweg ist perfekt für E-Scooter geeignet, und die Aussicht auf das Wasser macht jede Fahrt zu einem Erlebnis. Das Deutsche Museum erreichte ich in nur 15 Minuten - mit dem Auto hätte ich deutlich länger gebraucht und einen Parkplatz suchen müssen.</p>
+
+                <h3>Warum E-Scooter die Zukunft der Stadtmobilität sind</h3>
+                <p>Nach einem ganzen Tag auf dem E-Scooter bin ich überzeugt: Das ist die Zukunft der urbanen Mobilität. Umweltfreundlich, effizient, und unglaublich spaßig. München bietet die perfekte Infrastruktur dafür - breite Radwege, viele Sehenswürdigkeiten in kurzer Distanz, und eine fahrradfreundliche Stadtplanung.</p>
+
+                <p>Besonders beeindruckt hat mich die Flexibilität. Spontane Stopps sind kein Problem, Parkplatzsuche gehört der Vergangenheit an, und die Kosten sind im Vergleich zu Taxi oder Carsharing unschlagbar günstig.</p>
+
+                <div class="highlight-box">
+                    <strong>Mein Fazit:</strong> E-Scooter sind nicht nur ein Fortbewegungsmittel, sondern ein echter Lifestyle. Sie verbinden Nachhaltigkeit mit Spaß und machen jede Fahrt zu einem kleinen Abenteuer. München wartet darauf, von dir entdeckt zu werden!
+                </div>
+            </article>
+
+            <aside class="sidebar">
+                <div class="rental-section">
+                    <h3>🚀 Jetzt mieten!</h3>
+                    <form class="rental-form">
+                        <input type="text" placeholder="Vollständiger Name" required>
+                        <input type="email" placeholder="E-Mail Adresse" required>
+                        <input type="tel" placeholder="Telefonnummer" required>
+                        <select required>
+                            <option value="">Mietdauer wählen</option>
+                            <option value="1h">1 Stunde</option>
+                            <option value="3h">3 Stunden</option>
+                            <option value="1d">1 Tag</option>
+                            <option value="3d">3 Tage</option>
+                            <option value="1w">1 Woche</option>
+                        </select>
+                        <button type="submit" class="btn">E-Scooter reservieren</button>
+                    </form>
+                </div>
+
+                <div class="map-section">
+                    <h3>🗺️ Standorte in München</h3>
+                    <div id="map"></div>
+                </div>
+
+                <div class="price-section">
+                    <h3>💰 Preise</h3>
+                    <table class="price-table">
+                        <thead>
+                            <tr>
+                                <th>Dauer</th>
+                                <th>Preis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1 Stunde</td>
+                                <td>8€</td>
+                            </tr>
+                            <tr>
+                                <td>3 Stunden</td>
+                                <td>20€</td>
+                            </tr>
+                            <tr>
+                                <td>1 Tag</td>
+                                <td>35€</td>
+                            </tr>
+                            <tr>
+                                <td>3 Tage</td>
+                                <td>90€</td>
+                            </tr>
+                            <tr>
+                                <td>1 Woche</td>
+                                <td>180€</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </aside>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔋</div>
+                <h3>Lange Akkulaufzeit</h3>
+                <p>Bis zu 40km Reichweite mit einer Ladung - perfekt für Stadttouren</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌱</div>
+                <h3>100% Umweltfreundlich</h3>
+                <p>Null Emissionen, nachhaltiger Strom aus erneuerbaren Energien</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Smart App</h3>
+                <p>Einfache Buchung, GPS-Tracking und digitale Bezahlung</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Vollversichert</h3>
+                <p>Kompletter Versicherungsschutz für sorgenfreies Fahren</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 E-Scooter München. Alle Rechte vorbehalten. | Kontakt: info@escooter-muenchen.de | Tel: +49 89 123456789</p>
+        </div>
+    </footer>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([48.1351, 11.5820], 12);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // E-Scooter rental locations in Munich
+        const locations = [
+            {
+                name: "Marienplatz Station",
+                coords: [48.1374, 11.5755],
+                scooters: 8,
+                description: "Hauptbahnhof - Zentrale Lage"
+            },
+            {
+                name: "Englischer Garten Nord",
+                coords: [48.1642, 11.6022],
+                scooters: 12,
+                description: "Perfekt für Parktouren"
+            },
+            {
+                name: "Deutsches Museum",
+                coords: [48.1298, 11.5838],
+                scooters: 6,
+                description: "Museumsinsel - Kulturhighlight"
+            },
+            {
+                name: "Olympiapark",
+                coords: [48.1742, 11.5461],
+                scooters: 15,
+                description: "Sportpark mit großen Wegen"
+            },
+            {
+                name: "Viktualienmarkt",
+                coords: [48.1351, 11.5762],
+                scooters: 5,
+                description: "Historischer Markt im Zentrum"
+            },
+            {
+                name: "Isar Ufer",
+                coords: [48.1186, 11.5891],
+                scooters: 9,
+                description: "Flussradweg - Naturerlebnis"
+            },
+            {
+                name: "Maximilianstraße",
+                coords: [48.1395, 11.5838],
+                scooters: 7,
+                description: "Einkaufsmeile - Luxusshops"
+            },
+            {
+                name: "Theresienwiese",
+                coords: [48.1319, 11.5497],
+                scooters: 20,
+                description: "Oktoberfest Gelände"
+            }
+        ];
+
+        // Add markers for each location
+        locations.forEach(location => {
+            const icon = L.divIcon({
+                html: `<div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; border: 2px solid white; box-shadow: 0 2px 10px rgba(0,0,0,0.3);">${location.scooters}</div>`,
+                className: 'custom-div-icon',
+                iconSize: [30, 30],
+                iconAnchor: [15, 15]
+            });
+
+            L.marker(location.coords, { icon: icon })
+                .addTo(map)
+                .bindPopup(`
+                    <div style="text-align: center; padding: 10px;">
+                        <h4 style="color: #667eea; margin-bottom: 5px;">${location.name}</h4>
+                        <p style="margin: 5px 0; color: #666;">${location.description}</p>
+                        <p style="margin: 5px 0;"><strong>${location.scooters} E-Scooter verfügbar</strong></p>
+                        <button onclick="alert('Buchung für ${location.name} wird geöffnet!')" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; margin-top: 5px;">Hier buchen</button>
+                    </div>
+                `);
+        });
+
+        // Form submission handler
+        document.querySelector('.rental-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Danke für Ihre Buchung! Sie erhalten in Kürze eine Bestätigung per E-Mail.');
+        });
+
+        // Add some interactive features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate feature cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
