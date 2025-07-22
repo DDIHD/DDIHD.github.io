@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Das Quaderspiel</title>
+    <script src="chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            overflow: hidden;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        #controls, #results {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: rgb(75, 192, 192);
+            
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: rgb(75, 192, 192);
+        }
+        #throwsInput {
+            width: 100px;
+            padding: 5px;
+        }
+        #totalThrows {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .checkbox-container {
+            margin-top: 10px;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: rgb(75, 192, 192);
+        }
+
+        .cumulateCheckbox:checked, .showTrueDistCheckbox:checked {
+            background-color: rgb(75, 192, 192) !important;
+        }
+
+
+    </style>
+
+    <link rel="manifest" href="manifest.json">
+
+    <script>
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker
+            .register("service_worker.js")
+            .then((registration) => {
+              console.log("Registered!");
+            })
+            .catch(console.error);
+        }
+      </script>
+
+
+
+</head>
+<body>
+    <h1>Das Quaderspiel</h1>
+    <div id="controls">
+        <label for="throwsInput">Anzahl der Würfe:</label>
+        <input type="number" id="throwsInput" min="1" value="1">
+        <button id="throwButton">Würfeln</button>
+        <button id="resetButton">Zurücksetzen</button>
+        <div class="checkbox-container">
+            <label>
+                <input type="checkbox" id="cumulateCheckbox"> Kumulieren
+            </label>
+        </div>
+        <div class="checkbox-container">
+            <label>
+                <input type="checkbox" id="showTrueDistCheckbox">Erwartete Verteilung anzeigen
+            </label>
+        </div>
+    </div>
+    <div id="totalThrows">Würfe insg.: 0</div>
+    <div id="results">
+        <canvas id="histogram"></canvas>
+    </div>
+
+    <script>
+        const probabilities = [0.01, 0.01, 0.07, 0.10, 0.17, 0.28, 0.17, 0.10, 0.07, 0.01, 0.01];
+        const sideCount = probabilities.length;
+        let chart;
+        let accumulatedResults = new Array(sideCount).fill(0);
+        let totalThrows = 0;
+
+        function throwDice() {
+            const random = Math.random();
+            let cumulativeProbability = 0;
+            for (let i = 0; i < probabilities.length; i++) {
+                cumulativeProbability += probabilities[i];
+                if (random < cumulativeProbability) {
+                    return i;
+                }
+            }
+            return probabilities.length - 1;
+        }
+
+        function simulateThrows(numThrows) {
+            const results = new Array(sideCount).fill(0);
+            for (let i = 0; i < numThrows; i++) {
+                const outcome = throwDice();
+                results[outcome]++;
+            }
+            return results;
+        }
+
+
+        function updateChart(results, expectedResults) {
+            const ctx = document.getElementById('histogram').getContext('2d');
+            const labels = Array.from({length: sideCount}, (_, i) => i + 2);
+            const datasets = [
+                {
+                    label: 'Anzahl Würfe',
+                    data: results,
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    type: 'bar'
+                }
+            ];
+
+            if (document.getElementById('showTrueDistCheckbox').checked) {
+                datasets.push({
+                    label: 'Erwartete Verteilung',
+                    data: expectedResults,
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderWidth: 2,
+                    type: 'line',
+                    fill: false,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                    tension: 0.1
+                });
+            }
+
+            if (chart) {
+                chart.destroy();
+            }
+
+            chart = new Chart(ctx, {
+                type: 'bar',
+                data: { labels, datasets },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Häufigkeit'
+                            },
+                            ticks: {
+                                stepSize: 1,
+                                precision: 0
+                            },
+                            grid: {
+                                drawOnChartArea: true
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Augensummen'
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            filter: function(tooltipItem) {
+                                return tooltipItem.datasetIndex === 0; // Only show tooltip for 'Würfe' dataset
+                            },
+                            callbacks: {
+                                afterLabel: function(context) {
+                                    const dataIndex = context.dataIndex;
+                                    const probability = probabilities[dataIndex] * 100;
+                                    return `Erwartete Wahrscheinlichkeit: ${probability.toFixed(2)}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+
+
+        function resetResults() {
+            accumulatedResults = new Array(sideCount).fill(0);
+            totalThrows = 0;
+            updateTotalThrows();
+            updateChart(accumulatedResults, probabilities.map(p => 3.57*p * Math.max(Math.max(...accumulatedResults), 1)));
+        }
+
+        function updateTotalThrows() {
+            document.getElementById('totalThrows').textContent = `Anzahl Würfe insg.: ${totalThrows}`;
+        }
+
+        document.getElementById('throwButton').addEventListener('click', function() {
+            const numThrows = parseInt(document.getElementById('throwsInput').value);
+            if (numThrows > 0) {
+                const results = simulateThrows(numThrows);
+                if (document.getElementById('cumulateCheckbox').checked) {
+                    accumulatedResults = accumulatedResults.map((val, idx) => val + results[idx]);
+                    totalThrows += numThrows;
+                } else {
+                    accumulatedResults = results;
+                    totalThrows = numThrows;
+                }
+                
+                const expectedResults = probabilities.map(p => 3.57*p * Math.max(Math.max(...accumulatedResults), 1));
+                updateChart(accumulatedResults, expectedResults);
+                updateTotalThrows();
+            } else {
+                alert('Bite eine ganze positive Anzahl Würfe angeben');
+            }
+        });
+
+        document.getElementById('resetButton').addEventListener('click', resetResults);
+        document.getElementById('showTrueDistCheckbox').addEventListener('change', function() {
+            const expectedResults = probabilities.map(p => 3.57*p * Math.max(Math.max(...accumulatedResults), 1));
+            updateChart(accumulatedResults, expectedResults);
+        });
+
+        resetResults();
+    </script>
+</body>
+</html>
