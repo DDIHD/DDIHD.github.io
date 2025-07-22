@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rechenwaage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Experiment: Bringe die Wippe ins Gleichgewicht</h1>
+        
+        <div class="weight-selector">
+            <h3>Wähle ein Gewicht:</h3>
+            <div class="weight-options">
+                <div class="weight-option selected" data-value="10">10</div>
+                <div class="weight-option" data-value="15">15</div>
+                <div class="weight-option" data-value="30">30</div>
+            </div>
+        </div>
+    
+        
+        <div class="content-container">
+            
+            <div class="seesaw-container">
+                <div class="seesaw" id="seesaw">
+                    <div class="left-side">
+                        <div class="positions">
+                            <div class="position" data-side="left" data-position="10">
+                                <span class="number">10</span>
+                                <button class="add-weight">+</button>
+                                <div class="weight-stack"></div>
+                            </div>
+                            <div class="position" data-side="left" data-position="9">
+                                <span class="number">9</span>
+                                <button class="add-weight">+</button>
+                                <div class="weight-stack"></div>
+                            </div>
+                            <div class="position" data-side="left" data-position="8">
+                                <span class="number">8</span>
+                                <button class="add-weight">+</button>
+                                <div class="weight-stack"></div>
+                            </div>
+                            <div class="position" data-side="left" data-position="7">
+                                <span class="number">7</span>
+                                <button class="add-weight">+</button>
+                                <div class="weight-stack"></div>
+                            </div>
+                            <div class="position" data-side="left" data-position="6">
+                                <span class="number">6</span>
+                                <button class="add-weight">+</button>
+                                <div class="weight-stack"></div>
+                            </div>
+                            <div class="position" data-side="left" data-position="5">
+                                <span class="number">5</span>
+                                <button class="add-weight">+</button>
+                                <div class="weight-stack"></div>
+                            </div>
+                            <div class="position" data-side="left" data-position="4">
+                                <span class="number">4</span>
+                                <button class="add-weight">+</button>
+                                <div class="weight-stack"></div>
+                            </div>
+                            <div class="position" data-side="left" data-position="3">
+                                <span class="number">3</span>
+                                <button class="add-weight">+</button>
+                                <div class="weight-stack"></div>
+                            </div>
+                            <div class="position" data-side="left" data-position="2">
+                                <span class="number">2</span>
+                                <button class="add-weight">+</button>
+                                <div class="weight-stack"></div>
+                            </div>
+                            <div class="position" data-side="left" data-position="1">
+                                <span class="number">1</span>
+                                <button class="add-weight">+</button>
+                                <div class="weight-stack"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hinge"></div>
+                    <div class="right-side">
+                        <div class="positions">
+                            <div class="position" data-side="right" data-position="1">
+                                <span class="number">1</span>
+                                <button class="add-weight">+</button>
+                                <div class="weight-stack"></div>
+                            </div>
+                            <div class="position" data-side="right" data-position="2">
+                                <span class="number">2</span>
+                                <button class="add-weight">+</button>
+                                <div class="weight-stack"></div>
+                            </div>
+                            <div class="position" data-side="right" data-position="3">
+                                <span class="number">3</span>
+                                <button class="add-weight">+</button>
+                                <div class="weight-stack"></div>
+                            </div>
+                            <div class="position" data-side="right" data-position="4">
+                                <span class="number">4</span>
+                                <button class="add-weight">+</button>
+                                <div class="weight-stack"></div>
+                            </div>
+                            <div class="position" data-side="right" data-position="5">
+                                <span class="number">5</span>
+                                <button class="add-weight">+</button>
+                                <div class="weight-stack"></div>
+                            </div>
+                            <div class="position" data-side="right" data-position="6">
+                                <span class="number">6</span>
+                                <button class="add-weight">+</button>
+                                <div class="weight-stack"></div>
+                            </div>
+                            <div class="position" data-side="right" data-position="7">
+                                <span class="number">7</span>
+                                <button class="add-weight">+</button>
+                                <div class="weight-stack"></div>
+                            </div>
+                            <div class="position" data-side="right" data-position="8">
+                                <span class="number">8</span>
+                                <button class="add-weight">+</button>
+                                <div class="weight-stack"></div>
+                            </div>
+                            <div class="position" data-side="right" data-position="9">
+                                <span class="number">9</span>
+                                <button class="add-weight">+</button>
+                                <div class="weight-stack"></div>
+                            </div>
+                            <div class="position" data-side="right" data-position="10">
+                                <span class="number">10</span>
+                                <button class="add-weight">+</button>
+                                <div class="weight-stack"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="balance-pointer" class="balance-pointer"></div>
+                <div class="balance-line"></div>
+                <div class="fulcrum"></div>
+            </div>
+            
+            <div class="observations-panel hidden" id="observations-panel">
+                <h2>Beobachtungen</h2>
+                <div class="observations-content">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
