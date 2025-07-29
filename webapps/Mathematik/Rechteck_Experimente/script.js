@@ -174,11 +174,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const containerWidth = rectangleContainer.clientWidth * 0.9;
         const containerHeight = rectangleContainer.clientHeight * 0.9;
         
-        const width = (rectA / 50) * containerWidth;
-        const height = (rectB / 50) * containerHeight;
+        // Calculate proportional scaling to maintain aspect ratio
+        // We need to find the maximum scale factor that keeps both dimensions within bounds
+        const maxScaleForWidth = containerWidth / Math.max(rectA, 50);
+        const maxScaleForHeight = containerHeight / Math.max(rectB, 50);
         
-        rectangle.style.width = `${Math.max(1, width)}px`;
-        rectangle.style.height = `${Math.max(1, height)}px`;
+        // Use the smaller scale factor to ensure both dimensions fit
+        const scale = Math.min(maxScaleForWidth, maxScaleForHeight);
+        
+        // Apply the same scale to both dimensions to maintain proportions
+        const width = rectA * scale;
+        const height = rectB * scale;
+        
+        rectangle.style.width = `${Math.max(20, width)}px`; // Minimum 20px for visibility
+        rectangle.style.height = `${Math.max(20, height)}px`; // Minimum 20px for visibility
         
         sideALabel.textContent = `a = ${rectA}`;
         sideBLabel.textContent = `b = ${rectB.toFixed(2)}`;
