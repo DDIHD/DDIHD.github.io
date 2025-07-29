@@ -32,19 +32,25 @@ document.addEventListener('DOMContentLoaded', () => {
         sideAValue.textContent = sideA;
         sideBValue.textContent = sideBRounded;
         
-        // Get container dimensions
+        // Get container dimensions with some padding
         const containerWidth = rectangleContainer.clientWidth * 0.9;
         const containerHeight = rectangleContainer.clientHeight * 0.9;
         
-        // Calculate the width and height based on linear scaling
-        // Width scales linearly from 0 to containerWidth as sideA goes from 0 to maxA
-        // Height scales linearly from 0 to containerHeight as sideB goes from 0 to maxB
-        const width = (sideA / maxA) * containerWidth;
-        const height = (sideB / maxB) * containerHeight;
+        // Calculate proportional scaling to maintain aspect ratio
+        // We need to find the maximum scale factor that keeps both dimensions within bounds
+        const maxScaleForWidth = containerWidth / Math.max(sideA, maxA);
+        const maxScaleForHeight = containerHeight / Math.max(sideB, maxB);
+        
+        // Use the smaller scale factor to ensure both dimensions fit
+        const scale = Math.min(maxScaleForWidth, maxScaleForHeight);
+        
+        // Apply the same scale to both dimensions to maintain proportions
+        const width = sideA * scale;
+        const height = sideB * scale;
         
         // Apply dimensions to rectangle
-        rectangle.style.width = `${width}px`;
-        rectangle.style.height = `${height}px`;
+        rectangle.style.width = `${Math.max(20, width)}px`; // Minimum 20px for visibility
+        rectangle.style.height = `${Math.max(20, height)}px`; // Minimum 20px for visibility
         
         // Update labels
         sideALabel.textContent = `a = ${sideA}`;
