@@ -137,8 +137,8 @@ Ein Entwurf der Aufgabenblätter inkl. Lehrendenversion mit Musterlösungen [fin
 
 - [Web-App zur Bild-/Objekterkennung](/webapps/object/index.html) als Einstieg in den Unterricht oder die Fortbildung, zum Experimentieren, Verhalten und Grenzen austesten.Anleitung zur Installation der Webseite als App und zur Offline-Nutzung folgen. Empfohlen auf einem Tablet, um die Kamera auf der Rückseite nutzen zu können. <u> Ladezeit beachten, kurz warten und ggf. Kamera-Erlaubnis erteilen </u>
 - Aufgabe 2 zum Thema Lernen, Daten-Repräsentationen und Features. Hier kann in Gruppenarbeit im Anschluss eine KI-gesteuerte Katzenklappe entworfen werden, welche nur Hauskatzen hineinlassen soll, jedoch keine anderen Tiere.
-- In Aufgabe 3 werden mit [Google Teachable Machine](https://teachablemachine.withgoogle.com/) Modelle zur Objekterkennung selbst trainiert. Schließt den Kreis zur erten Bilderkennungsaufgabe und soll zeigen, wie schnell gewisse Eigenschaften oder (Fehl-)Verhalten entstehen können.
-- [Web-Anwendung mit Beispiel zum Training Neuronaler Netze]("/webapps/suessigkeiten/index.html" )
+- In Aufgabe 3 werden mit [Google Teachable Machine](https://teachablemachine.withgoogle.com/) Modelle zur Objekterkennung selbst trainiert. Schließt den Kreis zur ersten Bilderkennungsaufgabe und soll zeigen, wie schnell gewisse Eigenschaften oder (Fehl-)Verhalten entstehen können.
+- [Web-Anwendung mit Beispiel zum Training Neuronaler Netze](https://ddihd.github.io/webapps/suessigkeiten/index.html)
 - **TEST:** [Emotionen klassifizieren](https://ddihd.github.io/webapps/emotions/index.html) oder [Alter und Geschlecht erkennen](https://ddihd.github.io/webapps/agegender/index.html). Hier können zusätzlich zur Datenlage auch gesellschaftliche Probleme bzgl. Moral, Nutzen und Technologievertrauen diskutiert werden.
 
 
