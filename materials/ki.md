@@ -133,7 +133,7 @@ Viele Interaktionen mit und um Neuronale Netze herum geschehen durch Daten. Wäh
 
 ### Vorläufige Inhalte
  
-Ein Entwurf der Aufgabenblätter inkl. Lehrendenversion mit Musterlösungen [findet sich hier](https://heibox.uni-heidelberg.de/f/a00130fc3a3646ffa1bd/?dl=1)
+Ein Entwurf der Aufgabenblätter inkl. Lehrendenversion mit Musterlösungen [findet sich hier](https://heibox.uni-heidelberg.de/f/2926230cb8ad4cf9a012/?dl=1)
 
 - [Web-App zur Bild-/Objekterkennung](/webapps/object/index.html) als Einstieg in den Unterricht oder die Fortbildung, zum Experimentieren, Verhalten und Grenzen austesten.Anleitung zur Installation der Webseite als App und zur Offline-Nutzung folgen. Empfohlen auf einem Tablet, um die Kamera auf der Rückseite nutzen zu können. <u> Ladezeit beachten, kurz warten und ggf. Kamera-Erlaubnis erteilen </u>
 - Aufgabe 2 zum Thema Lernen, Daten-Repräsentationen und Features. Hier kann in Gruppenarbeit im Anschluss eine KI-gesteuerte Katzenklappe entworfen werden, welche nur Hauskatzen hineinlassen soll, jedoch keine anderen Tiere.
