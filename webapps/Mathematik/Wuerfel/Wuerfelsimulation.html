@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Würfelsimulation</title>
+    <script src="MINT-ProNeD_Mathe_DatenUndZufall_Chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        #controls, #results {
+            margin-bottom: 20px;
+        }
+        #diceContainer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .side-input {
+            margin-bottom: 5px;
+        }
+        .probability-input {
+            width: 60px;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #throwsInput {
+            width: 100px;
+            padding: 5px;
+        }
+        #totalThrows {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Würfelsimulation</h1>
+    <div id="controls">
+        <button id="addSideBtn">Seite hinzufügen</button>
+        <button id="removeSideBtn">Seite entfernen</button>
+        <label for="throwsInput">Anzahl Würfe:</label>
+        <input type="number" id="throwsInput" min="1" value="1000">
+        <button id="throwButton">Werfen</button>
+        <button id="resetButton">Zürcksetzen</button>
+    </div>
+    <div id="diceContainer"></div>
+    <div id="totalThrows">Anzahl insg.: 0</div>
+    <div id="results">
+        <canvas id="histogram"></canvas>
+    </div>
+
+    <script>
+
+
+        // values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+        // probs = [0.01, 0.01, 0.07, 0.10, 0.17, 0.29, 0.17, 0.10, 0.07, 0.01, 0.01];
+
+
+        let sideCount = 0;
+        let chart;
+        let accumulatedResults = [];
+        let totalThrows = 0;
+
+        function addSide() {
+            sideCount++;
+            const sideDiv = document.createElement('div');
+            sideDiv.className = 'side-input';
+            sideDiv.innerHTML = `
+                <label>
+                    Side ${sideCount}:
+                    <input type="number" class="probability-input" value="${1/sideCount}" min="0" max="1" step="0.01">
+                </label>
+            `;
+            document.getElementById('diceContainer').appendChild(sideDiv);
+            updateProbabilities();
+            resetAccumulation();
+        }
+
+        function removeSide() {
+            if (sideCount > 2) {
+                document.getElementById('diceContainer').lastChild.remove();
+                sideCount--;
+                updateProbabilities();
+                resetAccumulation();
+            } else {
+                alert("A dice must have at least 2 sides.");
+            }
+        }
+
+        function updateProbabilities() {
+            const inputs = document.querySelectorAll('.probability-input');
+            const equalProb = 1 / sideCount;
+            inputs.forEach(input => {
+                input.value = equalProb.toFixed(4);
+            });
+        }
+
+        function getDiceProbabilities() {
+            const probInputs = document.querySelectorAll('.probability-input');
+            return Array.from(probInputs).map(input => parseFloat(input.value));
+        }
+
+        function normalizeProbabilities(probs) {
+            const sum = probs.reduce((a, b) => a + b, 0);
+            return probs.map(p => p / sum);
+        }
+
+        function throwDice(probabilities) {
+            const random = Math.random();
+            let cumulativeProbability = 0;
+            for (let i = 0; i < probabilities.length; i++) {
+                cumulativeProbability += probabilities[i];
+                if (random < cumulativeProbability) {
+                    return i + 1;
+                }
+            }
+            return probabilities.length;
+        }
+
+        function simulateThrows(numThrows, probabilities) {
+            const results = new Array(probabilities.length).fill(0);
+            for (let i = 0; i < numThrows; i++) {
+                const outcome = throwDice(probabilities);
+                results[outcome - 1]++;
+            }
+            return results;
+        }
+
+        function updateChart(results, expectedResults) {
+            const ctx = document.getElementById('histogram').getContext('2d');
+            const labels = Array.from({length: sideCount}, (_, i) => i + 1);
+            const data = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Accumulated throws',
+                        data: results,
+                        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1,
+                        type: 'bar'
+                    },
+                    {
+                        label: 'Expected distribution',
+                        data: expectedResults,
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderWidth: 2,
+                        type: 'line',
+                        fill: false,
+                        pointRadius: 5,
+                        pointHoverRadius: 7,
+                        tension: 0.1
+                    }
+                ]
+            };
+
+            if (chart) {
+                chart.destroy();
+            }
+
+            chart = new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Frequency'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Dice Value'
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                afterLabel: function(context) {
+                                    const dataIndex = context.dataIndex;
+                                    const probability = expectedResults[dataIndex] / expectedResults.reduce((a, b) => a + b, 0) * 100;
+                                    return `Probability: ${probability.toFixed(2)}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function resetAccumulation() {
+            accumulatedResults = new Array(sideCount).fill(0);
+            totalThrows = 0;
+            updateTotalThrows();
+            updateChart(accumulatedResults, accumulatedResults);
+        }
+
+        function updateTotalThrows() {
+            document.getElementById('totalThrows').textContent = `Total throws: ${totalThrows}`;
+        }
+
+        document.getElementById('addSideBtn').addEventListener('click', addSide);
+        document.getElementById('removeSideBtn').addEventListener('click', removeSide);
+        document.getElementById('throwButton').addEventListener('click', function() {
+            const numThrows = parseInt(document.getElementById('throwsInput').value);
+            if (numThrows > 0 && sideCount >= 2) {
+                let probabilities = getDiceProbabilities();
+                probabilities = normalizeProbabilities(probabilities);
+                const results = simulateThrows(numThrows, probabilities);
+                
+                if (accumulatedResults.length !== results.length) {
+                    accumulatedResults = new Array(results.length).fill(0);
+                }
+                accumulatedResults = accumulatedResults.map((val, idx) => val + results[idx]);
+                totalThrows += numThrows;
+                
+                const expectedResults = probabilities.map(p => p * totalThrows);
+                updateChart(accumulatedResults, expectedResults);
+                updateTotalThrows();
+            } else {
+                alert('Please enter a valid number of throws and ensure the dice has at least 2 sides.');
+            }
+        });
+
+        document.getElementById('resetButton').addEventListener('click', resetAccumulation);
+
+        // Initialize with a 6-sided die
+        for (let i = 0; i < 6; i++) {
+            addSide();
+        }
+    </script>
+</body>
+</html>
