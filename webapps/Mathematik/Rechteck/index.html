@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rechteck Fläche</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top-container">
+            <div class="controls">
+                <div class="slider-container">
+                    <label for="area-slider">A (Flächeninhalt) = <span id="area-value">36</span></label>
+                    <input type="range" id="area-slider" min="1" max="50" value="36" step="1">
+                </div>
+                <div class="slider-container">
+                    <label for="side-a-slider">a = <span id="side-a-value">6</span></label>
+                    <input type="range" id="side-a-slider" min="1" max="36" value="6" step="1">
+                </div>
+                <div class="result">
+                    <p>b = <span id="side-b-value">6</span></p>
+                </div>
+            </div>
+            <div class="rectangle-container">
+                <div class="rectangle" id="rectangle">
+                    <span class="side-a-label">a = 6</span>
+                    <span class="side-b-label">b = 6</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

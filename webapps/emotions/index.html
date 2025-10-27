@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="manifest.json">
+    <title>Face Emotion Detection</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            position: relative;
+            width: 720px;
+            height: 560px;
+        }
+        #video {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        #overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script defer src="face-api.js"></script>
+    <script src="jquery-2.1.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <video id="video" width="720" height="560" autoplay muted></video>
+        <canvas id="overlay" width="720" height="560"></canvas>
+    </div>
+
+    <script>
+        async function loadModels() {
+            await faceapi.nets.ssdMobilenetv1.loadFromUri('models');
+            await faceapi.nets.faceExpressionNet.loadFromUri('models');
+        }
+
+        async function onPlay() {
+            const videoEl = $('#video').get(0);
+
+            if(videoEl.paused || videoEl.ended)
+                return setTimeout(() => onPlay());
+
+            const result = await faceapi.detectAllFaces(videoEl)
+                .withFaceExpressions();
+
+            if (result.length > 0) {
+                const canvas = $('#overlay').get(0);
+                const dims = faceapi.matchDimensions(canvas, videoEl, true);
+                const resizedResult = faceapi.resizeResults(result, dims);
+                
+                // Clear previous drawings
+                const ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw bounding boxes and expressions
+                resizedResult.forEach(detection => {
+                    const box = detection.detection.box;
+                    const drawBox = new faceapi.draw.DrawBox(box, { 
+                        label: Object.entries(detection.expressions)
+                            .reduce((a, b) => (a[1] > b[1] ? a : b))[0] +
+                            ': ' + 
+                            Math.round(Math.max(...Object.values(detection.expressions)) * 100) + '%'
+                    });
+                    drawBox.draw(canvas);
+                });
+            }
+
+            setTimeout(() => onPlay());
+        }
+
+        async function startWebcam() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                const videoElement = document.getElementById('video');
+                videoElement.srcObject = stream;
+            } catch (error) {
+                console.error("Error accessing the webcam:", error);
+            }
+        }
+
+        async function init() {
+            await loadModels();
+            await startWebcam();
+            $('#video').on('play', onPlay);
+        }
+
+        $(document).ready(function() {
+            init();
+        });
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

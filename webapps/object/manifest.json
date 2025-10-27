@@ -1,0 +1,16 @@
+{
+  "name": "Objekterkennung",
+  "short_name": "Objekte",
+  "description": "Offline-capable object detection app",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "rgb(254, 247, 232)",
+  "theme_color": "rgba(211, 131, 248, 0.8)",
+  "icons": [
+    {
+      "src": "object.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+} 

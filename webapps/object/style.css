@@ -1,0 +1,99 @@
+video {
+  display: block;
+  width: 70%;
+  height: 52.5vw;
+  min-width: 640px;
+  min-height: 480px;
+  margin: 0 auto; /* Center horizontally */
+  object-fit: contain;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  opacity: 1;
+  transition: opacity 500ms ease-in-out;
+}
+.removed {
+  display: none;
+}
+
+
+.camView {
+  position: relative;
+  float: center;
+  text-align: center;
+  width: calc(100% - 20px);
+  margin: 10px;
+  cursor: pointer;
+}
+
+.camView p {
+  position: absolute;
+  padding: 5px;
+  background-color: rgba(211, 131, 248, 0.4);
+  color: #FFF;
+  border: 1px dashed rgba(211, 131, 248, 0.8);
+  z-index: 2;
+  font-size: 12px;
+}
+
+.highlighter {
+  background: rgba(211, 131, 248, 0.4);
+  border: 1px dashed rgba(211, 131, 248, 0.8);
+  z-index: 1;
+  position: absolute;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto 20px auto;  /* Changed: adds bottom margin before video */
+}
+
+.confidence-slider {
+  -webkit-appearance: none;
+  width: 200px;
+  height: 10px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  margin: 0 auto;  /* Added: centers the slider */
+  display: block;  /* Added: allows margin auto to work */
+}
+
+.confidence-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(211, 131, 248, 0.8);
+  cursor: pointer;
+}
+
+.confidence-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(211, 131, 248, 0.8);
+  cursor: pointer;
+}
+
+label{
+  font-size: 20px;
+}
+
+body{
+  background-color: rgb(254, 247, 232);
+}
+
+video#webcam {
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+}

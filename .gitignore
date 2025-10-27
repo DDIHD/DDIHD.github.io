@@ -1,0 +1,57 @@
+# Ruby specific
+*.gem
+*.rbc
+/.config
+/coverage/
+/InstalledFiles
+/pkg/
+/spec/reports/
+/spec/examples.txt
+/test/tmp/
+/test/version_tmp/
+/tmp/
+Gemfile.lock
+
+# Environment
+.env
+.env.*
+/.bundle/
+/vendor/bundle
+/lib/bundler/man/
+
+# Logs
+*.log
+log/*
+!/log/.keep
+
+# Temporary files
+.byebug_history
+.dat*
+.repl_history
+build/
+*.bridgesupport
+
+# IDE specific
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Documentation cache and generated files
+/.yardoc/
+/_yardoc/
+/doc/
+/rdoc/
+/_site/
+/.jekyll-cache/
+

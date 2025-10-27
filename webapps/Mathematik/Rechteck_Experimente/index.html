@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rechteck</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="experiment-selector">
+            <button id="exp-area" class="exp-button active">Flächeninhalt<br>
+                <span style="font-size: smaller;">(b konstant)</span></button>
+            <button id="exp-perimeter" class="exp-button">Umfang<br>
+                <span style="font-size: smaller;">(b konstant)</span></button>
+            <button id="exp-au" class="exp-button">Flächeninhalt<br>
+                <span style="font-size: smaller;">(u konstant)</span></button>
+            <button id="exp-ua" class="exp-button">Umfang<br>
+                <span style="font-size: smaller;">(A konstant)</span></button>
+        </div>
+
+        <div class="main-content">
+            <div class="controls">
+                <!-- Sliders will be dynamically configured by JS -->
+                <div id="slider2-container" class="slider-container">
+                    <div class="slider-header">
+                        <label for="slider2"><span id="slider2-label"></span>: <span id="slider2-value"></span></label>
+                        <button id="lock-slider2" class="lock-button">
+                            <img src="lock.svg" alt="Lock" class="lock-icon">
+                        </button>
+                    </div>
+                    <input type="range" id="slider2" min="1" max="50" value="10" step="1">
+                </div>
+                <div id="slider1-container" class="slider-container">
+                    <label for="slider1"><span id="slider1-label"></span>: <span id="slider1-value"></span></label>
+                    <input type="range" id="slider1" min="1" max="50" value="10" step="1">
+                </div>
+
+                
+                <!-- Outputs will be dynamically configured by JS -->
+                <div id="output1-container" class="result hidden">
+                    <p><span id="output1-label"></span> = <span id="output1-value"></span></p>
+                </div>
+                <div id="output2-container" class="result hidden">
+                    <p><span id="output2-label"></span> = <span id="output2-value"></span></p>
+                </div>
+
+                <button id="show-graph-btn" class="graph-button">Lösungsgraph anzeigen</button>
+            </div>
+
+            <div class="rectangle-container">
+                <div class="rectangle" id="rectangle">
+                    <span class="side-a-label">a = 4</span>
+                    <span class="side-b-label">b = 4</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="graph-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <canvas id="solution-graph"></canvas>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
