@@ -1,0 +1,84 @@
+.app-embed {
+  width: 50%;
+}
+
+/* Fullscreen functionality */
+.fs-active {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 9999 !important;
+  background: white !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.fs-lock {
+  overflow: hidden !important;
+}
+
+/* Fullscreen toggle button styling */
+.fs-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #d383f8;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.fs-toggle:hover {
+  background: rgba(211, 131, 248, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(211, 131, 248, 0.3);
+}
+
+.fs-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Ensure webapp containers are positioned */
+/* [data-fs-container] {
+  position: relative;
+} */
+
+/* ################## SHOWCASE ################## */
+
+#quarto-sidebar {
+  display: none;
+}
+#title-block-header {
+  display: none;
+}
+
+[data-fs-container] {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+/*/ INSERT_YOUR_CODE */
+.nav-page-previous {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  z-index: 99999 !important;
+}
+
+.nav-page-next {
+  position: fixed !important;
+  top: 0;
+  right: 0;
+  z-index: 99999 !important;
+}
+
