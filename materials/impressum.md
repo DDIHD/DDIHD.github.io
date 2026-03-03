@@ -5,7 +5,7 @@ description: "Team, Kontakt und rechtliche Anmerkungen"
 category: material
 ---
 ## Team
-Lehrstuhl Didaktik der Informatik Heidelberg
+Lehrstuhl Didaktik der Informatik Heidelberg  
 Prof. Dr. Claudia Hildebrandt (CZS Stiftungsprofessorin für Informatik und ihre Didaktik)
 
 ![Team Bild]({{ site.baseurl }}/assets/imgs/team25.jpeg)
@@ -13,30 +13,30 @@ Prof. Dr. Claudia Hildebrandt (CZS Stiftungsprofessorin für Informatik und ihre
 
 ## Impressum
 
-Verantwortung: [Frau Prof. Dr. Claudia Hildebrandt](https://hse-heidelberg.de/ueber-die-hse/team-von-a-z/hildebrandt-claudia)
+Verantwortung: [Frau Prof. Dr. Claudia Hildebrandt](https://hse-heidelberg.de/ueber-die-hse/team-von-a-z/hildebrandt-claudia)  
 
-Heidelberg School of Education
-Bergheimer Straße 104
-Raum 005
-69115 Heidelberg
-Deutschland
+Heidelberg School of Education  
+Bergheimer Straße 104  
+Raum 005  
+69115 Heidelberg  
+Deutschland  
 
-Tel +49 6221 477-6755
-Email: hildebrandt@ph-heidelberg.de
+Tel +49 6221 477-6755  
+Email: hildebrandt@ph-heidelberg.de  
 
 ## Rechtliches
 
-Alle Inhalte unterliegen, wenn nicht explizit anderweitig gekennzeichnet, der [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/) Lizenz und sind Eigenproduktionen.
+Alle Inhalte unterliegen, wenn nicht explizit anderweitig gekennzeichnet, der [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/) Lizenz und sind Eigenproduktionen.  
 
-Für Fortbildungsinhalte, Code, Code-Module oder im Code verwendete Quellen, Datenquellen, Medieninhalte, Texte, Modelle und dergleichen bezüglich der KI Fortbildung sind weitere Lizenzen und Vermerke unter [kifortbildung](https://github.com/DDIHD/kifortbildung) einsehbar.
+Für Fortbildungsinhalte, Code, Code-Module oder im Code verwendete Quellen, Datenquellen, Medieninhalte, Texte, Modelle und dergleichen bezüglich der KI Fortbildung sind weitere Lizenzen und Vermerke unter [kifortbildung](https://github.com/DDIHD/kifortbildung) einsehbar.  
 
-Inhalte, welche durch Drittmittel ermöglicht wurden, sind wie folgt gekennzeichnet und ggf. mit erklärendem Vermerk versehen:
+Inhalte, welche durch Drittmittel ermöglicht wurden, sind wie folgt gekennzeichnet und ggf. mit erklärendem Vermerk versehen:  
 
-### MINT-ProNeD
-Kennzeichen: †
+### MINT-ProNeD  
+Kennzeichen: †  
 
-Fördersatz: TODO
-Förderzeichen: TODO
+Fördersatz: TODO  
+Förderzeichen: TODO  
 
 ![EU]({{ site.baseurl }}/assets/imgs/eu.png)
 ![EU]({{ site.baseurl }}/assets/imgs/bmbfsfj.png)
