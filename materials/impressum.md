@@ -27,7 +27,9 @@ Email: hildebrandt@ph-heidelberg.de
 ## Rechtliches
 
 Alle Inhalte unterliegen, wenn nicht explizit anderweitig gekennzeichnet, der [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/) Lizenz und sind Eigenproduktionen.
-Für Fortbildungsinhalte, Code, Code-Module oder im Code verwendete Quellen, Datenquellen, Medieninhalte, Texte, Modelle und dergleichen sind weitere Lizenzen und Vermerke unter [kifortbildung](https://github.com/DDIHD/kifortbildung) einsehbar.
+
+Für Fortbildungsinhalte, Code, Code-Module oder im Code verwendete Quellen, Datenquellen, Medieninhalte, Texte, Modelle und dergleichen bezüglich der KI Fortbildung sind weitere Lizenzen und Vermerke unter [kifortbildung](https://github.com/DDIHD/kifortbildung) einsehbar.
+
 Inhalte, welche durch Drittmittel ermöglicht wurden, sind wie folgt gekennzeichnet und ggf. mit erklärendem Vermerk versehen:
 
 ### MINT-ProNeD
