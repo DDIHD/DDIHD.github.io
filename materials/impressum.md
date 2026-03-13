@@ -13,15 +13,16 @@ Prof. Dr. Claudia Hildebrandt (CZS Stiftungsprofessorin für Informatik und ihre
 
 ## Impressum
 
-Verantwortung: [Frau Prof. Dr. Claudia Hildebrandt]([https://hse-heidelberg.de/ueber-die-hse/team-von-a-z/hildebrandt-claudia](https://www.ph-heidelberg.de/prof-dr-hildebrandt-claudia.html)  
+Verantwortung: [Frau Prof. Dr. Claudia Hildebrandt](https://www.ph-heidelberg.de/prof-dr-hildebrandt-claudia.html)  
 
 
-Im Neuenheimer Feld 561
-69120 Heidelberg
-Deutschland  
+Im Neuenheimer Feld 561 
+69120 Heidelberg 
+Deutschland   
 
-Tel +49 6221 477-662  
+Tel: +49 6221 477-662  
 Email: hildebrandt@ph-heidelberg.de  
+Sprechzeiten: bitte per Email melden
 
 ## Rechtliches
 
