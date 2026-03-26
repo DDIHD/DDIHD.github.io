@@ -4,9 +4,7 @@ title: Team und Impressum
 description: "Team, Kontakt und rechtliche Anmerkungen"
 category: material
 ---
-## Team
-Lehrstuhl Didaktik der Informatik Heidelberg  
-Prof. Dr. Claudia Hildebrandt (CZS Stiftungsprofessorin für Informatik und ihre Didaktik)
+## Team von Prof. Dr. Claudia Hildebrandt (CZS Stiftungsprofessorin für Informatik und ihre Didaktik)
 
 ![Team Bild]({{ site.baseurl }}/assets/imgs/team25.jpeg)
 *Jonas Braun, Claudia Hildebrandt, Matthias Matzner, Carl Bürkel, Christina Hund*
