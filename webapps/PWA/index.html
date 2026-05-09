@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>PWA Alters- und Geschlechtserkennung</title>
+  <link rel="icon" href="icon-512.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f6fa;
+      --card: #ffffff;
+      --line: #d6deeb;
+      --text: #1f2735;
+      --muted: #5d6b82;
+      --accent: #0a84ff;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .app {
+      width: 100vw;
+      height: 100vh;
+      padding: 10px;
+      display: block;
+    }
+    .status-inline {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 58%;
+    }
+    .tabs {
+      height: 100%;
+      min-height: 0;
+      display: grid;
+      grid-template-rows: 44px minmax(0, 1fr);
+      gap: 10px;
+    }
+    .tab-buttons {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 6px;
+    }
+    .tab-buttons .status-inline {
+      margin-left: auto;
+      max-width: 38%;
+      text-align: right;
+    }
+    .tab-btn {
+      border: 1px solid #b8c4da;
+      background: #fff;
+      color: #1e2635;
+      border-radius: 8px;
+      height: 30px;
+      padding: 0 11px;
+      font: inherit;
+      font-size: 13px;
+    }
+    .tab-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+      font-weight: 600;
+    }
+    .tab-content {
+      height: 100%;
+      min-height: 0;
+      position: relative;
+    }
+    .tab-panel {
+      display: none;
+      position: absolute;
+      inset: 0;
+      min-height: 0;
+    }
+    .tab-panel.active {
+      display: block;
+    }
+    .panel-fill {
+      height: 100%;
+      min-height: 0;
+    }
+    .panel {
+      min-height: 0;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 8px;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: 8px;
+    }
+    .panel h2 {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      color: #2b3b57;
+    }
+    .live-wrap {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #d7dfec;
+      background: #000;
+    }
+    #video, #overlay {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .images-toolbar,
+    .adv-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    button, select {
+      border: 1px solid #b8c4da;
+      background: #fff;
+      color: #1e2635;
+      border-radius: 8px;
+      height: 34px;
+      padding: 0 11px;
+      font: inherit;
+      font-size: 13px;
+    }
+    button.primary {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+    }
+    .images-grid {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .image-card {
+      border: 1px solid #e1e7f2;
+      border-radius: 8px;
+      background: #fafcff;
+      padding: 6px;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 4px;
+      min-height: 0;
+    }
+    .image-title {
+      font-size: 11px;
+      color: #596a86;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .image-canvas {
+      width: 100%;
+      height: 100%;
+      border: 1px solid #dde4f0;
+      border-radius: 6px;
+      background: #fff;
+      object-fit: contain;
+    }
+    .image-result {
+      font-size: 11px;
+      color: #2a344a;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .dataset-media {
+      min-height: 0;
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: start;
+    }
+    .dataset-media img {
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      object-fit: contain;
+      border: 1px solid #dce5f3;
+      border-radius: 8px;
+      background: #fff;
+    }
+    .dataset-doc {
+      font-size: 20px;
+      line-height: 1.35;
+      font-weight: 500;
+      color: #2f3e58;
+    }
+    .adv-grid {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .adv-card {
+      border: 1px solid #e1e7f2;
+      border-radius: 8px;
+      background: #fafcff;
+      padding: 6px;
+      min-height: 0;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: 4px;
+    }
+    .adv-title {
+      font-size: 11px;
+      color: #596a86;
+    }
+    .adv-video, .adv-canvas {
+      width: 100%;
+      height: 100%;
+      border: 1px solid #dde4f0;
+      border-radius: 6px;
+      background: #fff;
+      object-fit: contain;
+    }
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .factor {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid #d5deeb;
+      border-radius: 8px;
+      padding: 2px 6px;
+      background: #fff;
+      height: 34px;
+      font-size: 12px;
+      color: #44546e;
+    }
+    .attack-layout {
+      height: 100%;
+      min-height: 0;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 8px;
+    }
+    .images-layout {
+      height: 100%;
+      min-height: 0;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: 8px;
+    }
+  </style>
+  <script src="tf.min.js"></script>
+  <script src="ml.js"></script>
+</head>
+<body>
+  <main class="app">
+    <section class="tabs">
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-tab="live">Live</button>
+        <button class="tab-btn" data-tab="images">Bilder</button>
+        <button class="tab-btn" data-tab="dataset">Datensatz</button>
+        <button class="tab-btn" data-tab="adversarial">Angriff</button>
+        <span id="status" class="status-inline">pwa-ipad-v1</span>
+      </div>
+      <div class="tab-content">
+        <section id="panel-live" class="tab-panel active">
+          <article class="panel panel-fill">
+            <h2>Live-Erkennung</h2>
+            <div class="live-wrap">
+              <video id="video" width="720" height="560" autoplay muted playsinline></video>
+              <canvas id="overlay" width="720" height="560"></canvas>
+            </div>
+          </article>
+        </section>
+
+        <section id="panel-images" class="tab-panel">
+          <article class="panel panel-fill images-layout">
+            <div class="images-toolbar">
+              <h2 style="margin-right: auto;">Bilder</h2>
+              <button id="btn-run-images-inference" class="primary">Vorhersage</button>
+              <span id="images-status" style="font-size:12px;color:#5d6b82;">Warten auf Modelle...</span>
+            </div>
+            <div id="image-grid" class="images-grid"></div>
+          </article>
+        </section>
+
+        <section id="panel-dataset" class="tab-panel">
+          <article class="panel panel-fill">
+            <h2>Datensatz</h2>
+            <div class="dataset-media">
+              <img src="dataset_samples.png" alt="Datensatz-Beispielcollage">
+              <div class="dataset-doc">
+                Dokumentation: Das Modell wurde auf den folgenden Datensaetzen trainiert und getestet:
+                UTK, FGNET, Chalearn, Wiki, IMDB, CACD, MegaAge, MegaAge-Asian.
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section id="panel-adversarial" class="tab-panel">
+          <article class="panel panel-fill attack-layout">
+            <div class="adv-controls">
+              <h2 style="margin-right: auto;">Multistep Adversarial</h2>
+              <button id="btn-adv-take-picture">Bild aufnehmen</button>
+              <button id="btn-adv-resume">Kamera weiterlaufen lassen</button>
+              <select id="adv-target-gender">
+                <option value="male">Ziel: maennlich</option>
+                <option value="female">Ziel: weiblich</option>
+              </select>
+              <button id="btn-adv-compute" class="primary">Start</button>
+              <div class="factor">
+                Faktor
+                <button type="button" id="adv-factor-dec">-</button>
+                <span id="adv-factor-value">0.0</span>
+                <button type="button" id="adv-factor-inc">+</button>
+              </div>
+            </div>
+
+            <div class="adv-grid">
+              <div class="adv-card">
+                <div class="adv-title">Webcam (live/eingefroren)</div>
+                <video id="adv-video" class="adv-video" width="480" height="360" autoplay muted playsinline></video>
+              </div>
+              <div class="adv-card">
+                <div class="adv-title">Original + Vorhersage</div>
+                <canvas id="adv-original-canvas" class="adv-canvas"></canvas>
+              </div>
+              <div class="adv-card">
+                <div class="adv-title">Gradient</div>
+                <canvas id="adv-gradient-canvas" class="adv-canvas"></canvas>
+              </div>
+              <div class="adv-card">
+                <div class="adv-title">Gestoert + Vorhersage</div>
+                <canvas id="adv-perturbed-canvas" class="adv-canvas"></canvas>
+              </div>
+            </div>
+
+            <div class="meta">
+              <span id="adv-status">Bitte zuerst ein Bild aufnehmen.</span>
+              <span id="adv-results"></span>
+            </div>
+          </article>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const APP_VERSION = 'pwa-ipad-v1';
+    const IMAGE_FOLDER = 'images/';
+    const ATTACK_STEPS = 8;
+    const FACTOR_STEP = 0.2;
+    const FACTOR_MIN = 0;
+    const FACTOR_MAX = 16;
+
+    const videoEl = document.getElementById('video');
+    const overlay = document.getElementById('overlay');
+    const status = document.getElementById('status');
+
+    const imagesStatusEl = document.getElementById('images-status');
+    const imageGridEl = document.getElementById('image-grid');
+    const runImagesInferenceBtn = document.getElementById('btn-run-images-inference');
+
+    const advVideoEl = document.getElementById('adv-video');
+    const advOriginalCanvasEl = document.getElementById('adv-original-canvas');
+    const advGradientCanvasEl = document.getElementById('adv-gradient-canvas');
+    const advPerturbedCanvasEl = document.getElementById('adv-perturbed-canvas');
+    const advStatusEl = document.getElementById('adv-status');
+    const advResultsEl = document.getElementById('adv-results');
+    const advTakeBtn = document.getElementById('btn-adv-take-picture');
+    const advResumeBtn = document.getElementById('btn-adv-resume');
+    const advComputeBtn = document.getElementById('btn-adv-compute');
+    const advTargetGenderEl = document.getElementById('adv-target-gender');
+    const advFactorValueEl = document.getElementById('adv-factor-value');
+    const advFactorDecBtn = document.getElementById('adv-factor-dec');
+    const advFactorIncBtn = document.getElementById('adv-factor-inc');
+    const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
+    const tabPanels = {
+      live: document.getElementById('panel-live'),
+      images: document.getElementById('panel-images'),
+      dataset: document.getElementById('panel-dataset'),
+      adversarial: document.getElementById('panel-adversarial')
+    };
+
+    let imageCards = [];
+    let imagesLoadedOnce = false;
+    let webcamStream = null;
+    let advCaptured = false;
+    let advFaceTensor = null;
+    let advGradTensor = null;
+    let advBasePrediction = null;
+    let advHasComputed = false;
+    let advUpdateTimer = null;
+    let factor = 0;
+    let activeTab = 'live';
+
+    function setActiveTab(tab) {
+      activeTab = tab;
+      tabButtons.forEach((btn) => btn.classList.toggle('active', btn.dataset.tab === tab));
+      Object.entries(tabPanels).forEach(([key, panel]) => {
+        panel.classList.toggle('active', key === tab);
+      });
+      if (tab === 'images' && !imagesLoadedOnce) {
+        loadImagesFromFolder();
+      }
+    }
+
+    function clamp(v, min, max) {
+      return Math.max(min, Math.min(max, v));
+    }
+
+    function updateFactorDisplay() {
+      advFactorValueEl.textContent = factor.toFixed(1);
+    }
+
+    function clearCanvas(canvas) {
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function disposeAdversarialTensors() {
+      if (advFaceTensor) {
+        advFaceTensor.dispose();
+        advFaceTensor = null;
+      }
+      if (advGradTensor) {
+        advGradTensor.dispose();
+        advGradTensor = null;
+      }
+      advBasePrediction = null;
+      advHasComputed = false;
+    }
+
+    async function startWebcam() {
+      if (!webcamStream) {
+        webcamStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } });
+      }
+      videoEl.srcObject = webcamStream;
+      advVideoEl.srcObject = webcamStream;
+      await videoEl.play();
+      await advVideoEl.play();
+    }
+
+    function parseImageLinksFromDirectoryHtml(htmlText) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(htmlText, 'text/html');
+      const anchors = Array.from(doc.querySelectorAll('a[href]'));
+      const baseUrl = new URL(IMAGE_FOLDER, window.location.href);
+      const urls = anchors
+        .map((a) => a.getAttribute('href'))
+        .filter((href) => !!href && href !== '../')
+        .map((href) => new URL(href, baseUrl).href)
+        .filter((resolvedUrl) => /\.(png|jpg|jpeg|webp|gif)$/i.test(resolvedUrl));
+      return Array.from(new Set(urls));
+    }
+
+    function drawPredictionLabel(ctx, prediction, showAge = true) {
+      const line = showAge
+        ? `${Math.round(prediction.age)} Jahre | ${prediction.gender} (${Math.round(prediction.genderProbability * 100)}%)`
+        : `${prediction.gender} (${Math.round(prediction.genderProbability * 100)}%)`;
+      const padding = 6;
+      const h = 22;
+      const w = ctx.measureText(line).width + padding * 2;
+      ctx.fillStyle = '#0a84ff';
+      ctx.fillRect(4, 4, w, h);
+      ctx.fillStyle = '#fff';
+      ctx.font = '13px Arial';
+      ctx.textBaseline = 'top';
+      ctx.fillText(line, 4 + padding, 7);
+    }
+
+    function drawImageWithDetections(canvas, img, detections) {
+      const ctx = canvas.getContext('2d');
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      ctx.font = '15px Arial';
+      ctx.textBaseline = 'top';
+      for (const det of detections) {
+        const x = det.box.x;
+        const y = det.box.y;
+        const w = det.box.width;
+        const h = det.box.height;
+        ctx.lineWidth = 5;
+        ctx.strokeStyle = '#0a84ff';
+        ctx.strokeRect(x, y, w, h);
+
+        const lines = [
+          `${Math.round(det.age)} Jahre`,
+          `${det.gender} (${Math.round(det.genderProbability * 100)}%)`
+        ];
+        const padding = 6;
+        const lineHeight = 18;
+        const labelH = lines.length * lineHeight + padding * 2;
+        const labelW = Math.max(...lines.map((line) => ctx.measureText(line).width)) + padding * 2;
+        let labelY = y - labelH - 2;
+        if (labelY < 0) labelY = y + h + 2;
+
+        ctx.fillStyle = '#0a84ff';
+        ctx.fillRect(x, labelY, labelW, labelH);
+        ctx.fillStyle = '#fff';
+        lines.forEach((line, idx) => {
+          ctx.fillText(line, x + padding, labelY + padding + idx * lineHeight);
+        });
+      }
+    }
+
+    async function loadImagesFromFolder() {
+      imagesStatusEl.textContent = 'Lade Bilder...';
+      imageGridEl.innerHTML = '';
+      imageCards = [];
+
+      try {
+        const res = await fetch(IMAGE_FOLDER);
+        if (!res.ok) throw new Error(`Kein Zugriff auf ${IMAGE_FOLDER} (HTTP ${res.status})`);
+        const html = await res.text();
+        const imagePaths = parseImageLinksFromDirectoryHtml(html);
+        if (!imagePaths.length) {
+          imagesStatusEl.textContent = 'Keine Bilder in images/ gefunden.';
+          return;
+        }
+
+        for (const path of imagePaths.slice(0, 4)) {
+          const cardEl = document.createElement('div');
+          cardEl.className = 'image-card';
+
+          const titleEl = document.createElement('div');
+          titleEl.className = 'image-title';
+          titleEl.textContent = path;
+
+          const canvasEl = document.createElement('canvas');
+          canvasEl.className = 'image-canvas';
+
+          const resultEl = document.createElement('div');
+          resultEl.className = 'image-result';
+          resultEl.textContent = 'Bereit';
+
+          cardEl.appendChild(titleEl);
+          cardEl.appendChild(canvasEl);
+          cardEl.appendChild(resultEl);
+          imageGridEl.appendChild(cardEl);
+
+          const img = new Image();
+          img.src = path;
+          const card = { path, img, canvasEl, resultEl, loaded: false };
+          imageCards.push(card);
+          await new Promise((resolve, reject) => {
+            img.onload = resolve;
+            img.onerror = reject;
+          });
+          card.loaded = true;
+          drawImageWithDetections(canvasEl, img, []);
+        }
+        imagesStatusEl.textContent = `${imageCards.length} Bild(er) geladen.`;
+        imagesLoadedOnce = true;
+      } catch (err) {
+        imagesStatusEl.textContent = `Fehler beim Laden: ${err.message}`;
+      }
+    }
+
+    async function runImagesInference() {
+      if (!ml.isLoaded) {
+        imagesStatusEl.textContent = 'Modelle sind noch nicht geladen.';
+        return;
+      }
+      if (!imageCards.length) {
+        imagesStatusEl.textContent = 'Keine Bilder verfuegbar.';
+        return;
+      }
+      imagesStatusEl.textContent = 'Vorhersage laeuft...';
+      runImagesInferenceBtn.disabled = true;
+      let faceCount = 0;
+      try {
+        for (const card of imageCards) {
+          if (!card.loaded) continue;
+          const detections = await ml.detect(card.img);
+          drawImageWithDetections(card.canvasEl, card.img, detections);
+          if (!detections.length) {
+            card.resultEl.textContent = 'Kein Gesicht gefunden.';
+          } else {
+            const best = detections[0];
+            card.resultEl.textContent = `${Math.round(best.age)}J ${best.gender} (${Math.round(best.genderProbability * 100)}%)`;
+          }
+          faceCount += detections.length;
+        }
+        imagesStatusEl.textContent = `Fertig. Gesichter gesamt: ${faceCount}.`;
+      } catch (err) {
+        imagesStatusEl.textContent = `Vorhersage fehlgeschlagen: ${err.message}`;
+      } finally {
+        runImagesInferenceBtn.disabled = false;
+      }
+    }
+
+    function clipFaceBox(box, width, height) {
+      const x = Math.max(0, Math.floor(box.x));
+      const y = Math.max(0, Math.floor(box.y));
+      const w = Math.max(1, Math.min(width - x, Math.floor(box.width)));
+      const h = Math.max(1, Math.min(height - y, Math.floor(box.height)));
+      return { x, y, w, h };
+    }
+
+    function extractLargestFace(detections) {
+      if (!detections.length) return null;
+      return detections.slice().sort((a, b) => b.box.width * b.box.height - a.box.width * a.box.height)[0];
+    }
+
+    async function drawTensorWithPrediction(canvas, tensor4d, prediction, showAge = true) {
+      const img = tf.tidy(() => tensor4d.squeeze().clipByValue(0, 255).toInt());
+      canvas.width = img.shape[1];
+      canvas.height = img.shape[0];
+      await tf.browser.toPixels(img, canvas);
+      img.dispose();
+      if (prediction) {
+        const ctx = canvas.getContext('2d');
+        drawPredictionLabel(ctx, prediction, showAge);
+      }
+    }
+
+    async function captureAdversarialFrame() {
+      if (!ml.isLoaded) {
+        advStatusEl.textContent = 'Modelle sind noch nicht geladen.';
+        return;
+      }
+      if (!advVideoEl.videoWidth) {
+        advStatusEl.textContent = 'Webcam ist noch nicht bereit.';
+        return;
+      }
+
+      disposeAdversarialTensors();
+      clearCanvas(advGradientCanvasEl);
+      clearCanvas(advPerturbedCanvasEl);
+
+      const frameCanvas = document.createElement('canvas');
+      frameCanvas.width = advVideoEl.videoWidth;
+      frameCanvas.height = advVideoEl.videoHeight;
+      frameCanvas.getContext('2d').drawImage(advVideoEl, 0, 0);
+
+      const faces = await ml.detectFacesOnly(frameCanvas);
+      const bestFace = extractLargestFace(faces);
+      if (!bestFace) {
+        advStatusEl.textContent = 'Kein Gesicht gefunden.';
+        return;
+      }
+
+      const clipped = clipFaceBox(bestFace.box, frameCanvas.width, frameCanvas.height);
+      const faceCanvas = document.createElement('canvas');
+      faceCanvas.width = clipped.w;
+      faceCanvas.height = clipped.h;
+      faceCanvas.getContext('2d').drawImage(
+        frameCanvas,
+        clipped.x, clipped.y, clipped.w, clipped.h,
+        0, 0, clipped.w, clipped.h
+      );
+
+      advFaceTensor = tf.tidy(() => tf.browser.fromPixels(faceCanvas).toFloat().expandDims(0));
+      advBasePrediction = await ml.predictAgeGenderFromImageTensor(advFaceTensor);
+      advCaptured = true;
+      advHasComputed = false;
+      await advVideoEl.pause();
+
+      await drawTensorWithPrediction(advOriginalCanvasEl, advFaceTensor, advBasePrediction, false);
+      advStatusEl.textContent = 'Bild aufgenommen. Faktor einstellen und Start druecken.';
+      advResultsEl.textContent = `Basis: ${advBasePrediction.gender} (${Math.round(advBasePrediction.genderProbability * 100)}%)`;
+    }
+
+    async function resumeAdversarialWebcam() {
+      advCaptured = false;
+      disposeAdversarialTensors();
+      clearCanvas(advOriginalCanvasEl);
+      clearCanvas(advGradientCanvasEl);
+      clearCanvas(advPerturbedCanvasEl);
+      advResultsEl.textContent = '';
+      advStatusEl.textContent = 'Kamera laeuft.';
+      await advVideoEl.play();
+    }
+
+    async function computeAdversarialDerivative() {
+      if (!advCaptured || !advFaceTensor) {
+        advStatusEl.textContent = 'Bitte zuerst ein Bild aufnehmen.';
+        return;
+      }
+      advComputeBtn.disabled = true;
+      try {
+        advHasComputed = true;
+        await updatePerturbedPreview(true);
+      } catch (err) {
+        advStatusEl.textContent = `Angriff fehlgeschlagen: ${err.message}`;
+      } finally {
+        advComputeBtn.disabled = false;
+      }
+    }
+
+    async function updatePerturbedPreview(showBusyStatus = false) {
+      if (!advFaceTensor || !advHasComputed) return;
+      if (showBusyStatus) {
+        advStatusEl.textContent = `Angriff laeuft (Schritte=${ATTACK_STEPS}, Faktor=${factor.toFixed(1)})...`;
+      }
+      if (advGradTensor) {
+        advGradTensor.dispose();
+        advGradTensor = null;
+      }
+
+      const attack = await ml.runGenderTargetedAttackForImageTensor(
+        advFaceTensor,
+        advTargetGenderEl.value,
+        { mode: 'multi', epsilon: factor, steps: ATTACK_STEPS }
+      );
+      advGradTensor = attack.gradient;
+
+      const gradVis = tf.tidy(() =>
+        tf.sign(advGradTensor).add(tf.scalar(1)).mul(tf.scalar(127.5)).squeeze().toInt()
+      );
+      advGradientCanvasEl.width = gradVis.shape[1];
+      advGradientCanvasEl.height = gradVis.shape[0];
+      await tf.browser.toPixels(gradVis, advGradientCanvasEl);
+      gradVis.dispose();
+
+      await drawTensorWithPrediction(advPerturbedCanvasEl, attack.perturbed, attack.prediction, false);
+      attack.perturbed.dispose();
+      advResultsEl.textContent = `Basis: ${advBasePrediction.gender} | Gestoert: ${attack.prediction.gender}`;
+      advStatusEl.textContent = `Fertig (Loss=${attack.loss.toFixed(4)}).`;
+    }
+
+    function schedulePerturbedUpdateFromFactor() {
+      if (!advHasComputed) return;
+      if (advUpdateTimer) clearTimeout(advUpdateTimer);
+      advUpdateTimer = setTimeout(() => {
+        updatePerturbedPreview(false).catch((err) => {
+          advStatusEl.textContent = `Angriff fehlgeschlagen: ${err.message}`;
+        });
+      }, 60);
+    }
+
+    async function runLiveInferenceLoop() {
+      while (true) {
+        if (activeTab !== 'live') {
+          await new Promise((r) => setTimeout(r, 120));
+          continue;
+        }
+        if (videoEl.paused || videoEl.ended || videoEl.videoWidth === 0) {
+          await new Promise((r) => setTimeout(r, 100));
+          continue;
+        }
+        try {
+          const t0 = performance.now();
+          const detections = await ml.detect(videoEl);
+          drawDetections(overlay, detections);
+          const ms = (performance.now() - t0).toFixed(0);
+          status.textContent = `${APP_VERSION} | ${detections.length} Gesicht(er) | ${ms} ms`;
+        } catch {
+          status.textContent = `${APP_VERSION} | Vorhersagefehler`;
+        }
+        await new Promise((r) => requestAnimationFrame(r));
+      }
+    }
+
+    runImagesInferenceBtn.addEventListener('click', runImagesInference);
+    advTakeBtn.addEventListener('click', captureAdversarialFrame);
+    advResumeBtn.addEventListener('click', resumeAdversarialWebcam);
+    advComputeBtn.addEventListener('click', computeAdversarialDerivative);
+    advFactorDecBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      factor = clamp(factor - FACTOR_STEP, FACTOR_MIN, FACTOR_MAX);
+      updateFactorDisplay();
+      schedulePerturbedUpdateFromFactor();
+    });
+    advFactorIncBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      factor = clamp(factor + FACTOR_STEP, FACTOR_MIN, FACTOR_MAX);
+      updateFactorDisplay();
+      schedulePerturbedUpdateFromFactor();
+    });
+    tabButtons.forEach((btn) => {
+      btn.addEventListener('click', () => setActiveTab(btn.dataset.tab));
+    });
+
+    async function init() {
+      try {
+        status.textContent = `${APP_VERSION} | Backend wird gestartet...`;
+        imagesStatusEl.textContent = 'Backend wird vorbereitet...';
+        await tf.ready();
+        status.textContent = `${APP_VERSION} | Lade Modelle...`;
+        await ml.loadModels();
+        status.textContent = `${APP_VERSION} | Starte Webcam...`;
+        await startWebcam();
+        updateFactorDisplay();
+        imagesStatusEl.textContent = 'Modelle geladen. Oeffne den Tab Bilder.';
+        advStatusEl.textContent = 'Bereit. Bitte Bild aufnehmen.';
+        setActiveTab('live');
+        runLiveInferenceLoop();
+      } catch (err) {
+        status.textContent = `${APP_VERSION} | Initialisierung fehlgeschlagen`;
+        imagesStatusEl.textContent = `Fehler: ${err.message}`;
+        advStatusEl.textContent = `Fehler: ${err.message}`;
+      }
+    }
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
+      });
+    }
+
+    window.addEventListener('beforeunload', () => {
+      disposeAdversarialTensors();
+    });
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "AgeGender PWA Prototyp",
+  "short_name": "AgeGender",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4f6fa",
+  "theme_color": "#0a84ff",
+  "orientation": "landscape",
+  "icons": [
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
