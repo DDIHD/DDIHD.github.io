@@ -30,10 +30,11 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
     .app {
-      width: 100vw;
-      height: 100vh;
-      padding: 10px;
+      width: 100%;
+      height: 100%;
+      padding: 8px 16px 10px;
       display: block;
+      overflow: hidden;
     }
     .status-inline {
       font-size: 12px;
@@ -48,8 +49,8 @@
       height: 100%;
       min-height: 0;
       display: grid;
-      grid-template-rows: 44px minmax(0, 1fr);
-      gap: 10px;
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: 8px;
     }
     .tab-buttons {
       display: flex;
@@ -58,7 +59,8 @@
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: 10px;
-      padding: 6px;
+      padding: 5px 6px;
+      min-height: 38px;
     }
     .tab-buttons .status-inline {
       margin-left: auto;
@@ -104,10 +106,10 @@
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: 10px;
-      padding: 8px;
+      padding: 6px;
       display: grid;
       grid-template-rows: auto minmax(0, 1fr);
-      gap: 8px;
+      gap: 6px;
     }
     .panel h2 {
       margin: 0;
@@ -156,7 +158,7 @@
       min-height: 0;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px;
+      gap: 6px;
     }
     .image-card {
       border: 1px solid #e1e7f2;
@@ -194,7 +196,7 @@
       min-height: 0;
       display: grid;
       grid-template-rows: minmax(0, 1fr) auto;
-      gap: 12px;
+      gap: 8px;
       align-items: start;
     }
     .dataset-media img {
@@ -207,8 +209,8 @@
       background: #fff;
     }
     .dataset-doc {
-      font-size: 20px;
-      line-height: 1.35;
+      font-size: clamp(16px, 2.1vh, 24px);
+      line-height: 1.25;
       font-weight: 500;
       color: #2f3e58;
     }
@@ -216,7 +218,7 @@
       min-height: 0;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px;
+      gap: 6px;
     }
     .adv-card {
       border: 1px solid #e1e7f2;
@@ -267,14 +269,14 @@
       min-height: 0;
       display: grid;
       grid-template-rows: auto minmax(0, 1fr) auto;
-      gap: 8px;
+      gap: 6px;
     }
     .images-layout {
       height: 100%;
       min-height: 0;
       display: grid;
       grid-template-rows: auto minmax(0, 1fr);
-      gap: 8px;
+      gap: 6px;
     }
   </style>
   <script src="tf.min.js"></script>
@@ -376,6 +378,12 @@
   <script>
     const APP_VERSION = 'pwa-ipad-v1';
     const IMAGE_FOLDER = 'images/';
+    const DEFAULT_IMAGE_PATHS = [
+      `${IMAGE_FOLDER}1.png`,
+      `${IMAGE_FOLDER}2.png`,
+      `${IMAGE_FOLDER}3.png`,
+      `${IMAGE_FOLDER}4.png`
+    ];
     const ATTACK_STEPS = 8;
     const FACTOR_STEP = 0.2;
     const FACTOR_MIN = 0;
@@ -469,17 +477,18 @@
       await advVideoEl.play();
     }
 
-    function parseImageLinksFromDirectoryHtml(htmlText) {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(htmlText, 'text/html');
-      const anchors = Array.from(doc.querySelectorAll('a[href]'));
-      const baseUrl = new URL(IMAGE_FOLDER, window.location.href);
-      const urls = anchors
-        .map((a) => a.getAttribute('href'))
-        .filter((href) => !!href && href !== '../')
-        .map((href) => new URL(href, baseUrl).href)
-        .filter((resolvedUrl) => /\.(png|jpg|jpeg|webp|gif)$/i.test(resolvedUrl));
-      return Array.from(new Set(urls));
+    async function resolveAvailableImagePaths() {
+      const checks = await Promise.all(
+        DEFAULT_IMAGE_PATHS.map(async (path) => {
+          try {
+            const res = await fetch(path, { method: 'HEAD' });
+            return res.ok ? path : null;
+          } catch {
+            return null;
+          }
+        })
+      );
+      return checks.filter(Boolean);
     }
 
     function drawPredictionLabel(ctx, prediction, showAge = true) {
@@ -541,22 +550,20 @@
       imageCards = [];
 
       try {
-        const res = await fetch(IMAGE_FOLDER);
-        if (!res.ok) throw new Error(`Kein Zugriff auf ${IMAGE_FOLDER} (HTTP ${res.status})`);
-        const html = await res.text();
-        const imagePaths = parseImageLinksFromDirectoryHtml(html);
+        const imagePaths = await resolveAvailableImagePaths();
         if (!imagePaths.length) {
-          imagesStatusEl.textContent = 'Keine Bilder in images/ gefunden.';
+          imagesStatusEl.textContent = 'Keine Bilder gefunden (erwartet: images/1-4.png).';
+          imagesLoadedOnce = true;
           return;
         }
 
-        for (const path of imagePaths.slice(0, 4)) {
+        for (const path of imagePaths) {
           const cardEl = document.createElement('div');
           cardEl.className = 'image-card';
 
           const titleEl = document.createElement('div');
           titleEl.className = 'image-title';
-          titleEl.textContent = path;
+          titleEl.textContent = path.split('/').pop();
 
           const canvasEl = document.createElement('canvas');
           canvasEl.className = 'image-canvas';
