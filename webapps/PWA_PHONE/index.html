@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0a84ff">
+  <title>PWA Mobile - Alter & Geschlecht</title>
+  <link rel="icon" href="icon-512.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f6fa;
+      --card: #ffffff;
+      --line: #d6deeb;
+      --text: #1f2735;
+      --muted: #5d6b82;
+      --accent: #0a84ff;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --safe-left: env(safe-area-inset-left, 0px);
+      --safe-right: env(safe-area-inset-right, 0px);
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-text-size-adjust: 100%;
+      touch-action: manipulation;
+      overscroll-behavior: none;
+    }
+    body { height: 100dvh; }
+
+    .app {
+      width: 100%;
+      height: 100%;
+      padding:
+        calc(var(--safe-top) + 4px)
+        calc(var(--safe-right) + 6px)
+        calc(var(--safe-bottom) + 4px)
+        calc(var(--safe-left) + 6px);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      overflow: hidden;
+    }
+
+    .tab-buttons {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 4px 5px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      flex-shrink: 0;
+    }
+    .tab-buttons::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      border: 1px solid #b8c4da;
+      background: #fff;
+      color: #1e2635;
+      border-radius: 8px;
+      height: 34px;
+      padding: 0 12px;
+      font: inherit;
+      font-size: 13px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .tab-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+      font-weight: 600;
+    }
+
+    .status-bar {
+      flex-shrink: 0;
+      font-size: 11px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 0 4px;
+    }
+
+    .tab-content {
+      flex: 1 1 0;
+      min-height: 0;
+      position: relative;
+    }
+    .tab-panel {
+      display: none;
+      position: absolute;
+      inset: 0;
+      min-height: 0;
+    }
+    .tab-panel.active {
+      display: flex;
+      flex-direction: column;
+    }
+    .panel {
+      flex: 1 1 0;
+      min-height: 0;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      overflow: hidden;
+    }
+
+    /* A wrapper that letterboxes its inner video/canvas/img to fill the
+       available area while preserving aspect ratio. */
+    .media-wrap {
+      flex: 1 1 0;
+      min-height: 0;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #d7dfec;
+      background: #000;
+    }
+    .media-wrap > video,
+    .media-wrap > canvas,
+    .media-wrap > img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+    }
+    button, select, label.btn {
+      border: 1px solid #b8c4da;
+      background: #fff;
+      color: #1e2635;
+      border-radius: 8px;
+      height: 38px;
+      padding: 0 14px;
+      font: inherit;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    button.primary, label.btn.primary {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+    }
+    button:disabled { opacity: 0.5; }
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      padding-right: 26px;
+      background-image:
+        linear-gradient(45deg, transparent 50%, #44546e 50%),
+        linear-gradient(135deg, #44546e 50%, transparent 50%);
+      background-position: calc(100% - 14px) 50%, calc(100% - 9px) 50%;
+      background-size: 5px 5px;
+      background-repeat: no-repeat;
+    }
+
+    /* Upload */
+    .upload-prompt {
+      flex: 1 1 0;
+      min-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+      padding: 16px;
+      border: 1px dashed #c5cee0;
+      border-radius: 10px;
+      background: #fafcff;
+    }
+    .upload-prompt label.btn.primary { height: 44px; padding: 0 22px; font-size: 15px; }
+    #upload-file-input { display: none; }
+    .upload-loaded {
+      flex: 1 1 0;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .upload-crop-overlay {
+      cursor: crosshair;
+      touch-action: none;
+      z-index: 2;
+    }
+    .upload-crop-overlay.crop-locked {
+      cursor: default;
+    }
+    .crop-hint {
+      flex: 1 1 auto;
+      font-size: 11px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .hidden { display: none !important; }
+
+    /* Dataset */
+    .dataset-media {
+      flex: 1 1 0;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .dataset-media img {
+      flex: 1 1 0;
+      min-height: 0;
+      width: 100%;
+      object-fit: contain;
+      border: 1px solid #dce5f3;
+      border-radius: 8px;
+      background: #fff;
+    }
+    .dataset-doc {
+      flex: 0 0 auto;
+      font-size: 13px;
+      line-height: 1.35;
+      color: #2f3e58;
+    }
+    .dataset-doc a {
+      color: #1a5fb4;
+      text-decoration: underline;
+    }
+
+    /* Bilder (vertical scrolling list) */
+    .images-list {
+      flex: 1 1 0;
+      min-height: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      padding-right: 2px;
+    }
+    .image-card {
+      margin-bottom: 8px;
+      border: 1px solid #e1e7f2;
+      border-radius: 8px;
+      background: #fafcff;
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    /* Portrait: each canvas fills the screen width, height preserves ratio */
+    .image-card canvas {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+      background: #fff;
+    }
+    .image-title, .image-result {
+      font-size: 12px;
+      color: #596a86;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .image-result { color: #2a344a; }
+    .images-status { flex-shrink: 0; font-size: 12px; color: var(--muted); }
+
+    /* Landscape adjustments */
+    @media (orientation: landscape) {
+      .dataset-media { flex-direction: row; align-items: stretch; }
+      .dataset-media img { height: 100%; width: auto; max-width: 65%; flex: 0 1 auto; }
+      .dataset-doc { flex: 1 1 0; font-size: 14px; align-self: center; }
+
+      /* Each image is sized to fill the available height (so the scroll
+         becomes a one-image-per-page vertical scroll). */
+      .image-card {
+        height: 100%;
+        flex-shrink: 0;
+      }
+      .image-card canvas {
+        flex: 1 1 0;
+        min-height: 0;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+    }
+
+    /* Adversarial */
+    .adv-stage {
+      flex: 1 1 0;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .adv-results-grid {
+      flex: 1 1 0;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    .adv-card {
+      border: 1px solid #e1e7f2;
+      border-radius: 8px;
+      background: #fafcff;
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-height: 0;
+      overflow: hidden;
+    }
+    .adv-title { font-size: 11px; color: #596a86; }
+    .adv-card canvas {
+      flex: 1 1 0;
+      min-height: 0;
+      min-width: 0;
+      width: 100%;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #fff;
+    }
+    .factor {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid #d5deeb;
+      border-radius: 8px;
+      padding: 2px 6px;
+      background: #fff;
+      height: 38px;
+      font-size: 13px;
+      color: #44546e;
+    }
+    .factor button { height: 32px; padding: 0 12px; font-size: 16px; }
+    .factor span { min-width: 30px; text-align: center; font-variant-numeric: tabular-nums; }
+    .adv-meta {
+      flex-shrink: 0;
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--muted);
+      overflow: hidden;
+    }
+    .adv-meta span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  </style>
+  <script src="tf.min.js"></script>
+  <script src="ml.js"></script>
+</head>
+<body>
+  <main class="app">
+    <nav class="tab-buttons">
+      <button class="tab-btn active" data-tab="live">Live</button>
+      <button class="tab-btn" data-tab="upload">Upload</button>
+      <button class="tab-btn" data-tab="adversarial">Angriff</button>
+      <button class="tab-btn" data-tab="dataset">Datensatz</button>
+      <button class="tab-btn" data-tab="images">Bilder</button>
+    </nav>
+    <div id="status" class="status-bar">pwa-mobile-v1</div>
+
+    <div class="tab-content">
+      <!-- Live -->
+      <section id="panel-live" class="tab-panel active">
+        <article class="panel">
+          <div class="media-wrap">
+            <video id="video" autoplay muted playsinline></video>
+            <canvas id="overlay"></canvas>
+          </div>
+        </article>
+      </section>
+
+      <!-- Upload -->
+      <section id="panel-upload" class="tab-panel">
+        <article class="panel">
+          <div id="upload-empty" class="upload-prompt">
+            <div>Waehle ein Bild fuer die Vorhersage.</div>
+            <label for="upload-file-input" class="btn primary">Bild waehlen</label>
+            <input type="file" id="upload-file-input" accept="image/*">
+            <div id="upload-status" style="font-size:11px;color:var(--muted);"></div>
+          </div>
+          <div id="upload-loaded" class="upload-loaded hidden">
+            <div class="media-wrap">
+              <canvas id="upload-canvas"></canvas>
+              <canvas id="upload-crop-overlay" class="upload-crop-overlay hidden"></canvas>
+            </div>
+            <div id="upload-toolbar-crop" class="toolbar hidden">
+              <button id="btn-upload-crop-cancel">Abbrechen</button>
+              <span id="upload-crop-hint" class="crop-hint"></span>
+            </div>
+            <div id="upload-toolbar-normal" class="toolbar">
+              <button id="btn-upload-reset" class="primary">Reset</button>
+              <button id="btn-upload-crop">Zuschneiden</button>
+              <button id="btn-upload-apply" class="primary">Anwenden</button>
+              <span id="upload-result" style="flex:1 1 auto;font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"></span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- Adversarial -->
+      <section id="panel-adversarial" class="tab-panel">
+        <article class="panel">
+          <!-- Stage 1: camera live -->
+          <div id="adv-stage-camera" class="adv-stage">
+            <div class="media-wrap">
+              <video id="adv-video" autoplay muted playsinline></video>
+            </div>
+            <div class="toolbar">
+              <button id="btn-adv-take-picture" class="primary">Bild aufnehmen</button>
+            </div>
+          </div>
+          <!-- Stage 2: captured image, before computing -->
+          <div id="adv-stage-captured" class="adv-stage hidden">
+            <div class="media-wrap">
+              <canvas id="adv-original-canvas"></canvas>
+            </div>
+            <div class="toolbar">
+              <button id="btn-adv-reset-captured">Reset</button>
+              <select id="adv-target-gender">
+                <option value="male">Ziel: maennlich</option>
+                <option value="female">Ziel: weiblich</option>
+              </select>
+              <button id="btn-adv-compute" class="primary">Start</button>
+            </div>
+          </div>
+          <!-- Stage 3: gradient computed -->
+          <div id="adv-stage-computed" class="adv-stage hidden">
+            <div class="adv-results-grid">
+              <div class="adv-card">
+                <div class="adv-title">Gradient</div>
+                <canvas id="adv-gradient-canvas"></canvas>
+              </div>
+              <div class="adv-card">
+                <div class="adv-title">Gestoert + Vorhersage</div>
+                <canvas id="adv-perturbed-canvas"></canvas>
+              </div>
+            </div>
+            <div class="toolbar">
+              <button id="btn-adv-reset-computed">Reset</button>
+              <div class="factor">
+                Faktor
+                <button type="button" id="adv-factor-dec">-</button>
+                <span id="adv-factor-value">0.0</span>
+                <button type="button" id="adv-factor-inc">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="adv-meta">
+            <span id="adv-status">Bereit. Bitte Bild aufnehmen.</span>
+            <span id="adv-results"></span>
+          </div>
+        </article>
+      </section>
+
+      <!-- Dataset -->
+      <section id="panel-dataset" class="tab-panel">
+        <article class="panel">
+          <div class="dataset-media">
+            <img src="dataset_samples.png" alt="Datensatz-Beispielcollage">
+            <div class="dataset-doc">
+              Dokumentation: Das Modell wurde auf den folgenden Datensaetzen trainiert und getestet:
+              <a href="https://susanqq.github.io/UTKFace/" target="_blank" rel="noopener noreferrer">UTKFace</a> (non-commercial),
+              <a href="https://www.kaggle.com/datasets/aiolapo/fgnet-dataset" target="_blank" rel="noopener noreferrer">FGNET</a> (MIT),
+              <a href="https://chalearnlap.cvc.uab.cat/" target="_blank" rel="noopener noreferrer">ChaLearn</a> (non-commercial),
+              <a href="https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/" target="_blank" rel="noopener noreferrer">IMDB-WIKI</a> (academic research only),
+              <a href="https://bcsiriuschen.github.io/CARC/" target="_blank" rel="noopener noreferrer">CACD</a> (no license given),
+              <a href="https://mmlab.ie.cuhk.edu.hk/projects/MegaAge/" target="_blank" rel="noopener noreferrer">MegaAge</a> und MegaAge-Asian (non-commercial).
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- Bilder -->
+      <section id="panel-images" class="tab-panel">
+        <article class="panel">
+          <div class="toolbar">
+            <button id="btn-run-images-inference" class="primary">Vorhersage</button>
+            <span id="images-status" class="images-status">Warten auf Modelle...</span>
+          </div>
+          <div id="image-grid" class="images-list"></div>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const APP_VERSION = 'pwa-mobile-v1';
+    const IMAGE_FOLDER = 'images/';
+    const DEFAULT_IMAGE_PATHS = [
+      `${IMAGE_FOLDER}1.png`,
+      `${IMAGE_FOLDER}2.png`,
+      `${IMAGE_FOLDER}3.png`,
+      `${IMAGE_FOLDER}4.png`
+    ];
+    const ATTACK_STEPS = 8;
+    const FACTOR_STEP = 0.2;
+    const FACTOR_MIN = 0;
+    const FACTOR_MAX = 16;
+
+    const videoEl = document.getElementById('video');
+    const overlay = document.getElementById('overlay');
+    const status = document.getElementById('status');
+
+    const imagesStatusEl = document.getElementById('images-status');
+    const imageGridEl = document.getElementById('image-grid');
+    const runImagesInferenceBtn = document.getElementById('btn-run-images-inference');
+
+    const uploadEmptyEl = document.getElementById('upload-empty');
+    const uploadLoadedEl = document.getElementById('upload-loaded');
+    const uploadFileInput = document.getElementById('upload-file-input');
+    const uploadCanvasEl = document.getElementById('upload-canvas');
+    const uploadResetBtn = document.getElementById('btn-upload-reset');
+    const uploadResultEl = document.getElementById('upload-result');
+    const uploadStatusEl = document.getElementById('upload-status');
+    const uploadCropOverlay = document.getElementById('upload-crop-overlay');
+    const uploadCropBtn = document.getElementById('btn-upload-crop');
+    const uploadCropCancelBtn = document.getElementById('btn-upload-crop-cancel');
+    const uploadApplyBtn = document.getElementById('btn-upload-apply');
+    const uploadToolbarCropEl = document.getElementById('upload-toolbar-crop');
+    const uploadCropHintEl = document.getElementById('upload-crop-hint');
+
+    const advVideoEl = document.getElementById('adv-video');
+    const advOriginalCanvasEl = document.getElementById('adv-original-canvas');
+    const advGradientCanvasEl = document.getElementById('adv-gradient-canvas');
+    const advPerturbedCanvasEl = document.getElementById('adv-perturbed-canvas');
+    const advStatusEl = document.getElementById('adv-status');
+    const advResultsEl = document.getElementById('adv-results');
+    const advTakeBtn = document.getElementById('btn-adv-take-picture');
+    const advResetCapturedBtn = document.getElementById('btn-adv-reset-captured');
+    const advResetComputedBtn = document.getElementById('btn-adv-reset-computed');
+    const advComputeBtn = document.getElementById('btn-adv-compute');
+    const advTargetGenderEl = document.getElementById('adv-target-gender');
+    const advFactorValueEl = document.getElementById('adv-factor-value');
+    const advFactorDecBtn = document.getElementById('adv-factor-dec');
+    const advFactorIncBtn = document.getElementById('adv-factor-inc');
+
+    const advStages = {
+      camera: document.getElementById('adv-stage-camera'),
+      captured: document.getElementById('adv-stage-captured'),
+      computed: document.getElementById('adv-stage-computed')
+    };
+
+    const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
+    const tabPanels = {
+      live: document.getElementById('panel-live'),
+      upload: document.getElementById('panel-upload'),
+      adversarial: document.getElementById('panel-adversarial'),
+      dataset: document.getElementById('panel-dataset'),
+      images: document.getElementById('panel-images')
+    };
+
+    let imageCards = [];
+    let imagesLoadedOnce = false;
+    let webcamStream = null;
+    let advCaptured = false;
+    let advFaceTensor = null;
+    let advGradTensor = null;
+    let advBasePrediction = null;
+    let advHasComputed = false;
+    let advUpdateTimer = null;
+    let factor = 0;
+    let activeTab = 'live';
+    let uploadedImage = null;
+    let uploadObjectUrl = null;
+    let uploadSource = null;
+    let uploadCropMode = false;
+    /** 'idle' = warten auf ersten Druck; 'dragging' = Taste gedrueckt; 'locked' = fertig bis Abbrechen */
+    let cropPhase = 'idle';
+    let cropStart = null;
+    let cropEnd = null;
+    let cropActivePointerId = null;
+
+    function setActiveTab(tab) {
+      activeTab = tab;
+      tabButtons.forEach((btn) => btn.classList.toggle('active', btn.dataset.tab === tab));
+      Object.entries(tabPanels).forEach(([key, panel]) => {
+        panel.classList.toggle('active', key === tab);
+      });
+      if (tab === 'images' && !imagesLoadedOnce) {
+        loadImagesFromFolder();
+      }
+      if (tab === 'live') {
+        videoEl.play().catch(() => {});
+      }
+    }
+
+    function setAdvStage(stage) {
+      Object.entries(advStages).forEach(([key, el]) => {
+        el.classList.toggle('hidden', key !== stage);
+      });
+    }
+
+    function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
+    function updateFactorDisplay() { advFactorValueEl.textContent = factor.toFixed(1); }
+    function clearCanvas(canvas) {
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function disposeAdversarialTensors() {
+      if (advFaceTensor) { advFaceTensor.dispose(); advFaceTensor = null; }
+      if (advGradTensor) { advGradTensor.dispose(); advGradTensor = null; }
+      advBasePrediction = null;
+      advHasComputed = false;
+    }
+
+    async function startWebcam() {
+      if (!webcamStream) {
+        webcamStream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: 'user' },
+          audio: false
+        });
+      }
+      videoEl.srcObject = webcamStream;
+      advVideoEl.srcObject = webcamStream;
+      await videoEl.play();
+      await advVideoEl.play();
+      const syncOverlayDims = () => {
+        if (videoEl.videoWidth) {
+          overlay.width = videoEl.videoWidth;
+          overlay.height = videoEl.videoHeight;
+        }
+      };
+      if (videoEl.readyState >= 1 && videoEl.videoWidth) syncOverlayDims();
+      else videoEl.addEventListener('loadedmetadata', syncOverlayDims, { once: true });
+    }
+
+    async function resolveAvailableImagePaths() {
+      const checks = await Promise.all(
+        DEFAULT_IMAGE_PATHS.map(async (path) => {
+          try {
+            const res = await fetch(path, { method: 'HEAD' });
+            return res.ok ? path : null;
+          } catch {
+            return null;
+          }
+        })
+      );
+      return checks.filter(Boolean);
+    }
+
+    function drawPredictionLabel(ctx, prediction, showAge = true) {
+      const line = showAge
+        ? `${Math.round(prediction.age)} Jahre | ${prediction.gender} (${Math.round(prediction.genderProbability * 100)}%)`
+        : `${prediction.gender} (${Math.round(prediction.genderProbability * 100)}%)`;
+      const padding = 6;
+      const h = 22;
+      ctx.font = '13px Arial';
+      ctx.textBaseline = 'top';
+      const w = ctx.measureText(line).width + padding * 2;
+      ctx.fillStyle = '#0a84ff';
+      ctx.fillRect(4, 4, w, h);
+      ctx.fillStyle = '#fff';
+      ctx.fillText(line, 4 + padding, 7);
+    }
+
+    function drawImageWithDetections(canvas, img, detections) {
+      const ctx = canvas.getContext('2d');
+      canvas.width = img.naturalWidth || img.width;
+      canvas.height = img.naturalHeight || img.height;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      const refSize = Math.max(canvas.width, canvas.height);
+      ctx.font = `${Math.max(13, Math.round(refSize / 32))}px Arial`;
+      ctx.textBaseline = 'top';
+      for (const det of detections) {
+        const x = det.box.x;
+        const y = det.box.y;
+        const w = det.box.width;
+        const h = det.box.height;
+        ctx.lineWidth = Math.max(2, Math.round(refSize / 200));
+        ctx.strokeStyle = '#0a84ff';
+        ctx.strokeRect(x, y, w, h);
+
+        const lines = [
+          `${Math.round(det.age)} Jahre`,
+          `${det.gender} (${Math.round(det.genderProbability * 100)}%)`
+        ];
+        const padding = 6;
+        const lineHeight = Math.max(16, Math.round(refSize / 28));
+        const labelH = lines.length * lineHeight + padding * 2;
+        const labelW = Math.max(...lines.map((line) => ctx.measureText(line).width)) + padding * 2;
+        let labelY = y - labelH - 2;
+        if (labelY < 0) labelY = y + h + 2;
+
+        ctx.fillStyle = '#0a84ff';
+        ctx.fillRect(x, labelY, labelW, labelH);
+        ctx.fillStyle = '#fff';
+        lines.forEach((line, idx) => {
+          ctx.fillText(line, x + padding, labelY + padding + idx * lineHeight);
+        });
+      }
+    }
+
+    async function loadImagesFromFolder() {
+      imagesStatusEl.textContent = 'Lade Bilder...';
+      imageGridEl.innerHTML = '';
+      imageCards = [];
+
+      try {
+        const imagePaths = await resolveAvailableImagePaths();
+        if (!imagePaths.length) {
+          imagesStatusEl.textContent = 'Keine Bilder gefunden (erwartet: images/1-4.png).';
+          imagesLoadedOnce = true;
+          return;
+        }
+
+        for (const path of imagePaths) {
+          const cardEl = document.createElement('div');
+          cardEl.className = 'image-card';
+
+          const titleEl = document.createElement('div');
+          titleEl.className = 'image-title';
+          titleEl.textContent = path.split('/').pop();
+
+          const canvasEl = document.createElement('canvas');
+
+          const resultEl = document.createElement('div');
+          resultEl.className = 'image-result';
+          resultEl.textContent = 'Bereit';
+
+          cardEl.appendChild(titleEl);
+          cardEl.appendChild(canvasEl);
+          cardEl.appendChild(resultEl);
+          imageGridEl.appendChild(cardEl);
+
+          const img = new Image();
+          img.src = path;
+          const card = { path, img, canvasEl, resultEl, loaded: false };
+          imageCards.push(card);
+          await new Promise((resolve, reject) => {
+            img.onload = resolve;
+            img.onerror = reject;
+          });
+          card.loaded = true;
+          drawImageWithDetections(canvasEl, img, []);
+        }
+        imagesStatusEl.textContent = `${imageCards.length} Bild(er) geladen.`;
+        imagesLoadedOnce = true;
+      } catch (err) {
+        imagesStatusEl.textContent = `Fehler beim Laden: ${err.message}`;
+      }
+    }
+
+    async function runImagesInference() {
+      if (!ml.isLoaded) { imagesStatusEl.textContent = 'Modelle sind noch nicht geladen.'; return; }
+      if (!imageCards.length) { imagesStatusEl.textContent = 'Keine Bilder verfuegbar.'; return; }
+      imagesStatusEl.textContent = 'Vorhersage laeuft...';
+      runImagesInferenceBtn.disabled = true;
+      let faceCount = 0;
+      try {
+        for (const card of imageCards) {
+          if (!card.loaded) continue;
+          const detections = await ml.detect(card.img);
+          drawImageWithDetections(card.canvasEl, card.img, detections);
+          if (!detections.length) {
+            card.resultEl.textContent = 'Kein Gesicht gefunden.';
+          } else {
+            const best = detections[0];
+            card.resultEl.textContent = `${Math.round(best.age)}J ${best.gender} (${Math.round(best.genderProbability * 100)}%)`;
+          }
+          faceCount += detections.length;
+        }
+        imagesStatusEl.textContent = `Fertig. Gesichter gesamt: ${faceCount}.`;
+      } catch (err) {
+        imagesStatusEl.textContent = `Vorhersage fehlgeschlagen: ${err.message}`;
+      } finally {
+        runImagesInferenceBtn.disabled = false;
+      }
+    }
+
+    // ---------- Upload tab ----------
+    function resetUpload() {
+      exitCropMode();
+      uploadedImage = null;
+      uploadSource = null;
+      uploadFileInput.value = '';
+      if (uploadObjectUrl) {
+        URL.revokeObjectURL(uploadObjectUrl);
+        uploadObjectUrl = null;
+      }
+      const ctx = uploadCanvasEl.getContext('2d');
+      ctx.clearRect(0, 0, uploadCanvasEl.width, uploadCanvasEl.height);
+      uploadCanvasEl.width = 1;
+      uploadCanvasEl.height = 1;
+      uploadResultEl.textContent = '';
+      uploadStatusEl.textContent = '';
+      uploadEmptyEl.classList.remove('hidden');
+      uploadLoadedEl.classList.add('hidden');
+    }
+
+    async function runUploadInference(source) {
+      if (!source) return;
+      drawImageWithDetections(uploadCanvasEl, source, []);
+      if (!ml.isLoaded) {
+        uploadResultEl.textContent = 'Modelle sind noch nicht geladen.';
+        return;
+      }
+      uploadResultEl.textContent = 'Vorhersage laeuft...';
+      try {
+        const detections = await ml.detect(source);
+        drawImageWithDetections(uploadCanvasEl, source, detections);
+        if (!detections.length) {
+          uploadResultEl.textContent = 'Kein Gesicht gefunden.';
+        } else {
+          const best = detections[0];
+          uploadResultEl.textContent = `${Math.round(best.age)}J ${best.gender} (${Math.round(best.genderProbability * 100)}%) | ${detections.length} Gesicht(er)`;
+        }
+      } catch (err) {
+        uploadResultEl.textContent = `Fehler: ${err.message}`;
+      }
+    }
+
+    async function handleUploadFile(file) {
+      if (!file) return;
+      exitCropMode();
+      if (uploadObjectUrl) {
+        URL.revokeObjectURL(uploadObjectUrl);
+        uploadObjectUrl = null;
+      }
+      uploadStatusEl.textContent = 'Bild wird geladen...';
+      uploadObjectUrl = URL.createObjectURL(file);
+      const img = new Image();
+      try {
+        await new Promise((resolve, reject) => {
+          img.onload = resolve;
+          img.onerror = () => reject(new Error('Bild konnte nicht geladen werden.'));
+          img.src = uploadObjectUrl;
+        });
+        uploadedImage = img;
+        uploadSource = img;
+        uploadEmptyEl.classList.add('hidden');
+        uploadLoadedEl.classList.remove('hidden');
+        await runUploadInference(img);
+      } catch (err) {
+        uploadResultEl.textContent = `Fehler: ${err.message}`;
+      } finally {
+        updateUploadApplyButtonState();
+      }
+    }
+
+    async function onUploadApplyClick() {
+      if (!uploadSource) return;
+      if (uploadCropMode && cropPhase === 'locked') {
+        const rw = Math.abs(cropEnd.x - cropStart.x);
+        const rh = Math.abs(cropEnd.y - cropStart.y);
+        if (rw >= 8 && rh >= 8) {
+          await applyCrop();
+          return;
+        }
+      }
+      await runUploadInference(uploadSource);
+    }
+
+    // ---------- Upload crop ----------
+    function updateUploadApplyButtonState() {
+      if (!uploadApplyBtn) return;
+      if (!uploadSource) {
+        uploadApplyBtn.disabled = true;
+        return;
+      }
+      if (uploadCropMode && cropPhase === 'dragging') {
+        uploadApplyBtn.disabled = true;
+        return;
+      }
+      uploadApplyBtn.disabled = false;
+    }
+
+    function updateCropHint() {
+      if (!uploadCropHintEl) return;
+      if (!uploadCropMode) {
+        uploadCropHintEl.textContent = '';
+        return;
+      }
+      if (cropPhase === 'idle') {
+        uploadCropHintEl.textContent =
+          'Druecken, Bereich ziehen, loslassen (einmal). Anwenden unten: Vorhersage erneut.';
+      } else if (cropPhase === 'dragging') {
+        uploadCropHintEl.textContent = 'Loslassen zum Festlegen.';
+      } else {
+        uploadCropHintEl.textContent = 'Neu waehlen: Abbrechen, dann Zuschneiden. Anwenden unten uebernimmt den Rahmen.';
+      }
+    }
+
+    function drawCropOverlay() {
+      const ctx = uploadCropOverlay.getContext('2d');
+      const w = uploadCropOverlay.width;
+      const h = uploadCropOverlay.height;
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = 'rgba(0,0,0,0.45)';
+      ctx.fillRect(0, 0, w, h);
+      if (cropStart && cropEnd) {
+        const x = Math.min(cropStart.x, cropEnd.x);
+        const y = Math.min(cropStart.y, cropEnd.y);
+        const rw = Math.abs(cropEnd.x - cropStart.x);
+        const rh = Math.abs(cropEnd.y - cropStart.y);
+        ctx.clearRect(x, y, rw, rh);
+        ctx.lineWidth = Math.max(2, Math.round(Math.max(w, h) / 200));
+        ctx.strokeStyle = '#fff';
+        ctx.strokeRect(x, y, rw, rh);
+        ctx.strokeStyle = '#0a84ff';
+        ctx.lineWidth = Math.max(1, Math.round(Math.max(w, h) / 400));
+        ctx.strokeRect(x, y, rw, rh);
+      }
+    }
+
+    function enterCropMode() {
+      if (!uploadSource) return;
+      uploadCropMode = true;
+      cropPhase = 'idle';
+      cropStart = null;
+      cropEnd = null;
+      cropActivePointerId = null;
+      uploadCropOverlay.classList.remove('crop-locked');
+      uploadCropOverlay.width = uploadCanvasEl.width;
+      uploadCropOverlay.height = uploadCanvasEl.height;
+      drawCropOverlay();
+      uploadCropOverlay.classList.remove('hidden');
+      uploadToolbarCropEl.classList.remove('hidden');
+      updateCropHint();
+      updateUploadApplyButtonState();
+    }
+
+    function exitCropMode() {
+      if (cropActivePointerId != null) {
+        try {
+          uploadCropOverlay.releasePointerCapture(cropActivePointerId);
+        } catch (_) {}
+        cropActivePointerId = null;
+      }
+      uploadCropMode = false;
+      cropPhase = 'idle';
+      cropStart = null;
+      cropEnd = null;
+      uploadCropOverlay.classList.remove('crop-locked');
+      uploadCropOverlay.classList.add('hidden');
+      uploadToolbarCropEl.classList.add('hidden');
+      updateCropHint();
+      updateUploadApplyButtonState();
+    }
+
+    function pointerToImageCoords(ev) {
+      const rect = uploadCropOverlay.getBoundingClientRect();
+      const cssW = rect.width;
+      const cssH = rect.height;
+      const iW = uploadCropOverlay.width;
+      const iH = uploadCropOverlay.height;
+      if (!cssW || !cssH || !iW || !iH) return { x: 0, y: 0 };
+      const cssAspect = cssW / cssH;
+      const imgAspect = iW / iH;
+      let displayW, displayH, offsetX, offsetY;
+      if (imgAspect > cssAspect) {
+        displayW = cssW;
+        displayH = cssW / imgAspect;
+        offsetX = 0;
+        offsetY = (cssH - displayH) / 2;
+      } else {
+        displayH = cssH;
+        displayW = cssH * imgAspect;
+        offsetX = (cssW - displayW) / 2;
+        offsetY = 0;
+      }
+      const relX = ev.clientX - rect.left - offsetX;
+      const relY = ev.clientY - rect.top - offsetY;
+      return {
+        x: clamp((relX / displayW) * iW, 0, iW),
+        y: clamp((relY / displayH) * iH, 0, iH)
+      };
+    }
+
+    async function applyCrop() {
+      if (!uploadCropMode || cropPhase !== 'locked' || !cropStart || !cropEnd || !uploadSource) {
+        return;
+      }
+      const rw = Math.abs(cropEnd.x - cropStart.x);
+      const rh = Math.abs(cropEnd.y - cropStart.y);
+      if (rw < 8 || rh < 8) return;
+      const x = Math.max(0, Math.floor(Math.min(cropStart.x, cropEnd.x)));
+      const y = Math.max(0, Math.floor(Math.min(cropStart.y, cropEnd.y)));
+      const sw = Math.max(1, Math.floor(Math.abs(cropEnd.x - cropStart.x)));
+      const sh = Math.max(1, Math.floor(Math.abs(cropEnd.y - cropStart.y)));
+      const cropped = document.createElement('canvas');
+      cropped.width = sw;
+      cropped.height = sh;
+      cropped.getContext('2d').drawImage(uploadSource, x, y, sw, sh, 0, 0, sw, sh);
+      uploadSource = cropped;
+      exitCropMode();
+      await runUploadInference(cropped);
+    }
+
+    // ---------- Adversarial tab ----------
+    function clipFaceBox(box, width, height) {
+      const x = Math.max(0, Math.floor(box.x));
+      const y = Math.max(0, Math.floor(box.y));
+      const w = Math.max(1, Math.min(width - x, Math.floor(box.width)));
+      const h = Math.max(1, Math.min(height - y, Math.floor(box.height)));
+      return { x, y, w, h };
+    }
+
+    function extractLargestFace(detections) {
+      if (!detections.length) return null;
+      return detections.slice().sort((a, b) => b.box.width * b.box.height - a.box.width * a.box.height)[0];
+    }
+
+    async function drawTensorWithPrediction(canvas, tensor4d, prediction, showAge = true) {
+      const img = tf.tidy(() => tensor4d.squeeze().clipByValue(0, 255).toInt());
+      canvas.width = img.shape[1];
+      canvas.height = img.shape[0];
+      await tf.browser.toPixels(img, canvas);
+      img.dispose();
+      if (prediction) {
+        const ctx = canvas.getContext('2d');
+        drawPredictionLabel(ctx, prediction, showAge);
+      }
+    }
+
+    async function captureAdversarialFrame() {
+      if (!ml.isLoaded) { advStatusEl.textContent = 'Modelle sind noch nicht geladen.'; return; }
+      if (!advVideoEl.videoWidth) { advStatusEl.textContent = 'Webcam ist noch nicht bereit.'; return; }
+
+      advTakeBtn.disabled = true;
+      try {
+        disposeAdversarialTensors();
+        clearCanvas(advGradientCanvasEl);
+        clearCanvas(advPerturbedCanvasEl);
+
+        const frameCanvas = document.createElement('canvas');
+        frameCanvas.width = advVideoEl.videoWidth;
+        frameCanvas.height = advVideoEl.videoHeight;
+        frameCanvas.getContext('2d').drawImage(advVideoEl, 0, 0);
+
+        advStatusEl.textContent = 'Gesicht wird gesucht...';
+        const faces = await ml.detectFacesOnly(frameCanvas);
+        const bestFace = extractLargestFace(faces);
+        if (!bestFace) {
+          advStatusEl.textContent = 'Kein Gesicht gefunden. Reset und erneut versuchen.';
+          return;
+        }
+
+        const clipped = clipFaceBox(bestFace.box, frameCanvas.width, frameCanvas.height);
+        const faceCanvas = document.createElement('canvas');
+        faceCanvas.width = clipped.w;
+        faceCanvas.height = clipped.h;
+        faceCanvas.getContext('2d').drawImage(
+          frameCanvas,
+          clipped.x, clipped.y, clipped.w, clipped.h,
+          0, 0, clipped.w, clipped.h
+        );
+
+        advFaceTensor = tf.tidy(() => tf.browser.fromPixels(faceCanvas).toFloat().expandDims(0));
+        advBasePrediction = await ml.predictAgeGenderFromImageTensor(advFaceTensor);
+        advCaptured = true;
+        advHasComputed = false;
+        try { await advVideoEl.pause(); } catch (e) {}
+
+        await drawTensorWithPrediction(advOriginalCanvasEl, advFaceTensor, advBasePrediction, false);
+        setAdvStage('captured');
+        advStatusEl.textContent = 'Bild aufgenommen. Ziel waehlen und Start druecken.';
+        advResultsEl.textContent = `Basis: ${advBasePrediction.gender} (${Math.round(advBasePrediction.genderProbability * 100)}%)`;
+      } catch (err) {
+        advStatusEl.textContent = `Aufnahme fehlgeschlagen: ${err.message}`;
+      } finally {
+        advTakeBtn.disabled = false;
+      }
+    }
+
+    async function resetAdversarial() {
+      advCaptured = false;
+      disposeAdversarialTensors();
+      clearCanvas(advOriginalCanvasEl);
+      clearCanvas(advGradientCanvasEl);
+      clearCanvas(advPerturbedCanvasEl);
+      factor = 0;
+      updateFactorDisplay();
+      advResultsEl.textContent = '';
+      advStatusEl.textContent = 'Kamera laeuft. Bitte Bild aufnehmen.';
+      setAdvStage('camera');
+      try { await advVideoEl.play(); } catch (e) {}
+    }
+
+    async function computeAdversarialDerivative() {
+      if (!advCaptured || !advFaceTensor) {
+        advStatusEl.textContent = 'Bitte zuerst ein Bild aufnehmen.';
+        return;
+      }
+      advComputeBtn.disabled = true;
+      try {
+        advHasComputed = true;
+        setAdvStage('computed');
+        await updatePerturbedPreview(true);
+      } catch (err) {
+        advStatusEl.textContent = `Angriff fehlgeschlagen: ${err.message}`;
+      } finally {
+        advComputeBtn.disabled = false;
+      }
+    }
+
+    async function updatePerturbedPreview(showBusyStatus = false) {
+      if (!advFaceTensor || !advHasComputed) return;
+      if (showBusyStatus) {
+        advStatusEl.textContent = `Angriff laeuft (Schritte=${ATTACK_STEPS}, Faktor=${factor.toFixed(1)})...`;
+      }
+      if (advGradTensor) { advGradTensor.dispose(); advGradTensor = null; }
+
+      const attack = await ml.runGenderTargetedAttackForImageTensor(
+        advFaceTensor,
+        advTargetGenderEl.value,
+        { mode: 'multi', epsilon: factor, steps: ATTACK_STEPS }
+      );
+      advGradTensor = attack.gradient;
+
+      const gradVis = tf.tidy(() =>
+        tf.sign(advGradTensor).add(tf.scalar(1)).mul(tf.scalar(127.5)).squeeze().toInt()
+      );
+      advGradientCanvasEl.width = gradVis.shape[1];
+      advGradientCanvasEl.height = gradVis.shape[0];
+      await tf.browser.toPixels(gradVis, advGradientCanvasEl);
+      gradVis.dispose();
+
+      await drawTensorWithPrediction(advPerturbedCanvasEl, attack.perturbed, attack.prediction, false);
+      attack.perturbed.dispose();
+      advResultsEl.textContent = `Basis: ${advBasePrediction.gender} | Gestoert: ${attack.prediction.gender}`;
+      advStatusEl.textContent = `Fertig (Loss=${attack.loss.toFixed(4)}).`;
+    }
+
+    function schedulePerturbedUpdateFromFactor() {
+      if (!advHasComputed) return;
+      if (advUpdateTimer) clearTimeout(advUpdateTimer);
+      advUpdateTimer = setTimeout(() => {
+        updatePerturbedPreview(false).catch((err) => {
+          advStatusEl.textContent = `Angriff fehlgeschlagen: ${err.message}`;
+        });
+      }, 60);
+    }
+
+    async function runLiveInferenceLoop() {
+      while (true) {
+        if (activeTab !== 'live') {
+          await new Promise((r) => setTimeout(r, 120));
+          continue;
+        }
+        if (videoEl.paused || videoEl.ended || videoEl.videoWidth === 0) {
+          await new Promise((r) => setTimeout(r, 100));
+          continue;
+        }
+        try {
+          const t0 = performance.now();
+          const detections = await ml.detect(videoEl);
+          drawDetections(overlay, detections);
+          const ms = (performance.now() - t0).toFixed(0);
+          status.textContent = `${APP_VERSION} | ${detections.length} Gesicht(er) | ${ms} ms`;
+        } catch {
+          status.textContent = `${APP_VERSION} | Vorhersagefehler`;
+        }
+        await new Promise((r) => requestAnimationFrame(r));
+      }
+    }
+
+    runImagesInferenceBtn.addEventListener('click', runImagesInference);
+    advTakeBtn.addEventListener('click', captureAdversarialFrame);
+    advResetCapturedBtn.addEventListener('click', resetAdversarial);
+    advResetComputedBtn.addEventListener('click', resetAdversarial);
+    advComputeBtn.addEventListener('click', computeAdversarialDerivative);
+    advFactorDecBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      factor = clamp(factor - FACTOR_STEP, FACTOR_MIN, FACTOR_MAX);
+      updateFactorDisplay();
+      schedulePerturbedUpdateFromFactor();
+    });
+    advFactorIncBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      factor = clamp(factor + FACTOR_STEP, FACTOR_MIN, FACTOR_MAX);
+      updateFactorDisplay();
+      schedulePerturbedUpdateFromFactor();
+    });
+    tabButtons.forEach((btn) => {
+      btn.addEventListener('click', () => setActiveTab(btn.dataset.tab));
+    });
+    uploadFileInput.addEventListener('change', (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (file) handleUploadFile(file);
+    });
+    uploadResetBtn.addEventListener('click', resetUpload);
+    uploadCropBtn.addEventListener('click', enterCropMode);
+    uploadCropCancelBtn.addEventListener('click', exitCropMode);
+    uploadApplyBtn.addEventListener('click', () => {
+      onUploadApplyClick().catch((err) => {
+        uploadResultEl.textContent = `Fehler: ${err.message}`;
+      });
+    });
+
+    uploadCropOverlay.addEventListener('pointerdown', (e) => {
+      if (!uploadCropMode || cropPhase !== 'idle') return;
+      if (e.button !== 0) return;
+      e.preventDefault();
+      cropActivePointerId = e.pointerId;
+      try {
+        uploadCropOverlay.setPointerCapture(e.pointerId);
+      } catch (_) {}
+      cropStart = pointerToImageCoords(e);
+      cropEnd = { ...cropStart };
+      cropPhase = 'dragging';
+      uploadCropOverlay.classList.remove('crop-locked');
+      updateCropHint();
+      drawCropOverlay();
+      updateUploadApplyButtonState();
+    });
+
+    uploadCropOverlay.addEventListener('pointermove', (e) => {
+      if (!uploadCropMode || cropPhase !== 'dragging') return;
+      if (cropActivePointerId != null && e.pointerId !== cropActivePointerId) return;
+      e.preventDefault();
+      cropEnd = pointerToImageCoords(e);
+      drawCropOverlay();
+      updateUploadApplyButtonState();
+    });
+
+    function finishCropDrag(e) {
+      if (!uploadCropMode || cropPhase !== 'dragging') return;
+      if (cropActivePointerId != null && e.pointerId !== cropActivePointerId) return;
+      e.preventDefault();
+      cropEnd = pointerToImageCoords(e);
+      if (cropActivePointerId != null) {
+        try {
+          uploadCropOverlay.releasePointerCapture(cropActivePointerId);
+        } catch (_) {}
+        cropActivePointerId = null;
+      }
+      cropPhase = 'locked';
+      uploadCropOverlay.classList.add('crop-locked');
+      drawCropOverlay();
+      updateCropHint();
+      updateUploadApplyButtonState();
+    }
+
+    uploadCropOverlay.addEventListener('pointerup', finishCropDrag);
+    uploadCropOverlay.addEventListener('pointercancel', finishCropDrag);
+
+    async function init() {
+      try {
+        status.textContent = `${APP_VERSION} | Backend wird gestartet...`;
+        imagesStatusEl.textContent = 'Backend wird vorbereitet...';
+        await tf.ready();
+        status.textContent = `${APP_VERSION} | Lade Modelle...`;
+        await ml.loadModels();
+        status.textContent = `${APP_VERSION} | Starte Webcam...`;
+        await startWebcam();
+        updateFactorDisplay();
+        imagesStatusEl.textContent = 'Modelle geladen.';
+        advStatusEl.textContent = 'Bereit. Bitte Bild aufnehmen.';
+        setActiveTab('live');
+        setAdvStage('camera');
+        runLiveInferenceLoop();
+      } catch (err) {
+        status.textContent = `${APP_VERSION} | Initialisierung fehlgeschlagen`;
+        imagesStatusEl.textContent = `Fehler: ${err.message}`;
+        advStatusEl.textContent = `Fehler: ${err.message}`;
+      }
+    }
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
+      });
+    }
+
+    window.addEventListener('beforeunload', () => {
+      disposeAdversarialTensors();
+      if (uploadObjectUrl) URL.revokeObjectURL(uploadObjectUrl);
+    });
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
