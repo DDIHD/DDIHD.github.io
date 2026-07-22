@@ -1,0 +1,1795 @@
+[
+  {
+    "objectID": "sort_3d.html",
+    "href": "sort_3d.html",
+    "title": "Sort 3D",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n  \n  \n  Feature3D\n  \n  \n  \n\n\n  \n    \n  \n\n\n\n\n\n\nSort 3D",
+    "crumbs": [
+      "Fortbildung",
+      "Sort 3D"
+    ]
+  },
+  {
+    "objectID": "anmerkungen.html",
+    "href": "anmerkungen.html",
+    "title": "Anmerkungen",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next",
+    "crumbs": [
+      "Anmerkungen"
+    ]
+  },
+  {
+    "objectID": "anmerkungen.html#jonas",
+    "href": "anmerkungen.html#jonas",
+    "title": "Anmerkungen",
+    "section": "Jonas",
+    "text": "Jonas\nfullscreen Formatierung: klein überhaupt unterstützen oder nur fs? abgeschnittene bilder, nicht alles skaliert",
+    "crumbs": [
+      "Anmerkungen"
+    ]
+  },
+  {
+    "objectID": "anmerkungen.html#elanur",
+    "href": "anmerkungen.html#elanur",
+    "title": "Anmerkungen",
+    "section": "Elanur",
+    "text": "Elanur",
+    "crumbs": [
+      "Anmerkungen"
+    ]
+  },
+  {
+    "objectID": "anmerkungen.html#agent",
+    "href": "anmerkungen.html#agent",
+    "title": "Anmerkungen",
+    "section": "Agent",
+    "text": "Agent\nEinschätzung aus der Perspektive der drei Nutzungsszenarien (Selbstlernkurs / Unterrichtsmaterial / reine Präsentation mit Fullscreen-Webapps), Zielgruppe v. a. Sekundarstufe 1, als Einstieg vor Code.\n\nGesamteindruck (was gut funktioniert)\n\nDer datenbasierte Blickwinkel ist der Star. Die meisten Schul-KI-Materialien starten beim Modell (“Neuron, Schichten, Backprop”). Hier startet alles bei den Daten (Datensatz → Histogramm → Imbalance → Labeling → Features → Training → Evaluation). Das ist didaktisch ungewöhnlich und sehr wertvoll – unbedingt beibehalten.\nRoter Faden über ein durchgängiges Beispiel (Süßigkeiten/Lakritz) ist genau richtig für Sek I: konkret, alltagsnah, kein Vorwissen nötig.\n“Erst erleben, dann erklären”: Die Webapps erlauben Ausprobieren vor Theorie. Das trägt alle drei Nutzungsarten.\nEhrliche Botschaften (“Garbage in, Garbage out”, “keine Gesamtgenauigkeit blind glauben”, “keine heiße Herdplatte”, Rotations-Check) vermitteln KI-Mündigkeit statt Hype. Das ist der eigentliche Mehrwert.\n\n\n\nRoter Faden & Reihenfolge (Hauptkritikpunkt)\nDie Inhalte sind stark, aber die aktuelle Reihenfolge mischt zwei getrennte Erzählstränge, was den roten Faden bricht:\n\nStrang A – “Was ist (keine) KI / Unsicherheit / Suchräume”: ist_das_ki, tictactoe_vis, tictactoe_vis2, schach_vis.\nStrang B – “Datenbasiertes ML”: Datensatz → Histogramme → Labeling → Sortieren/Features → Training/Test.\n\nAktuell sitzt der Tic-Tac-Toe/Schach-Block mitten zwischen Labeling und dem Sortier-/Feature-Teil (siehe Sidebar). Dadurch springt man von “Labeling-Fehler” zu “Schach-Suchbaum” und wieder zurück zu “Sortieren”. Vorschläge:\n\nEntweder Strang A als eigenen, klar benannten Block nach vorne ziehen (“Was ist KI überhaupt? Klassische Verfahren & Unsicherheit”) und Strang B danach durchgängig laufen lassen.\nOder Strang A ans Ende als “Exkurs/Abgrenzung” stellen.\nIn beiden Fällen: kurze Brücken-Sätze zwischen den Blöcken, die das Warum jetzt erklären (teils in den neuen Seiten schon angelegt, müsste aber zur finalen Reihenfolge passen).\n\nAußerdem unklar verortet: erstes_training steht ganz am Anfang (als Motivation), training_bilder wiederholt es später fast identisch (gleiche trainimages.html-App). Das ist als “Klammer” (erst neugierig machen, später verstehen) gut – sollte aber explizit als solche benannt werden, sonst wirkt es wie eine Dopplung.\n\n\nEignung je Nutzungsszenario\n\nReine Präsentation (nur Fullscreen-Webapps): Hier zählt fast nur die App-Qualität, der qmd-Text ist Beiwerk. Wichtig: Jede App muss ohne Vorlesetext selbsterklärend genug sein (Titel, Achsenbeschriftung, sichtbare Buttons). Empfehlung: pro App einen einzigen Kernsatz / eine Leitfrage als Overlay oder Folientitel – damit die Präsentation ohne Sprecher*innen-Notizen trägt.\nUnterrichtsmaterial: Sehr gut geeignet, aber es fehlen die Lehrkraft-Anker: Lernziele pro Seite, geschätzte Zeit, Sozialform (Einzel/Partner/Plenum), Diskussionsimpulse, erwartete Antworten. Die callout-note/callout-tip sind ein guter Anfang; ein knapper “Für Lehrkräfte”-Block (ein-/ausklappbar) pro Modul würde es klassenraumfertig machen.\nSelbstlernkurs: Hier ist der Textumfang entscheidend. Aktuell schwankt er stark: trainingsschleife ist sehr lang/dicht, andere Seiten sehr kurz. Für Sek I beim Alleinlernen drohen die langen Seiten zu überfordern. Empfehlung: lange Seiten splitten oder mit “Kurz gesagt”-Zusammenfassung + optionalem “Mehr Details” (collapse) versehen.\n\n\n\nZielgruppe Sek I – Niveau & Sprache\n\nMehrere Begriffe sind für ~10–15-Jährige zu akademisch und sollten erklärt oder ersetzt werden: Proliferation, deterministisch, iterativ, Optimierung, Entropie, Varianz, Repräsentation, Boolean, Class Imbalance, Generalisierung. Vorschlag: ein Mini-Glossar (eigene Seite oder Tooltips) und beim ersten Auftreten je ein Halbsatz in Alltagssprache.\nMathe-Dosierung: 10^{46} und Zweierpotenzen sind ok als “Staunen über große Zahlen”, aber nicht als Rechenanforderung. Gut so – nur sicherstellen, dass nirgends implizit Rechnen verlangt wird.\nZwei Niveaus anbieten wäre ideal (“Für alle Altersgruppen”: Kernidee in 3 Sätzen; “Für Fortgeschrittene”: die jetzige Tiefe). Passt auch zu “eigentlich für jedes Alter”.\n\n\n\nInhaltliche Einzel-Anmerkungen\n\nKonsistente Anrede: Neue Seiten nutzen “du”, das Vorbild fehler_labeling noch “ihr/euch”. Vereinheitlichen (siehe auch Jonas’ Punkt).\nSchwankende App-Zahlen als Fakten: “16.000 Spielstände”, “~1 Sekunde”, “94 %” hängen vom Lauf/Gerät ab. In den Texten als “ungefähr/beispielhaft” markiert – beim Präsentieren live trotzdem einkalkulieren, dass Zahlen abweichen.\nSchach: “10^{46} Züge oder Spielstände” vermischt Züge und Stellungen. Fachlich sauberer wäre “mögliche Stellungen”. Bewusst nicht geändert (offene Rückfrage) – bei Bedarf nachschärfen.\nmotivation.qmd / bilder.qmd sind aktuell leere Platzhalter, stehen aber als eigene Menüpunkte. Für jede der drei Nutzungsarten wirken leere Seiten unfertig – entweder füllen oder vorerst aus der Sidebar nehmen.\nDoppelte Verlinkung in _quarto.yml: “Case Studies → Emotionen” zeigt auf trainingsschleife.qmd (Platzhalter). Sollte eine eigene Seite bekommen.\nBarrierefreiheit/Robustheit: Farbcodierung (rot=falsch, grün=richtig; Schach-Farben) ist für Farbsehschwächen problematisch. Zusätzlich Form/Label/Muster nutzen.\n\n\n\nEmpfohlene Ergänzungen (passend zu den geplanten Erweiterungen)\n\nPro Modul ein Papier-/Diskussionsbaustein (du planst das ohnehin): z. B. “Sammelt selbst einen Mini-Datensatz und labelt ihn” (zu Labeling), “Wo steckt hier Class Imbalance im Alltag?” (zu Histogramm), “Welche Features würdet ihr für Hunde vs. Katzen wählen?” (zu Features).\nRoter-Faden-Seiten zwischen den Blöcken (“Das hast du gelernt / Das kommt als Nächstes”) – stärkt v. a. den Selbstlernkurs.\nÜbergreifende Reflexion/Ethik am Ende: Bias, Daten-Herkunft, “Wer labelt eigentlich die Daten der Welt?”, Verantwortung der Anwender*innen. Knüpft stark an den datenbasierten Ansatz an und ist diskussionsstark für Sek I.\nAbschluss-Quiz / Selbsttest je Block (auch als einfache Webapp) – schließt den Selbstlern-Loop.\n\n\n\nWichtigste 3 To-dos aus meiner Sicht\n\nReihenfolge entwirren (Strang A vs. B klar trennen, Brücken setzen).\nSek-I-Tauglichkeit sichern (Glossar + Begriffe entschärfen, lange Seiten kürzen/zweistufig).\nLehrkraft- und Selbstlern-Gerüst ergänzen (Lernziele, Zeit, Sozialform, Zusammenfassungen, Diskussions-/Papieraufgaben).",
+    "crumbs": [
+      "Anmerkungen"
+    ]
+  },
+  {
+    "objectID": "imbalance.html",
+    "href": "imbalance.html",
+    "title": "Imbalance",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n    \n    \n    Downsampling\n    \n\n  \n  \n\n\n    \n        \n    \n    \n\n\n\n\n\n\nImbalance",
+    "crumbs": [
+      "Fortbildung",
+      "Imbalance"
+    ]
+  },
+  {
+    "objectID": "sort.html",
+    "href": "sort.html",
+    "title": "Sort",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next",
+    "crumbs": [
+      "Fortbildung",
+      "Sortieren"
+    ]
+  },
+  {
+    "objectID": "sort.html#worum-es-bei-machine-learning-im-kern-geht-struktur-muster",
+    "href": "sort.html#worum-es-bei-machine-learning-im-kern-geht-struktur-muster",
+    "title": "Sort",
+    "section": "1. Worum es bei Machine Learning im Kern geht: Struktur & Muster",
+    "text": "1. Worum es bei Machine Learning im Kern geht: Struktur & Muster\nMachine Learning – und Algorithmen allgemein – haben sehr viel mit der Repräsentation von Daten und einer gewissen Ordnung bzw. Sortierung zu tun. Zwei Schlagworte begegnen einem dabei ständig:\n\nStruktur – Daten lassen sich nach Gemeinsamkeiten anordnen.\nPattern Recognition (Mustererkennung) – Datenpunkte mit derselben Struktur werden erkannt und gruppiert.",
+    "crumbs": [
+      "Fortbildung",
+      "Sortieren"
+    ]
+  },
+  {
+    "objectID": "sort.html#eine-alltägliche-intuition-der-süßigkeitenteller",
+    "href": "sort.html#eine-alltägliche-intuition-der-süßigkeitenteller",
+    "title": "Sort",
+    "section": "2. Eine alltägliche Intuition: der Süßigkeitenteller",
+    "text": "2. Eine alltägliche Intuition: der Süßigkeitenteller\nStell dir vor, du bekommst bei der Oma einen Teller mit gemischten Süßigkeiten – Lakritz, Schaumzeug, Gummizeug – und magst nicht alles davon.\nDeine erste Intuition: Du sortierst alles mit Lakritz auf die eine Seite und alles mit Gummi (ohne Lakritz), das du magst, auf die andere Seite. Damit hast du eine räumliche Trennung geschaffen – und das ist ganz intuitiv bereits eine Ordnung.",
+    "crumbs": [
+      "Fortbildung",
+      "Sortieren"
+    ]
+  },
+  {
+    "objectID": "sort.html#von-der-intuition-zur-mathematischen-ordnung",
+    "href": "sort.html#von-der-intuition-zur-mathematischen-ordnung",
+    "title": "Sort",
+    "section": "3. Von der Intuition zur mathematischen Ordnung",
+    "text": "3. Von der Intuition zur mathematischen Ordnung\nEine Maschine kann diese Ordnung nicht aus Intuition oder menschlichem Vorwissen erstellen. Sie braucht eine mathematische Ordnung. Aber genau besehen ist eine Links-Rechts-Trennung nichts anderes als eine Trennung durch eine Gerade mitten im Raum.\nSo kannst du dir den Teller als Koordinatensystem vorstellen, in das wir die Süßigkeiten nach zwei Werten einsortieren:\n\nHelligkeit – wie hell (oder dunkel) ist der durchschnittliche Pixel des Schwarz-Weiß-Bildes?\nGummianteil – wie viel Gummi steckt in der Süßigkeit?",
+    "crumbs": [
+      "Fortbildung",
+      "Sortieren"
+    ]
+  },
+  {
+    "objectID": "sort.html#unser-erstes-modell-eine-trennlinie",
+    "href": "sort.html#unser-erstes-modell-eine-trennlinie",
+    "title": "Sort",
+    "section": "4. Unser erstes Modell: eine Trennlinie",
+    "text": "4. Unser erstes Modell: eine Trennlinie\nSortieren und färben wir die Werte ein, entsteht unser erstes Modell: eine Trennlinie (hier eine leichte Kurve mit schraffierten Flächen, es könnte aber auch eine Gerade sein).\nDas Schöne daran: Eine neue, unbekannte Süßigkeit könnten wir nun ebenfalls in dieses System einsortieren. Je nachdem, auf welcher schraffierten Fläche sie landet, treffen wir eine Vorhersage („enthält Lakritz” / „enthält kein Lakritz”).\nDas ist das einfachste Modell überhaupt: Man könnte die Daten anschließend wegwerfen und nur die Trennlinie behalten – sie ist das erlernte Modell.",
+    "crumbs": [
+      "Fortbildung",
+      "Sortieren"
+    ]
+  },
+  {
+    "objectID": "sort.html#die-grenze-des-einfachen-modells",
+    "href": "sort.html#die-grenze-des-einfachen-modells",
+    "title": "Sort",
+    "section": "5. Die Grenze des einfachen Modells",
+    "text": "5. Die Grenze des einfachen Modells\nBlenden wir die Ausreißer ein, zeigt sich: So schön sauber trennbar sind die Daten gar nicht. Frosch, Fledermaus, Pilz und andere liegen wild in der Mitte gemischt. Mit einer einzelnen geraden Linie ist hier nichts mehr zu holen.\nWir brauchen also ein Modell, das mehrere oder anders geformte Trenngrenzen einführen kann. Und genau hier entfalten neuronale Netze (und andere komplexere Machine-Learning-Modelle) ihre Stärke: Sie können solche komplizierten Grenzen lernen.\n\n\n\n\n\n\nJetzt bist du dran: Sortiere und trenne\n\n\n\n\nSortiere die Süßigkeiten zunächst per Hand in „Lakritz” und „kein Lakritz” – ganz intuitiv.\nWechsle in die Koordinatensystem-Ansicht (Helligkeit × Gummianteil) und betrachte die Trennlinie.\nBlende die Ausreißer ein: Schafft es deine Gerade noch, beide Gruppen sauber zu trennen?\n\n\n\n\n\n\n\n\n\nZum Weiterdenken\n\n\n\n\nWarum reicht „menschliche Intuition” nicht aus, um eine Maschine sortieren zu lassen?\nWenn eine Gerade nicht genügt – welche Form müsste die Trenngrenze stattdessen haben?\n\nAls Nächstes schauen wir uns die zugrunde liegenden Werte genauer an und fragen: Reicht vielleicht schon ein einziger Wert zur Trennung?",
+    "crumbs": [
+      "Fortbildung",
+      "Sortieren"
+    ]
+  },
+  {
+    "objectID": "sort.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "href": "sort.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "title": "Sort",
+    "section": "Original-Transkript (zum Vergleich für Kolleg*innen)",
+    "text": "Original-Transkript (zum Vergleich für Kolleg*innen)\nMachine Learning und Algorithmen im Allgemeinen haben sehr viel mit der Repräsentation von Daten und einer gewissen Ordnung oder Sortierung zu tun. Das heißt, das eine Schlagwort ist Struktur. Das andere, was man oft hört, ist Pattern Recognition, also Mustererkennung. Das heißt, gewisse Datenpunkte, die dieselbe Struktur aufweisen.\n\nUnd rein intuitiv kennt man das, wenn man jetzt zum Beispiel bei der Oma den guten Kohlblatt-Teller mit einer gemischten Packung Süßigkeiten bekommt und da alles drauf ist von Lakritz über irgendwelche Schaumsachen und Gummisachen, und man natürlich nicht alles davon mag. Dann ist die erste Intuition erstmal, wie hier in der dritten Ansicht möglich, dass man alles, was Lakritz hat, auf die eine Seite sortiert und alles, und jetzt mal angenommen, man mag das nicht, und alles, was Gummi hat, ohne Lakritz, was man mag, auf die linke Seite sortiert. Das hat dann zur Folge, dass man eine räumliche Trennung geschaffen hat, was ganz rein intuitiv ja eine Ordnung ist.\n\nUnd genau um so Ordnung geht's. Nur kann man natürlich nicht aus Intuition oder menschlichem Vorwissen diese Ordnung erstellen, sondern muss mathematisch eine Ordnung erstellen. Aber letztendlich ist eine mathematische Ordnung wie eine Links-Rechts-Trennung ja einfach eine Trennung durch einen Raum oder eine Gerade in der Mitte. Das heißt, in der vierten Abbildung kann man sich diesen Teller auch als Koordinatensystem vorstellen, wo wir die Süßigkeiten nach zwei Werten einsortieren. Nämlich wir haben einmal die Helligkeit, das ist das als Schwarz-Weiß-Bild, wie die durchschnittliche Helligkeit ist. Also wie hell ist der durchschnittliche Pixel von dem Bild oder wie dunkel ist der Pixel. Das ist der eine Wert, den haben wir jetzt einfach mal definiert. Und der andere Wert ist der Gummianteil von der Süßigkeit.\n\nUnd wenn wir das Ganze dann einfach mal sortieren und uns die Werte anzeigen und einfärben, dann sehen wir, dass wir unser erstes Modell haben. Das ist jetzt hier eine leichte Kurve mit schraffierten Flächen, könnte aber auch einfach eine Gerade sein. Das heißt, wir hätten jetzt die Möglichkeit, neue Süßigkeiten, die wir irgendwo in der Wildnis beobachten, auch in dieses System einzusortieren. Und je nachdem, auf welcher schraffierten Fläche sie landen, könnten wir dann eine Vorhersage treffen, ob die Lakritz enthalten und uns nicht schmecken, oder ob sie kein Lakritz enthalten und uns schmecken. Das heißt das einfachste Modell hier: Man könnte die Daten nun entsorgen und nur diese schraffierten Flächen oder eine Gerade, die Trenngerade behalten, und das wäre das erlernte Modell.\n\nJedoch, als Motivation, wenn wir die Ausreißer einblenden, dann sieht man, dass die Daten doch nicht so schön leicht trennbar verteilt sind für dieses Modell, und dass man hier mit einer einfachen Trenngeraden nichts mehr erreichen kann, weil der Frosch, die Fledermaus, der Pilz und alles in der Mitte gemischt ist. Das heißt, mit einer einfachen Gerade kann man das nicht trennen. Man braucht also in diesem Fall ein Modell, was mehrere Trennlinien oder Trenngrenzen, anders geformte Trenngrenzen, einführen kann. Und das ist genau, wo neuronale Netze, aber auch andere kompliziertere Machine-Learning-Modelle oder verschachteltere Machine-Learning-Modelle dann ihre Stärken entwickeln, diese Grenzen zu lernen.",
+    "crumbs": [
+      "Fortbildung",
+      "Sortieren"
+    ]
+  },
+  {
+    "objectID": "fehler_labeling.html",
+    "href": "fehler_labeling.html",
+    "title": "Fehler Labeling",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next",
+    "crumbs": [
+      "Fortbildung",
+      "Fehler Labeling"
+    ]
+  },
+  {
+    "objectID": "fehler_labeling.html#das-fundament-daten-werden-abgebildet",
+    "href": "fehler_labeling.html#das-fundament-daten-werden-abgebildet",
+    "title": "Fehler Labeling",
+    "section": "1. Das Fundament: Daten werden abgebildet",
+    "text": "1. Das Fundament: Daten werden abgebildet\nDas Thema Daten ist der wichtigste Baustein der Künstlichen Intelligenz. Wenn wir davon sprechen, dass eine KI „trainiert” wird, meinen wir eigentlich: Die Daten werden in einem Modell abgebildet. Das neuronale Netz versucht, die Strukturen dieser Daten zu kopieren.\nDas Problem dabei: Wenn die Vorlage Fehler hat, oder unvollständig ist, kann die KI diese Fehler in ihr Verhalten übernehmen. Hier ist die Sorge wenige, dass falsche Informationen in den Daten sind, sondern dass etwas fehlt oder im falschen Verhältnis steht.",
+    "crumbs": [
+      "Fortbildung",
+      "Fehler Labeling"
+    ]
+  },
+  {
+    "objectID": "fehler_labeling.html#das-gesetz-garbage-in-garbage-out",
+    "href": "fehler_labeling.html#das-gesetz-garbage-in-garbage-out",
+    "title": "Fehler Labeling",
+    "section": "2. Das Gesetz: „Garbage In, Garbage Out”",
+    "text": "2. Das Gesetz: „Garbage In, Garbage Out”\nEs gibt einen goldenen Merksatz: Garbage In, Garbage Out (auf Englisch für: Müll rein, Müll raus).\n\nWenn ich die KI mit „Müll” füttere – also mit falsch markierten Bildern oder extrem schlechten Fotos – dann kann das Ergebnis nur „Müll” sein.\nEine KI kann keine Logikfehler in den Daten „wegzaubern”. Wenn wir ihr fälschlicherweise sagen, dass ein Lakritzstück eine Batterie ist, wird sie diesen Fehler glauben und immer wiederholen.",
+    "crumbs": [
+      "Fortbildung",
+      "Fehler Labeling"
+    ]
+  },
+  {
+    "objectID": "fehler_labeling.html#die-herausforderung-spezialfälle-edge-cases",
+    "href": "fehler_labeling.html#die-herausforderung-spezialfälle-edge-cases",
+    "title": "Fehler Labeling",
+    "section": "3. Die Herausforderung: Spezialfälle (Edge Cases)",
+    "text": "3. Die Herausforderung: Spezialfälle (Edge Cases)\nEin großes Problem sind die sogenannten Spezialfälle. Stellt euch vor, ein Lakritzstück ist zerbrochen, liegt hochkant oder ist mit weißem Puderzucker bestäubt.\nWenn die KI solche Ausnahmen im Training nie gesehen hat, weiß sie nicht, was sie tun soll. Ein Mensch erkennt das meistens trotzdem, aber für die KI ist so ein seltener Grenzfall oft unlösbar, wenn wir ihn beim Markieren (Labelling) oder Aufbereiten der Trainingsdaten vergessen haben.",
+    "crumbs": [
+      "Fortbildung",
+      "Fehler Labeling"
+    ]
+  },
+  {
+    "objectID": "fehler_labeling.html#das-ziel-alltagstauglichkeit",
+    "href": "fehler_labeling.html#das-ziel-alltagstauglichkeit",
+    "title": "Fehler Labeling",
+    "section": "4. Das Ziel: Alltagstauglichkeit",
+    "text": "4. Das Ziel: Alltagstauglichkeit\nIn unserer Web-App sehen wir die Lakritze auf einem perfekt weißen Hintergrund. Das sind Laborbedingungen. Das ist einfach für die KI, hat aber wenig mit der Realität zu tun.\nAlltagstauglichkeit bedeutet, dass die KI auch dann robust funktioniert, wenn die Bedingungen schwierig werden: bei schlechtem Licht, auf einem bunten Küchentisch oder wenn die Kamera wackelt. Wenn wir nur „saubere” Labor-Bilder nutzen, lernt die KI nicht, wie sie mit Schatten oder störenden Hintergründen umgehen soll.",
+    "crumbs": [
+      "Fortbildung",
+      "Fehler Labeling"
+    ]
+  },
+  {
+    "objectID": "fehler_labeling.html#fazit-der-mensch-check",
+    "href": "fehler_labeling.html#fazit-der-mensch-check",
+    "title": "Fehler Labeling",
+    "section": "5. Fazit: Der „Mensch-Check”",
+    "text": "5. Fazit: Der „Mensch-Check”\nBevor wir eine KI trainieren, müssen wir uns immer fragen: Kann ein Mensch das auf diesem Foto überhaupt erkennen?\nWenn wir uns schon unsicher sind, ob zwei Lakritzstangen zur gleichen Sorte gehören, weil die Perspektive so ungünstig ist, kann eine KI auch daran scheitern.\n\n\n\n\n\n\nJetzt seid ihr dran: Probiert es aus!\n\n\n\nSchaut euch die Bilder in der Web-App genau an. Eure Aufgabe ist es nun, die Lakritzstücke per Drag-and-Drop so zu sortieren, wie ihr glaubt, dass sie zusammengehören.\nAchtet dabei besonders auf die Details:\n\nGibt es Stücke, die sich extrem ähnlich sehen, aber zu verschiedenen Gruppen gehören?\nFindet ihr einen Spezialfall, bei dem ihr euch unsicher seid?\n\nKlickt danach oben links auf „Klassennamen anzeigen”, um zu prüfen, ob eure menschliche Einschätzung mit den hinterlegten Labels übereinstimmt.\n\n\n\n\n\n\n\n\nZum Weiterdenken\n\n\n\n\nHättet ihr die Gruppen auch ohne den weißen Hintergrund so einfach erkannt?\nWas glaubt ihr passiert, wenn man diese Lakritze im Dunkeln fotografiert? Erkennt die KI das noch?\n\nDiese Fragen führen direkt zum Punkt der Alltagstauglichkeit.",
+    "crumbs": [
+      "Fortbildung",
+      "Fehler Labeling"
+    ]
+  },
+  {
+    "objectID": "tictactoe_vis.html",
+    "href": "tictactoe_vis.html",
+    "title": "Tic-Tac-Toe Visualisierung",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next",
+    "crumbs": [
+      "Fortbildung",
+      "Tic-Tac-Toe Visualisierung"
+    ]
+  },
+  {
+    "objectID": "tictactoe_vis.html#die-baumstruktur-der-spielzüge",
+    "href": "tictactoe_vis.html#die-baumstruktur-der-spielzüge",
+    "title": "Tic-Tac-Toe Visualisierung",
+    "section": "1. Die Baumstruktur der Spielzüge",
+    "text": "1. Die Baumstruktur der Spielzüge\nSchauen wir genauer auf Tic-Tac-Toe, können wir die Baumstruktur der Daten erkunden. Klappst du in der App Ebene 1, dann Ebene 2 usw. auf, siehst du, wie der Algorithmus die Spielzüge Ebene für Ebene hinzunimmt.\nDabei erkennt er, welche Züge in einem Sieg für die eigene Seite oder in einer Niederlage der gegnerischen Seite enden.",
+    "crumbs": [
+      "Fortbildung",
+      "Tic-Tac-Toe Visualisierung"
+    ]
+  },
+  {
+    "objectID": "tictactoe_vis.html#der-baum-wächst-und-optimierungen-helfen",
+    "href": "tictactoe_vis.html#der-baum-wächst-und-optimierungen-helfen",
+    "title": "Tic-Tac-Toe Visualisierung",
+    "section": "2. Der Baum wächst – und Optimierungen helfen",
+    "text": "2. Der Baum wächst – und Optimierungen helfen\nMacht man immer weiter, klappt sich ein sehr großer Baum auf, bis er vollständig ist. An dieser Stelle lassen sich verschiedene Optimierungen anwenden, zum Beispiel:\n\nSymmetrien ausschließen: Manche Spielstellungen sind im Grunde identisch, wenn man das Brett nur dreht. Sie muss man nicht doppelt betrachten.\nViele weitere Algorithmen, die man auf eine solche Baumstruktur anwenden kann.",
+    "crumbs": [
+      "Fortbildung",
+      "Tic-Tac-Toe Visualisierung"
+    ]
+  },
+  {
+    "objectID": "tictactoe_vis.html#der-lösungsraum",
+    "href": "tictactoe_vis.html#der-lösungsraum",
+    "title": "Tic-Tac-Toe Visualisierung",
+    "section": "3. Der Lösungsraum",
+    "text": "3. Der Lösungsraum\nHier geht es zunächst nur darum, dass der gesamte Lösungsraum – also der Raum aller möglichen Züge – sichtbar gemacht wird.\nDieser Lösungsraum ist genau der Bereich, den ein Algorithmus der klassischen KI bzw. ein Baumsuch-Algorithmus durchsuchen muss, um zu einer Entscheidung zu kommen. Bei Tic-Tac-Toe ist dieser Raum noch klein genug, um ihn komplett darzustellen – ein Vorteil, der bei größeren Spielen schnell verschwindet.\n\n\n\n\n\n\nJetzt bist du dran: Klapp den Baum auf\n\n\n\n\nÖffne in der App Ebene für Ebene und beobachte, wie schnell die Anzahl der Verzweigungen wächst.\nSuche nach Endstellungen: Wo führt ein Pfad zu Sieg, Niederlage oder Unentschieden?\nFinde zwei Stellungen, die durch Drehung des Bretts eigentlich gleich sind.\n\n\n\n\n\n\n\n\n\nZum Weiterdenken\n\n\n\n\nWie viele Verzweigungen kämen wohl dazu, wenn das Brett 4×4 statt 3×3 groß wäre?\nWarum lohnt es sich, Symmetrien auszuschließen, statt einfach „alles” zu berechnen?\n\nIm nächsten Schritt bauen wir diesen Baum in Echtzeit auf und stoppen die Zeit, die der Computer dafür braucht.",
+    "crumbs": [
+      "Fortbildung",
+      "Tic-Tac-Toe Visualisierung"
+    ]
+  },
+  {
+    "objectID": "tictactoe_vis.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "href": "tictactoe_vis.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "title": "Tic-Tac-Toe Visualisierung",
+    "section": "Original-Transkript (zum Vergleich für Kolleg*innen)",
+    "text": "Original-Transkript (zum Vergleich für Kolleg*innen)\nWenn wir hier mal genauer auf das Tic-Tac-Toe eingehen, dann können wir uns diese Baumstruktur der Daten genauer angucken. Und wenn wir uns dann hier die Ebene 1 und so weiter ausklappen, dann sieht man, wie das – wie der Algorithmus sozusagen Spielzüge hinzunimmt, Ebene für Ebene in diesem Fall, und dann erkennt, welche Spielzüge in einem Sieg enden für den eigenen Spieler oder für eine Niederlage des gegnerischen Spielers.\n\nWenn man das immer so weiter macht, dann sieht man, dass sich hier ein sehr, sehr großer Baum ausklappt, bis es vollständig ist. Hier kann man natürlich mit bestimmten Optimierungen arbeiten, oder dass man Symmetrien ausschließt – dass gewisse Spielsituationen im Endeffekt die gleichen sind, wenn man das Spielbrett einfach nur drehen würde – und natürlich ganz viele andere Algorithmen, die man auf diese Baumstruktur anwenden kann.\n\nAber hier geht es jetzt erstmal darum, dass man den gesamten Lösungsraum – also den Raum aller möglichen Züge – visualisiert hat. Und das ist – der Lösungsraum ist dann der Raum, den ein Algorithmus im Falle der klassischen KI oder sonst Algorithmen der Baumsuche zum Beispiel – ist dann ein Lösungsraum, der von diesem Algorithmus durchsucht werden muss.",
+    "crumbs": [
+      "Fortbildung",
+      "Tic-Tac-Toe Visualisierung"
+    ]
+  },
+  {
+    "objectID": "sort_2d.html",
+    "href": "sort_2d.html",
+    "title": "Sort 2D",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n  \n  \n  Feature2D\n  \n  \n  \n\n\n  \n    \n  \n\n\n\n\n\n\nSort 2D",
+    "crumbs": [
+      "Fortbildung",
+      "Sort 2D"
+    ]
+  },
+  {
+    "objectID": "llm.html",
+    "href": "llm.html",
+    "title": "LLM",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nLLM"
+  },
+  {
+    "objectID": "woher.html",
+    "href": "woher.html",
+    "title": "Woher die Daten?",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nWoher kommen die Daten?"
+  },
+  {
+    "objectID": "precision_recall.html",
+    "href": "precision_recall.html",
+    "title": "Precision & Recall",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nSchwelle precision recall"
+  },
+  {
+    "objectID": "bilder.html",
+    "href": "bilder.html",
+    "title": "Komplexität Bilder",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nKomplexität Bilder",
+    "crumbs": [
+      "Fortbildung",
+      "Komplexität Bilder"
+    ]
+  },
+  {
+    "objectID": "tmsnake.html",
+    "href": "tmsnake.html",
+    "title": "TM Snake",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n  \n  \n  TM Snake\n  \n  \n  \n\n\n  \n    \n  \n\n  \n  \n  \n\n\n\n\n\n\n\nTM Snake",
+    "crumbs": [
+      "Machine Learning",
+      "TM Snake"
+    ]
+  },
+  {
+    "objectID": "metriken.html",
+    "href": "metriken.html",
+    "title": "Metriken und Submetriken",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nMetriken und Submetriken"
+  },
+  {
+    "objectID": "histogramm_diagramm2.html",
+    "href": "histogramm_diagramm2.html",
+    "title": "Histogramm Diagramm 2",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next",
+    "crumbs": [
+      "Fortbildung",
+      "Histogramm Diagramm 2"
+    ]
+  },
+  {
+    "objectID": "histogramm_diagramm2.html#die-dritte-tüte-kommt-dazu",
+    "href": "histogramm_diagramm2.html#die-dritte-tüte-kommt-dazu",
+    "title": "Histogramm Diagramm 2",
+    "section": "1. Die dritte Tüte kommt dazu",
+    "text": "1. Die dritte Tüte kommt dazu\nNehmen wir jetzt die dritte Tüte hinzu, verändert sich das Bild erneut deutlich:\n\nDie Häufigkeitsverteilung der Klassen und Farben sieht wieder ganz anders aus.\nEs tauchen komplett neue Süßigkeiten auf, die in den ersten beiden Tüten gar nicht vorkamen.\n\nDas wirft die immer gleichen, aber entscheidenden Fragen auf: Wie sehen die Daten wirklich aus? In welchem Verhältnis stehen die Klassen zueinander? Würde eine weitere Tüte noch mehr bringen? Unterscheiden sich die Inhalte vielleicht je nach Region?",
+    "crumbs": [
+      "Fortbildung",
+      "Histogramm Diagramm 2"
+    ]
+  },
+  {
+    "objectID": "histogramm_diagramm2.html#das-hat-einen-namen-exploratory-data-analysis-eda",
+    "href": "histogramm_diagramm2.html#das-hat-einen-namen-exploratory-data-analysis-eda",
+    "title": "Histogramm Diagramm 2",
+    "section": "2. Das hat einen Namen: Exploratory Data Analysis (EDA)",
+    "text": "2. Das hat einen Namen: Exploratory Data Analysis (EDA)\nDiese Fragen gehören zu den Modellierungsfragen, die man vor dem Training klären muss. Sie sind Teil der Exploratory Data Analysis (EDA) – der systematischen Datenexploration.\nEine besonders wichtige Leitfrage dabei: Geht das, was das Netzwerk lernen soll (z. B. „Fledermaus erkennen” oder „Lakritz vs. Nicht-Lakritz sortieren”), wirklich aus den Daten hervor? Ist es das Hauptmerkmal der Daten – oder versuchen wir dem Modell etwas beizubringen, das in den Daten kaum sichtbar ist?",
+    "crumbs": [
+      "Fortbildung",
+      "Histogramm Diagramm 2"
+    ]
+  },
+  {
+    "objectID": "histogramm_diagramm2.html#fehler-in-den-daten-aufspüren",
+    "href": "histogramm_diagramm2.html#fehler-in-den-daten-aufspüren",
+    "title": "Histogramm Diagramm 2",
+    "section": "3. Fehler in den Daten aufspüren",
+    "text": "3. Fehler in den Daten aufspüren\nSortieren wir das Gesamthistogramm, wird der Class Imbalance (die unausgeglichene Klassenverteilung) noch deutlicher sichtbar. Außerdem fallen echte Fehler auf: Beim Obst haben sich z. B. ein paar Himbeeren unter die Erdbeeren gemischt. Auch das ist eine zentrale EDA-Frage: Sind die Daten überhaupt korrekt gelabelt?",
+    "crumbs": [
+      "Fortbildung",
+      "Histogramm Diagramm 2"
+    ]
+  },
+  {
+    "objectID": "histogramm_diagramm2.html#warum-98-genauigkeit-täuschen-kann",
+    "href": "histogramm_diagramm2.html#warum-98-genauigkeit-täuschen-kann",
+    "title": "Histogramm Diagramm 2",
+    "section": "4. Warum „98 % Genauigkeit” täuschen kann",
+    "text": "4. Warum „98 % Genauigkeit” täuschen kann\nBetrachten wir das Histogramm unabhängig von der Farbe (also nur: Wie viele gibt es pro Sorte?), wird ein folgenschwerer Effekt klar:\n\nDie häufigste Klasse (z. B. Gummibärchen) wird das Modell vermutlich sehr gut erkennen.\nDie seltene Lakritz, von der es kaum Lernbeispiele gibt, dagegen kaum.\n\nWenn nun viele Gummibärchen richtig und viele Lakritz falsch erkannt werden, kann die Gesamtgenauigkeit trotzdem sehr hoch wirken – schlicht, weil es so viele Gummibärchen gibt. Eine pauschale Zahl wie „98 % richtig” verschleiert dann, dass manche Klassen womöglich zu 0 % erkannt werden.\nDie Konsequenz: Man muss die Genauigkeit pro Klasse betrachten, nicht als eine einzige Gesamtzahl. Diese Erkenntnis brauchen wir doppelt – einmal vorab in der Datenexploration und später noch einmal in der Evaluation des fertigen Modells.\n\n\n\n\n\n\nJetzt bist du dran: Vergleiche die Ansichten\n\n\n\n\nSchalte zwischen der Verteilung mit Farbe und ohne Farbe hin und her. Welche Sorte dominiert?\nSuche im sortierten Gesamthistogramm nach Fehlern – findest du die Himbeeren bei den Erdbeeren?\nÜberlege: Bei welchen Klassen würdest du erwarten, dass das Modell sie nicht lernt?\n\n\n\n\n\n\n\n\n\nZum Weiterdenken\n\n\n\n\nWarum ist eine einzelne Gesamtgenauigkeit für ein Modell gefährlich – gerade in sensiblen Bereichen?\nWenn jede Region andere Tüteninhalte hätte: Wie verlässlich wäre ein Modell, das nur auf einer Region trainiert wurde?\n\nBevor wir trainieren, klären wir als Nächstes, woher korrekte Labels überhaupt kommen: das Labeling.",
+    "crumbs": [
+      "Fortbildung",
+      "Histogramm Diagramm 2"
+    ]
+  },
+  {
+    "objectID": "histogramm_diagramm2.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "href": "histogramm_diagramm2.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "title": "Histogramm Diagramm 2",
+    "section": "Original-Transkript (zum Vergleich für Kolleg*innen)",
+    "text": "Original-Transkript (zum Vergleich für Kolleg*innen)\nWenn man jetzt die dritte Tüte noch hinzunimmt, dann sieht man erneut eine komplett unterschiedliche einmal Häufigkeit der Verteilung der Klassen und Farben und zum anderen sehen wir, dass komplett neue Süßigkeiten in dieser dritten Tüte erstmals dabei waren. Das heißt, erneut hier ist die Frage: Wie sehen die Daten tatsächlich aus? Also in welchem Verhältnis stehen die Daten zueinander und wie viele gibt's? Könnte eine neue Tüte noch mehr Daten mit sich bringen? Könnte es auch sein, dass je nach Region sich die Inhalte unterscheiden?\n\nDas alles ist Teil der Modellierungsfragen, die man sich bereits vor dem Trainieren stellen muss und die man bearbeiten muss. Das alles ist Teil der sogenannten Exploratory Data Analysis oder EDA. Und hier geht es besonders drum, dass man weiß, wie sich neuronale Netze verhalten und dass man unter Umständen die Datenbasis wesentlich verbessern muss oder vielleicht ist das, was man möchte, dass das Modell – in diesem Fall also eine Bilderkennung, die eine Fledermaus für eine Fledermaus erkennt oder die Lakritz gegen Nicht-Lakritz automatisch sortieren könnte – man muss sich immer fragen, ob das Problem, was das Netzwerk lernen soll, auch wirklich direkt aus den Daten hervorgeht oder dass es das Hauptmerkmal dieser Daten ist, auf die das Modell trainiert werden soll.\n\nWenn wir dann eine Perspektive weitergehen, sehen wir noch mal die Gesamthistogramm sortiert, die noch mal auf einen ziemlich deutlichen Class Imbalance, also eine unausgeglichene Klassenverteilung hinweisen. Und wir sehen auch ein paar Fehler, nämlich bei dem Obst haben sich ein paar Himbeeren in die Erdbeeren eingeschlichen. Das ist also auch noch mal eine Sache, ob die Daten überhaupt alle korrekt sind.\n\nUnd in der dritten Darstellung sehen wir dann noch mal das Histogramm unabhängig von der Farbe, also wie viel es von jeder Klasse gibt. Und hier wird dann noch mal ersichtlich, dass möglicherweise in Berechnungen die Gummibärchen als häufigste Klasse wesentlich besser erkannt werden können als die Lakritz, von denen es nur sehr wenig Lernbeispiele gibt. Und wenn viele Gummibärchen richtig sind und viele Lakritz falsch, dann wäre noch immer eine sehr hohe Genauigkeit erstmal anzunehmen, weil ja so viele Gummibärchen richtig sind.\n\nDas heißt, hier tut sich eine weitere Perspektive auf, die dann für die Evaluation auch wichtig ist: Ich kann mir später nicht die Gesamtzahl von 98 % richtig erkannt, sondern ich muss mir pro Klasse angucken, was richtig erkannt wurde und was nicht. Und da werde ich dann voraussichtlich sehen, dass einige Klassen, wie die Lakritz-Klassen, vielleicht zu 0 % richtig erkannt werden. Und das heißt, diese Datenexploration ist vorher wichtig für Leute, die trainieren oder das Modellverhalten lernen, überprüfen wollen, und im Nachhinein, nehme ich an, in der Evaluation, um das Modell zu nutzen und das Verhalten besser kennenzulernen. Ob das jetzt auf direkten Modell-Outputs ist oder ob man Zugang zu den Trainingsdaten hat, ist offen.",
+    "crumbs": [
+      "Fortbildung",
+      "Histogramm Diagramm 2"
+    ]
+  },
+  {
+    "objectID": "supervised.html",
+    "href": "supervised.html",
+    "title": "supervised",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nsupervised"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Grundlagen der Künstlichen Intelligenz aus einer datenbasierten Perspektive",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next",
+    "crumbs": [
+      "🏠 Home"
+    ]
+  },
+  {
+    "objectID": "index.html#inhalte-und-aufbau",
+    "href": "index.html#inhalte-und-aufbau",
+    "title": "Grundlagen der Künstlichen Intelligenz aus einer datenbasierten Perspektive",
+    "section": "Inhalte und Aufbau",
+    "text": "Inhalte und Aufbau\nDie Fortbildung ist in mehrere Bereiche gegliedert, die aufeinander aufbauen, aber auch einzeln genutzt werden können:\n\n1. Fortbildung – KI-Grundlagen Schritt für Schritt\nDer Hauptteil führt anhand eines durchgängigen Beispiels (Lakritz- und Schmetterlingserkennung) durch zentrale Konzepte:\n\nDatensatz und Labeling – Was sind Trainingsdaten? Wo passieren typische Fehler beim Labelling?\nFeatures und Sortieren – Wie “sieht” eine KI? Interaktive Visualisierungen in 1D, 2D, 3D und 4D.\nTraining und Test – Trainingskurven, Over-/Underfitting, vollständige Trainingsschleife.\nAugmentations – Wie macht man ein Modell robust gegen Schatten, Drehungen und schwierige Bedingungen?\nImbalance & Downsampling – Was tun, wenn die Klassen ungleich verteilt sind?\n\n\n\n2. Case Studies\nAnwendungsorientierte Fallstudien (z.B. Emotionserkennung) zeigen, wie sich die gelernten Konzepte in realen Szenarien anwenden lassen.\n\n\n3. Machine Learning mit Teachable Machine\nNiederschwelliger Einstieg über Teachable Machine – inkl. eines spielerischen Snake-Beispiels, in dem ein eigens trainiertes Modell direkt zur Steuerung verwendet wird.",
+    "crumbs": [
+      "🏠 Home"
+    ]
+  },
+  {
+    "objectID": "index.html#lernziele",
+    "href": "index.html#lernziele",
+    "title": "Grundlagen der Künstlichen Intelligenz aus einer datenbasierten Perspektive",
+    "section": "Lernziele",
+    "text": "Lernziele\nNach Durcharbeiten der Fortbildung können die Teilnehmenden:\n\ndie Rolle von Daten als Fundament jedes KI-Systems erklären,\ntypische Labelling-Fehler und ihre Auswirkungen auf das Modell erkennen,\nden Begriff Feature anschaulich beschreiben und in niedrigdimensionalen Räumen visualisieren,\neinen Trainings- und Testablauf lesen und interpretieren,\nerklären, warum Alltagstauglichkeit (Robustheit) wichtiger ist als reine Labor-Genauigkeit,\ndas Gelernte didaktisch reduziert an Schüler:innen weitergeben.\n\n\n\n\n\n\n\nOffline und lokal nutzbar\n\n\n\nDie gesamte Fortbildung läuft vollständig im Browser – inklusive aller KI-Trainings über TensorFlow.js. Damit ist sie auch für den Schul- und Offline-Einsatz geeignet:\n\nKeine Cloud, keine Anmeldung, keine API-Schlüssel. Alle Modelle werden lokal im Browser trainiert.\nKeine Daten verlassen den Rechner. Hochgeladene Bilder oder Webcam-Aufnahmen bleiben auf dem Gerät.\nOffline-Betrieb möglich: Nach einmaligem Aufruf der Seiten (oder nach lokalem Klonen des Quarto-Projekts) funktionieren die interaktiven Inhalte auch ohne Internet – ideal für Schulnetze mit eingeschränkter Verbindung.\nFür die lokale Nutzung kann der gesamte Ordner auf einen USB-Stick, Schulserver oder Computer kopiert und dort direkt geöffnet werden.",
+    "crumbs": [
+      "🏠 Home"
+    ]
+  },
+  {
+    "objectID": "index.html#hinweise-zur-bedienung",
+    "href": "index.html#hinweise-zur-bedienung",
+    "title": "Grundlagen der Künstlichen Intelligenz aus einer datenbasierten Perspektive",
+    "section": "Hinweise zur Bedienung",
+    "text": "Hinweise zur Bedienung\n\nNavigation: Linke Seitenleiste · Vor-/Zurück-Buttons unten · Suche oben.\nInteraktive Web-Apps: in jede Seite eingebettet; rechts oben in den Apps befinden sich Optionen wie Vollbild oder Klassennamen anzeigen.\nBrowser: Empfohlen werden aktuelle Versionen von Chrome, Edge oder Firefox. JavaScript muss aktiviert sein.\n\n\nDiese Fortbildung ist ein Demo- und Musterkurs der Didaktik der Informatik an der PH Heidelberg und wird kontinuierlich weiterentwickelt.",
+    "crumbs": [
+      "🏠 Home"
+    ]
+  },
+  {
+    "objectID": "tmtraining.html",
+    "href": "tmtraining.html",
+    "title": "TM Training",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n  \n  \n  TM Training\n  \n  \n  \n\n\n  \n    \n  \n\n  \n  \n  \n  \n  \n\n\n\n\n\n\n\nTM Training",
+    "crumbs": [
+      "Machine Learning",
+      "TM Training"
+    ]
+  },
+  {
+    "objectID": "ood_wahrscheinlichkeit.html",
+    "href": "ood_wahrscheinlichkeit.html",
+    "title": "OOD anschauen Wahrscheinlichkeiten",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nOOD anschauen Wahrscheinlichkeiten"
+  },
+  {
+    "objectID": "trainingsschleife.html",
+    "href": "trainingsschleife.html",
+    "title": "Trainingsschleife",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next",
+    "crumbs": [
+      "Fortbildung",
+      "Training komplett"
+    ]
+  },
+  {
+    "objectID": "trainingsschleife.html#das-komplette-training-in-einzelschritten",
+    "href": "trainingsschleife.html#das-komplette-training-in-einzelschritten",
+    "title": "Trainingsschleife",
+    "section": "1. Das komplette Training in Einzelschritten",
+    "text": "1. Das komplette Training in Einzelschritten\nJetzt schauen wir uns das komplette Training mit allen kleinen Schritten und Details an. In der App kannst du:\n\nmit „Next” jeden einzelnen Trainingsschritt einzeln durchgehen,\nmit „Auto” das Training automatisch ablaufen lassen,\nmit „Pause” wieder anhalten und dann erneut Schritt für Schritt weitermachen.\n\nSo wird die gesamte Trainingsschleife transparent, die sonst als Black Box abläuft.",
+    "crumbs": [
+      "Fortbildung",
+      "Training komplett"
+    ]
+  },
+  {
+    "objectID": "trainingsschleife.html#schritt-1-alle-daten-laden",
+    "href": "trainingsschleife.html#schritt-1-alle-daten-laden",
+    "title": "Trainingsschleife",
+    "section": "2. Schritt 1: Alle Daten laden",
+    "text": "2. Schritt 1: Alle Daten laden\nIm ersten Schritt werden alle Daten des Datensatzes geladen. In unserem Fall: alle Bilder, zu denen jeweils die Klasse vorhergesagt werden soll. Beim Bild einer Himbeere soll „Himbeere” herauskommen, beim Frosch „Frosch”, beim Gummibärchen „Gummibärchen” usw.",
+    "crumbs": [
+      "Fortbildung",
+      "Training komplett"
+    ]
+  },
+  {
+    "objectID": "trainingsschleife.html#schritt-2-in-trainings--und-testbilder-aufteilen",
+    "href": "trainingsschleife.html#schritt-2-in-trainings--und-testbilder-aufteilen",
+    "title": "Trainingsschleife",
+    "section": "3. Schritt 2: In Trainings- und Testbilder aufteilen",
+    "text": "3. Schritt 2: In Trainings- und Testbilder aufteilen\nAnschließend werden die Bilder in Trainings- und Testbilder aufgeteilt. Wichtig dabei: In den Testbildern sollte von jeder Klasse mindestens eines bzw. alles im korrekten Verhältnis vorhanden sein.\nEs bringt nichts, wenn bei seltenen Sorten (z. B. manchen Lakritz-Klassen) alle Beispiele im Training oder alle im Test landen. Bei geringer Datenlage tut es „weh”, auch noch welche fürs Testen abzugeben – aber es ist wichtig und unerlässlich.\n\n\n\n\n\n\nLabor vs. Realität\n\n\n\nUnsere Bilder sind mit weißem Hintergrund sehr einfach gehalten, deshalb kommen wir mit wenigen Daten aus. In der Realität müssen es für neuronale Netze deutlich mehr sein – und Fotos entstehen nicht immer auf weißem Hintergrund. Das hier ist ein Laborbeispiel.",
+    "crumbs": [
+      "Fortbildung",
+      "Training komplett"
+    ]
+  },
+  {
+    "objectID": "trainingsschleife.html#schritt-3-modell-erstellen-epoche-starten-daten-mischen",
+    "href": "trainingsschleife.html#schritt-3-modell-erstellen-epoche-starten-daten-mischen",
+    "title": "Trainingsschleife",
+    "section": "4. Schritt 3: Modell erstellen, Epoche starten, Daten mischen",
+    "text": "4. Schritt 3: Modell erstellen, Epoche starten, Daten mischen\nSind die Daten aufgeteilt, wird das Modell erstellt und die erste Trainingsepoche gestartet – dabei werden die Daten wieder gemischt.\nJetzt werden je acht Bilder zu einem Trainings-Batch zusammengebündelt.\n\nEin Batch ist ein Paket aus mehreren Datenpunkten, das in einem Trainingsschritt gemeinsam durch das Modell läuft.",
+    "crumbs": [
+      "Fortbildung",
+      "Training komplett"
+    ]
+  },
+  {
+    "objectID": "trainingsschleife.html#warum-batches-stabileres-lernen",
+    "href": "trainingsschleife.html#warum-batches-stabileres-lernen",
+    "title": "Trainingsschleife",
+    "section": "5. Warum Batches? Stabileres Lernen",
+    "text": "5. Warum Batches? Stabileres Lernen\nDas Modell sieht nicht jedes Bild einzeln und lernt einzeln davon – das gäbe ein sehr sprunghaftes Lernsignal. Stattdessen sieht es einen ganzen Batch auf einmal. Typische Batch-Größen sind Zweierpotenzen: 8, 16, … bis 1024, 2048.\nBei einem LLM könnten das durchaus über 2000 Sätze auf einmal sein; der Lerneffekt wird dann über den ganzen Batch gemittelt. Das sorgt für einen stabileren, ausgeglicheneren Lerneffekt. Bei uns sind es acht Bilder.",
+    "crumbs": [
+      "Fortbildung",
+      "Training komplett"
+    ]
+  },
+  {
+    "objectID": "trainingsschleife.html#schritt-4-vorhersage-des-zufälligen-modells",
+    "href": "trainingsschleife.html#schritt-4-vorhersage-des-zufälligen-modells",
+    "title": "Trainingsschleife",
+    "section": "6. Schritt 4: Vorhersage des (zufälligen) Modells",
+    "text": "6. Schritt 4: Vorhersage des (zufälligen) Modells\nDer Batch wird geladen. Da wir überwachtes Lernen betreiben, kenne ich für jedes Bild die richtige Antwort (Frosch → „Frosch” usw.).\nNun lasse ich das Modell eine Vorhersage treffen. Das Modell ist anfangs rein zufällig initialisiert – wir starten also mit einem nichtswissenden Modell. Entsprechend hält es die meisten Klassen für gleich wahrscheinlich. Alles, was es jetzt schon richtig macht, ist ein reiner Zufallstreffer.",
+    "crumbs": [
+      "Fortbildung",
+      "Training komplett"
+    ]
+  },
+  {
+    "objectID": "trainingsschleife.html#schritt-5-fehler-berechnen-und-lernen",
+    "href": "trainingsschleife.html#schritt-5-fehler-berechnen-und-lernen",
+    "title": "Trainingsschleife",
+    "section": "7. Schritt 5: Fehler berechnen und lernen",
+    "text": "7. Schritt 5: Fehler berechnen und lernen\nMit „Fehler berechnen” wird sichtbar: vermutlich sehr viel Rot, und die zugeordneten Wahrscheinlichkeiten zeigen noch keine Überzeugung für eine bestimmte Klasse.\nAus diesen Fehlern lässt sich eine mathematische Ableitung (ein Gradient) berechnen – und genau davon lernt das Modell:\n\nDas Modell wird leicht angepasst.\nEs geht zum nächsten Batch.\nSo werden alle Batches abgearbeitet, bis die Trainingsdaten einmal durch sind (= eine Epoche).\n\nDabei steigt die durchschnittliche Wahrscheinlichkeit der richtigen Klassen – besonders bei den häufigen Sorten – und die Kurve steigt.",
+    "crumbs": [
+      "Fortbildung",
+      "Training komplett"
+    ]
+  },
+  {
+    "objectID": "trainingsschleife.html#epochen-frühes-stoppen-und-checkpoints",
+    "href": "trainingsschleife.html#epochen-frühes-stoppen-und-checkpoints",
+    "title": "Trainingsschleife",
+    "section": "8. Epochen, frühes Stoppen und Checkpoints",
+    "text": "8. Epochen, frühes Stoppen und Checkpoints\nSind die Trainingsdaten durch, wird getestet. In diesem Beispiel sind fünf Epochen angesetzt (die Anzahl ist einstellbar). Du kannst zusätzlich festlegen:\n\nAutomatisch stoppen, wenn sich auf den Testdaten nichts mehr verbessert.\nEingreifen, wenn sich die Testleistung wieder verschlechtert – das ist ein Zeichen für Overfitting (das Modell lernt die Trainingsdaten auswendig).\n\nDafür speichert man im Training immer wieder Model-Checkpoints (Zwischenstände). Merkt man, dass man den Punkt der besten Leistung überschritten hat, bricht man ab und stellt einen früheren Checkpoint wieder her.",
+    "crumbs": [
+      "Fortbildung",
+      "Training komplett"
+    ]
+  },
+  {
+    "objectID": "trainingsschleife.html#auswertung-vorhersagen-und-fehler-ansehen",
+    "href": "trainingsschleife.html#auswertung-vorhersagen-und-fehler-ansehen",
+    "title": "Trainingsschleife",
+    "section": "9. Auswertung: Vorhersagen und Fehler ansehen",
+    "text": "9. Auswertung: Vorhersagen und Fehler ansehen\nMit „Predict” lässt du nach dem Training (oder in einer Pause) eine Vorhersage über den gesamten Datensatz laufen – für Trainings- und Testbilder. Du kannst dir gezielt nur die Fehler anzeigen lassen.\nDort dominieren die altbekannten seltenen oder leicht zu verwechselnden Datenpunkte. Fehler treten sowohl in den Trainings- als auch in den Testdaten auf – ein klares Zeichen, dass diese Klassen schlicht unterrepräsentiert sind und im Lernprozess gegenüber den häufigeren untergehen.\n\n\n\n\n\n\nKeine „heiße Herdplatte”\n\n\n\nBeim Menschen reicht oft ein eindrucksvolles Erlebnis: Wer einmal eine heiße Herdplatte angefasst hat, ist danach extrem vorsichtig. Neuronale Netze funktionieren nicht so. Dass ein, zwei Bilder einer seltenen Klasse „dabei” sind, genügt nicht, damit das Modell sie lernt. Bei diesem Optimierungsverfahren zählt die Menge der Daten – menschliche Intuition über „einmal gesehen = gelernt” greift hier nicht.",
+    "crumbs": [
+      "Fortbildung",
+      "Training komplett"
+    ]
+  },
+  {
+    "objectID": "trainingsschleife.html#die-konfusionsmatrix-lesen",
+    "href": "trainingsschleife.html#die-konfusionsmatrix-lesen",
+    "title": "Trainingsschleife",
+    "section": "10. Die Konfusionsmatrix lesen",
+    "text": "10. Die Konfusionsmatrix lesen\nSehr wichtig ist die Konfusionsmatrix, denn sie zeigt, welche Klasse häufig mit welcher anderen verwechselt wird (für Training und Test getrennt betrachtbar).\n\nAuf der Diagonalen steht die Anzahl der korrekt vorhergesagten Fälle (z. B. „wie viele Bälle tatsächlich als Ball erkannt wurden”).\nEine 0 auf der Diagonalen einer Zeile (z. B. „Säule”) bedeutet: keine Säule wurde als solche erkannt. Stattdessen finden sich Einträge woanders – z. B. eine Säule als „Stab”, zwei Säulen als „Stern”.\nAus den Zeilen liest du ab, als was alle Exemplare einer echten Klasse erkannt wurden; aus den Spalten ergibt sich die tatsächliche Verteilung.\n\nSo erkennst du, welche Datenpunkte dem Modell besonders schwerfallen – und wo du mit mehr Daten oder genauerer Differenzierung nachhelfen kannst. (Da alles in Echtzeit berechnet wird, können deine Ergebnisse leicht abweichen.)",
+    "crumbs": [
+      "Fortbildung",
+      "Training komplett"
+    ]
+  },
+  {
+    "objectID": "trainingsschleife.html#klassengenauigkeit-warum-eine-gesamtzahl-täuscht",
+    "href": "trainingsschleife.html#klassengenauigkeit-warum-eine-gesamtzahl-täuscht",
+    "title": "Trainingsschleife",
+    "section": "11. Klassengenauigkeit: Warum eine Gesamtzahl täuscht",
+    "text": "11. Klassengenauigkeit: Warum eine Gesamtzahl täuscht\nZuletzt die Klassengenauigkeit – wie viel pro Klasse korrekt ist. Das ist entscheidend, denn am Ende haben wir vielleicht knapp 94 % Gesamtgenauigkeit (auf Trainingsdaten evtl. mehr), aber manche Klassen werden gar nicht erkannt.\nEin drastisches Beispiel aus der Medizin: Wenn nur 0,1 % der Fälle krank sind und das Modell keine einzige kranke Person als krank klassifiziert, liegt es trotzdem zu 99,9 % „richtig”. Rein nach Zahl das beste Ergebnis – und trotzdem völlig verfehlt, denn genau darum ging es ja.\nDie Lehre: Man kann ein Modell unmöglich mit einer einzigen Zahl beschreiben. Man muss die einzelnen Klassengenauigkeiten anschauen und das Modell wirklich evaluieren – und zwar nicht nur als Entwicklerin, sondern auch als Anwenderin. Gerade bei großen, vielseitigen Modellen, die Dinge können, auf die sie nicht exakt trainiert wurden, ist diese Vorsicht und Bewertung wichtig.",
+    "crumbs": [
+      "Fortbildung",
+      "Training komplett"
+    ]
+  },
+  {
+    "objectID": "trainingsschleife.html#predict-rot-der-realitätscheck-mit-gedrehten-bildern",
+    "href": "trainingsschleife.html#predict-rot-der-realitätscheck-mit-gedrehten-bildern",
+    "title": "Trainingsschleife",
+    "section": "12. „Predict Rot”: der Realitätscheck mit gedrehten Bildern",
+    "text": "12. „Predict Rot”: der Realitätscheck mit gedrehten Bildern\nZum Schluss kannst du mit „Predict Rot” dieselbe Vorhersage noch einmal laufen lassen – aber mit um 90 Grad gedrehten Bildern. Das Ergebnis: eine deutlich höhere Fehlerrate. Plötzlich werden auch Gummibärchen und Fledermäuse falsch erkannt, nicht mehr nur die „üblichen Verdächtigen”.\nDie zentrale Erkenntnis: Ein Modell hat keine eingebaute menschliche Intuition. Wenn keine gedrehten Bilder im Training waren, existiert auch kein Mechanismus, ein um 90 Grad gedrehtes Gummibärchen trotzdem als solches zu erkennen. Was nicht im Training vorkommt, kann das Modell nicht „erahnen”.\n\n\n\n\n\n\nJetzt bist du dran: Schritt für Schritt durchs Training\n\n\n\n\nGehe mit „Next” durch: Daten laden → aufteilen → Modell erstellen → Batch vorhersagen → Fehler berechnen → anpassen.\nLass es dann mit „Auto” laufen und beobachte die steigende Kurve über die Epochen.\nÖffne nach „Predict” die Konfusionsmatrix und die Klassengenauigkeit: Welche Klassen fallen durch?\nKlicke „Predict Rot” und vergleiche die Fehlerrate mit dem normalen Durchlauf.\n\n\n\n\n\n\n\n\n\nZum Weiterdenken\n\n\n\n\nWarum ist „94 % Gesamtgenauigkeit” in der Medizin manchmal wertlos – oder sogar gefährlich?\nWie könntest du dem Modell beibringen, auch gedrehte Bilder zu erkennen? (Genau das behandeln die nächsten Themen: Augmentations.)\nWo solltest du auch als reine*r **Anwender*in** ein Modell kritisch hinterfragen?",
+    "crumbs": [
+      "Fortbildung",
+      "Training komplett"
+    ]
+  },
+  {
+    "objectID": "trainingsschleife.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "href": "trainingsschleife.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "title": "Trainingsschleife",
+    "section": "Original-Transkript (zum Vergleich für Kolleg*innen)",
+    "text": "Original-Transkript (zum Vergleich für Kolleg*innen)\nJetzt können wir uns das komplette Training angucken mit noch mehr kleinen Schritten und Details. Man kann hier mit „Next“ die wirklich tatsächlich einzelnen Schritte im Training komplett einzeln durchgehen und irgendwann auch mit Klick auf „Auto“ kann man das Training automatisch ablaufen lassen, und mit „Pause“ kann ich es wieder pausieren und die einzelnen Schritte durchgehen.\n\nDer Grundaufbau im Training ist, dass im ersten Schritt einfach mal alle Daten geladen werden, die es in dem Datensatz gibt. Das heißt in unserem Fall habe ich jetzt alle Bilder und möchte die Klasse dazu vorhersagen. Also ich möchte, dass beim Bild von einer Himbeere das Modell sagt, das ist eine Himbeere, beim Bild von einem Frosch, ein Frosch, von einem Obst, ein Obst, Gummibärchen, Gummibärchen und so weiter.\n\nIm nächsten Schritt teile ich dann diese Bilder in Trainingsbilder und in Testbilder auf. Hier möchte ich gucken, dass im Test, in den Testbildern, von jeder Klasse mindestens eins oder alles im korrekten Verhältnis vorhanden ist. Es bringt nichts, wenn bei den selteneren Bildern, wie manchen Lakritz-Klassen, alle im Training oder alle im Test sind, sondern es ist hier sehr schmerzlich bei geringer Datenlage dann auch noch welche fürs Testen aufzugeben, aber das ist wichtig und unerlässlich.\n\nHier ist auch noch drauf hinzuweisen, dass mit den Bildern und dem Hintergrund das alles sehr einfach gehalten ist, deswegen kommen wir hier mit sehr wenigen Daten zurecht. Die eigentliche Datenlage für ein Training, wie wir später sehen, muss eigentlich für neuronale Netze wesentlich größer sein. Und wir werden die Daten ja in der echten Welt in der Anwendung auch nicht immer auf weißem Hintergrund fotografieren. Das heißt, das ist jetzt ein Beispiel aus dem Labor. Hier kommen wir mit diesen wenigen Daten zurecht, mit dem Vermerk, dass es in der Realität natürlich viel, viel mehr sein müssen.\n\nWenn die Daten jetzt aufgeteilt sind, dann kann ich das Modell erstellen und dann kann ich die erste Trainingsepoche starten und die Daten mischen. Und jetzt sieht man die Trainingsdaten so eingefärbt. Hier sind jetzt immer acht Bilder zusammengebündelt und diese acht Bilder, die werden jetzt in einen sogenannten Trainings-Batch zusammengebündelt. Das heißt, ein Trainings-Batch ist ein Paket, das in einem Trainingsschritt gemeinsam durch das Modell geht.\n\nDas Modell sieht nicht jedes Bild einzeln und lernt dann einzeln von dem, das würde ein sehr sprunghaftes Signal sozusagen und Lerneffekt geben, sondern ein Modell sieht einen kompletten Batch – 8, 16 bis 1024, 2048. Das haben so typische Zweierpotenzen, in die man die bündelt. Das heißt, bei einem LLM könnte durchaus sein, dass es 2000 noch was Sätze auf einmal sieht und der Lerneffekt dann über diese ganzen Sätze, über diesen ganzen Batch gemittelt ist. Das sorgt für einen stabileren, ausgeglicheneren Lerneffekt. In unserem Fall sind das also acht Bilder.\n\nDie werden dann erstmal wird der Batch geladen. Ich weiß für jedes Bild, da wir hier übers überwachte Lernen sprechen, was rauskommen soll. Das heißt, ich weiß jetzt, dass bei einem Bild von einem Frosch die Klasse Frosch rauskommen soll, bei einem Gummibärchen Gummibärchen, Himbeere Himbeere, Fledermaus. Dann wende ich jetzt erstmal die Vorhersage von dem Modell an. Das Modell ist am Anfang rein zufällig initialisiert. Das heißt, wir fangen mit einem komplett zufällig im Endeffekt nichtswissenden Modell an und sehen dann hier auch an den Vorhersagen, dass das Modell die meisten Klassen als gleich wahrscheinlich hält für diese Bilder. Alles, was es jetzt schon richtig macht, ist ein reiner Zufallstreffer.\n\nDas kann ich mir dann mit dem nächsten Schritt „Fehler berechnen“ anzeigen lassen. Ich sehe jetzt hier, dass sehr, sehr viel rot sein wird höchstwahrscheinlich, und ich sehe, dass die einzelnen Wahrscheinlichkeiten, die das Modell den Klassen zuordnet, noch nicht sehr, noch keine hohe Überzeugung aufweisen, dass das Modell jetzt irgendwie eine eine besondere Klasse für dieses Bild präferieren wird. Das heißt, von diesen Fehlern kann man jetzt eine mathematische Ableitung berechnen und davon lernen. Das Modell wird leicht angepasst, und dann gehe ich auf den nächsten Batch. Und so werde ich jetzt diese ganzen Batches abarbeiten, bis die Trainingsdaten einmal abgearbeitet sind.\n\nDa kann ich schon sehen, dass die Wahrscheinlichkeiten bei den häufig aufkommenden Süßigkeiten höher werden, und ich sehe, dass die Kurve steigt. Das heißt, die gesamt die durchschnittliche Wahrscheinlichkeit steigt. Und sobald die Trainingsdaten abgearbeitet sind, wird getestet. In diesem Fall ist ein Training über fünf Epochen angesetzt. Die Anzahl an Epochen kann man einstellen.\n\nMan kann auch einstellen, dass das Training automatisch aufhören sollte, wenn sich nichts mehr verbessert auf den Testdaten. Oder man kann auch einstellen, zum Beispiel, dass wenn sich das Training auf den Testdaten wieder verschlechtert – das heißt, das Modell anfängt zu overfitten, das heißt, das Modell fängt an, die Trainingsdaten auswendig zu lernen und ist deswegen weniger gut brauchbar – dann kann man einen sogenannten früheren Model-Checkpoint, das heißt im Training speichere ich immer wieder das Modell ab, und wenn ich merke, dass ich jetzt über den Punkt der besten Genauigkeit und Leistung gekommen bin, dann kann ich das Ganze abbrechen und einen vorherigen Punkt wiederherstellen.\n\nWenn man das Training jetzt hat zu Ende laufen lassen oder im fortgeschrittenen Zustand mal pausiert hat, dann kann man mit Klick auf „Predict“ eine Vorhersage über den ganzen Datensatz machen. Und dann kann man sich angucken, was das Modell bei allen Bildern gesagt hat, sowohl auf den Trainings- wie auf den Testbildern. Man kann sich ausschließlich die Fehler angucken. Hier werden die altbekannten, seltenen oder einfach zu verwechselnden Datenpunkte überwiegen.\n\nUnd ich sehe, dass sowohl in den Trainingsdaten wie auch in den Testdaten Fehler gemacht werden. Das spricht dafür, dass diese Klassen tatsächlich einfach unterrepräsentiert sind und im Lernprozess gegenüber den häufigeren Klassen untergehen. Das heißt, nur die Erwartung, dass sie irgendwie dabei sind, reicht nicht aus, um bei so einer Optimierung, bei so einem Optimierungsverfahren, was hier mathematisch einfach stattfindet, zu erwarten, dass nur wenn da ein, zwei Bilder dabei sind, dass das genügt, um dass das Modell dieses Bild auch lernt. Das ist ein weiterer Schritt, wo die Menge an Daten bei so Algorithmen relevant ist, wo man nicht die menschliche Intuition anwenden kann, dass so ein einmal gesehenes oder eindrucksvolles Beispiel tatsächlich auch zum Lerneffekt führt.\n\nMan spricht ja ab und zu davon, dass es keine heiße Herdplatte gibt. Wenn ich die einmal angefasst habe, dann werde ich in Zukunft wirklich sehr, sehr vorsichtig sein und habe aus diesem einen Ereignis sehr viel gelernt. Das ist was, was man bei neuronalen Netzen eben nicht vorfindet.\n\nWas ich auch machen kann, ist mir die Konfusionsmatrix angucken. Das ist sehr, sehr wichtig, weil hier kann ich sehen, welche Klasse häufig mit welcher anderen verwechselt wird. Hier ist auch sehr wichtig, dass ich mir das für Training und Test wieder separat angucken kann, auch wenn hier wahrscheinlich ähnliche Resultate sein werden. Das heißt, in dieser Grafik sehe ich auf der Diagonalen die Anzahl an korrekt Vorhergesagten. Das heißt, wenn ich gucke, erste Zelle ist, wie viel Baller tatsächlich als Baller vorhergesagt wurden.\n\nUnd wenn ich jetzt mal gucke, zum Beispiel bei Test oder bei irgendeinem, wenn ich jetzt auf Rolle gucke, in der Zeile Rolle, sehe ich auf der, oder in der Zeile Säulen sehe ich auf dem Eintrag auf der Diagonalen, der leicht blau eingefärbt ist, null. Das heißt für mich, dass keine Säule als solche erkannt wurde. Stattdessen sehe ich woanders Einträge. Das heißt, eine Säule wurde als ein Stab erkannt und zwei Säulen wurden als ein Stern erkannt. Das kann jetzt dadurch, dass es alles in Echtzeit berechnet wird und diese Verfahren immer wieder abweichen, bei Ihnen zu leicht anderen Ergebnissen führen, aber sozusagen in der Zeile kann ich sagen, okay, alle Säulen, die es gibt, oder alle Sandwiches oder alle Rollen oder alle Gummibärchen wurden als folgendes erkannt.\n\nUnd dann ergibt sich aus den Spalten die tatsächliche Verteilung. Und dadurch kann ich dann sehen, welche Datenpunkte dem Modell besonders schwierig vorkommen, sozusagen. Das heißt, hier ist erneut ein Punkt, wo ich zum Beispiel durch mehr Daten oder vielleicht genauere Differenzierung dem Trainingsprozess in Zukunft noch helfen kann.\n\nUnd der letzte Punkt ist die Klassengenauigkeit. Da kann ich dann sehen, wie viele, wie viele Klassen, also wie viel aus einer Klasse korrekt ist. Das ist halt wichtig, weil wir sehen hier, wir haben wahrscheinlich am Ende vom Training knapp 94% Gesamtgenauigkeit oder auf den Trainingsdaten sogar noch mehr, aber manche Klassen werden gar nicht erkannt. Und in Beispielen wie, oder in Anwendungsfällen wie in der Medizin ist das dann natürlich ein ungewollter Effekt. Wenn nur 0,1% der Leute oder Bilder oder irgendwas, was man da verwendet, tatsächlich krank sind, und ich keine einzige kranke Person als krank klassifiziere, dann liege ich immer noch 99,9% richtig. Und das ist ja was, was erstmal die Zahl an sich, ist wahrscheinlich das beste Ergebnis, was man hier erreichen könnte, aber es ist natürlich überhaupt nicht, warum man das Ganze macht. Das heißt, sich auf eine Zahl zu verlassen, ist unmöglich, so ein Modell zu beschreiben. Ich muss mir die einzelnen Klassenwahrscheinlichkeiten oder Genauigkeiten angucken und das Ganze wirklich evaluieren.\n\nUnd das wiederum nicht nur als Entwickler, sondern auch als Anwender. Besonders in Zeiten von diesen großen, sehr vielseitigen Modellen, die im Endeffekt so vielseitig sind, dass sie Dinge können, auf die sie gar nicht unbedingt genau exakt trainiert wurden. Das heißt, hier gilt genau auch als Anwender eine Vorsicht und eine Bewertung, die man in so Beispielen zumindest anschaulich lernen kann, warum das Ganze so wichtig ist.\n\nUnd als Letztes kann man mit einem Klick auf „Predict Rot“ dieselbe Vorhersage noch mal laufen lassen, aber mit rotierten, also um 90 Grad gedrehten Bildern. Und man sieht, dass hier eine wesentlich höhere Fehlerrate zustande kommt und dass verschiedene Bilder nun falsch gemacht werden. Wenn es vorher die üblichen Verdächtigen waren, werden jetzt sogar Gummibärchen und Fledermäuse und so weiter falsch erkannt. Das heißt, wir haben jetzt gedacht, wir sind vielleicht bei einem gut funktionierenden System gelandet, und merken, dass hier jegliche menschliche Intuition, die man vielleicht annehmen würde, nicht einfach so in dieses System eingebaut ist. Das heißt, wenn ich zum Beispiel keine gedrehten Daten in meinen Trainingsdatensatz oder in meinen Trainingsprozess mit einbinde, dann bedeutet es nicht, dass das Modell irgendeine Intuition oder Fähigkeit, mal menschlich gesprochen, hat, irgendeinen Mechanismus aus Modellsicht hat, ein Gummibärchen aufrecht zu lernen. Das bedeutet nicht, dass ein Mechanismus existiert, um ein um 90 Grad gedrehtes, liegendes Gummibärchen auch als ein solches zu erkennen.",
+    "crumbs": [
+      "Fortbildung",
+      "Training komplett"
+    ]
+  },
+  {
+    "objectID": "tictactoe_vis2.html",
+    "href": "tictactoe_vis2.html",
+    "title": "Tic-Tac-Toe Visualisierung 2",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next",
+    "crumbs": [
+      "Fortbildung",
+      "Tic-Tac-Toe Visualisierung 2"
+    ]
+  },
+  {
+    "objectID": "tictactoe_vis2.html#den-suchbaum-in-echtzeit-aufbauen",
+    "href": "tictactoe_vis2.html#den-suchbaum-in-echtzeit-aufbauen",
+    "title": "Tic-Tac-Toe Visualisierung 2",
+    "section": "1. Den Suchbaum in Echtzeit aufbauen",
+    "text": "1. Den Suchbaum in Echtzeit aufbauen\nIn diesem Beispiel kannst du den Suchbaum live von einem Startbrett aus aufbauen lassen. Die App simuliert dabei jeden Zug mit jedem Folgezug durch.\nSo wird sichtbar, wie lange ein halbwegs optimierter Algorithmus braucht, um ein komplettes Tic-Tac-Toe-Spiel durchzurechnen.",
+    "crumbs": [
+      "Fortbildung",
+      "Tic-Tac-Toe Visualisierung 2"
+    ]
+  },
+  {
+    "objectID": "tictactoe_vis2.html#was-bedeutet-gelöst-solved",
+    "href": "tictactoe_vis2.html#was-bedeutet-gelöst-solved",
+    "title": "Tic-Tac-Toe Visualisierung 2",
+    "section": "2. Was bedeutet „gelöst” (solved)?",
+    "text": "2. Was bedeutet „gelöst” (solved)?\nWenn ein Spiel vollständig berechnet werden kann, spricht man davon, dass es gelöst ist (englisch: solved). Bei Tic-Tac-Toe ist genau das möglich.\nKonkret beobachtest du in der App ungefähr:\n\neine Rechenzeit im Bereich von etwa einer Sekunde,\ngut 16.000 durchgerechnete Spielstände.\n\n(Die genauen Zahlen können bei dir leicht abweichen, da alles in Echtzeit berechnet wird.)",
+    "crumbs": [
+      "Fortbildung",
+      "Tic-Tac-Toe Visualisierung 2"
+    ]
+  },
+  {
+    "objectID": "tictactoe_vis2.html#eine-optimierung-der-cache",
+    "href": "tictactoe_vis2.html#eine-optimierung-der-cache",
+    "title": "Tic-Tac-Toe Visualisierung 2",
+    "section": "3. Eine Optimierung: der Cache",
+    "text": "3. Eine Optimierung: der Cache\nIn der App wird zusätzlich ein Cache genutzt. Das bedeutet: Führen zwei verschiedene Verzweigungen im Baum irgendwann zur selben Spielkonfiguration, wird diese nicht doppelt berechnet, sondern nur einmal.\nTrotz dieser Optimierung – und obwohl ein Tic-Tac-Toe-Brett nur 3×3 Felder hat, auf die man Kreuz oder Kreis setzen kann – braucht der Algorithmus rund eine Sekunde.",
+    "crumbs": [
+      "Fortbildung",
+      "Tic-Tac-Toe Visualisierung 2"
+    ]
+  },
+  {
+    "objectID": "tictactoe_vis2.html#ausblick-wenn-vollständigkeit-nicht-mehr-geht",
+    "href": "tictactoe_vis2.html#ausblick-wenn-vollständigkeit-nicht-mehr-geht",
+    "title": "Tic-Tac-Toe Visualisierung 2",
+    "section": "4. Ausblick: Wenn Vollständigkeit nicht mehr geht",
+    "text": "4. Ausblick: Wenn Vollständigkeit nicht mehr geht\nMit diesem kleinen Spiel wurde der Lösungsraum noch komplett erkundet. Die folgenden Beispiele zeigen jedoch, wie dieses Verfahren an seine Grenzen gerät.\nDas motiviert den Einsatz anderer Algorithmen, die keinen Anspruch mehr auf Vollständigkeit erheben, dafür aber die bestmögliche Lösung in der verfügbaren Zeit liefern.\n\n\n\n\n\n\nJetzt bist du dran: Lass es rechnen\n\n\n\n\nStarte den Aufbau des Suchbaums und notiere dir Rechenzeit und Anzahl der Spielstände.\nWiederhole es ein zweites Mal: Sind die Zahlen exakt gleich oder leicht anders?\nÜberlege, welchen Anteil der Cache an der Geschwindigkeit haben könnte.\n\n\n\n\n\n\n\n\n\nZum Weiterdenken\n\n\n\n\nEine Sekunde für ein 3×3-Brett – was bedeutet das für ein Spiel mit Millionen möglicher Stellungen?\nWarum ist „die beste Lösung in begrenzter Zeit” manchmal wertvoller als „die garantiert perfekte Lösung”?\n\nGenau diese Frage führt uns zum nächsten Beispiel: Schach.",
+    "crumbs": [
+      "Fortbildung",
+      "Tic-Tac-Toe Visualisierung 2"
+    ]
+  },
+  {
+    "objectID": "tictactoe_vis2.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "href": "tictactoe_vis2.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "title": "Tic-Tac-Toe Visualisierung 2",
+    "section": "Original-Transkript (zum Vergleich für Kolleg*innen)",
+    "text": "Original-Transkript (zum Vergleich für Kolleg*innen)\nIn diesem Beispiel kann man jetzt mal in Echtzeit den Suchbaum aufbauen von einem Startbrett. Das heißt, hier wird jetzt jeder Zug mit jedem Folgezug durchsimuliert und damit man einfach mal die Zeit angezeigt bekommt, die ein halbwegs optimierter Algorithmus für ein Tic-Tac-Toe-Spiel braucht, dieses ganze Spiel komplett zu lösen. Hier spricht man von „solve“, also wenn man ein Spiel komplett berechnen kann, dann gilt das als gelöst oder solved.\n\nUnd wir sehen hier, dass es irgendwas wahrscheinlich in der Region von einer Sekunde braucht, um durchzurechnen. Wir sehen, dass es knapp über 16.000 Spielstände berechnet hat. Wir sehen, dass hier auch ein Cache genutzt wird. Das heißt, wenn eine Abzweigung im Baum und eine andere dann zur – zur selben Konfiguration irgendwann im Spiel führen sollten, wird es nicht zweimal berechnet. Das zeigt also, hier sind gewisse Optimierungen, aber selbst bei einem 3x3-Spielfeld, wo man nur ein Kreis oder Kreuz draufsetzen kann, hat dieser Algorithmus eine Sekunde benötigt.\n\nUnd damit wurde der Lösungsraum komplett erkundet. Und die folgenden Beispiele, die wir uns angucken werden, zeigen auch, wie das ganze Verfahren an seine Grenzen gerät und motivieren vielleicht das Verwenden anderer Algorithmen, die keinen Anspruch mehr auf Vollständigkeit haben, aber die bestmögliche Lösung in der gegebenen Zeit präsentieren können.",
+    "crumbs": [
+      "Fortbildung",
+      "Tic-Tac-Toe Visualisierung 2"
+    ]
+  },
+  {
+    "objectID": "ai_literacy.html",
+    "href": "ai_literacy.html",
+    "title": "AI und Data literacy",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nAI und Data literacy"
+  },
+  {
+    "objectID": "datensatz.html",
+    "href": "datensatz.html",
+    "title": "Datensatz kennenlernen",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next",
+    "crumbs": [
+      "Fortbildung",
+      "Datensatz kennenlernen"
+    ]
+  },
+  {
+    "objectID": "datensatz.html#was-ist-überhaupt-ein-datensatz",
+    "href": "datensatz.html#was-ist-überhaupt-ein-datensatz",
+    "title": "Datensatz kennenlernen",
+    "section": "1. Was ist überhaupt ein Datensatz?",
+    "text": "1. Was ist überhaupt ein Datensatz?\nEin Datensatz kann je nach Problemstellung, verfügbaren Daten und Domäne ganz unterschiedlich aussehen. Trotzdem haben die meisten Datensätze – gerade in wirtschaftlichen Anwendungen – eine vertraute Form: die Tabelle.\nAuch wenn ein Datensatz Bilder enthält, denkt man ihn oft als Tabelle, in der gilt:\n\nJede Zeile = ein Datenpunkt (hier: eine einzelne Süßigkeit aus der Tüte).\nJede Spalte = ein Merkmal dieses Datenpunkts.\n\nIn unserem Beispiel besitzt jede Süßigkeit ein Bild, ein Gewicht, eine Farbe, eine Klasse (die Sorte) sowie Angaben zu Lakritz-, Gummi-, Zucker- und Schaumgehalt.",
+    "crumbs": [
+      "Fortbildung",
+      "Datensatz kennenlernen"
+    ]
+  },
+  {
+    "objectID": "datensatz.html#woher-kommen-daten-und-warum",
+    "href": "datensatz.html#woher-kommen-daten-und-warum",
+    "title": "Datensatz kennenlernen",
+    "section": "2. Woher kommen Daten – und warum?",
+    "text": "2. Woher kommen Daten – und warum?\nDaten entstehen auf sehr unterschiedliche Weise, und das prägt, was später möglich ist:\n\nAuf Vorrat gesammelt: Eine Firma trägt Daten zusammen, ohne konkrete Absicht, einfach weil sie irgendwann nützlich sein könnten.\nGezielt für einen Anwendungsfall gesammelt: Dann werden oft nur die Daten erhoben, die wirklich gebraucht werden. Wer z. B. nur „Lakritz vs. Nicht-Lakritz” unterscheiden will, sammelt vielleicht nur das Bild und den Lakritz-Wert.\nMit Weitblick gesammelt: Man erhebt von vornherein mehr Merkmale, als man aktuell braucht, um für spätere Fragestellungen gerüstet zu sein.\n\nWichtig ist die Erkenntnis: Es gibt hier keine festen Normen. Wir betreten ein experimentelles Feld, in dem zwei Fragen am Anfang stehen: Welche Daten sind verfügbar? und Was möchte ich damit erreichen?",
+    "crumbs": [
+      "Fortbildung",
+      "Datensatz kennenlernen"
+    ]
+  },
+  {
+    "objectID": "datensatz.html#spalten-haben-unterschiedliche-datentypen",
+    "href": "datensatz.html#spalten-haben-unterschiedliche-datentypen",
+    "title": "Datensatz kennenlernen",
+    "section": "3. Spalten haben unterschiedliche Datentypen",
+    "text": "3. Spalten haben unterschiedliche Datentypen\nDie Spalten einer Tabelle können ganz verschiedene Datentypen enthalten. In unserem Süßigkeiten-Beispiel etwa:\n\ndas Bild als Bild,\ndas Gewicht als Fließkomma- bzw. Gleitkommazahl,\ndie Farbe als Text (String),\ndie Klasse als String oder als Zahl (Index),\nGummi, Zucker, Schaum, Lakritz als Wahrheitswert (Boolean) oder als 0/1 codiert.\n\nDieses Wissen über Datentypen ist später wichtig, weil ein Modell mit Zahlen rechnet – Texte und Bilder müssen also erst in eine passende Form gebracht werden.\n\n\n\n\n\n\nJetzt bist du dran: Erkunde die Tabelle\n\n\n\n\nSieh dir in der App die einzelnen Zeilen an: Erkennst du, dass jede Zeile genau eine Süßigkeit beschreibt?\nGeh die Spalten durch und überlege bei jeder: Welcher Datentyp steckt dahinter (Bild, Zahl, Text, Wahr/Falsch)?\nStell dir vor, du wolltest nur Lakritz von Nicht-Lakritz unterscheiden – welche Spalten bräuchtest du dafür wirklich?\n\n\n\n\n\n\n\n\n\nZum Weiterdenken\n\n\n\n\nWenn es keinen „Standardweg” gibt – wer entscheidet dann eigentlich, welche Merkmale gesammelt werden?\nWelche Probleme entstehen, wenn man im Nachhinein merkt, dass ein wichtiges Merkmal nie erhoben wurde?\n\nAls Nächstes schauen wir uns an, wie man die Verteilung dieser Daten sichtbar macht – mit einem Histogramm.",
+    "crumbs": [
+      "Fortbildung",
+      "Datensatz kennenlernen"
+    ]
+  },
+  {
+    "objectID": "datensatz.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "href": "datensatz.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "title": "Datensatz kennenlernen",
+    "section": "Original-Transkript (zum Vergleich für Kolleg*innen)",
+    "text": "Original-Transkript (zum Vergleich für Kolleg*innen)\nEin Datensatz kann natürlich nach Problemstellung und verfügbaren Daten und Domäne, in der man das Ganze lösen möchte, komplett verschiedene Formen annehmen. Aber die Standard-Datensätze in vielen wirtschaftlichen Anwendungen und darüber hinaus sind doch in tabellarischer Form. Selbst wenn das auch Dinge wie Bilder enthält, denkt man häufig über Datensätze in Tabellenform nach, wo jede Zeile einem Datenpunkt zugeordnet werden kann. Also in diesem Fall besitzt jede einzelne Süßigkeit aus der Tüte ein Bild, ein Gewicht, eine Farbe, eine Klasse, die in dem Fall die Sorte an Süßigkeit angibt – Lakritz, Gummi, Zucker und Schaumgehalt. Das sind einfach alle Daten, die in diesem einen Fall gesammelt wurden.\n\nDas kann auch einfach von einer Firma gesammelt werden ohne direkte Verwendungsabsicht, sondern einfach nur, um Daten zusammenzutragen, die dann vielleicht später in irgendwelchen Abteilungen nützlich sein können oder irgendwelchen Geschäftszwecken dienen. Oder so was kann ganz bewusst für einen besonderen Anwendungsfall gesammelt werden. Da werden dann häufig nur die Daten gesammelt, die tatsächlich für die Anwendung benötigt werden. Also, wenn man jetzt zum Beispiel in Lakritz und Nicht-Lakritz sortieren möchte, dann würde man vielleicht nur das Bild und den Lakritz-Punkt sammeln. Oder man hat die Voraussicht, viel mehr Datenpunkte und Werte für diese zu sammeln.\n\nAber letztendlich sieht man schon hier, dass es keine festgelegten Normen hier gibt und dass wir hier schon, sage ich mal, dieses experimentelle Feld betreten, wo die Frage schon ist: Was für Daten sind verfügbar? Was möchte die Person machen? Dass es hier keinen Standardweg gibt. Und die verschiedenen Spalten können verschiedene Datentypen haben: das Bild natürlich als Bild, das Gewicht als Fließ- oder Gleitkommazahl, die Farbe als String zum Beispiel, die Klasse als String oder als Zahl (Index) und Gummi, Zucker, Schaum und Lakritz entweder als Boolean oder als 0 und 1 codiert.",
+    "crumbs": [
+      "Fortbildung",
+      "Datensatz kennenlernen"
+    ]
+  },
+  {
+    "objectID": "features.html",
+    "href": "features.html",
+    "title": "Feature",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next",
+    "crumbs": [
+      "Fortbildung",
+      "Feature Vector"
+    ]
+  },
+  {
+    "objectID": "features.html#wo-speichert-man-berechnete-features",
+    "href": "features.html#wo-speichert-man-berechnete-features",
+    "title": "Feature",
+    "section": "1. Wo speichert man berechnete Features?",
+    "text": "1. Wo speichert man berechnete Features?\nDie berechneten Bildwerte könnte man für jedes Bild ausrechnen und der Ursprungstabelle hinzufügen – oder, wie hier, separat halten. In der Praxis behält man in den Rohdaten meist nur das Bild. Den Code, der die Features berechnet, dokumentiert man getrennt oder bündelt ihn in einer Pipeline – einer Abfolge von Code, die andere später erneut laufen lassen können.\nDas entspricht dem Vorgehen in der Forschung: Es gibt die unveränderlichen Grunddaten, und als Zwischenschritt berechnet man die Features darauf.",
+    "crumbs": [
+      "Fortbildung",
+      "Feature Vector"
+    ]
+  },
+  {
+    "objectID": "features.html#jedes-bild-wird-zu-einer-liste-von-zahlen",
+    "href": "features.html#jedes-bild-wird-zu-einer-liste-von-zahlen",
+    "title": "Feature",
+    "section": "2. Jedes Bild wird zu einer Liste von Zahlen",
+    "text": "2. Jedes Bild wird zu einer Liste von Zahlen\nIn der Übersicht siehst du beispielhaft die berechneten Features pro Kategorie. (Wichtig: Das gilt natürlich für alle Bilder im Datensatz, nicht nur die hier gezeigte Auswahl.)\nJedes Bild links lässt sich durch z. B. sieben Werte darstellen – Kreisförmigkeit, Fläche, Kanten, Varianz, Entropie usw. Du musst aber nicht alle verwenden.",
+    "crumbs": [
+      "Fortbildung",
+      "Feature Vector"
+    ]
+  },
+  {
+    "objectID": "features.html#features-bewusst-auswählen",
+    "href": "features.html#features-bewusst-auswählen",
+    "title": "Feature",
+    "section": "3. Features bewusst auswählen",
+    "text": "3. Features bewusst auswählen\nNicht jedes Feature ist nützlich. Beim Betrachten der Werte kann man entscheiden, manche wegzulassen:\n\nWenn z. B. alle Süßigkeiten sehr ähnliche Farbwerte haben, trägt die Farbe nichts zur Unterscheidung bei – raus damit.\nWenn die Kreisförmigkeit selbst bei der Fledermaus keine sinnvolle Aussage liefert, kann auch sie überflüssig sein.\n\nOb sich auch ganz kleine Unterschiede lohnen, muss man experimentell herausfinden. Es gilt: Ein Bild lässt sich durch eine Auswahl der Tabellenwerte beschreiben.",
+    "crumbs": [
+      "Fortbildung",
+      "Feature Vector"
+    ]
+  },
+  {
+    "objectID": "features.html#der-feature-vektor-eine-repräsentation",
+    "href": "features.html#der-feature-vektor-eine-repräsentation",
+    "title": "Feature",
+    "section": "4. Der Feature-Vektor – eine Repräsentation",
+    "text": "4. Der Feature-Vektor – eine Repräsentation\nSchreibt man die ausgewählten Werte in eine Liste bzw. einen Vektor, spricht man von einer Repräsentation des Bildes.\nDiese Repräsentation ist nicht eindeutig: Verschiedene Teams können verschiedene Features, andere Reihenfolgen oder andere Auswahlen verwenden. Innerhalb eines Projekts müssen sie konsistent sein, damit man Dinge vergleichen kann – aber zwischen verschiedenen Repräsentationen besteht keine Kompatibilität. Hier gibt es keine einzig richtige Antwort.\nFährst du in der App mit der Maus über ein Bild, kannst du diese Liste als Spiderweb-Diagramm (Netzdiagramm) anzeigen – ähnlich wie die Charakterwerte in Videospielen.\n\n\n\n\n\n\nJetzt bist du dran: Stelle deinen Vektor zusammen\n\n\n\n\nSieh dir die sieben Beispiel-Features an und überlege, welche du streichen würdest, weil sie kaum unterscheiden.\nFahre mit der Maus über die Bilder und vergleiche die Spiderweb-Diagramme verschiedener Sorten.\nStell dir vor, ein anderes Team wählt andere Features – warum wären eure Vektoren dann nicht vergleichbar?\n\n\n\n\n\n\n\n\n\nZum Weiterdenken\n\n\n\n\nWarum kann „mehr Features” manchmal schlechter sein als eine kluge Auswahl weniger Features?\nWenn es keine eindeutige Repräsentation gibt – wie stellt ein Team sicher, dass alle dieselbe verwenden?\n\nMit dieser Repräsentation in der Hand können wir Bilder nun vergleichen und nach Ähnlichkeit suchen.",
+    "crumbs": [
+      "Fortbildung",
+      "Feature Vector"
+    ]
+  },
+  {
+    "objectID": "features.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "href": "features.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "title": "Feature",
+    "section": "Original-Transkript (zum Vergleich für Kolleg*innen)",
+    "text": "Original-Transkript (zum Vergleich für Kolleg*innen)\nDie berechneten Bildwerte könnte ich jetzt für jedes Bild berechnen und meiner Ursprungsdatensatz-Tabelle hinzufügen, oder aber ich könnte sie jetzt für diese Anwendung separat halten, wie wir es jetzt hier sehen. Aber letztendlich würde man wahrscheinlich in den Rohdaten, die man ablegt, nur das Bild behalten, und den Code, wie man jetzt diese anderen Features berechnet hat und deren Werte, würde man dann separat dokumentiert ablegen oder in einer sogenannten Pipeline bündeln, das einfach eine Abfolge von Code, die jemand anderes dann laufen lassen kann.\n\nDas heißt, hier geht man auch wie in der Forschung vor, dass es sozusagen die Grunddaten gibt, die unveränderlich bleiben, und dann könnte man jetzt als Zwischenschritt diesen Datensatz – sozusagen diese Features auf den Datensatz berechnen.\n\nHier in der Übersicht sehen wir jetzt nur ein berechnetes – also sehen wir berechnete Features für jede Kategorie an Süßigkeit für ein Bild. Es ist wichtig anzumerken, dass das natürlich für alle Bilder in dem Datensatz gilt und ich nicht hier eine Auswahl getroffen habe.\n\nUnd dann sehen wir, dass jedes Bild links durch diese sieben Werte hier dargestellt werden kann, oder aber ich kann auch weniger nehmen. Das heißt, hier liegen jetzt erstmal nur beispielhaft sieben Werte, die dieses Bild repräsentieren, also die Kreisförmigkeit, die Fläche, die Kanten, die Varianz, Entropie und so weiter. Ich muss aber in meiner Modellierung nicht alle verwenden. Wenn ich jetzt hier sehe, dass zum Beispiel alle sehr ähnliche Farbwerte haben, könnte es sein, dass man die Farbwerte auch einfach rausschmeißt, wenn sie zur Differenzierung oder zur Aufgabe keinen Inhalt beitragen. Oder die Kreisförmigkeit scheint hier selbst bei der Fledermaus wohl keine so sinnvolle Metrik zu sein.\n\nDas heißt, man kann natürlich auch lernen, zwischen ganz kleinen Werten zu unterscheiden und die ganz kleinen Unterschiede – das muss man dann einfach experimentell bestimmen. Aber letztendlich soll dieses Beispiel darauf abzielen, dass ein Bild links durch eine Auswahl der Werte in der Tabelle beschrieben werden kann. Und wenn man diese Werte dann in eine Liste oder einen sogenannten Vektor schreibt, dann spricht man von einer Repräsentation von diesem Bild. Die ist nicht eindeutig und kann bei jeder Person anders aussehen. Sie müssen untereinander stimmig sein, wenn man die ganzen Sachen vergleichen und weiter verwenden möchte. Aber es können verschiedene Teams verschiedene Repräsentationen mit verschiedenen Features oder anderen Reihenfolgen zusammenstellen. Die sind dann untereinander nicht kompatibel, aber hier gibt es einfach keine eine Antwort, wie man hier vorzugehen hat.\n\nUnd wenn man mit der Maus über das Bild geht, dann kann sich diese Liste auch mal wie so als Spiderweb-Diagramm dargestellt angucken. Das wäre jetzt so, wie man es vielleicht auch aus Videospielen kennt, die Charakteristika der jeweiligen Süßigkeiten dargestellt.",
+    "crumbs": [
+      "Fortbildung",
+      "Feature Vector"
+    ]
+  },
+  {
+    "objectID": "stratification.html",
+    "href": "stratification.html",
+    "title": "Übersicht Stratification",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nÜbersicht Stratification\n\n\n\n\n\n\nTip 1: Cross-Referencing a Tip\n\n\n\nAdd an ID starting with #tip- to reference a tip."
+  },
+  {
+    "objectID": "motivation.html",
+    "href": "motivation.html",
+    "title": "Motivation",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nLakritz, Bilderkennungsapps Süßigkeiten oder Lakritz",
+    "crumbs": [
+      "Fortbildung",
+      "Motivation"
+    ]
+  },
+  {
+    "objectID": "sort_1d.html",
+    "href": "sort_1d.html",
+    "title": "Sort 1D",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n  \n  \n  Feature1D\n  \n  \n  \n\n\n  \n    \n  \n\n\n\n\n\n\nSort 1D",
+    "crumbs": [
+      "Fortbildung",
+      "Sort 1D"
+    ]
+  },
+  {
+    "objectID": "unsicherheit.html",
+    "href": "unsicherheit.html",
+    "title": "Unsicherheit",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nUnsicherheit bzw. nachvollziehbare Logik Grundverständnis von Daten, Datenbasis, Evaluation und Explainability"
+  },
+  {
+    "objectID": "system.html",
+    "href": "system.html",
+    "title": "System",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nSystem"
+  },
+  {
+    "objectID": "ist_das_ki.html",
+    "href": "ist_das_ki.html",
+    "title": "Ist das KI?",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next",
+    "crumbs": [
+      "Fortbildung",
+      "Ist das KI?"
+    ]
+  },
+  {
+    "objectID": "ist_das_ki.html#eine-berechtigte-frage-ist-das-ki",
+    "href": "ist_das_ki.html#eine-berechtigte-frage-ist-das-ki",
+    "title": "Ist das KI?",
+    "section": "1. Eine berechtigte Frage: Ist das KI?",
+    "text": "1. Eine berechtigte Frage: Ist das KI?\nIn der App siehst du mehrere Beispiele, bei denen sich jeweils fragen lässt: Ist das eigentlich Künstliche Intelligenz – oder nicht? Der Begriff „KI” wird heute so inflationär verwendet, dass es sich lohnt, genauer hinzuschauen.",
+    "crumbs": [
+      "Fortbildung",
+      "Ist das KI?"
+    ]
+  },
+  {
+    "objectID": "ist_das_ki.html#die-ampel-simple-steuerung-keine-ki",
+    "href": "ist_das_ki.html#die-ampel-simple-steuerung-keine-ki",
+    "title": "Ist das KI?",
+    "section": "2. Die Ampel: simple Steuerung, keine KI",
+    "text": "2. Die Ampel: simple Steuerung, keine KI\nBeim Ampel-Beispiel drückt man einen Knopf, nach 5 Sekunden schlägt die Ampel um, nach weiteren 5 Sekunden wieder zurück. Das fängt die Stimmung ein, dass „KI” gerade in aller Munde ist – bis hin zu automatischen Rollläden, die in Wahrheit nur einen simplen Sensor haben und bei Lichteinfall einen Motor ansteuern.\nBei der Ampel ist es ähnlich: Dahinter steckt eine fest programmierte Logiksteuerung oder sogar nur einfache Elektrotechnik. Nur weil „etwas passiert”, ist es also noch lange keine KI. Der Begriff hat schlicht eine starke Proliferation (Verbreitung/Ausweitung) erlebt.",
+    "crumbs": [
+      "Fortbildung",
+      "Ist das KI?"
+    ]
+  },
+  {
+    "objectID": "ist_das_ki.html#algorithmen-kürzester-pfad-tic-tac-toe",
+    "href": "ist_das_ki.html#algorithmen-kürzester-pfad-tic-tac-toe",
+    "title": "Ist das KI?",
+    "section": "3. Algorithmen: Kürzester Pfad & Tic-Tac-Toe",
+    "text": "3. Algorithmen: Kürzester Pfad & Tic-Tac-Toe\nDen kürzesten Pfad zwischen zwei Punkten zu berechnen, würden viele „einen Algorithmus” nennen. Aber letztlich ist alles ein Algorithmus – vom Kochrezept bis zum Sortierverfahren. Tatsächlich stehen solche Verfahren sogar im Klassiker „AI – A Modern Approach” (der ironischerweise schon recht alt ist). Heute würde man sie eher der Ecke „Algorithmen und Datenstrukturen” zuordnen. Sorgen sie aber für intelligentes Verhalten, kann man sie nach manchen Definitionen durchaus als KI bezeichnen.\nDas gilt auch für Tic-Tac-Toe: Dort läuft eine Minimax-Baumsuche. Sie schaut Züge voraus, trifft Annahmen über die gegnerische Person und wählt die vielversprechendsten eigenen Züge. Hier kommen also eine Datenstruktur (der Baum) und ein Suchalgorithmus zum Einsatz – mit durchaus intelligent wirkendem Ergebnis.",
+    "crumbs": [
+      "Fortbildung",
+      "Ist das KI?"
+    ]
+  },
+  {
+    "objectID": "ist_das_ki.html#der-entscheidende-unterschied-nichts-wird-gelernt",
+    "href": "ist_das_ki.html#der-entscheidende-unterschied-nichts-wird-gelernt",
+    "title": "Ist das KI?",
+    "section": "4. Der entscheidende Unterschied: nichts wird gelernt",
+    "text": "4. Der entscheidende Unterschied: nichts wird gelernt\nAllen diesen Beispielen ist eines gemeinsam: Es gibt kein gelerntes, angelerntes System. Es sind mehr oder weniger deterministische Algorithmen, die ein bestimmtes Problem lösen.\nMan kann das – wenn man möchte oder traditionell denkt – „Künstliche Intelligenz” nennen. Klar ist aber: Von Machine Learning, Deep Learning oder überwachtem Lernen kann man hier nicht sprechen. Genau das ist die Grenze, die wir in dieser Lerneinheit ziehen.\n\n\n\n\n\n\nJetzt bist du dran: Triff deine Einschätzung\n\n\n\n\nGeh die Beispiele in der App durch und entscheide bei jedem: gelernt oder fest programmiert?\nFrage dich konkret: Würde sich das Verhalten ändern, wenn man dem System andere Daten zeigt?\nSortiere die Beispiele gedanklich in „klassischer Algorithmus” und „Machine Learning”.\n\n\n\n\n\n\n\n\n\nZum Weiterdenken\n\n\n\n\nWarum verkauft sich heute so vieles als „KI”, das eigentlich nur ein einfacher Algorithmus ist?\nWo verläuft für dich die Grenze zwischen „intelligentem Verhalten” und „echtem Lernen”?\n\nAls Nächstes schauen wir uns die Baumsuche bei Tic-Tac-Toe genauer an – und sehen, wie schnell so ein Lösungsraum wächst.",
+    "crumbs": [
+      "Fortbildung",
+      "Ist das KI?"
+    ]
+  },
+  {
+    "objectID": "ist_das_ki.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "href": "ist_das_ki.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "title": "Ist das KI?",
+    "section": "Original-Transkript (zum Vergleich für Kolleg*innen)",
+    "text": "Original-Transkript (zum Vergleich für Kolleg*innen)\nBei den folgenden Beispielen kann man jetzt fragen, ob das KI ist oder nicht.\n\nIm Falle der Ampel drückt man auf einen Knopf, es dauert 5 Sekunden, die Ampel schlägt um, dann dauert es wieder 5 Sekunden und die Ampel schlägt wieder um. Das Beispiel soll hauptsächlich, sage ich mal, ein bisschen die Stimmung einfangen, dass das Wort KI in aller Munde ist und somit alles von automatisierten Rollläden und so weiter als künstliche Intelligenz bezeichnet werden, die einfach nur einen simplen Sensor haben und bei Lichteinfall einen Motor ansteuern. Ähnlich ist es hier auch bei der Ampel. Das kann entweder eine Logiksteuerung sein, die fest programmiert ist, oder ganz und gar mit Bauteilen aus der simplen Elektrotechnik konstruiert werden. Das heißt, nur weil hier etwas passiert, ist es natürlich keine künstliche Intelligenz, wie an vielen Stellen im Moment fälschlicherweise bezeichnet, weil der Begriff so eine Proliferation erlebt hat.\n\nDen kürzesten Pfad zwischen zwei Punkten zu berechnen, würden jetzt viele sagen, dass es ein Algorithmus ist, aber letztendlich ist ja alles ein Algorithmus, wie man schon in genügend schmerzlichen Beispielen zu Kochrezepten und fortgeschrittenen Sortieralgorithmen aufgezeigt bekommen hat. Tatsächlich sind diese Algorithmen in dem Buch „AI – A Modern Approach“, was ironischerweise schon verhältnismäßig alt ist, aufgelistet. Ich würde sie jedoch mehr in die Algorithmen- und Datenstrukturen-Ecke befördern heutzutage. Jedoch, wenn sie für intelligentes Verhalten sorgen können, diese Algorithmen, dann könnten sie nach gewissen Definitionen natürlich auch als künstliche Intelligenz bezeichnet werden.\n\nDas gleiche gilt für Tic-Tac-Toe, das ein Baumsuchalgorithmus, eine Minimax-Suche betreibt, die einfach nur Züge vorausschaut und gewisse Annahmen über den Gegner trifft, um dann die vielversprechendsten eigenen Züge zu machen. So dass hier auch wieder eine Datenstruktur, nämlich der Baum, verwendet wird und dann ein Suchalgorithmus über den Baum, was jedoch zu intelligentem Verhalten führen könnte. Aber ganz klar ist, dass bei all diesen Beispielen nichts gelerntes oder kein angelerntes System funktioniert, sondern es sind mehr oder weniger deterministische Algorithmen, die ein gewisses Problem lösen. Man kann hier, wenn man möchte oder altbacken ist, von künstlicher Intelligenz sprechen. Was klar ist, ist, dass man hier nicht von Machine Learning oder Deep Learning oder überwachtem Lernen sprechen kann.",
+    "crumbs": [
+      "Fortbildung",
+      "Ist das KI?"
+    ]
+  },
+  {
+    "objectID": "ood_anwendung.html",
+    "href": "ood_anwendung.html",
+    "title": "OOD Anwendung",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nOOD Anwendung"
+  },
+  {
+    "objectID": "labeling.html",
+    "href": "labeling.html",
+    "title": "Was ist Labeling?",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next",
+    "crumbs": [
+      "Fortbildung",
+      "Was ist Labeling?"
+    ]
+  },
+  {
+    "objectID": "labeling.html#labeling-daten-für-das-überwachte-lernen-markieren",
+    "href": "labeling.html#labeling-daten-für-das-überwachte-lernen-markieren",
+    "title": "Was ist Labeling?",
+    "section": "1. Labeling: Daten für das überwachte Lernen markieren",
+    "text": "1. Labeling: Daten für das überwachte Lernen markieren\nLabeling (auch Labelling) ist der Vorgang, bei dem Daten für das überwachte Lernen – also das Training neuronaler Netze – markiert werden. „Markieren” heißt: Jedem Datenpunkt wird die gewünschte, korrekte Antwort zugeordnet.\nDabei gibt es zwei typische Ausgangslagen:\n\nEin fertiger Datensatz existiert bereits (wie der, den wir zuvor gesehen haben). Dann müssen keine zusätzlichen Daten gelabelt werden.\nOder die Datenexploration (EDA) zeigt Lücken im Datensatz auf, die man vor der Modellierung schließen möchte.",
+    "crumbs": [
+      "Fortbildung",
+      "Was ist Labeling?"
+    ]
+  },
+  {
+    "objectID": "labeling.html#lücken-schließen-ein-typischer-ablauf",
+    "href": "labeling.html#lücken-schließen-ein-typischer-ablauf",
+    "title": "Was ist Labeling?",
+    "section": "2. Lücken schließen: ein typischer Ablauf",
+    "text": "2. Lücken schließen: ein typischer Ablauf\nWenn die EDA ergibt, dass etwas fehlt, läuft es oft so:\n\nLücken identifizieren – wo fehlen Daten?\nNeue Daten erheben – neue Aufnahmen, Messungen usw.\nIn den Datensatz aufnehmen – und ggf. von Menschen beschriften.\n\nEin Bild einer Süßigkeit müsste dann z. B. mit der Klasse (der Sorte) oder der Farbe versehen werden.",
+    "crumbs": [
+      "Fortbildung",
+      "Was ist Labeling?"
+    ]
+  },
+  {
+    "objectID": "labeling.html#verschiedene-arten-von-labels",
+    "href": "labeling.html#verschiedene-arten-von-labels",
+    "title": "Was ist Labeling?",
+    "section": "3. Verschiedene Arten von Labels",
+    "text": "3. Verschiedene Arten von Labels\nLabeling ist mehr als nur „Was ist auf dem Bild?“. Je nach Aufgabe markiert man auch das Wo:\n\nKlassifikation: Was ist zu sehen (z. B. „Frosch”)?\nObjekterkennung (Bounding Box): Eine viereckige Box wird um das Objekt gezeichnet, um seine Position zu markieren.\nSegmentierung: Die Grundfläche des Objekts wird pixelgenau schraffiert.\n\nManche Labeling-Aufgaben beruhen auf Fachwissen und brauchen echte Expertise – etwa im medizinischen Bereich, wo nur Fachleute korrekt markieren können.",
+    "crumbs": [
+      "Fortbildung",
+      "Was ist Labeling?"
+    ]
+  },
+  {
+    "objectID": "labeling.html#labeling-im-großen-maßstab-und-garbage-in-garbage-out",
+    "href": "labeling.html#labeling-im-großen-maßstab-und-garbage-in-garbage-out",
+    "title": "Was ist Labeling?",
+    "section": "4. Labeling im großen Maßstab und „Garbage In, Garbage Out”",
+    "text": "4. Labeling im großen Maßstab und „Garbage In, Garbage Out”\nFür andere Zwecke werden Firmen oder Einzelpersonen mit Beispielen und Anleitungen angeleitet, um große Mengen zu labeln – durchaus 50.000 Datenpunkte oder mehr, ob Bilder oder Texte.\nUnd hier gilt unerbittlich das Prinzip „Garbage In, Garbage Out”: Sind die Daten schlecht gelabelt, funktioniert auch das Modell schlechter – egal wie gut der Trainingsalgorithmus ist. Sauber und sorgfältig aufbereitete Daten sind die Grundvoraussetzung für ein gutes Modell.\n\n\n\n\n\n\nJetzt bist du dran: Schlüpfe in die Rolle\n\n\n\n\nÜbernimm in der App die Rolle der labelnden Person und ordne den Beispielen ihre Labels zu.\nAchte darauf, bei welchen Fällen du zögerst – genau dort entstehen später Fehler.\nÜberlege bei jedem Beispiel: Würde eine andere Person hier dasselbe Label vergeben?\n\n\n\n\n\n\n\n\n\nZum Weiterdenken\n\n\n\n\nWer trägt die Verantwortung, wenn 50.000 Datenpunkte systematisch falsch gelabelt wurden?\nIn welchen Bereichen würdest du nur Fachleute labeln lassen – und warum?\n\nIm nächsten Schritt schauen wir uns genauer an, was passiert, wenn beim Labeling Fehler gemacht werden.",
+    "crumbs": [
+      "Fortbildung",
+      "Was ist Labeling?"
+    ]
+  },
+  {
+    "objectID": "labeling.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "href": "labeling.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "title": "Was ist Labeling?",
+    "section": "Original-Transkript (zum Vergleich für Kolleg*innen)",
+    "text": "Original-Transkript (zum Vergleich für Kolleg*innen)\nLabeling ist das Verfahren, in dem die Daten zum überwachten Lernen, also zum Training neuronaler Netze markiert werden. Beziehungsweise es kann natürlich auch sein, dass ein Datensatz, wie wir ihn vorhin gesehen haben, schon existiert und somit keine zusätzlichen Daten mehr gelabelt werden müssen. Es kann aber auch sein, dass aufgrund von der EDA, der Datenexploration, die wir eben veranschaulicht haben, dass daraus hin Lücken im Datensatz klar erkennbar sind und die man ausbessern – die möchte man ausbessern, bevor man überhaupt in die Modellierung und das Training von Modellen geht. Das heißt, man könnte ausfindig machen, wo Dinge fehlen. Dann könnten neue Aufnahmen oder neue Messungen und so weiter gemacht werden und diese müssten dann in den Datensatz mit aufgenommen werden und unter Umständen von Menschen noch mal beschriftet werden. Also ein Bild von einer Süßigkeit müsste dann mit der Klasse der Süßigkeit oder der Farbe versehen werden oder so weiter.\n\nUnd weiterhin könnte gelabelt werden zum Beispiel, wo im Bild sich eine Sache befindet, wenn man nicht nur erkennen möchte, was man da sieht, sondern auch wo es sich befindet. Dafür könnte man dann eine viereckige Box um den Gegenstand zeichnen, der erkannt werden sollte, oder man kann die Grundfläche vom Gegenstand schraffieren, die sogenannte Segmentation. Das sind alles Labeling-Tätigkeiten. Manche beruhen hier auf Fachwissen, dass man also sehr spezifische Dinge labelt, die tatsächlich menschliche Expertise oder Expertenwissen, wie zum Beispiel im medizinischen Bereich, benötigen.\n\nEs gibt andere Labeling-Zwecke, wo man Firmen oder einzelne Personen anleiten kann mit Beispielen, mit Anleitungen, und die dann einen Datensatz labelen. Das können dann auch mal gut 50.000 oder mehr Datenpunkte sein, ob das jetzt Bilder oder Texte sind. Und hier gilt natürlich das „Garbage in, Garbage out“-Prinzip: Wenn die Daten nicht gut genug gelabelt sind, dann wird das Modell auch schlechter funktionieren als bei sehr gut und sauber aufbereiteten Daten.",
+    "crumbs": [
+      "Fortbildung",
+      "Was ist Labeling?"
+    ]
+  },
+  {
+    "objectID": "schmetterlinge_familie.html",
+    "href": "schmetterlinge_familie.html",
+    "title": "Schmetterlinge Familie",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nSchmetterlinge Familie"
+  },
+  {
+    "objectID": "traintest.html",
+    "href": "traintest.html",
+    "title": "Traintest",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next",
+    "crumbs": [
+      "Fortbildung",
+      "Trainieren und Testen"
+    ]
+  },
+  {
+    "objectID": "traintest.html#der-kapitale-fehler-auf-den-trainingsdaten-bewerten",
+    "href": "traintest.html#der-kapitale-fehler-auf-den-trainingsdaten-bewerten",
+    "title": "Traintest",
+    "section": "1. Der kapitale Fehler: auf den Trainingsdaten bewerten",
+    "text": "1. Der kapitale Fehler: auf den Trainingsdaten bewerten\nIm vorherigen Trainingsdurchlauf steckte bewusst ein kapitaler Fehler – einer, der in der Praxis tatsächlich noch passiert. Wir haben am Ende des Trainings auf denselben Daten geprüft, mit denen wir trainiert haben.\nDas war eine Vereinfachung, um alle an das Problem heranzuführen. Warum ist es ein Fehler? Dafür lohnt ein Blick auf den eigentlichen Zweck eines Modells.",
+    "crumbs": [
+      "Fortbildung",
+      "Trainieren und Testen"
+    ]
+  },
+  {
+    "objectID": "traintest.html#training-auf-bekanntem-anwendung-auf-unbekanntem",
+    "href": "traintest.html#training-auf-bekanntem-anwendung-auf-unbekanntem",
+    "title": "Traintest",
+    "section": "2. Training auf Bekanntem, Anwendung auf Unbekanntem",
+    "text": "2. Training auf Bekanntem, Anwendung auf Unbekanntem\nStell dir die Lakritz-Erkennungs-App vor:\n\nWir stellen Trainingsdaten zusammen.\nDie App mit dem Modell wird veröffentlicht.\nDanach fotografieren Menschen neue Süßigkeiten, die das Modell noch nie gesehen hat.\n\nDamit das funktioniert, muss das Training allgemein genug gewesen sein, damit das Modell wirklich „Lakritz vs. Nicht-Lakritz” gelernt hat – z. B. für neue Süßigkeiten aus demselben Kulturkreis oder auf einer Reise.\nKurz: Das Training passiert auf bekannten Daten, die Anwendung auf unbekannten Daten. Genau das muss man schon im Training berücksichtigen.",
+    "crumbs": [
+      "Fortbildung",
+      "Trainieren und Testen"
+    ]
+  },
+  {
+    "objectID": "traintest.html#die-lösung-daten-in-training-und-test-aufteilen",
+    "href": "traintest.html#die-lösung-daten-in-training-und-test-aufteilen",
+    "title": "Traintest",
+    "section": "3. Die Lösung: Daten in Training und Test aufteilen",
+    "text": "3. Die Lösung: Daten in Training und Test aufteilen\nDeshalb teilt man seine Daten in Trainings- und Testdaten auf. Das bedeutet nicht, dass die Testbilder komplett fremd sein müssen. Üblich ist eine Aufteilung von etwa:\n\n80 % Trainingsdaten\n20 % Testdaten\n\nDie Testdaten werden verwendet, um das Modell am Ende des Trainings zu prüfen. Die Trainingsdaten laufen weiterhin mehrfach durch das Modell; die Testdaten dienen ganz am Schluss der Bewertung. (Varianten davon sehen wir auf den nächsten Seiten.)",
+    "crumbs": [
+      "Fortbildung",
+      "Trainieren und Testen"
+    ]
+  },
+  {
+    "objectID": "traintest.html#warum-das-so-wichtig-ist-overfitting",
+    "href": "traintest.html#warum-das-so-wichtig-ist-overfitting",
+    "title": "Traintest",
+    "section": "4. Warum das so wichtig ist: Overfitting",
+    "text": "4. Warum das so wichtig ist: Overfitting\nEin fairer Einwand: Unsere Bilder sind sich sehr ähnlich (alle mit weißem Hintergrund), auch wenn sie nicht identisch sind – mal ein schräges Bild, mal eine Perle an der Himbeere.\nAber genau hier liegt die Gefahr: Diese Systeme sind darauf ausgelegt, Dinge zu lernen und abzubilden. Passt man nicht auf, sind sie zum Auswendiglernen fähig. Dann baut die Generalisierungsfähigkeit ab: Das Modell merkt sich sehr spezifische Pixel-Muster, und die Leistung auf den Testbildern nimmt irgendwann ab.\nDieser Effekt heißt Overfitting (Überanpassung). Deshalb ist der Zyklus aus Trainieren und Testen auf ungesehenen Bildern so wichtig: Man will sich nicht vom eigentlichen Anwendungsfall (neue Bilder!) entfernen und muss den Trainingsprozess kontrollieren, weil Modelle zum Auswendiglernen neigen.\n\n\n\n\n\n\nJetzt bist du dran: Trenne Training und Test\n\n\n\n\nSieh dir in der App an, wie die Daten in Trainings- und Testbilder aufgeteilt werden.\nBeobachte, dass die Testbilder erst am Ende zur Bewertung herangezogen werden.\nÜberlege: Warum wäre es „geschummelt”, das Modell auf genau den Bildern zu loben, mit denen es trainiert wurde?\n\n\n\n\n\n\n\n\n\nZum Weiterdenken\n\n\n\n\nWoran würdest du Overfitting erkennen, wenn du nur Trainings- und Testgenauigkeit vergleichen kannst?\nUnsere Bilder haben alle weißen Hintergrund – wie „echt” ist der Test dann wirklich?\n\nAls Nächstes schauen wir uns an, wie sich Training und Test über mehrere Epochen als Trainingskurve darstellen lassen.",
+    "crumbs": [
+      "Fortbildung",
+      "Trainieren und Testen"
+    ]
+  },
+  {
+    "objectID": "traintest.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "href": "traintest.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "title": "Traintest",
+    "section": "Original-Transkript (zum Vergleich für Kolleg*innen)",
+    "text": "Original-Transkript (zum Vergleich für Kolleg*innen)\nWas wir im vorherigen Trainingsdurchlauf nicht beachtet haben, ist sozusagen ein kapitaler Fehler, der den Leuten nach wie vor noch passieren kann. Ist nämlich, wir haben uns den Trainingsverlauf auf den Daten angeguckt und haben dann am Ende sozusagen, als warum auch immer das Training dann aufgehört hat, da gibt es verschiedene Abbruchbedingungen, die man in der Zukunft dann noch besprechen kann. Aber wir waren dann mit dem Training fertig und haben dann geguckt, was hat gut geklappt und was hat nicht gut geklappt.\n\nWas jetzt hier der kapitale Fehler war – was letztendlich einfach nur von uns eine Vereinfachung war, um jetzt alle an dieses Problem heranzuführen – ist, dass wir auf den Trainingsdaten im Anschluss geguckt haben, wie gut das Modell funktioniert. Und wenn man sich mal vorstellt, was der letztendliche Anwendungsfall oder Zweck von so einem Modell ist, ist, dass ich natürlich – zum Beispiel jetzt bei der Lakritz- oder Nicht-Lakritz-Erkennung – Trainingsdaten zusammenstelle. Dass dann meinetwegen diese App mit dem Modell veröffentlicht wird und dass im Anschluss eine Person vielleicht auch andere Süßigkeiten fotografieren kann, die das Modell noch nicht gesehen hat. Aber das Training gut und allgemein genug war, damit das Modell gelernt hat, in Lakritz und nicht Lakritz zu unterscheiden. Das heißt, man könnte neue Süßigkeiten aus demselben Land oder demselben Kulturkreis nehmen oder das Ganze auf einer Reise verwenden. Das heißt im Endeffekt, das Training passiert auf bekannten Daten und die Anwendung passiert ja dann auf unbekannten Daten.\n\nUnd das ist ein Schritt, den man im Training auch berücksichtigen muss. Das heißt, man muss seine Daten in Trainings- und Testbilder aufteilen. Das heißt nicht, dass die Testbilder alle komplett fremd sein müssen. Das heißt eigentlich, dass man alle Daten, die man hat, meistens in so 80 % Trainingsdaten und 20 % Testdaten aufteilt. Und die Testdaten – sieht man jetzt hier – werden verwendet, um am Ende vom Training das Modell einmalig zu testen. Da werden wir dann noch andere Varianten auf den folgenden Seiten besprechen. Aber für jetzt haben wir sozusagen gesehen, dass die Trainingsdaten nach wie vor mehrmals durch das Modell laufen und die Testdaten ganz am Ende für die Bewertung vom Modell verwendet werden.\n\nJetzt haben wir natürlich hier sehr ähnliche Bilder, die auch mit weißem Hintergrund gemacht wurden. Das heißt, es ist ein fairer Punkt hier anzumerken, dass die Daten sich ja extrem ähnlich sind, wenn es auch nicht eins zu eins identisch ist. Es ist mal ein bisschen ein Bild schräg oder verdrückt oder hängt so eine Perle von der Himbeere drauf. Aber wichtig ist, diese Systeme sind darauf ausgelegt, Dinge zu lernen und abzubilden. Das heißt im Endeffekt, wenn ich nicht aufpasse, sind sie zum Auswendiglernen fähig. Das heißt, irgendwann fängt diese Generalisierungsfähigkeit an abzubauen und die tatsächlichen Bilder mit den einzelnen Pixeln können anfangen... da werden sehr spezifische Muster auswendig gelernt, sodass dann die Leistung auf den Testbildern irgendwann abnimmt und versagt.\n\nUnd deswegen ist dieser Zyklus von Trainieren und Testen auf ungesehenen Bildern sehr, sehr wichtig, weil man sich nicht von dem ursprünglichen Anwendungsfall von neuen Bildern entfernen möchte. Und gleichzeitig muss man diesen Trainingsprozess etwas kontrollieren, weil die Modelle zum Auswendiglernen oder sogenannten Overfitting neigen.",
+    "crumbs": [
+      "Fortbildung",
+      "Trainieren und Testen"
+    ]
+  },
+  {
+    "objectID": "accuracy.html",
+    "href": "accuracy.html",
+    "title": "Accuracy und Vorkommen der Klasse",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nAccuracy und Vorkommen der Klasse"
+  },
+  {
+    "objectID": "unsupervised.html",
+    "href": "unsupervised.html",
+    "title": "unsupervised",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nunsupervised clustering noch Begründung"
+  },
+  {
+    "objectID": "tabelle.html",
+    "href": "tabelle.html",
+    "title": "Tabelle und Datenhaufen",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nÜbersicht schaffen"
+  },
+  {
+    "objectID": "yolo.html",
+    "href": "yolo.html",
+    "title": "YOLO",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nYOLO"
+  },
+  {
+    "objectID": "downsampling.html",
+    "href": "downsampling.html",
+    "title": "Downsampling",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n    \n    \n    Downsampling\n    \n\n  \n  \n\n\n    \n        \n    \n    \n\n\n\n\n\n\ndownsampling 2",
+    "crumbs": [
+      "Fortbildung",
+      "Downsampling"
+    ]
+  },
+  {
+    "objectID": "erstes_training.html",
+    "href": "erstes_training.html",
+    "title": "Erstes Training",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next",
+    "crumbs": [
+      "Fortbildung",
+      "Erstes Training"
+    ]
+  },
+  {
+    "objectID": "erstes_training.html#direkt-eintauchen-dein-erstes-training",
+    "href": "erstes_training.html#direkt-eintauchen-dein-erstes-training",
+    "title": "Erstes Training",
+    "section": "1. Direkt eintauchen: Dein erstes Training",
+    "text": "1. Direkt eintauchen: Dein erstes Training\nBevor wir die Theorie aufrollen, springen wir mitten hinein: In der Web-App oben kannst du mit einem einzigen Klick auf „Training” dein erstes neuronales Netz trainieren – und zwar auf unserem Süßigkeiten-Datensatz.\nDas Ziel des Modells ist eine Bilderkennung: Zu jedem Bild soll die richtige Süßigkeitensorte vorhergesagt werden. Eine Himbeere soll als Himbeere erkannt werden, ein Frosch als Frosch, eine Fledermaus als Fledermaus, ein Gummibärchen als Gummibärchen.",
+    "crumbs": [
+      "Fortbildung",
+      "Erstes Training"
+    ]
+  },
+  {
+    "objectID": "erstes_training.html#was-passiert-beim-klick-auf-training",
+    "href": "erstes_training.html#was-passiert-beim-klick-auf-training",
+    "title": "Erstes Training",
+    "section": "2. Was passiert beim Klick auf „Training”?",
+    "text": "2. Was passiert beim Klick auf „Training”?\nIm Hintergrund wird ein sogenanntes Convolutional Neural Network (CNN) trainiert. Das ist der Modelltyp, der klassischerweise in der Bilderkennung eingesetzt wird. Du musst dafür nichts programmieren – die App zeigt dir in Echtzeit, welche Bilder das Modell gerade richtig und welche es falsch erkennt.\nAchte beim Start besonders darauf, dass die Süßigkeiten ungleich verteilt sind: Von manchen Sorten gibt es viele Beispiele, von anderen nur wenige. Dieses Ungleichgewicht wird uns durch die gesamte Lerneinheit begleiten.",
+    "crumbs": [
+      "Fortbildung",
+      "Erstes Training"
+    ]
+  },
+  {
+    "objectID": "erstes_training.html#training-ist-ein-iterativer-prozess",
+    "href": "erstes_training.html#training-ist-ein-iterativer-prozess",
+    "title": "Erstes Training",
+    "section": "3. Training ist ein iterativer Prozess",
+    "text": "3. Training ist ein iterativer Prozess\nBeim Zuschauen fällt etwas Wichtiges auf: Bilder, die zwischendurch schon richtig erkannt wurden, kippen manchmal wieder auf falsch – und umgekehrt. Das ist kein Fehler, sondern ein zentrales Merkmal:\n\nDas Training läuft mehrfach über dieselben Daten.\nDas Modell tastet sich schrittweise an eine gute Lösung heran, statt sie in einem Durchgang zu finden.\n\nMerke dir also: Ein neuronales Netz lernt nicht „auf einen Schlag”, sondern in vielen kleinen, sich wiederholenden Schritten.",
+    "crumbs": [
+      "Fortbildung",
+      "Erstes Training"
+    ]
+  },
+  {
+    "objectID": "erstes_training.html#warum-die-reine-trefferzahl-nicht-reicht",
+    "href": "erstes_training.html#warum-die-reine-trefferzahl-nicht-reicht",
+    "title": "Erstes Training",
+    "section": "4. Warum die reine Trefferzahl nicht reicht",
+    "text": "4. Warum die reine Trefferzahl nicht reicht\nAm Ende möchten wir bewerten, wie gut das Modell ist. Die App färbt die Bilder ein und zeigt Prozentwerte an – ein erster Blick auf Statistiken bzw. Metriken.\nHier lauert aber eine Falle: Die Gesamtzahl richtiger und falscher Bilder allein ist nicht aussagekräftig. Entscheidend ist, welche Klassen falsch erkannt werden. Der Fehler verteilt sich nämlich nicht gleichmäßig – manche Sorten sind für das Modell deutlich schwerer zu erkennen oder schwerer zu lernen als andere.\n\n\n\n\n\n\nJetzt bist du dran: Probiere es aus!\n\n\n\n\nKlicke auf „Training” und beobachte, wie sich die Einfärbung der Bilder live verändert.\nAchte darauf, ob einzelne Bilder zwischen richtig und falsch hin- und herspringen.\nSchau dir am Ende genau an: Welche Süßigkeitensorten werden zuverlässig erkannt – und welche fallen immer wieder durch?\n\n\n\n\n\n\n\n\n\nZum Weiterdenken\n\n\n\n\nWelche Sorten haben wohl die wenigsten Trainingsbeispiele – und hängt das mit den Fehlern zusammen?\nWürdest du einem Modell mit „95 % richtig” blind vertrauen, wenn ausgerechnet eine wichtige Klasse nie erkannt wird?\n\nDiese Fragen führen uns direkt zu den nächsten Themen: dem Datensatz und seiner Verteilung.",
+    "crumbs": [
+      "Fortbildung",
+      "Erstes Training"
+    ]
+  },
+  {
+    "objectID": "erstes_training.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "href": "erstes_training.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "title": "Erstes Training",
+    "section": "Original-Transkript (zum Vergleich für Kolleg*innen)",
+    "text": "Original-Transkript (zum Vergleich für Kolleg*innen)\nZur Motivation kann hier direkt in das erste Training eines neuronalen Netzes zur Bilderkennung eingestiegen werden. Mit Klick auf „Training“ wird ein sogenanntes Convolutional Neural Network trainiert, welches in der Bilderkennung verwendet wird, in diesem Fall auf unserem Süßigkeitendatensatz. Und man sieht in Echtzeit, welche Süßigkeiten vom Modell richtig gelernt und erkannt wurden. Das bedeutet, eine Himbeere soll als Himbeere erkannt werden, ein Frosch als Frosch, eine Fledermaus als Fledermaus und so weiter, ein Gummibärchen als ein Gummibärchen.\n\nUnd wie bereits in der Anfangsanimation gesehen, gibt es hier natürlich eine ungleiche Verteilung und man sieht auch im Trainingsverlauf, dass Bilder unter Umständen, die richtig erkannt wurden, noch mal als falsch eingestuft werden oder Bilder, die falsch erkannt wurden, am Ende als richtig eingestuft werden. Das gibt auch schon mal einen Hinweis darauf, dass der Trainingsprozess ein iterativer Prozess ist, der sich auch über dem Datensatz oder der Datenbasis mehrmals wiederholt.\n\nUnd dass es am Ende wichtig ist, diese Datenmenge, die sich jetzt ja noch im überschaubaren Rahmen hält, zu bewerten, also das Modell auf dieser Datenmenge zu bewerten, ob denn die Punkte richtig erkannt wurden oder nicht, die Bilder. Und hier kann man durch Einfärbungen und Prozentwerte natürlich die ersten Statistiken oder Metriken anschauen. Jedoch sieht man hier gleich auf einen Blick, dass nur die Anzahl der richtigen und die Anzahl der falschen Punkte nicht aussagekräftig ist oder nicht alleine aussagekräftig ist, weil man natürlich auch gucken muss, welche Klassen werden falsch gemacht. Es wird ja nicht in jeder Klasse derselbe Fehler von 5 % anfallen, sondern hier zeichnen sich schon einige Klassen oder Kategorien oder Bilder ab, die vielleicht schwieriger für das Modell zu erkennen sind oder aus gewissen Gründen auch schwieriger zu lernen sind.",
+    "crumbs": [
+      "Fortbildung",
+      "Erstes Training"
+    ]
+  },
+  {
+    "objectID": "themen_vignetten.html",
+    "href": "themen_vignetten.html",
+    "title": "Themen-Vignetten",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nThemen-Vignetten"
+  },
+  {
+    "objectID": "kennenlernen.html",
+    "href": "kennenlernen.html",
+    "title": "Daten kennenlernen",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next",
+    "crumbs": [
+      "Fortbildung",
+      "Features und Sortieren"
+    ]
+  },
+  {
+    "objectID": "kennenlernen.html#vom-teller-zur-tabelle",
+    "href": "kennenlernen.html#vom-teller-zur-tabelle",
+    "title": "Daten kennenlernen",
+    "section": "1. Vom Teller zur Tabelle",
+    "text": "1. Vom Teller zur Tabelle\nBeim Trennen auf dem Teller haben wir zwei Werte beachtet (Helligkeit und Gummianteil). Jetzt schauen wir uns den Datensatz an – beispielhaft mit je einer Süßigkeit aus jeder Kategorie.\nPro Zeile sehen wir:\n\ndas Bild,\nden Index (einfach eine Durchnummerierung),\nden Namen der Klasse,\nein Wahr/Falsch bzw. 0/1 (Boolean), ob es Lakritz enthält – das ist unsere Zielgröße,\nsowie Kalorien, Salzgehalt, Zuckergehalt und Eiweißgehalt.\n\nDu kannst die Zeilen nach jeder dieser Spalten sortieren.",
+    "crumbs": [
+      "Fortbildung",
+      "Features und Sortieren"
+    ]
+  },
+  {
+    "objectID": "kennenlernen.html#reicht-ein-einziger-wert-zur-trennung",
+    "href": "kennenlernen.html#reicht-ein-einziger-wert-zur-trennung",
+    "title": "Daten kennenlernen",
+    "section": "2. Reicht ein einziger Wert zur Trennung?",
+    "text": "2. Reicht ein einziger Wert zur Trennung?\nDie spannende Frage: Genügt schon ein einziger Wert, um Lakritz von Nicht-Lakritz zu unterscheiden? Probieren wir die Werte einzeln durch:\n\nKalorien: durchmischt – allein keine saubere Trennung.\nSalz: Hier lässt sich – zumindest für diese Beispielauswahl – eine Trennlinie ziehen (etwa links von der Fledermaus). Man könnte sagen: „Mehr Salz als ~0,1 → Lakritz; weniger → kein Lakritz.”\nZucker: wieder stark durchmischt.\nEiweiß: ebenfalls durchmischt.\n\nErgebnis: Für diese Sammlung könnte man allein am Salzgehalt erkennen, ob es Lakritz ist. (Wichtig: Das gilt für diese repräsentative Auswahl – nicht zwingend allgemein.)",
+    "crumbs": [
+      "Fortbildung",
+      "Features und Sortieren"
+    ]
+  },
+  {
+    "objectID": "kennenlernen.html#zwei-werte-kombinieren",
+    "href": "kennenlernen.html#zwei-werte-kombinieren",
+    "title": "Daten kennenlernen",
+    "section": "3. Zwei Werte kombinieren",
+    "text": "3. Zwei Werte kombinieren\nIm zweiten Beispiel kehren wir zur Teller-Darstellung zurück, aber flexibel: Du wählst auf der einen Achse z. B. Kalorien, Salz, Zucker oder Eiweiß und auf der anderen Achse einen weiteren Wert. So kannst du prüfen, ob sich eine noch klarere zweidimensionale Struktur ergibt.",
+    "crumbs": [
+      "Fortbildung",
+      "Features und Sortieren"
+    ]
+  },
+  {
+    "objectID": "kennenlernen.html#der-haken-das-sind-alles-gemessene-werte",
+    "href": "kennenlernen.html#der-haken-das-sind-alles-gemessene-werte",
+    "title": "Daten kennenlernen",
+    "section": "4. Der Haken: Das sind alles gemessene Werte",
+    "text": "4. Der Haken: Das sind alles gemessene Werte\nJetzt kommt der entscheidende Denkanstoß: Kalorien, Salz, Zucker, Eiweiß – das sind alles gemessene Laborwerte. Sie erfordern, dass man eine Probe aus der Süßigkeit entnimmt.\nStell dir aber eine Bilderkennungs-App vor, die sagen soll, ob etwas Lakritz ist. Oder einen Sortier-Automaten. Beide können nicht mit Laborwerten rechnen – erst recht nicht bei einer unbekannten Süßigkeit aus einem anderen Land. Trotzdem erwarten wir, dass sie anhand irgendwelcher Merkmale eine Entscheidung treffen.\nDas passt nicht zum Anforderungsprofil typischer Apps (man denke an eine Pflanzenerkennungs-App): „Nutzerin macht ein Bild – und bekommt sofort eine Antwort.”* Ein Foto liefert aber keine Kalorien- oder Salzwerte.\nFazit: Wir müssen uns auf die Suche nach optischen Merkmalen machen – sogenannten Features, die sich allein aus einem Bild berechnen lassen. Gemessene Laborwerte sind für eine Bilderkennung schlicht ungeeignet.\n\n\n\n\n\n\nJetzt bist du dran: Such die trennende Spalte\n\n\n\n\nSortiere die Tabelle nacheinander nach Kalorien, Salz, Zucker, Eiweiß. Bei welcher Spalte trennen sich Lakritz und Nicht-Lakritz am saubersten?\nStell im zweiten Beispiel verschiedene Achsenkombinationen ein. Wird die Trennung dadurch klarer?\nFrage dich bei jedem Wert: Könnte eine Kamera diesen Wert überhaupt aus einem Foto ablesen?\n\n\n\n\n\n\n\n\n\nZum Weiterdenken\n\n\n\n\nWarum kann ein Wert für eine Auswahl perfekt trennen und bei neuen Daten trotzdem versagen?\nWelche optischen Eigenschaften einer Süßigkeit könnte man stattdessen aus einem Bild gewinnen?\n\nGenau diese Frage greifen wir als Nächstes auf: berechnete Features aus Bildern.",
+    "crumbs": [
+      "Fortbildung",
+      "Features und Sortieren"
+    ]
+  },
+  {
+    "objectID": "kennenlernen.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "href": "kennenlernen.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "title": "Daten kennenlernen",
+    "section": "Original-Transkript (zum Vergleich für Kolleg*innen)",
+    "text": "Original-Transkript (zum Vergleich für Kolleg*innen)\nIm vorherigen Trennen auf dem Teller haben wir zwei Werte beachtet. Wenn wir uns jetzt hier mal den Datensatz angucken, jetzt noch mal beispielhaft ein eine Süßigkeit aus jeder Kategorie, dann haben wir hier das Bild, der Index ist einfach eine Durchnummerierung, der Name der Klasse, dann ein wahr/falsch 0/1 Boolean, ob es Lakritz enthält oder nicht. Das wäre sozusagen unsere Zielgröße, nach der wir unterscheiden möchten, und dann hätten wir für jedes jede Art Süßigkeit eine Kalorienangabe, eine Salzgehaltangabe, eine Zuckergehalt- und eine Eiweißgehaltangabe. Und nach denen kann man auch gerne die Zeilen sortieren nach der jeweiligen Spalte.\n\nUnd die Frage ist jetzt auf der nächsten Ansicht, würde eine eine ein Wert schon reichen? Also könnte man nur nach einem Wert entscheiden, also nach Kalorien, nach Salz, nach Zucker oder nach Eiweiß, ob das Ganze Lakritz enthält oder nicht? Das heißt, wir können uns jetzt hier mal das Spektrum der Kalorien angucken als Erstes, dann das Spektrum von Salz. Und bei Salz sehen wir jetzt in der aktuellen Auswahl, könnte man nach dem Salzgehalt allein schon eine Trennlinie links von der Fledermaus machen, was heißen würde, man könnte allein vom Salzgehalt hier schon bestimmen, ob zumindest für diese Sammlung an Süßigkeiten, die hier die wir hier repräsentativ verwenden, könnte man sagen, okay, alles, was mehr Salz hat, ist Lakritz, und alles, was weniger Salz als 0,1 hat, ist kein Lakritz.\n\nBeim Zucker sehen wir, dass es wieder sehr durchmischt ist, und beim Eiweiß sehen wir, dass es auch durchmischt ist. Das heißt, man könnte hier bereits anhand vom Salzgehalt bestimmen, ob es ein Lakritz ist oder nicht.\n\nUnd das zweite Beispiel stellt dann noch mal den Teller dar, wie man jetzt hier flexibel die Werte wählen kann. Also auf der einen Achse Kalorien, Salz, Zucker, Eiweiß und auf der anderen Achse was anderes, und da könnte man dann gucken, ob sich eine noch klarere zweidimensionale Struktur von dem Ganzen bilden lassen könnte.\n\nWas uns zu denken geben sollte, ist, dass alles gemessene Werte sind. Das heißt, wenn ich mir vorstelle, ich habe eine Bilderkennungs-App, die mir sagt, ob eine Süßigkeit Lakritz ist oder nicht, oder ich habe einen automatischen irgendeinen Automaten, der mir meine Süßigkeiten sortiert, dann kann der natürlich nicht mit diesen gemessenen oder angegebenen Werten rechnen. Angenommen, da kommt jetzt eine Süßigkeit aus einem anderen Land rein, die er noch nie die der Automat noch nicht gesehen hat, wäre die Erwartung trotzdem, dass er anhand irgendwelcher Merkmale ausfindig macht, ob das Lakritz ist oder nicht. Und dafür sind die Angaben wie Gummianteil im letzten Beispiel, Kalorien, Salzgehalt, Zucker, Eiweiß alles Laborwerte, die eine Messung der Sache selbst bedürfen, was ja auch bei Apps wie einer Pflanzenerkennungs-App oder so weiter nicht in das Anforderungsprofil passt von „die Benutzer machen ein Bild – die Benutzerinnen machen ein Bild und kriegen dann sofort eine Antwort“.\n\nDas heißt, wir müssen uns auf die Suche machen nach irgendwelchen optischen, sogenannten Features oder Eigenschaften, nach denen wir das Ganze trennen möchten, weil gemessene Werte oder Laborwerte für eine Bilderkennung nicht sinnvoll sind.",
+    "crumbs": [
+      "Fortbildung",
+      "Features und Sortieren"
+    ]
+  },
+  {
+    "objectID": "schmetterlinge_klassen.html",
+    "href": "schmetterlinge_klassen.html",
+    "title": "Schmetterlinge Klassen",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n  \n  \n  Training Steps Butterfly\n  \n  \n  \n\n\n  \n    \n  \n\n\n\n\n\n\nSchmetterlinge Klassen",
+    "crumbs": [
+      "Fortbildung",
+      "Training Schmetterlinge"
+    ]
+  },
+  {
+    "objectID": "traintest_kurven.html",
+    "href": "traintest_kurven.html",
+    "title": "Traintest Kurven",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next",
+    "crumbs": [
+      "Fortbildung",
+      "Trainingskurven"
+    ]
+  },
+  {
+    "objectID": "traintest_kurven.html#daten-müssen-gut-durchmischt-sein",
+    "href": "traintest_kurven.html#daten-müssen-gut-durchmischt-sein",
+    "title": "Traintest Kurven",
+    "section": "1. Daten müssen gut durchmischt sein",
+    "text": "1. Daten müssen gut durchmischt sein\nDer Trainingsverlauf sieht jetzt etwas anders aus: Die Trainingsdaten bleiben dieselben, aber ihre Reihenfolge wird durchgemischt.\nDas ist eine sehr wichtige Annahme: Die Daten, die ins Modell laufen, sollten in der Reihenfolge gemischt und möglichst unabhängig voneinander sein. Es dürfen also nicht zuerst alle Gummibärchen, dann alle Himbeeren usw. kommen – sie müssen gut durchmischt sein.",
+    "crumbs": [
+      "Fortbildung",
+      "Trainingskurven"
+    ]
+  },
+  {
+    "objectID": "traintest_kurven.html#was-ist-eine-epoche",
+    "href": "traintest_kurven.html#was-ist-eine-epoche",
+    "title": "Traintest Kurven",
+    "section": "2. Was ist eine Epoche?",
+    "text": "2. Was ist eine Epoche?\nDie Trainingsdaten verschwinden nicht – wir durchlaufen sie mehrfach. Hier konkret in drei Trainingsepochen.\n\nEine Epoche ist abgeschlossen, wenn das Modell alle Trainingsdaten einmal gesehen, verarbeitet und von ihnen gelernt hat.\n\nAm Ende jeder Epoche wird getestet. Dann beginnt die nächste Epoche mit neu gemischten Trainingsdaten – es sind aber dieselben Daten wie zuvor, nur in anderer Reihenfolge. Die Testdaten bleiben ebenfalls gleich.",
+    "crumbs": [
+      "Fortbildung",
+      "Trainingskurven"
+    ]
+  },
+  {
+    "objectID": "traintest_kurven.html#lernen-an-lernen-aus-der-unterschied-zwischen-training-und-test",
+    "href": "traintest_kurven.html#lernen-an-lernen-aus-der-unterschied-zwischen-training-und-test",
+    "title": "Traintest Kurven",
+    "section": "3. Lernen an / Lernen aus: der Unterschied zwischen Training und Test",
+    "text": "3. Lernen an / Lernen aus: der Unterschied zwischen Training und Test\nBei den Testdaten ist die Reihenfolge völlig egal – denn hier wird nicht gelernt. Der Ablauf:\n\nIm Trainingsteil einer Epoche lasse ich das Modell lernen.\nDanach schalte ich das Lernen aus (bzw. lasse es einfach nicht stattfinden) und wende das Modell auf die Testdaten an.\nIch tue also so, als wäre ich schon fertig und ginge mit dem Modell „in die freie Wildbahn”, und prüfe, wie viel es im aktuellen Zustand richtig macht.\n\nWeil das Modell dabei nicht lernt, sieht es die Testdaten jede Epoche wie zum ersten Mal. Deshalb kann ich mit denselben Testdaten am Ende jeder Epoche erneut testen und beobachten, wie sich das Training entwickelt.",
+    "crumbs": [
+      "Fortbildung",
+      "Trainingskurven"
+    ]
+  },
+  {
+    "objectID": "traintest_kurven.html#die-trainingskurve-lesen",
+    "href": "traintest_kurven.html#die-trainingskurve-lesen",
+    "title": "Traintest Kurven",
+    "section": "4. Die Trainingskurve lesen",
+    "text": "4. Die Trainingskurve lesen\nDiese Werte ergeben zusammen die Trainingskurve im Diagramm oben:\n\nDie lila Kurve zeigt die Trainingsgenauigkeit. Auf der X-Achse sind die Epochen eingezeichnet. Am Anfang liegt sie bei ca. 8–9 Klassen nahe der Zufallswahrscheinlichkeit (rund 10–12 %) und steigt dann immer weiter.\nDie türkise Kurve zeigt die Testgenauigkeit. Ihr erster Punkt liegt hier schon bei knapp 90 % und entwickelt sich über die Epochen weiter.\n\nAm Ende dieses Beispiels: Trainingsgenauigkeit fast 94 %, Testgenauigkeit etwas über 90 %. (Bei deinem Lauf können die Zahlen anders sein.) Dass die Trainingswerte etwas höher liegen, ist normal – die Trainingsbilder wurden ja gesehen und gelernt.",
+    "crumbs": [
+      "Fortbildung",
+      "Trainingskurven"
+    ]
+  },
+  {
+    "objectID": "traintest_kurven.html#es-gibt-keine-richtige-prozentzahl",
+    "href": "traintest_kurven.html#es-gibt-keine-richtige-prozentzahl",
+    "title": "Traintest Kurven",
+    "section": "5. Es gibt keine „richtige” Prozentzahl",
+    "text": "5. Es gibt keine „richtige” Prozentzahl\nEine zentrale Botschaft: Es gibt keine Pauschalantwort, wie viel Prozent „gut” sind. Das hängt komplett vom Vorhaben ab:\n\nVielleicht reichen schon 60 %, wenn das bisherige Modell oder ein Dienstleister eine höhere Fehlerrate hat.\nVielleicht dient das Ganze nur der Erkundung, ob eine Anwendung überhaupt sinnvoll ist.\n\nHier gibt es keine Antwort „aus dem Lehrbuch”. Es geht allein darum: Was möchte ich erreichen, was ist für mein Vorhaben gut, und welche Eigenschaften brauche ich?\n\n\n\n\n\n\nJetzt bist du dran: Verfolge die Kurven\n\n\n\n\nStarte das Training über mehrere Epochen und beobachte lila (Training) und türkis (Test).\nAchte darauf, dass die Trainingsgenauigkeit nahe der Zufallsquote startet und ansteigt.\nVergleiche am Ende beide Kurven: Wie groß ist der Abstand zwischen Trainings- und Testgenauigkeit?\n\n\n\n\n\n\n\n\n\nZum Weiterdenken\n\n\n\n\nWas würde es bedeuten, wenn die Trainingskurve weiter steigt, die Testkurve aber abfällt?\nWarum lässt sich „90 % sind gut” nicht allgemein sagen? Nenne ein Beispiel, wo 90 % zu wenig wären.\n\nIm letzten Schritt sehen wir uns den kompletten Trainingsablauf in allen Einzelschritten an.",
+    "crumbs": [
+      "Fortbildung",
+      "Trainingskurven"
+    ]
+  },
+  {
+    "objectID": "traintest_kurven.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "href": "traintest_kurven.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "title": "Traintest Kurven",
+    "section": "Original-Transkript (zum Vergleich für Kolleg*innen)",
+    "text": "Original-Transkript (zum Vergleich für Kolleg*innen)\nIm Folgenden sehen wir jetzt einen Trainingsverlauf, der jetzt etwas anders aussieht. Die Trainingsdaten bleiben immer die gleichen, aber wir sehen jetzt, dass die Reihenfolge durchgemischt ist. Das heißt, eine sehr wichtige Annahme ist, dass die Daten, die ins Modell reinlaufen, immer wieder in der Reihenfolge gemischt sind und sozusagen unabhängig voneinander sind. Das heißt, es dürfen nicht zuerst alle Bilder von Gummibärchen kommen, dann alle Bilder von Himbeeren und so weiter, sondern die müssen gut durchgemischt sein.\n\nUnd was wir hier jetzt auch sehen, ist, dass die Trainingsdaten – die verschwinden nicht – wir durchlaufen hier jetzt im Training, genauer gesagt, drei Trainingsepochen. Und man spricht von einer Epoche, wenn das Training – wenn das Modell im Training alle Trainingsdaten einmal gesehen und verarbeitet und von diesen gelernt hat. Und am Ende von einer Epoche wird dann getestet. Und dann beginnt die nächste Epoche mit gemischten Trainingsdaten erneut. Es sind aber einfach dieselben Trainingsdaten wie aus der Epoche vorher, bloß in einer anderen Reihenfolge, und die Testdaten bleiben auch die gleichen.\n\nUnd was über die Testdaten noch zu vermerken ist, ist, dass hier die Reihenfolge vollkommen egal ist, weil hier nicht gelernt wird. Ich habe jetzt also die Möglichkeit, während dem Trainingsteil einer Epoche das Modell lernen zu lassen, und dann kann ich im Anschluss dieses Lernen ausschalten, beziehungsweise besser gesagt, einfach nicht stattfinden lassen. Und dann kann ich das Modell auf die Testdaten anwenden. Dann tue ich so, wie als wenn ich schon fertig wäre und würde jetzt damit in die freie Wildbahn gehen, das Modell anwenden. Dann kann ich gucken, wie viel es im aktuellen Trainingszustand richtig macht.\n\nUnd dadurch, dass das Modell nicht lernt, sieht es die Testdaten im Endeffekt jede Epoche aufs Neue zum ersten Mal. Das heißt, ich kann mit den gleichen Testdaten am Ende von jeder Epoche immer wieder testen und sehe, wie sich das Training verändert. Und das Ganze kann ich dann auf ein Diagramm oder eine Trainingskurve packen, die wir dann hier oben sehen.\n\nDas heißt, die lilane Kurve sind die einzelnen Trainingsdaten. Man sieht hier auch die Epochen auf der X-Achse eingezeichnet, und man sieht am Anfang habe ich bei ca. 8 oder 9 Klassen quasi eine komplett zufällige Wahrscheinlichkeit, richtig zu liegen, also um die 10, 12 Prozent. Und im Trainingsverlauf steigt die Genauigkeit dann immer weiter an. Das heißt, wir sehen hier: Immer mehr Punkte werden als richtig erkannt und die Genauigkeit steigt.\n\nUnd dann sehen wir den ersten Datenpunkt auf der türkisenen Kurve. Das sind dann die Testgenauigkeiten, die sind dann schon bei knapp 90 Prozent. Und dann sehen wir, wie sich das über die Epochen weiterentwickelt. Und am Ende habe ich eine Trainingsgenauigkeit von fast 94 Prozent in diesem einen Beispiel – das könnte jetzt bei Ihrem Trainingslauf auch komplett anders sein – und eine Testgenauigkeit von etwas über 90 Prozent. Das ist normal, weil die Trainingsbilder ja gesehen und gelernt werden. Das heißt, wir erwarten hier, dass die immer ein bisschen besser sind als die Testbilder.\n\nUnd es gibt jetzt keine Paradeantwort, wie viel Prozent denn gut ist. Das hängt immer vom Unternehmen oder vom Unterfangen ab, für was ich das verwenden möchte. Und man kann jetzt nicht pauschal sagen, dass 90 Prozent gut genug sind. Es kann sein, dass bereits 60 Prozent gut genug sind, wenn zum Beispiel das bisherige Modell oder irgendwelche anderen Dienstleister, sage ich mal, eine höhere Fehlerrate haben. Es kann auch sein, dass man das erst mal so zur Erkundung nimmt, ob das vielleicht eine valide Anwendung für die Zukunft ist. Also hier gibt es überhaupt keine Antworten aus dem Lehrbuch, sondern hier geht es rein darum: Was möchte ich machen, was ist für mein Vorhaben gut und welche Eigenschaften benötige ich da?",
+    "crumbs": [
+      "Fortbildung",
+      "Trainingskurven"
+    ]
+  },
+  {
+    "objectID": "use_cases.html",
+    "href": "use_cases.html",
+    "title": "AI use cases",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nAI use cases bezüglich Datensatz"
+  },
+  {
+    "objectID": "qr_code_bilderkennung.html",
+    "href": "qr_code_bilderkennung.html",
+    "title": "QR-Code für Bilderkennungs-App",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nQR-Code Bilderkennungs-App und Embedded Plus Slider"
+  },
+  {
+    "objectID": "bias.html",
+    "href": "bias.html",
+    "title": "Bias und Imbalance",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nBias und Imbalance"
+  },
+  {
+    "objectID": "image_vis.html",
+    "href": "image_vis.html",
+    "title": "Imagevisualisierung",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next",
+    "crumbs": [
+      "Fortbildung",
+      "Features"
+    ]
+  },
+  {
+    "objectID": "image_vis.html#vorgefertigte-optische-features-statt-laborwerte",
+    "href": "image_vis.html#vorgefertigte-optische-features-statt-laborwerte",
+    "title": "Imagevisualisierung",
+    "section": "1. Vorgefertigte optische Features statt Laborwerte",
+    "text": "1. Vorgefertigte optische Features statt Laborwerte\nWir sind noch nicht bei der vollständigen neuronalen Bilderkennung. Stattdessen nutzen wir zunächst vorgefertigte optische Features – also Algorithmen bzw. Kennzahlen, die man direkt aus einem Bild berechnen kann.\nDer entscheidende Unterschied zu den Laborwerten von vorher: Diese Werte brauchen keine Probe, sondern nur das Foto. Beispiele:\n\nFarbsättigung / Farbton (Hue): als Durchschnittswert über das Bild.\nObjektmaske: Wie viel der Bildfläche nimmt das Objekt ein? Damit lassen sich z. B. flache Lakritz- oder Salzstangen unterscheiden, die trotz voller Bildgröße nur wenig Fläche belegen.",
+    "crumbs": [
+      "Fortbildung",
+      "Features"
+    ]
+  },
+  {
+    "objectID": "image_vis.html#weitere-features-im-überblick",
+    "href": "image_vis.html#weitere-features-im-überblick",
+    "title": "Imagevisualisierung",
+    "section": "2. Weitere Features im Überblick",
+    "text": "2. Weitere Features im Überblick\nDie App berechnet noch mehr solcher Kennzahlen:\n\nKontur – der Umriss der Süßigkeit,\nKreisförmigkeit – wie nah die Form an einem Kreis ist,\nAnzahl an Kanten – wie viele Kanten/Grenzen es im Objekt gibt,\nVarianz – wie stark die Farben untereinander streuen,\nHelligkeit – kennen wir bereits,\nEntropie – ein Maß für die „Unordnung” bzw. den Informationsgehalt im Bild.",
+    "crumbs": [
+      "Fortbildung",
+      "Features"
+    ]
+  },
+  {
+    "objectID": "image_vis.html#der-clou-feste-funktionen-die-jedes-bild-in-zahlen-verwandeln",
+    "href": "image_vis.html#der-clou-feste-funktionen-die-jedes-bild-in-zahlen-verwandeln",
+    "title": "Imagevisualisierung",
+    "section": "3. Der Clou: feste Funktionen, die jedes Bild in Zahlen verwandeln",
+    "text": "3. Der Clou: feste Funktionen, die jedes Bild in Zahlen verwandeln\nAll diese Features haben einen gemeinsamen Sinn: Es sind feste Funktionen, die sich auf jedes Bild anwenden lassen (klick dich ruhig durch die Süßigkeiten). Jedes visuelle Merkmal wird dabei in eine Zahl gebündelt.\nDamit lässt sich z. B. die Fledermaus links durch eine Reihe dieser Zahlen beschreiben. Vorher hatten wir nur ein bis zwei Merkmale (Salz; oder Gummianteil und Helligkeit) – und die waren teils Laborwerte. Jetzt haben wir unabhängige Werte, die allein aus dem Bild berechenbar sind.",
+    "crumbs": [
+      "Fortbildung",
+      "Features"
+    ]
+  },
+  {
+    "objectID": "image_vis.html#ein-zwischenschritt-zum-neuronalen-netz",
+    "href": "image_vis.html#ein-zwischenschritt-zum-neuronalen-netz",
+    "title": "Imagevisualisierung",
+    "section": "4. Ein Zwischenschritt zum neuronalen Netz",
+    "text": "4. Ein Zwischenschritt zum neuronalen Netz\nDas ist noch nicht die selbstgelernte CNN-Bilderkennung. Es ist ein Zwischenschritt, der etwas Wichtiges greifbar macht:\nSpäter lernt ein neuronales Netz seine Features selbst – und die sind dann für Menschen kaum noch interpretierbar. Hier dagegen sehen wir eine berechnete, menschlich erklärbare Repräsentation eines Bildes. Das Prinzip ist aber dasselbe: Man packt die Werte in eine Liste (einen Vektor), und diese Liste repräsentiert dann das Bild.\n\n\n\n\n\n\nJetzt bist du dran: Lies die Features ab\n\n\n\n\nKlick dich durch verschiedene Süßigkeiten und beobachte, wie sich die einzelnen Feature-Werte verändern.\nSuche ein Feature, das die Lakritzstange gut von einem runden Gummibärchen unterscheidet (Tipp: Fläche/Kreisförmigkeit).\nMach dir bewusst: Jedes dieser Merkmale ist am Ende eine Zahl – allein aus dem Bild berechnet.\n\n\n\n\n\n\n\n\n\nZum Weiterdenken\n\n\n\n\nWelche dieser Features wären auch dann noch berechenbar, wenn das Bild gedreht oder dunkler wäre?\nWarum ist es ein Vorteil, dass diese Features ohne Laborprobe auskommen?\n\nAls Nächstes bündeln wir diese Werte zu einer Liste – dem Feature-Vektor.",
+    "crumbs": [
+      "Fortbildung",
+      "Features"
+    ]
+  },
+  {
+    "objectID": "image_vis.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "href": "image_vis.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "title": "Imagevisualisierung",
+    "section": "Original-Transkript (zum Vergleich für Kolleg*innen)",
+    "text": "Original-Transkript (zum Vergleich für Kolleg*innen)\nHier sind wir jetzt noch nicht bei der vollständigen neuronalen Bilderkennung angekommen, sondern bedienen uns erst mal vorgefertigter optischer oder visueller Features. Das heißt, das sind jetzt verschiedene im Endeffekt Algorithmen oder Kennzahlen, die man aus einem Bild berechnen kann. Das heißt, ich kann zum Beispiel die Farbsättigung, also die Farbe, die Hue, die Farbsättigung kann ich für das Bild berechnen und dann einen gewissen Durchschnittswert bilden. Ich kann die Objektmaske berechnen, das heißt, wie viel von dem Gesamtbild nimmt das Objekt ein. Da könnte man zum Beispiel zwischen flachen Lakritzstangen oder Salzstangen oder sowas differenzieren, die sozusagen bei der gleichen Bildgröße, die sie ja benötigen, um eingefangen zu werden, aber sehr wenig Bildfläche einnehmen.\n\nWir haben so Werte wie die Kontur, also den Umriss von von der Süßigkeit und wie nah das Ganze an der Kreisförmigkeit ist. Wir haben die Anzahl an Kanten, das heißt, wie viele wie viele Kanten und Grenzen es in dem Objekt gibt. Es gibt die Varianz, also wie viel streuen die Farben untereinander. Es gibt die Helligkeit, die wir schon kennen, und dann gibt es die Entropie in dem Bild.\n\nUnd all das zusammen hat den Sinn, dass es feste Funktionen sind, die ich auf jedes Bild anwenden kann, wenn man sich hier durch die Süßigkeiten durchklickt. Und es hat den Sinn, dass ich all diese visuellen Merkmale in jeweils eine Zahl bündeln kann. Das heißt, letztendlich wird mein Bild, zum Beispiel die Fledermaus auf der linken Seite, kann ich sie dann durch verschiedene dieser Zahlen beschreiben und gucken, ob diese eine Struktur aufweisen. Vorher hatten wir zwei Merkmale oder auch nur eins beim Salz oder dann zwei, wie den Gummianteil und die Helligkeit. Und die Kritik war, dass ja manche dieser Werte Laborwerte oder gemessene Werte sind, wo man hätte eine Probe entnehmen müssen aus der Süßigkeit, was ja für eine Bilderkennungs-App nicht realistisch ist.\n\nUnd hier haben wir jetzt unabhängige Werte, die allein aus einem Bild berechnet werden können. Das ist jetzt noch nicht die vollkommen selbstgelernte Convolutional Neural Network Bilderkennung, sondern das ist jetzt erst mal ein Schritt, um zu verstehen, wo später im Netzwerk komplett erlernte, nicht mehr so gut menscheninterpretierbare Features verwendet werden, kann man jetzt als Zwischenschritt sich vorstellen, wie so eine erlernte Repräsentation auch einfach eine normale berechnete Repräsentation von einem Bild sein kann, indem man Features verwendet, die menschenerklärbar und menschenintuitiv sind. Aber das Konzept, dass man dann diese Werte in eine Liste oder einen Vektor packt und diese Liste dann dieses Bild repräsentiert, ist das gleiche.",
+    "crumbs": [
+      "Fortbildung",
+      "Features"
+    ]
+  },
+  {
+    "objectID": "histogramm_diagramm.html",
+    "href": "histogramm_diagramm.html",
+    "title": "Histogramm Diagramm",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next",
+    "crumbs": [
+      "Fortbildung",
+      "Histogramm Diagramm"
+    ]
+  },
+  {
+    "objectID": "histogramm_diagramm.html#daten-zählen-das-histogramm",
+    "href": "histogramm_diagramm.html#daten-zählen-das-histogramm",
+    "title": "Histogramm Diagramm",
+    "section": "1. Daten zählen: das Histogramm",
+    "text": "1. Daten zählen: das Histogramm\nÖffnen wir die ersten beiden Tüten und sortieren den Inhalt einfach nach Sorte, entsteht ein Histogramm. Ein Histogramm ist eine Art Balkendiagramm, das zählt, wie oft bestimmte Werte, Klassen oder Objekte vorkommen.\nIn unserer App bilden die Süßigkeiten ihre Balken sogar selbst: Je höher der „Stapel” einer Sorte, desto häufiger kommt sie vor.",
+    "crumbs": [
+      "Fortbildung",
+      "Histogramm Diagramm"
+    ]
+  },
+  {
+    "objectID": "histogramm_diagramm.html#eine-feinere-auflösung-klasse-kombiniert-mit-farbe",
+    "href": "histogramm_diagramm.html#eine-feinere-auflösung-klasse-kombiniert-mit-farbe",
+    "title": "Histogramm Diagramm",
+    "section": "2. Eine feinere Auflösung: Klasse kombiniert mit Farbe",
+    "text": "2. Eine feinere Auflösung: Klasse kombiniert mit Farbe\nIm nächsten Schritt sortieren wir nicht nur nach Sorte (z. B. „Frosch”), sondern kombinieren die Sorte zusätzlich mit der Farbe. So wird aus der groben Klasse „Frosch” eine feinere Auflösung wie „grüner Frosch”, „roter Frosch” usw.\nDiese feinere Sicht ist wichtig, weil sich Probleme im Datensatz oft erst zeigen, wenn man genauer hinschaut.",
+    "crumbs": [
+      "Fortbildung",
+      "Histogramm Diagramm"
+    ]
+  },
+  {
+    "objectID": "histogramm_diagramm.html#wozu-das-ganze-drei-leitfragen",
+    "href": "histogramm_diagramm.html#wozu-das-ganze-drei-leitfragen",
+    "title": "Histogramm Diagramm",
+    "section": "3. Wozu das Ganze? Drei Leitfragen",
+    "text": "3. Wozu das Ganze? Drei Leitfragen\nDas Histogramm beantwortet nicht nur „wie viele?“, sondern hilft uns, drei zentrale Fragen an die Daten zu stellen:\n\nVollständigkeit: Sind alle relevanten Sorten überhaupt vertreten?\nKorrektheit: Stecken sichtbare Fehler in den Daten?\nEignung: Reichen die Daten aus, um darauf sinnvoll eine Bilderkennung zu trainieren?",
+    "crumbs": [
+      "Fortbildung",
+      "Histogramm Diagramm"
+    ]
+  },
+  {
+    "objectID": "histogramm_diagramm.html#was-wir-konkret-sehen",
+    "href": "histogramm_diagramm.html#was-wir-konkret-sehen",
+    "title": "Histogramm Diagramm",
+    "section": "4. Was wir konkret sehen",
+    "text": "4. Was wir konkret sehen\nIm Beispiel werden mehrere Dinge sichtbar:\n\nEine große Diskrepanz zwischen häufigen Sorten (z. B. Gummibärchen, Fledermäuse, Obst) und der seltenen Lakritz.\nManche Objekte tauchen in manchen Tüten gar nicht auf – das wirft die Frage auf, ob eine dritte Tüte noch etwas Neues bringen würde.\nDie Datensatzgröße ist überschaubar. Für Deep Learning und neuronale Netze ist „überschaubar” tendenziell zu wenig.",
+    "crumbs": [
+      "Fortbildung",
+      "Histogramm Diagramm"
+    ]
+  },
+  {
+    "objectID": "histogramm_diagramm.html#das-kernproblem-unausgeglichenheit-class-imbalance",
+    "href": "histogramm_diagramm.html#das-kernproblem-unausgeglichenheit-class-imbalance",
+    "title": "Histogramm Diagramm",
+    "section": "5. Das Kernproblem: Unausgeglichenheit (Class Imbalance)",
+    "text": "5. Das Kernproblem: Unausgeglichenheit (Class Imbalance)\nIn diesem kleinen Beispiel funktioniert das Training zwar noch, doch der wichtige Punkt ist die Unausgeglichenheit des Datensatzes: Von manchen Sorten gibt es sehr wenige Lernbeispiele, von anderen sehr viele.\nStellt man sich das Training als mathematische Optimierung vor, kann das schwache „Signal” einzelner seltener Lakritzpunkte schlicht untergehen. Genau deshalb gilt: Der Großteil der Arbeit steckt in der Datenexploration und ggf. der Anreicherung der Daten – denn was im Datensatz fehlt oder schief liegt, bildet das Modell hinterher ab. Viele Probleme im Lernprozess lassen sich also schon hier, vor dem Training, erkennen.\n\n\n\n\n\n\nJetzt bist du dran: Lies das Histogramm\n\n\n\n\nSortiere den Inhalt zunächst nur nach Sorte und dann zusätzlich nach Farbe. Was verändert sich an deinem Eindruck?\nSuche die häufigste und die seltenste Sorte. Wie groß ist der Unterschied?\nGibt es Sorten, die in einer Tüte komplett fehlen?\n\n\n\n\n\n\n\n\n\nZum Weiterdenken\n\n\n\n\nWas könnte passieren, wenn ein Modell von einer seltenen Sorte nur zwei oder drei Bilder zu sehen bekommt?\nWürde eine dritte Tüte das Ungleichgewicht eher ausgleichen – oder neue Lücken aufdecken?\n\nIm nächsten Schritt nehmen wir genau diese dritte Tüte hinzu und schauen, wie sich das Bild verändert.",
+    "crumbs": [
+      "Fortbildung",
+      "Histogramm Diagramm"
+    ]
+  },
+  {
+    "objectID": "histogramm_diagramm.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "href": "histogramm_diagramm.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "title": "Histogramm Diagramm",
+    "section": "Original-Transkript (zum Vergleich für Kolleg*innen)",
+    "text": "Original-Transkript (zum Vergleich für Kolleg*innen)\nWenn man die ersten beiden Tüten öffnet und einfach mal nach Inhalt sortiert, dann könnte man von einem sogenannten Histogramm sprechen, also eine Art Balkendiagramm, was das Vorkommen verschiedener Werte oder Klassen oder Objekte zählt. In diesem Fall stellen die Süßigkeiten selbst – angeordnet – ihre Balken, also die Größe ihrer Häufigkeit, dar.\n\nHier ist jetzt einmal in so was wie Frösche sortiert und dann noch mal in verschiedenen Farben. Das heißt, hier ist nicht nur die Klasse Frosch, sondern die Klasse Frosch kombiniert mit der, wenn man so möchte, Klasse Farbe – in oder die Klasse Süßigkeit kombiniert mit der Klasse Farbe – in eine neue, feinere Auflösung.\n\nUnd was das Ganze hier darstellen soll, ist zum einen die Frage, ob die Daten denn vollständig sind, ob sie Fehler enthalten und ob sie genügen und ob, wenn ich jetzt hier eine Bilderkennung drauf trainieren möchte, ob da überhaupt die Voraussetzung gegeben ist, dass das bestmöglich die Datenbasis abbilden und lernen kann.\n\nWir sehen hier große Diskrepanz zwischen häufigen Dingen wie Gummibärchen und Fledermäusen und dem Obst gegenüber der Lakritz. Und wir sehen, dass manche Gegenstände in manchen Tüten gar nicht vorhanden waren. Das heißt die Frage, ob eine dritte Tüte vielleicht sogar noch was Neues mit sich bringen könnte. Wir sehen hier natürlich eine überschaubare Datensatzgröße und tendenziell, wenn Dinge überschaubar sind, dann sind sie für Deep Learning und neuronale Netze wahrscheinlich erstmal zu wenig.\n\nIn diesem Beispiel funktioniert das schon, aber es soll speziell auf die Unausgeglichenheit des Datensatzes hingewiesen werden. Das heißt, es gibt von manchen Sachen sehr wenige Beispiele, von denen das Modell lernen kann, und von anderen sehr viele. Und wenn man sich das als mathematische Optimierung vorstellt, dann kann auch gut sein, dass dieses Signal von gewissen Lakritzpunkten untergeht. Das heißt, es ist ganz, ganz wichtig, den Großteil der Zeit in die Datenexploration und vielleicht noch Anreicherung der Daten im Datensatz zu stecken, weil das von dem Modell abgebildet wird und bereits hier kann ich Probleme im Lernprozess erkennen.",
+    "crumbs": [
+      "Fortbildung",
+      "Histogramm Diagramm"
+    ]
+  },
+  {
+    "objectID": "evaluation.html",
+    "href": "evaluation.html",
+    "title": "Evaluation",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nIndexDB lokal etc. plus Bilder drehen"
+  },
+  {
+    "objectID": "glossary.html",
+    "href": "glossary.html",
+    "title": "Glossar",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next"
+  },
+  {
+    "objectID": "glossary.html#def-stratification",
+    "href": "glossary.html#def-stratification",
+    "title": "Glossar",
+    "section": "Stratification",
+    "text": "Stratification\nStratification ist eine Technik, um Daten in Gruppen zu unterteilen, um bessere Vorhersagen zu erhalten."
+  },
+  {
+    "objectID": "glossary.html#def-aaa",
+    "href": "glossary.html#def-aaa",
+    "title": "Glossar",
+    "section": "2",
+    "text": "2\n…"
+  },
+  {
+    "objectID": "sort_4d.html",
+    "href": "sort_4d.html",
+    "title": "Sort 4D",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next",
+    "crumbs": [
+      "Fortbildung",
+      "Feature Vergleich"
+    ]
+  },
+  {
+    "objectID": "sort_4d.html#eine-repräsentation-pro-bild-und-plötzlich-kann-man-suchen",
+    "href": "sort_4d.html#eine-repräsentation-pro-bild-und-plötzlich-kann-man-suchen",
+    "title": "Sort 4D",
+    "section": "1. Eine Repräsentation pro Bild – und plötzlich kann man suchen",
+    "text": "1. Eine Repräsentation pro Bild – und plötzlich kann man suchen\nSobald wir für jedes Bild eine Repräsentation (einen Feature-Vektor) haben, können wir ähnliche Bilder bzw. Süßigkeiten suchen. Das ist eine erstaunlich mächtige Idee, denn dasselbe Prinzip steckt hinter vielen Alltagsanwendungen:\n\nProduktsuche bei Online-Händlern,\nLied- oder Filmsuche bei Streaming-Plattformen,\nDokumentensuche bei Suchmaschinen (Google, Bing …),\nsogar das Einspeisen von Quellen in die Antworten von Large Language Models (LLMs).\n\nIm Hintergrund läuft jeweils Ähnliches ab: Eine Anfrage (bei uns: ein Frage-Bild links) wird in Features übersetzt, und alle anderen Dokumente wurden ebenfalls in Features übersetzt. Dann sucht man die ähnlichsten.",
+    "crumbs": [
+      "Fortbildung",
+      "Feature Vergleich"
+    ]
+  },
+  {
+    "objectID": "sort_4d.html#beispiel-den-frosch-vergleichen",
+    "href": "sort_4d.html#beispiel-den-frosch-vergleichen",
+    "title": "Sort 4D",
+    "section": "2. Beispiel: den Frosch vergleichen",
+    "text": "2. Beispiel: den Frosch vergleichen\nMarkiere in der App z. B. den Frosch mit „Vergleichen”. Unten erscheint sein Spinnendiagramm (die Ausprägung seiner Features).\n\nDer Frosch entspricht jetzt einer Suchanfrage.\nRechts erscheint ganz oben – mit Ähnlichkeit 1,0 – derselbe Frosch aus dem Datensatz.\nDarunter folgen die übrigen Süßigkeiten, sortiert nach Ähnlichkeit.\n\nFährst du mit der Maus darüber, kannst du die Diagramme vergleichen: entweder optisch über die Überlappung oder mathematisch als Unterschied der beiden Vektoren. So entsteht ein Ähnlichkeitswert.",
+    "crumbs": [
+      "Fortbildung",
+      "Feature Vergleich"
+    ]
+  },
+  {
+    "objectID": "sort_4d.html#eine-wichtige-beobachtung-farbe-dominiert",
+    "href": "sort_4d.html#eine-wichtige-beobachtung-farbe-dominiert",
+    "title": "Sort 4D",
+    "section": "3. Eine wichtige Beobachtung: Farbe dominiert",
+    "text": "3. Eine wichtige Beobachtung: Farbe dominiert\nInteressant – und lehrreich – ist, dass manchmal andere Süßigkeiten als ähnlicher gelten als andersfarbige Frösche:\n\nGelbe Gummibärchen, gelbes Obst und gelbe Bälle wirken untereinander ähnlich.\nEin orangefarbenes Gummibärchen gilt als ähnlicher als ein Frosch anderer Farbe.\n\nDas zeigt: Die Farbe ist hier ein sehr dominierendes Feature. Wenn das unerwünscht ist, hättest du an dieser Stelle die Möglichkeit, durch eine bessere Feature-Auswahl in die Modellierung einzugreifen und das Verfahren robuster zu machen.",
+    "crumbs": [
+      "Fortbildung",
+      "Feature Vergleich"
+    ]
+  },
+  {
+    "objectID": "sort_4d.html#wie-der-vergleich-rechnet",
+    "href": "sort_4d.html#wie-der-vergleich-rechnet",
+    "title": "Sort 4D",
+    "section": "4. Wie der Vergleich rechnet",
+    "text": "4. Wie der Vergleich rechnet\nMathematisch werden die beiden Feature-Vektoren verglichen – das entspricht im Wesentlichen der Überlappung der beiden Diagramme:\n\nMaximale Überlappung → Ähnlichkeit 1,0 (bzw. 100 %).\nKeine Überlappung → Ähnlichkeit 0.\n\nSo haben wir mit dem Feature-Vektor eine einfache Suche gebaut – und gleichzeitig gesehen, dass die Qualität der Features über die Qualität der Ergebnisse entscheidet.\n\n\n\n\n\n\nJetzt bist du dran: Baue deine Suche\n\n\n\n\nWähle eine Süßigkeit als Suchanfrage und sieh dir die nach Ähnlichkeit sortierte Trefferliste an.\nVergleiche die Spinnendiagramme von Anfrage und Treffern – optisch und über den Ähnlichkeitswert.\nTeste gezielt zwei gleichfarbige, aber verschiedene Sorten: Werden sie fälschlich als ähnlich eingestuft?\n\n\n\n\n\n\n\n\n\nZum Weiterdenken\n\n\n\n\nWie könntest du die Features verändern, damit nicht die Farbe alles dominiert?\nDiese Ähnlichkeitssuche ist dieselbe Grundidee wie bei Google oder LLM-Quellen – wo begegnet sie dir im Alltag noch?\n\nMit diesem Verständnis von Repräsentationen kehren wir nun zur echten, selbstlernenden Bilderkennung zurück.",
+    "crumbs": [
+      "Fortbildung",
+      "Feature Vergleich"
+    ]
+  },
+  {
+    "objectID": "sort_4d.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "href": "sort_4d.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "title": "Sort 4D",
+    "section": "Original-Transkript (zum Vergleich für Kolleg*innen)",
+    "text": "Original-Transkript (zum Vergleich für Kolleg*innen)\nEine sehr interessante Sache, bei der wir jetzt schon angekommen sind, ist, dass, wenn ich für jedes Bild eine Repräsentation habe, dann kann ich natürlich ähnliche Bilder oder ähnliche in dem Fall Süßigkeiten suchen. Aber das ist jetzt nur beispielhaft, das heißt, ich könnte eine Produktsuche bei einem Onlinehändler, ich könnte eine Liedersuche oder eine Filmsuche bei einer Streaming-Plattform oder ich könnte eine Dokumentensuche, wie bei den gängigen Suchmaschinen wie Google, Bing und so weiter, bereits jetzt schon nachbauen oder ganz neu zum Beispiel wie Quellen in die Antworten von Large Language Models eingespeist werden. Da läuft im Hintergrund im Endeffekt auch eine Google-Suche ab, dass ich irgendein irgendeine Frage habe, die jetzt hier wie ein in unserem Beispiel ein Fragebild auf der linken Seite in Features übersetzt wird, und all meine anderen Dokumente, die ich auch habe, wurden auch in Features übersetzt. Und dann kann ich nach nach den ähnlichsten Dokumenten suchen, die der Frage am ähnlichsten sind bzw. in unserem Fall könnte man jetzt zum Beispiel den Frosch markieren mit „Vergleichen“.\n\nDann sieht man unten das Spinnendiagramm von dem Frosch, also wie die Features sind, und dann bekomme ich auf der rechten Seite – der Frosch entspricht jetzt einer Suchanfrage bei Google oder einer Frage in einem LLM – und rechts sehe ich dann ganz oben mit Ähnlichkeit 1 natürlich denselben Frosch noch mal aus unserem Datensatz, und alles, was darunter kommt, sind dann andere Süßigkeiten aus unserem Datensatz. Und wenn ich mit der Maus drüber gehe, dann kann ich die Ähnlichkeit der Diagramme vergleichen. Das kann ich entweder jetzt optisch mit der Überlappung machen, oder ich kann das Ganze rein mathematisch als den Unterschied der beiden Vektoren darstellen. Dann bekomme ich einen Ähnlichkeitswert, und was hier auch zum Beispiel interessant ist, ist, dass andere Süßigkeiten teilweise als ähnlicher gehalten werden als andere gelbe Frösche.\n\nDas heißt, hier muss wahrscheinlich eine bessere Auswahl an Features getroffen werden und noch mehrere Maßnahmen getroffen werden, dass das Verfahren robuster ist. Und was auch interessant ist zum Beispiel, ist, dass gelbe Gummibärchen und gelbes Obst und gelbe Baller ähnlicher sind, oder auch zum Beispiel orangefarbene ein orangefarbenes Gummibärchen wird als ähnlicher betrachtet als ein Frosch einer anderen Farbe. Das heißt, wir sehen hier, dass die Farbe ein sehr dominierendes Feature ist. Und wenn das eine Eigenschaft ist, die man nicht möchte, dann hätte man hier jetzt die Möglichkeit, durch Rumprobieren in die Modellierung einzugreifen.\n\nAber letztendlich werden hier jetzt die beiden Feature-Vektoren verglichen, was rein mathematisch sozusagen die Überlappung der der jeweiligen Diagramme ist. Und je sehr je mehr sie sich überlappen, mit 100 % oder Ähnlichkeit 1,0 dem Höchstwert, ist dann das Höchste, und wenn sie sich gar nicht überlappen, dann hätte ich eine Ähnlichkeit von 0. Und so habe ich diesen Feature-Vektor jetzt mal benutzt, um mir eine einfache Suche zu bauen.",
+    "crumbs": [
+      "Fortbildung",
+      "Feature Vergleich"
+    ]
+  },
+  {
+    "objectID": "schmetterlinge_eda.html",
+    "href": "schmetterlinge_eda.html",
+    "title": "Schmetterlinge EDA",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nSchmetterlinge EDA"
+  },
+  {
+    "objectID": "schach_vis.html",
+    "href": "schach_vis.html",
+    "title": "Schachvisualisierung",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next",
+    "crumbs": [
+      "Fortbildung",
+      "Schachvisualisierung"
+    ]
+  },
+  {
+    "objectID": "schach_vis.html#vom-kleinen-zum-riesigen-lösungsraum",
+    "href": "schach_vis.html#vom-kleinen-zum-riesigen-lösungsraum",
+    "title": "Schachvisualisierung",
+    "section": "1. Vom kleinen zum riesigen Lösungsraum",
+    "text": "1. Vom kleinen zum riesigen Lösungsraum\nBei Tic-Tac-Toe konnten wir den gesamten Lösungsraum noch komplett erkunden. Bei komplexeren Problemen wird dieser Raum jedoch dramatisch größer. Schach ist dafür das Paradebeispiel.\nDie Zahl der möglichen Spielstände bzw. Züge wird auf rund 10^{46} geschätzt. Das ist eine so gigantische Zahl, dass sie unsere Alltagsvorstellung vollständig sprengt.",
+    "crumbs": [
+      "Fortbildung",
+      "Schachvisualisierung"
+    ]
+  },
+  {
+    "objectID": "schach_vis.html#ein-größenvergleich-selbst-ein-supercomputer-kapituliert",
+    "href": "schach_vis.html#ein-größenvergleich-selbst-ein-supercomputer-kapituliert",
+    "title": "Schachvisualisierung",
+    "section": "2. Ein Größenvergleich: Selbst ein Supercomputer kapituliert",
+    "text": "2. Ein Größenvergleich: Selbst ein Supercomputer kapituliert\nUm ein Gefühl für diese Größenordnung zu bekommen, hilft ein Vergleich mit dem schnellsten Schach-Supercomputer (Stockfish). Er schafft es, etwa 7 Milliarden Züge bzw. Stellungen pro Sekunde zu bewerten.\nRechnet man hoch, wie viele Stellungen er in immer längeren Zeiträumen schaffen würde, ergibt sich (in der App farblich hinterlegt):\n\nin einer Sekunde: ca. 7 Milliarden\nan einem Tag\nin einem Jahr\nin 1.000 Jahren\nim gesamten Lebensalter der Erde (mehrere Milliarden Jahre)\n\nSelbst wenn dieser Supercomputer über das gesamte Alter der Erde hinweg gelaufen wäre, läge das Ergebnis immer noch nirgends in der Nähe einer vollständigen Lösung.",
+    "crumbs": [
+      "Fortbildung",
+      "Schachvisualisierung"
+    ]
+  },
+  {
+    "objectID": "schach_vis.html#die-konsequenz-der-suchbaum-ist-niemals-vollständig",
+    "href": "schach_vis.html#die-konsequenz-der-suchbaum-ist-niemals-vollständig",
+    "title": "Schachvisualisierung",
+    "section": "3. Die Konsequenz: Der Suchbaum ist niemals vollständig",
+    "text": "3. Die Konsequenz: Der Suchbaum ist niemals vollständig\nDaraus folgt eine klare Erkenntnis: Der Suchbaum kann unmöglich vollständig aufgebaut werden. Der komplette Lösungs- bzw. Suchraum lässt sich nicht zu Ende denken, nicht vollständig erkunden und nicht „lösen” (engl. solve).\nDa man aber trotzdem Schach spielen will, hat jede Seite – auch ein Computer – nur eine begrenzte Zeit pro Zug. Der Algorithmus muss also irgendwann aufhören, bevor er am Ende angekommen ist.",
+    "crumbs": [
+      "Fortbildung",
+      "Schachvisualisierung"
+    ]
+  },
+  {
+    "objectID": "schach_vis.html#die-brücke-zum-thema-unsicherheit",
+    "href": "schach_vis.html#die-brücke-zum-thema-unsicherheit",
+    "title": "Schachvisualisierung",
+    "section": "4. Die Brücke zum Thema Unsicherheit",
+    "text": "4. Die Brücke zum Thema Unsicherheit\nHier entsteht der Kontakt zum zentralen Thema Unsicherheit:\n\nIch kann nur so lange rechnen, wie ich Zeit habe, und in dieser Zeit den bestmöglichen Zug bestimmen.\nIrgendwann muss ich aufhören, ohne alles geprüft zu haben.\nDie Lösung, die ich bekomme, ist daher nie garantiert optimal. Sie kann ein sehr guter, vielleicht sogar unschlagbarer Zug sein – aber ich kann nicht behaupten, dass es rein rechnerisch das Optimum ist. Und ich kann es im Moment auch nicht (gut) überprüfen.\n\nDas ist die wichtige Botschaft: Selbst bei einem „alltäglichen” Problem wie Schach versprechen die vermeintlich robusten, klassischen Algorithmen keine perfekte Lösung. Auch sie gehen mit Unsicherheit einher – allein schon wegen der schieren Größe des Problemraums.\nBei neuronalen Netzen entsteht Unsicherheit später zusätzlich aus dem Verfahren selbst. Doch wie wir hier sehen, ist Unsicherheit schon aus der Größe der Problemräume heraus nicht wegzudenken.\n\n\n\n\n\n\nJetzt bist du dran: Begreife die Größenordnung\n\n\n\n\nSieh dir in der App den Zähler und die farblich markierten Zeiträume an (Sekunde, Tag, Jahr, 1.000 Jahre, Alter der Erde).\nMach dir bewusst: Selbst die braune Markierung (Lebensalter der Erde) reicht nicht an 10^{46} heran.\nÜberlege, was das für die Aussage „der Computer hat den besten Zug berechnet” bedeutet.\n\n\n\n\n\n\n\n\n\nZum Weiterdenken\n\n\n\n\nWenn nicht einmal ein Supercomputer Schach „lösen” kann – wie trifft er dann trotzdem starke Entscheidungen?\nWas bedeutet Unsicherheit für dein Vertrauen in eine berechnete „beste” Lösung – egal ob Schach oder KI?\n\nDamit haben wir den Boden bereitet, um zu verstehen, warum auch lernende Verfahren mit Unsicherheit umgehen müssen.",
+    "crumbs": [
+      "Fortbildung",
+      "Schachvisualisierung"
+    ]
+  },
+  {
+    "objectID": "schach_vis.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "href": "schach_vis.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "title": "Schachvisualisierung",
+    "section": "Original-Transkript (zum Vergleich für Kolleg*innen)",
+    "text": "Original-Transkript (zum Vergleich für Kolleg*innen)\nDass der Lösungsraum bei komplizierteren Verfahren und Problemen wie Tic-Tac-Toe wesentlich größer sein kann, sieht man dann schon beim Schachspiel. Hier gibt es geschätzt 10^46 mögliche Züge oder Spielstände. Wenn man sich das anguckt, dann ist die geschätzte Zahl hier an Spielzügen, die es gibt, gezeigt. Und wenn wir dann mal überlegen, der schnellste Schach-Supercomputer von Stockfish schafft es ca. in einer Sekunde 7 Milliarden Züge oder Spielstände zu evaluieren, hier in rot eingefärbt. Dann kann man so viele wie in orange eingefärbt am Tag, so viele wie in violett eingefärbt in einem Jahr, in grün eingefärbt in 1.000 Jahren und in braun eingefärbt im ganzen 4 Milliarden, 3 Milliarden, was auch immer, Lebensalter der gesamten Erde. Wenn man so lange diesen Schach-Supercomputer hätte laufen lassen, dann wäre man immer noch nirgendwo nahe an einer Lösung. Und dann kommt also kommt man also zu dem Schluss, dass der Suchbaum unmöglich jemals vollständig aufgebaut werden kann. Also der komplette Lösungsraum oder Suchraum kann unmöglich vollständig erkundet werden oder zu Ende gedacht oder gelöst oder gesolvt werden, wie man sagt. Und da man aber ja Schach spielen möchte, hat der Gegner ja nur eine gewisse Anzahl an oder eine gewisse Zeit für den nächsten Zug zur Verfügung, auch ein Computer, und daher muss dieser Algorithmus ja auch irgendwann aufhören. Und hier kommt dann so der Kontakt zum Thema oder die Brücke zum Thema Unsicherheit: Ich kann nur so und so lange berechnen, dann kann ich in der Zeit den bestmöglichen Zug berechnen, aber irgendwann muss ich aufhören, ohne am Ende angekommen zu sein. Das heißt, die Lösung, die ich bekomme, ist so gesehen nie optimal. Es kann immer noch ein sehr, sehr guter oder unschlagbarer Zug sein, aber ich kann nicht behaupten, dass ich alles angeguckt habe und dass es garantiert rein rechnerisch die optimale Lösung ist. Das kann ich zu dem Moment nicht sagen. Und das heißt, obwohl bei anderen Verfahren wie neuronalen Netzen natürlich auch mit Wahrscheinlichkeiten und vor allen Dingen Unsicherheiten gearbeitet wird, soll das hier veranschaulichen, dass selbst bei sozusagen alltäglichen Problemen wie Schach die vermeintlich robusten Algorithmen auch keine perfekte Lösung versprechen, weil sie hier auch mit Unsicherheit einhergehen, da sie unmöglich zu Ende vollständig rechnen können. Das heißt, dieses Thema Unsicherheit, obwohl das natürlich bei neuronalen Netzen, wie wir später sehen werden, dann auch aus dem Verfahren selbst entsteht, entsteht aber allein schon aus der Größe der Problemräume und ist somit, wenn man so will, nicht wegzudenken.\n\nauch text und inhalte aus schach1.png einbinden (nicht das Bild selbst)\n\n--- Inhalt aus schach1.png ---\nBeispiel: Schach – Komplexität\nProblem: es gibt sehr viele Züge/Spielstände, geschätzt ~10^46\n7 Milliarden (Rechengeschwindigkeit Schach-Supercomputer pro Sekunde)\nFarbcodierung der riesigen Zahl: Sekunde / Tag / Jahre / 1000 (Jahre) / Erde (Lebensalter)\nDer Suchbaum kann unmöglich vollständig aufgebaut werden, das Spiel kann nicht zu Ende gedacht werden.\nAlso: ich muss soweit vorausdenken und bewerten, wie ich Zeit habe für jeden Zug -&gt; Unsicherheit. Die Antwort/Lösung die ich bekomme, ist nie optimal und ich kann es nicht (gut) überprüfen.",
+    "crumbs": [
+      "Fortbildung",
+      "Schachvisualisierung"
+    ]
+  },
+  {
+    "objectID": "start.html",
+    "href": "start.html",
+    "title": "Start",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n    \n    \n    Animation\n    \n\n  \n  \n\n\n    \n        \n    \n    \n\n\n\n\n\n\nAnimation",
+    "crumbs": [
+      "Fortbildung",
+      "Start"
+    ]
+  },
+  {
+    "objectID": "augmentations.html",
+    "href": "augmentations.html",
+    "title": "Augmentations",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n    \n    \n    Augmentation\n    \n\n  \n  \n\n\n    \n        \n    \n    \n\n\n\n\n\n\nAugmentations",
+    "crumbs": [
+      "Fortbildung",
+      "Augmentations"
+    ]
+  },
+  {
+    "objectID": "agenda.html",
+    "href": "agenda.html",
+    "title": "Agenda",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nalle Themen Stil Agenda"
+  },
+  {
+    "objectID": "lakritz_classifier.html",
+    "href": "lakritz_classifier.html",
+    "title": "Lakritz Classifier",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nLakritz Classifier"
+  },
+  {
+    "objectID": "anwendungsfall.html",
+    "href": "anwendungsfall.html",
+    "title": "Anwendungsfall Klassenerkennen",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nrealistischer Anwendungsfall um Klassen zu erkennen"
+  },
+  {
+    "objectID": "confusion.html",
+    "href": "confusion.html",
+    "title": "Confusion",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nConfusion"
+  },
+  {
+    "objectID": "medizin.html",
+    "href": "medizin.html",
+    "title": "Medizinbeispiel",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nMedizinbeispiel"
+  },
+  {
+    "objectID": "literacy_example.html",
+    "href": "literacy_example.html",
+    "title": "Beispiele für literacy",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n\nÄpfel rechnen, Birnen rechnen, fächerübergreifend"
+  },
+  {
+    "objectID": "training_bilder.html",
+    "href": "training_bilder.html",
+    "title": "Training mit Bildern",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next",
+    "crumbs": [
+      "Fortbildung",
+      "Training Bilderkennung"
+    ]
+  },
+  {
+    "objectID": "training_bilder.html#zurück-zum-anfang-jetzt-mit-verständnis",
+    "href": "training_bilder.html#zurück-zum-anfang-jetzt-mit-verständnis",
+    "title": "Training mit Bildern",
+    "section": "1. Zurück zum Anfang – jetzt mit Verständnis",
+    "text": "1. Zurück zum Anfang – jetzt mit Verständnis\nJetzt kehren wir zum Motivationsbeispiel vom Anfang zurück: dem Training eines neuronalen Netzes zur Bilderkennung von Süßigkeiten. Mit einem Klick auf „Training” startest du es.\nDer entscheidende Unterschied zu vorher: Hier siehst du kein explizites Modell und keine selbst gewählten Features mehr. Jetzt ist der Black-Box-Teil des neuronalen Netzes am Werk – das Netz bestimmt seine Features selbst.",
+    "crumbs": [
+      "Fortbildung",
+      "Training Bilderkennung"
+    ]
+  },
+  {
+    "objectID": "training_bilder.html#was-wir-inzwischen-verstanden-haben",
+    "href": "training_bilder.html#was-wir-inzwischen-verstanden-haben",
+    "title": "Training mit Bildern",
+    "section": "2. Was wir inzwischen verstanden haben",
+    "text": "2. Was wir inzwischen verstanden haben\nWir bringen aus den vorherigen Schritten viel mit:\n\nWir wissen, wie unsere Daten aussehen – nämlich Bilder.\nWir wissen, dass wir die Klasse vorhersagen wollen (alternativ z. B. „Lakritz vs. Nicht-Lakritz”).\n\nDrückst du auf Start, werden die richtig erkannten Bilder grün/blau und die falsch erkannten rot eingefärbt – das sind Live-Werte aus dem Training.",
+    "crumbs": [
+      "Fortbildung",
+      "Training Bilderkennung"
+    ]
+  },
+  {
+    "objectID": "training_bilder.html#der-lerneffekt-wird-sichtbar",
+    "href": "training_bilder.html#der-lerneffekt-wird-sichtbar",
+    "title": "Training mit Bildern",
+    "section": "3. Der Lerneffekt wird sichtbar",
+    "text": "3. Der Lerneffekt wird sichtbar\nWie schon ganz am Anfang: Manche Bilder werden erst falsch, dann richtig erkannt. Genau hier siehst du den Lerneffekt.\nDas liegt daran, dass wir mehrfach über die Daten iterieren – das Modell sieht sie also wiederholt. Deshalb ist die Auswertung so wichtig.\nUnd ein oft übersehener Punkt: Selbst wenn du das Modell nicht selbst trainierst und keinen Einblick ins Training hast, stehst du am Ende als **Anwender*in da. Auch dann musst du dir klarmachen: Was kann dieses Modell? Worauf kann ich mich verlassen? Wo liegen Stärken und Schwächen? Diese Frage betrifft nicht nur Data Scientists und Firmen, sondern auch die nutzende Person**. Deshalb liegt der Fokus hier so stark auf der Auswertung.",
+    "crumbs": [
+      "Fortbildung",
+      "Training Bilderkennung"
+    ]
+  },
+  {
+    "objectID": "training_bilder.html#die-bekannten-schwachstellen-kehren-zurück",
+    "href": "training_bilder.html#die-bekannten-schwachstellen-kehren-zurück",
+    "title": "Training mit Bildern",
+    "section": "4. Die bekannten Schwachstellen kehren zurück",
+    "text": "4. Die bekannten Schwachstellen kehren zurück\nDas Ergebnis bestätigt, was wir in der Datenexploration vermutet haben: Süßigkeiten, die selten vorkommen oder aus ungünstiger Perspektive schwierig sind, haben anschließend eine niedrigere Erfolgsrate als die gängigen Sorten.\nDie Probleme aus dem Datensatz verschwinden also nicht durch ein „besseres” Modell – sie tauchen in der Auswertung wieder auf.\n\n\n\n\n\n\nJetzt bist du dran: Trainiere und werte aus\n\n\n\n\nStarte das Training und beobachte, welche Bilder von falsch auf richtig wechseln (der Lerneffekt).\nSchau am Ende gezielt auf die seltenen Sorten: Wie gut werden sie im Vergleich zu den häufigen erkannt?\nFrag dich als **Anwender*in**: Würdest du diesem Modell im Alltag vertrauen – und wofür eher nicht?\n\n\n\n\n\n\n\n\n\nZum Weiterdenken\n\n\n\n\nWarum hilft ein leistungsfähigeres Modell nicht, wenn von einer Klasse kaum Daten vorhanden sind?\nWas bedeutet „Black Box” für deine Fähigkeit, dem Modell zu vertrauen?\n\nIm nächsten Schritt decken wir einen kapitalen Fehler auf, den wir bisher bewusst gemacht haben: das Bewerten auf den Trainingsdaten.",
+    "crumbs": [
+      "Fortbildung",
+      "Training Bilderkennung"
+    ]
+  },
+  {
+    "objectID": "training_bilder.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "href": "training_bilder.html#original-transkript-zum-vergleich-für-kolleginnen",
+    "title": "Training mit Bildern",
+    "section": "Original-Transkript (zum Vergleich für Kolleg*innen)",
+    "text": "Original-Transkript (zum Vergleich für Kolleg*innen)\nJetzt können wir zum Motivationsbeispiel am Anfang zurückkehren, nämlich dem Trainieren eines neuronalen Netzes zur Bilderkennung von Süßigkeiten. Und man kann das Ganze jetzt mit einem Klick auf Training starten. Was hier jetzt anders ist als vorher: Wir sehen jetzt hier kein explizites Modell und keine Features. Also hier ist jetzt der Black-Box-Teil des neuronalen Netzes am Wirken.\n\nWir haben verstanden, wie unsere Daten aussehen, nämlich die Bilder. Wir haben verstanden, dass wir die Klasse lernen und vorhersagen möchten oder zum Beispiel in anderen Fällen könnte man auch in Lakritz und nicht Lakritz unterteilen. Und wenn wir jetzt hier auf Start drücken, dann sehen wir, dass anfangs die grünen, blauen Punkte richtig erkannt und die roten falsch erkannt werden. Das sind jetzt sozusagen Live-Werte aus dem Training.\n\nWir sehen auch, dass manche Punkte zuerst falsch und dann richtig erkannt werden, da sieht man dann also den Lerneffekt. Das heißt, wir iterieren mehrmals über die Daten, das Modell sieht die Daten mehrmals und deswegen ist diese Form der Auswertung auch so wichtig. Das heißt, selbst wenn wir jetzt dieses ganze Modell nicht trainieren würden, nicht die Trainingsdaten stellen würden und gar keinen Einblick ins Training hätten, ist trotzdem am Ende stehen wir ja als Benutzerinnen vom Modell da und müssen uns klarmachen, was die Eigenschaften von dem Modell sind, wie ich mich drauf verlassen kann, wo es vielleicht Stärken und Schwächen hat. Das ist ja nicht nur für den Data Scientisten sondern und der Firma, die das Modell entwirft oder der Organisation, sondern auch für den Benutzer relevant. Das heißt, deswegen ist hier der Fokus auch auf die Auswertung.\n\nJetzt sehen wir hier, wie bereits am Anfang gesehen, dass die Süßigkeiten, die seltener vorkommen oder von der Perspektive schwierig sind, anschließend auch eine weniger hohe Erfolgsrate haben als die gängigen Süßigkeiten.",
+    "crumbs": [
+      "Fortbildung",
+      "Training Bilderkennung"
+    ]
+  },
+  {
+    "objectID": "augmentations_training.html",
+    "href": "augmentations_training.html",
+    "title": "Augmentations-Training",
+    "section": "",
+    "text": "Previous\n      \n    \n    \n      \n        Next \n      \n    \n  \n\n\n\n  \n    \n  \n  \n    \n  \n\n\n\n\n\n\n\n\n    \n    \n    Augmentation2\n    \n\n  \n  \n\n\n    \n        \n    \n    \n\n\n\n\n\n\nAugmentations-Training",
+    "crumbs": [
+      "Fortbildung",
+      "Augmentations 2"
+    ]
+  }
+]
