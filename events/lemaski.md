@@ -8,7 +8,7 @@ category: event
 
 ## Links und Ressourcen
 
-- [slides](ddihd.github.com/events/lemasslides.pdf)
+- [Slides](https://heibox.uni-heidelberg.de/f/124028507b44419fa1c8/)
 - [Aufgabe 1: Bilderkennung](https://shorturl.at/dLmvv)
 - [Aufgabe 2: Adversarial Examples](https://shorturl.at/n1TQl)
 - [Aufgabe 3: Training und eigene Anwendungen](https://shorturl.at/cy1Dd)
