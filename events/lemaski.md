@@ -1,10 +1,11 @@
 ---
 layout: page
 title: LemaS KI - 15.09.2026
-description: "Süßigkeiten und Webapps zur Vermittlung von KI-Grundlagen aus einer datenbasierten Perspektive."
+description: "Süßigkeiten und Webapps zur Vermittlung von KI-Grundlagen aus einer datenbasierten Perspektive"
 category: event
 ---
 
+# LemaS KI 15.09.2026 - Süßigkeiten und Webapps zur Vermittlung von KI-Grundlagen aus einer datenbasierten Perspektive
 
 ## Links und Ressourcen
 
