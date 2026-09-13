@@ -13,5 +13,5 @@ category: event
 - [Aufgabe 1: Bilderkennung](https://shorturl.at/dLmvv)
 - [Aufgabe 2: Adversarial Examples](https://shorturl.at/n1TQl)
 - [Aufgabe 3: Training und eigene Anwendungen](https://shorturl.at/cy1Dd)
-- Diskussion: Fragwürdige Anwednungen [Age-Gender (von vorhin)](https://shorturl.at/n1TQl) & [Emotionen](https://shorturl.at/0qZSo)
+- Diskussion: Fragwürdige Anwendungen [Age-Gender (von vorhin)](https://shorturl.at/n1TQl) & [Emotionen](https://shorturl.at/0qZSo)
 - [Vorabversion Fortbildung](https://ddihd.github.io/fortbildung_preview/index.html)
