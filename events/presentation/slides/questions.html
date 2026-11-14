@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questions</title>
+  <link rel="stylesheet" href="../lib/slide.css">
+  <style>
+    .questions-inner { gap: 5cqh; }
+    .questions-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2cqh;
+      color: inherit;
+      text-decoration: none;
+    }
+    .questions-qr {
+      display: block;
+      height: 38cqh;
+      width: auto;
+      aspect-ratio: 1;
+      mix-blend-mode: multiply; /* white QR background takes the slide colour */
+    }
+    .questions-url {
+      font-size: 2.2cqw;
+      font-weight: 600;
+      color: var(--color-text-strong);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide slide--center">
+    <div class="slide-inner questions-inner">
+      <h1 data-gumdrop data-gd-size="fill" data-gd-align="center">Questions?</h1>
+
+      <a class="questions-link" href="https://ddihd.github.io/events/iceri2026" target="_blank" rel="noopener">
+        <img class="questions-qr" src="../qrcode.png" alt="QR code linking to ddihd.github.io/events/iceri2026">
+        <span class="questions-url">https://ddihd.github.io/events/iceri2026</span>
+      </a>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initSlide } from '../lib/slide.js'
+    initSlide()
+  </script>
+</body>
+</html>

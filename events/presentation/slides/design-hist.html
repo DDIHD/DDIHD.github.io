@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--
+  Design: the Hist app (src/components/Hist.vue) embedded as the slide body.
+  Listed in deck.config.js with `apps: ['hist']`; click the bags to reveal the histograms.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design – Histogram</title>
+  <link rel="stylesheet" href="../lib/slide.css">
+</head>
+<body>
+  <div class="slide">
+    <div class="slide-inner">
+      <h1 class="slide-head" data-gumdrop>Design</h1>
+      <iframe class="slide-app" title="Candy histogram"></iframe>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initSlide } from '../lib/slide.js'
+    import { embedApp } from '../lib/embed.js'
+    initSlide()
+    embedApp(document.querySelector('.slide-app'), 'hist')
+  </script>
+</body>
+</html>

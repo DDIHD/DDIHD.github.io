@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Takeaways</title>
+  <link rel="stylesheet" href="../lib/slide.css">
+  <style>
+    .about-body { justify-content: center; font-size: 2.15cqw; line-height: 1.35; }
+    .about-body li + li { margin-top: 0.7em; }
+    .takeaway-examples { margin-top: 0.5em; font-size: 0.9em; }
+    .about-body .takeaway-examples li + li { margin-top: 0.3em; }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <div class="slide-inner">
+      <h1 class="slide-head" data-gumdrop>Takeaways</h1>
+
+      <main class="slide-body about-body">
+        <ul>
+          <li>Not everything is chat!</li>
+          <li>Image recognition: errors and behaviour are easily recognisable, while many properties transfer to LLMs</li>
+          <li>Knowing that these systems can learn things (by heart), are prone to biases and data imbalance is essentially enough to identify problems in the EDA phase</li>
+          <li>Teachers and students can be treated alike in this first-encounter: materials are shared</li>
+          <li>Maybe it takes a technical framework to show all the non-technical aspects that can be understood</li>
+        </ul>
+      </main>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initSlide } from '../lib/slide.js'
+    initSlide()
+  </script>
+</body>
+</html>

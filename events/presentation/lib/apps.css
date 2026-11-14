@@ -1,0 +1,17 @@
+/*
+ * Presentation-only overrides for exported web apps (dist/iframes/*.html) shown in the deck.
+ * Injected into every app iframe by deck/deck.js and lib/embed.js, so the apps themselves stay
+ * untouched and these rules survive a rebuild of the apps. Scope every rule with [data-app="<name>"]
+ * (set on .app-container-shell by the generated entry page).
+ */
+
+/* Animation: no view navigator (dots + play button) on the title slide; the canvas gets the full height. */
+[data-app="animate"] .animation-header {
+  display: none !important;
+}
+
+/* Sort: the plate photo (aspen_kohlblatt.jpg) has a white background baked in; multiply turns that
+   white into the slide background while the grey leaf stays visible. */
+[data-app="sort"] .leaf-image {
+  mix-blend-mode: multiply;
+}

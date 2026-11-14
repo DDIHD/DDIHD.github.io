@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learnings – Participants</title>
+  <link rel="stylesheet" href="../lib/slide.css">
+  <style>
+    .participants-body { justify-content: center; }
+    .participants {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 1.75cqw;
+      line-height: 1.3;
+      table-layout: fixed;
+    }
+    .participants th,
+    .participants td {
+      padding: 0.7em 0.5em;
+      text-align: center;
+      vertical-align: bottom;
+      border-bottom: 0.15cqw solid rgba(0, 0, 0, 0.12);
+    }
+    .participants thead th { font-weight: 600; font-size: 0.85em; hyphens: manual; color: var(--color-text-strong); }
+    .participants tbody th { text-align: left; font-weight: 600; }
+    .participants col.row-head { width: 16%; }
+    .participants td { font-size: 1.5em; vertical-align: middle; }
+    .participants .total { font-weight: 700; color: var(--color-primary); background: rgba(255, 255, 255, 0.6); }
+    .participants .empty { color: rgba(0, 0, 0, 0.25); }
+    .participants-note { margin: 0; font-size: 1.5cqw; color: var(--color-text-muted, #666); }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <div class="slide-inner">
+      <h1 class="slide-head" data-gumdrop>Learnings</h1>
+
+      <main class="slide-body participants-body">
+        <table class="participants">
+          <colgroup><col class="row-head"><col span="6"></colgroup>
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Compre&shy;hensive school</th>
+              <th scope="col">Class&shy;room co-teaching</th>
+              <th scope="col">Teacher trainings (in person + remote)</th>
+              <th scope="col">Confer&shy;ence work&shy;shops</th>
+              <th scope="col">Univer&shy;sity courses</th>
+              <th scope="col" class="total">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Pupils / students</th>
+              <td>60</td>
+              <td>65</td>
+              <td class="empty">–</td>
+              <td class="empty">–</td>
+              <td>45</td>
+              <td class="total">170</td>
+            </tr>
+            <tr>
+              <th scope="row">Teachers / educators</th>
+              <td>5</td>
+              <td>3</td>
+              <td>35</td>
+              <td>20</td>
+              <td class="empty">–</td>
+              <td class="total">63</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="participants-note">Comprehensive school: heterogeneous  · Classroom co-teaching: middle and upper grades, talent · Conference workshops: from university educators to ministry staff.</p>
+      </main>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initSlide } from '../lib/slide.js'
+    initSlide()
+  </script>
+</body>
+</html>

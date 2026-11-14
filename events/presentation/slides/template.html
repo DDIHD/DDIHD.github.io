@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+  Headline + body template. Copy this file to slides/<name>.html and add it to deck.config.js.
+  - <h1 data-gumdrop> is drawn in candies; <h2 data-gumdrop> gives a smaller gumdrop sub-headline.
+  - Everything else is ordinary HTML in the UI font (sizes from lib/slide.css, all container-relative).
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template</title>
+  <link rel="stylesheet" href="../lib/slide.css">
+</head>
+<body>
+  <div class="slide">
+    <div class="slide-inner">
+      <h1 class="slide-head" data-gumdrop>Headline</h1>
+
+      <main class="slide-body">
+        <p>Body text in the UI font. Use <strong>strong</strong> for accents. Everything scales with the 4:3 frame.</p>
+
+        <h2 data-gumdrop>Sub headline</h2>
+
+        <div class="slide-columns">
+          <ul>
+            <li>First point</li>
+            <li>Second point</li>
+            <li>Third point</li>
+          </ul>
+          <ul>
+            <li>Another column</li>
+            <li>With more points</li>
+          </ul>
+        </div>
+      </main>
+
+      <footer class="slide-foot">
+        <span>Datenfallstudie</span>
+        <span data-slide-number></span>
+      </footer>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initSlide } from '../lib/slide.js'
+    initSlide()
+  </script>
+</body>
+</html>

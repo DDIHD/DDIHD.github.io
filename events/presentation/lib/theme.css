@@ -1,0 +1,13 @@
+/*
+ * Presentation theme — single source for colours shared by the deck shell (deck/deck.css)
+ * and every slide (lib/slide.css). Presentation only, not used by the web apps.
+ */
+:root {
+  /* Background of the slides AND of the padding around the 4:3 stage. */
+  --slide-bg: #efecf3;
+
+  /* Gumdrop halo: tight soft outline behind gumdrop letters (see .gd-halo in slide.css). */
+  --gd-halo-color: rgba(211, 131, 248, 0.5);   /* primary lilac, translucent */
+  --gd-halo-scale: 1.45;  /* blob size relative to a cell; >1 lets neighbours merge */
+  --gd-halo-blur: 0.15;   /* blur radius in cells */
+}

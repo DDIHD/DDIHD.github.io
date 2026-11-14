@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+  Title slide: gumdrop title, paper subtitle, the Animate app as body (embedded via lib/embed.js;
+  deck.config.js lists it with `apps: ['animate']`), authors and affiliation.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+  <link rel="stylesheet" href="../lib/slide.css">
+  <style>
+    .title-inner {
+      gap: 2cqh;
+      padding: 5cqh 6cqw 4cqh;
+      text-align: center;
+    }
+    .title-head { --gd-cell: 2.2cqw; }
+    .title-head .gd-grid { margin-inline: auto; }
+    .title-sub {
+      margin: 0;
+      font-size: 1.9cqw;
+      line-height: 1.35;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--color-text-strong);
+    }
+    .title-anim {
+      flex: 1;
+      min-height: 0;
+      width: 100%;
+      border: 0;
+      display: block;
+      background: transparent;
+    }
+    .title-people {
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6cqh;
+    }
+    .title-authors { margin: 0; font-size: 2.4cqw; font-weight: 600; color: var(--color-primary); }
+    .title-affil { margin: 0; font-size: 1.8cqw; color: var(--color-text-muted, var(--color-text-strong)); letter-spacing: 0.04em; }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <div class="slide-inner title-inner">
+      <h1 class="slide-head title-head" data-gumdrop data-gd-size="title" data-gd-align="center">Unboxed</h1>
+      <p class="title-sub">
+        A HOLISTICALLY ACCESSIBLE FRAMEWORK<br>
+        FOR LEARNING THE FOUNDATIONS OF ARTIFICIAL INTELLIGENCE<br>
+        WITH A DATA-CENTRIC APPROACH<br>
+      </p>
+
+      <iframe class="title-anim" title="Candy animation" tabindex="-1"></iframe>
+
+      <footer class="title-people">
+        <p class="title-authors">Jonas Braun, Claudia Hildebrandt</p>
+        <p class="title-affil">PH Heidelberg (GERMANY) - University of Education</p>
+      </footer>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initSlide } from '../lib/slide.js'
+    import { embedApp } from '../lib/embed.js'
+    initSlide()
+    embedApp(document.querySelector('.title-anim'), 'animate')
+  </script>
+</body>
+</html>

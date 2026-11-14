@@ -1,0 +1,346 @@
+/*
+ * Presentation slide styles (4:3). Slides only — the web apps follow GUIDELINES.md §1–14.
+ * Every size is relative to the slide frame (.slide is the size container): cqw / cqh / cqmin / %.
+ */
+@import url("../styles/fonts.css");
+@import url("../styles/design-tokens.css");
+@import url("./theme.css"); /* --slide-bg, --gd-halo-* */
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--slide-bg);
+}
+
+body {
+  font-family: var(--font-family-ui);
+  color: var(--color-text-strong);
+}
+
+/* ------------------------------------------------------------ frame */
+.slide {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  container-type: size;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--slide-bg);
+}
+
+.slide-inner {
+  flex: 1;
+  min-height: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 4cqh;
+  padding: 6cqh 6cqw 4cqh;
+}
+
+/* ------------------------------------------------------------ headline + body template */
+.slide-head {
+  flex: 0 0 auto;
+  margin: 0;
+}
+/* Gumdrop headlines are centred on the slide. */
+.slide-head .gd-grid { margin-inline: auto; }
+
+/* An exported app embedded as the slide body (lib/embed.js → embedApp): takes all remaining space. */
+.slide-app {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  border: 0;
+  display: block;
+  background: transparent;
+}
+
+/* Plain-text sub-headline directly under the gumdrop headline (pulls up into the head/body gap).
+   Same look as the paper title on the title slide: centred, capitals, bold, text colour. */
+.slide-sub {
+  flex: 0 0 auto;
+  margin: -2cqh 0 0;
+  font-size: 1.9cqw;
+  line-height: 1.35;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--color-text-strong);
+}
+
+/* Image that fills the remaining body space without cropping or distortion. */
+.slide-figure {
+  flex: 1;
+  min-height: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slide-figure img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.slide-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4cqh;
+  font-size: 2.6cqw;
+  line-height: 1.45;
+  color: var(--color-text-default);
+}
+
+.slide-body > * { margin: 0; }
+.slide-body ul, .slide-body ol { padding-left: 1.2em; }
+.slide-body li + li { margin-top: 0.4em; }
+.slide-body h3:not(.gd-host) { margin: 0 0 0.5em; font-size: 1.05em; color: var(--color-text-strong); }
+.slide-body li::marker { color: var(--color-primary); }
+
+/* Candy bullets (lib/gumdrop.js → renderCandyBullets): every plain <ul> on a slide gets one random
+   candy per item, about letter height; hanging indent via text-indent (no absolute positioning).
+   Opt out per list with <ul data-bullets="plain">. */
+.slide ul.cb-list { list-style: none; padding-left: 0; }
+.slide ul.cb-list > li { padding-left: 1.45em; text-indent: -1.45em; }
+.slide ul.cb-list > li::before {
+  content: '';
+  display: inline-block;
+  width: 1.05em;
+  height: 1.05em;
+  margin-right: 0.4em;
+  vertical-align: -0.2em;
+  text-indent: 0;
+  background: var(--cb-candy) center / contain no-repeat;
+}
+.slide-body strong { color: var(--color-primary); }
+
+.slide-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4cqw;
+  min-height: 0;
+}
+
+.slide-foot {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 1.5cqw;
+  color: var(--color-text-soft);
+  padding-right: 8cqw; /* keep clear of the deck's arrow buttons (bottom right) */
+}
+
+/* centered layouts (title / questions) */
+.slide--center .slide-inner {
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* ------------------------------------------------------------ gumdrop lettering (lib/gumdrop.js) */
+.gd-host {
+  display: block;
+  margin: 0;
+  min-width: 0;
+  --gd-cell: 1cqw;
+}
+.gd-host[data-gd-size="h1"] { --gd-cell: 2.5cqw; }
+.gd-host[data-gd-size="h2"] { --gd-cell: 1.7cqw; }
+.gd-host[data-gd-size="h3"] { --gd-cell: 1.1cqw; }
+.gd-host[data-gd-size="fill"] { --gd-cell: 100cqw; } /* as wide as the parent allows */
+
+.gd-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--gd-cols), minmax(0, 1fr));
+  grid-template-rows: repeat(var(--gd-rows), minmax(0, 1fr));
+  width: min(100%, calc(var(--gd-cols) * var(--gd-cell)));
+  aspect-ratio: var(--gd-cols) / var(--gd-rows);
+  min-height: 0;
+}
+/* The grid is an inline-size container so the halo blur can be expressed in cells (100cqw / cols). */
+.gd-grid { container-type: inline-size; }
+
+.gd-halo {
+  grid-area: 1 / 1 / -1 / -1;
+  display: grid;
+  grid-template-columns: repeat(var(--gd-cols), minmax(0, 1fr));
+  grid-template-rows: repeat(var(--gd-rows), minmax(0, 1fr));
+  filter: blur(calc(100cqw / var(--gd-cols) * var(--gd-halo-blur)));
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.6s ease 0.8s;
+}
+.gd-halo > i {
+  border-radius: 50%;
+  background: var(--gd-halo-color);
+  transform: scale(var(--gd-halo-scale));
+}
+.gd-grid > .gd-candy { z-index: 1; }
+.gd-out .gd-halo { opacity: 0; transition: none; }
+
+.gd-host[data-gd-align="center"] > .gd-grid { margin-inline: auto; }
+.gd-host[data-gd-align="right"] > .gd-grid { margin-left: auto; }
+
+.gd-candy {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  object-fit: contain;
+  object-position: center;
+  transform-origin: center center;
+  user-select: none;
+}
+
+.gd-out .gd-candy {
+  transform: translate(var(--gd-dx, 0), var(--gd-dy, 0)) scale(0);
+  transition: none;
+}
+.gd-in .gd-candy {
+  transform: none;
+  transition: transform var(--gd-duration, 1s) ease-in-out var(--gd-delay, 0s);
+}
+
+/* gumdrop list (agenda) */
+.gd-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5cqh;
+}
+.gd-list > li { margin: 0; }
+
+/* ------------------------------------------------------------ puzzle (lib/puzzle.js) */
+.puzzle-area {
+  flex: 1;
+  min-height: 0;
+  container-type: size;
+  display: grid;
+  place-items: center;
+}
+
+.puzzle {
+  display: grid;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+  width: min(100cqw, 100cqh);
+  aspect-ratio: 1;
+}
+
+/* All four pieces share one grid area (stacked without absolute positioning). */
+.puzzle-piece {
+  grid-area: 1 / 1;
+  display: grid;
+  grid-template-columns: repeat(var(--gd-cols), minmax(0, 1fr));
+  grid-template-rows: repeat(var(--gd-rows), minmax(0, 1fr));
+  width: 100%;
+  aspect-ratio: 1;
+  pointer-events: none;   /* only the candies of a piece are clickable, not its empty area */
+  transition: transform 0.45s ease, opacity 0.45s ease, filter 0.45s ease;
+}
+.puzzle-piece .gd-candy { pointer-events: auto; cursor: pointer; }
+
+.puzzle-label {
+  align-self: center;
+  justify-self: center;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0.6em 0.9em;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: var(--shadow-soft);
+  font-size: 2.4cqmin;
+  font-weight: bold;
+  text-align: center;
+  color: var(--color-text-strong);
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 1;
+}
+.puzzle-label:empty { display: none; }
+
+/* Highlight = focus mode: the other pieces disappear, the active one stays (labels hidden). */
+.puzzle { transition: transform 0.5s ease; }
+.puzzle[data-active] .puzzle-piece { opacity: 0; visibility: hidden; }
+.puzzle[data-active] .puzzle-label { display: none; }
+.puzzle[data-active="0"] .puzzle-piece[data-piece="0"],
+.puzzle[data-active="1"] .puzzle-piece[data-piece="1"],
+.puzzle[data-active="2"] .puzzle-piece[data-piece="2"],
+.puzzle[data-active="3"] .puzzle-piece[data-piece="3"] {
+  opacity: 1;
+  visibility: visible;
+  filter: drop-shadow(0 0.6cqmin 1cqmin rgba(0, 0, 0, 0.18));
+  z-index: 1;
+}
+
+/*
+ * Puzzle content page (slides/puzzle.html). Step 0: the whole puzzle. Step n: piece n-1 zooms into
+ * its own corner of a narrow column (left for the left pieces, right for the right ones; top or
+ * bottom like in the puzzle) and the rest of the slide shows <section class="puzzle-content">.
+ * Zoom: the puzzle scales around its outer corner, so the active piece (body + tab = 18 of 27
+ * cells) fills the column; --puzzle-zoom tunes it.
+ */
+.puzzle-layout {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+  column-gap: 5cqw;
+  --puzzle-zoom: 1.5;
+}
+.puzzle-layout > * { grid-row: 1; grid-column: 1; min-width: 0; min-height: 0; }
+.puzzle-content { display: none; }
+
+html:not([data-step="0"]) .puzzle-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.75fr); }
+html[data-step="2"] .puzzle-layout,
+html[data-step="3"] .puzzle-layout { grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); }
+
+/* where the piece sits: TL / TR / BR / BL */
+html[data-step="1"] .puzzle-area { grid-column: 1; place-items: start start; }
+html[data-step="2"] .puzzle-area { grid-column: 2; place-items: start end; }
+html[data-step="3"] .puzzle-area { grid-column: 2; place-items: end end; margin-bottom: 5cqh; } /* clear the ‹ › buttons */
+html[data-step="4"] .puzzle-area { grid-column: 1; place-items: end start; }
+html[data-step="1"] .puzzle { transform: scale(var(--puzzle-zoom)); transform-origin: 0 0; }
+html[data-step="2"] .puzzle { transform: scale(var(--puzzle-zoom)); transform-origin: 100% 0; }
+html[data-step="3"] .puzzle { transform: scale(var(--puzzle-zoom)); transform-origin: 100% 100%; }
+html[data-step="4"] .puzzle { transform: scale(var(--puzzle-zoom)); transform-origin: 0 100%; }
+
+/* the matching text: beside the piece, vertically aligned with it */
+html[data-step="1"] .puzzle-content[data-piece="0"],
+html[data-step="2"] .puzzle-content[data-piece="1"],
+html[data-step="3"] .puzzle-content[data-piece="2"],
+html[data-step="4"] .puzzle-content[data-piece="3"] {
+  display: flex;
+  animation: puzzle-content-in 0.5s ease both;
+}
+.puzzle-content[data-piece="0"] { grid-column: 2; justify-content: flex-start; }
+.puzzle-content[data-piece="1"] { grid-column: 1; justify-content: flex-start; }
+.puzzle-content[data-piece="2"] { grid-column: 1; justify-content: flex-end; }
+.puzzle-content[data-piece="3"] { grid-column: 2; justify-content: flex-end; }
+.puzzle-content {
+  flex-direction: column;
+  gap: 3cqh;
+  font-size: 2.1cqw;
+  line-height: 1.35;
+}
+.puzzle-content > * { margin: 0; }
+.puzzle-content ul { padding-left: 1.2em; display: flex; flex-direction: column; gap: 1.6cqh; }
+.puzzle-content li::marker { color: var(--color-primary); }
+.puzzle-content strong { color: var(--color-primary); }
+@keyframes puzzle-content-in { from { opacity: 0; } to { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .puzzle-piece, .puzzle { transition: none; }
+  .puzzle-content { animation: none !important; }
+}

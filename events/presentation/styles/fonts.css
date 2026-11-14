@@ -1,0 +1,21 @@
+/* Bundled UI typeface. Font files are inlined into single-file builds. */
+@font-face {
+  font-family: "redhatmono";
+  src: local("Red Hat Mono"), url("../assets/fonts/RedHatMono-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "redhatmono";
+  src: local("Red Hat Mono Bold"), url("../assets/fonts/RedHatMono-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "redhatmono";
+  src: local("Red Hat Mono Italic"), url("../assets/fonts/RedHatMono-Italic.woff2") format("woff2");
+  font-weight: normal;
+  font-style: italic;
+}

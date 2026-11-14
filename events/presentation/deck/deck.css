@@ -1,0 +1,122 @@
+/*
+ * Deck shell: the window is a size container, the stage is the largest 4:3 box that fits.
+ * The remaining space (left/right or top/bottom) is white padding. Slides are stacked in
+ * one grid cell (no absolute positioning) and cross-fade.
+ */
+@import url("../lib/theme.css");
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--slide-bg);
+}
+
+.deck-shell {
+  --deck-ratio-w: 4;
+  --deck-ratio-h: 3;
+  width: 100%;
+  height: 100%;
+  container-type: size;
+  display: grid;
+  place-items: center;
+  background: var(--slide-bg);
+}
+
+.deck-stage {
+  width: min(100cqw, calc(100cqh * var(--deck-ratio-w) / var(--deck-ratio-h)));
+  height: min(100cqh, calc(100cqw * var(--deck-ratio-h) / var(--deck-ratio-w)));
+  display: grid;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+  overflow: hidden;
+  background: var(--slide-bg);
+  container-type: size; /* cq units below refer to the 4:3 stage */
+}
+
+.deck-stage > * {
+  grid-area: 1 / 1;
+  min-width: 0;
+  min-height: 0;
+}
+
+.deck-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: var(--slide-bg);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+}
+
+.deck-frame.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.35s ease;
+  z-index: 1;
+}
+
+.deck-loading {
+  place-self: center;
+  font-family: "redhatmono", "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 2.4cqmin;
+  color: #666;
+}
+.deck-body.is-ready .deck-loading { display: none; }
+
+.deck-blank {
+  background: var(--slide-bg);
+  z-index: 2;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+.deck-body.is-blank .deck-blank {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deck-frame, .deck-frame.is-active, .deck-blank { transition: none; }
+}
+
+/* Fallback navigation (bottom right of the stage), in case keys / clicker do not reach the deck. */
+.deck-nav {
+  align-self: end;
+  justify-self: end;
+  z-index: 3;
+  display: flex;
+  gap: 0.8cqmin;
+  margin: 0 1.6cqmin 1.6cqmin 0;
+  opacity: 0.35;
+  transition: opacity 0.2s ease;
+}
+.deck-nav:hover, .deck-nav:focus-within { opacity: 1; }
+.deck-body.is-blank .deck-nav { visibility: hidden; }
+
+.deck-nav-btn {
+  width: 3.6cqmin;
+  height: 3.6cqmin;
+  padding: 0.7cqmin;
+  border: 0.15cqmin solid rgba(111, 62, 134, 0.35);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  color: #6f3e86;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.deck-nav-btn:hover { background: rgba(211, 131, 248, 0.2); }
+.deck-nav-btn:disabled { opacity: 0.3; cursor: default; }
+.deck-nav-btn svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

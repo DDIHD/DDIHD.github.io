@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+  Framework overview: four interlocking puzzle pieces, one candy colour each.
+  Step 0 shows the whole puzzle. "next" focuses piece 1 → 2 → 3 → 4: the piece zooms into its
+  corner and the rest of the slide becomes a content page (<section class="puzzle-content"
+  data-piece="i">). Then the deck moves on ("prev" walks back). Clicking a piece toggles its page.
+  Edit PIECES (labels / colours) and the four sections below; layout rules: .puzzle-layout in lib/slide.css.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Framework</title>
+  <link rel="stylesheet" href="../lib/slide.css">
+</head>
+<body>
+  <div class="slide">
+    <div class="slide-inner">
+      <div class="puzzle-layout">
+        <div class="puzzle-area" id="puzzle"></div>
+
+        <!-- piece 0, top-left (black) -->
+        <section class="puzzle-content" data-piece="0">
+          <h2 data-gumdrop data-gd-colors="black">Data-<br>centric</h2>
+          <ul>
+            <li>All user interactions with a model are through data</li>
+            <li>Mostly not technical term, but anything that goes in and comes out, and anything integrated in the training process</li>
+            <li>EDA (Exploratory Data Analysis) is the biggest and most time-consuming part of any custom AI application development</li>
+            <li>Data exploration and modelling assumptions are its most important aspects</li>
+            <li>It is an iterative process and key to understanding a model's aspects/behaviour</li>
+            <li>"Human"/domain decisions!</li>
+          </ul>
+        </section>
+
+        <!-- piece 1, top-right (light red) -->
+        <section class="puzzle-content" data-piece="1">
+          <h2 data-gumdrop data-gd-colors="light red">Technical<br>accessibility</h2>
+          <ul>
+            <li>Runs everywhere as a website: also as pre-installed app (PWA) that needs no admin rights on school computers and tablets</li>
+            <li>Data sovereignty is upheld by running only locally, not in the cloud</li>
+            <li>In the browser does not mean online: it can run off a USB stick or anywhere else</li>
+            <li>It is open source</li>
+          </ul>
+        </section>
+
+        <!-- piece 2, bottom-right (green) -->
+        <section class="puzzle-content" data-piece="2">
+          <h2 data-gumdrop data-gd-colors="green">Cognitive<br>accessibility</h2>
+          <ul>
+            <li>Low-key visual approach: no distinction between statistics and the data itself on essential entry level</li>
+            <li>Uses a recurring, known domain: the candy dataset</li>
+            <li>Scaffolding through adaptivity and progressive disclosure</li>
+            <li>Context switching is prevented by embedding it directly into the learning environment</li>
+          </ul>
+        </section>
+
+        <!-- piece 3, bottom-left (yellow) -->
+        <section class="puzzle-content" data-piece="3">
+          <h2 data-gumdrop data-gd-colors="yellow">Expansions</h2>
+          <ul>
+            <li>Visually low-key, but capable of most machine learning tasks on a reasonable scale</li>
+            <li>Can  be extended for advanced high school courses or special seminars for talented students</li>
+            <li>Requests: exporting to programming environments, games, other use cases. Sandbox after curated learning path completed.</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initSlide } from '../lib/slide.js'
+    import { renderPuzzle } from '../lib/puzzle.js'
+
+    // Clockwise from top-left. `colors` = exact candy colour(s) from the dataset (index 1).
+    const PIECES = [
+      { label: 'Data-centric', colors: ['black'] },
+      { label: 'Technical accessibility', colors: ['light red'] },
+      { label: 'Cognitive accessibility', colors: ['green'] },
+      { label: 'Expansions', colors: ['yellow'] }
+    ]
+
+    let stepper
+    const puzzle = await renderPuzzle(document.getElementById('puzzle'), {
+      pieces: PIECES,
+      onSelect: (index) => stepper.go(stepper.step === index + 1 ? 0 : index + 1)
+    })
+    const slide = initSlide()
+    stepper = slide.steps(PIECES.length, (step) => puzzle.highlight(step - 1))
+  </script>
+</body>
+</html>

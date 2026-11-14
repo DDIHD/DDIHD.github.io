@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+  Design: two app screenshots side by side at equal height. The images are cropped copies in
+  images/ (design-*.png: transparent margin removed, baked-in checkerboard of candyapp.png cleared).
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design</title>
+  <link rel="stylesheet" href="../lib/slide.css">
+  <style>
+    /* Both images take the full figure height, so they always end up the same height. */
+    .design-pair {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 6cqw;
+    }
+    .design-pair img {
+      height: 100%;
+      width: auto;
+      max-width: none;
+      max-height: none;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <div class="slide-inner">
+      <h1 class="slide-head" data-gumdrop>Design</h1>
+
+      <figure class="slide-figure">
+        <div class="design-pair">
+          <img src="../images/design-plantclassifier.png" alt="Plant classifier app">
+          <img src="../images/design-candyapp.png" alt="Candy classifier app on a phone">
+        </div>
+      </figure>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initSlide } from '../lib/slide.js'
+    initSlide()
+  </script>
+</body>
+</html>
