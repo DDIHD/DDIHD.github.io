@@ -12,3 +12,5 @@ braun3@ph-heidelberg.de
 
 #### links und resources
 
+[Conference presentation](https://ddihd.github.io/events/presentation/index)
+
